@@ -2,6 +2,7 @@
   render: ->
     `<form>
       <MaxPriceSelector />
+      <LocationSelector />
 
     </form>`
 
