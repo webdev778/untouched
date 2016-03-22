@@ -3,6 +3,7 @@
     `<form>
       <MaxPriceSelector />
       <LocationSelector />
+      <BedroomSelector />
 
     </form>`
 

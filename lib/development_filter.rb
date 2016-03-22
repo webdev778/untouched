@@ -1,19 +1,27 @@
 class DevelopmentFilter
 
-  def initialize(options={})
+  def initialize(params={})
+    @params = params
   end
 
+  attr_reader :params
+
   def results
-    Unit.
-      find_by_sql(%{
-        select units.id, units.price
-        from units, developments
-        where (
-          select count(*) from units as u
-          where u.development_id = units.development_id
-          and u.price <= units.price
-        ) = 1
-      }).uniq
+    base = Unit.all
+
+    if params[:bedrooms]
+      base = base.
+        where(bedrooms: params[:bedrooms])
+    end
+
+    if params[:max_price]
+      base = base.
+        where(['price <= ?', params[:max_price]])
+    end
+
+    base.
+      group('units.development_id, units.id').
+      order('price ASC')
   end
 
 end

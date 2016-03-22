@@ -10,9 +10,15 @@
   render: ->
     `<div className='sidebar__box'>
       <h4 className='sidebar__title'>Max Price</h4>
-      <select className='select'>
-        {this.renderNumericOptions()}
+      <select id='max_price_selector' className='select' onChange={this.handleChange}>
         <option key='any' value='any'>Any</option>
+        {this.renderNumericOptions()}
       </select>
     </div>`
+
+  val: ->
+    $('select#max_price_selector').val()
+
+  handleChange: ->
+    DevelopmentActions.filterData(max_price: @val())
 

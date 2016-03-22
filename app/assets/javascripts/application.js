@@ -16,5 +16,11 @@
 //= require turbolinks
 //= require react
 //= require react_ujs
+//= require alt/dist/alt
+//= require init
+//= require actions/development_actions
+//= require stores/development_store
 //= require components
 //= require_tree .
+
+
