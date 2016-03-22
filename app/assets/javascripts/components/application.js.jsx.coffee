@@ -7,7 +7,7 @@
           <DevelopmentFilter />
         </aside>
         <main className='main'>
-          <DevelopmentList />
+          <DevelopmentList data={this.props.developments} />
         </main>
       </div>
      </div>`

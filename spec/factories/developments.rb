@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :development do
     city { Faker::Address.city }
     region { Faker::Address.state }
-    suburb { Faker::Address.city }
+    suburb { Faker::Address.street_address }
     ready_at { Faker::Date.forward(180) }
     has_gym { Faker::Boolean.boolean }
     has_pool { Faker::Boolean.boolean }
