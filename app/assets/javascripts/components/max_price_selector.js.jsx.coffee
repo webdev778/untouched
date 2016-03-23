@@ -11,7 +11,7 @@
     `<div className='sidebar__box'>
       <h4 className='sidebar__title'>Max Price</h4>
       <select id='max_price_selector' className='select' onChange={this.handleChange}>
-        <option key='any' value='any'>Any</option>
+        <option key='any' value=''>Any</option>
         {this.renderNumericOptions()}
       </select>
     </div>`
