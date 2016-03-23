@@ -15,8 +15,11 @@ class DevelopmentStore
     @developments = props.developments
 
   onFilterData: (params) ->
-    _.merge @filterParams, params
+    _.assign @filterParams, params
 
+    @fetch()
+
+  fetch: ->
     $.ajax
       method: 'GET'
       url: '/api/developments'

@@ -3,8 +3,7 @@ require 'development_filter'
 module SiteHelper
   def application_react_component
     react_component(
-      'Application',
-      developments: all_developments_as_json
+      'Application'
     )
   end
 

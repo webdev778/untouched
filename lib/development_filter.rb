@@ -21,7 +21,8 @@ class DevelopmentFilter
 
     base.
       group('units.development_id, units.id').
-      order('price ASC')
+      order('price ASC').
+      to_a.uniq {|e| e.development.id}
   end
 
 end

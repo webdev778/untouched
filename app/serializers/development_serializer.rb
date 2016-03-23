@@ -1,6 +1,7 @@
 class DevelopmentSerializer < ActiveModel::Serializer
 
-  attributes :city, 
+  attributes :photo_url,
+    :city, 
     :region, 
     :suburb, 
     :ready_at,
@@ -15,6 +16,9 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :created_at,
     :updated_at
 
+  def photo_url
+    object.photo.url
+  end
 
 end
 

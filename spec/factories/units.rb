@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :unit do
-    price { Faker::Number.between(400_000, 2_000_000) }
     bedrooms { Faker::Number.between(1, 5) }
+    price { Faker::Number.between(bedrooms * 400_000, bedrooms * 500_000) }
     bathrooms { Faker::Number.between(1, 4) }
     parking { Faker::Number.between(0, 4) }
     internal_in_meters { Faker::Number.between(40, 200) }

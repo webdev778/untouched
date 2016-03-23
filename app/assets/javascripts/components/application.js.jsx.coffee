@@ -2,7 +2,7 @@
 
   componentWillMount: ->
     DevelopmentStore.listen(@onChange)
-    DevelopmentActions.initData(@props)
+    DevelopmentActions.fetch()
 
   componentWillUnmount: ->
     @

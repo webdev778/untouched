@@ -1,6 +1,7 @@
 FactoryGirl.define do
 
   factory :development do
+    photo { open("http://lorempixel.com/#{Faker::Number.between(400, 1000)}/#{Faker::Number.between(400, 1000)}/city") }
     city { Faker::Address.city }
     region { Faker::Address.state }
     suburb { Faker::Address.street_address }

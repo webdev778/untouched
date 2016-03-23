@@ -9,6 +9,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'active_model_serializers'
 gem "bower-rails", "~> 0.10.0"
+gem 'carrierwave'
 
 gem 'jquery-rails'
 gem 'react-rails', '~> 1.6.0'
