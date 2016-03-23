@@ -1,9 +1,9 @@
 @MaxPriceSelector = React.createClass
 
-  RANGE_IN_HUNDRED_THOUDANDS: [ 4, 20 ]
+  RANGE_IN_HUNDRED_THOUSANDS: [ 4, 20 ]
 
   renderNumericOptions: ->
-    _.map _.range(4, 20), (hundoThousands) ->
+    _.map _.range(@RANGE_IN_HUNDRED_THOUSANDS...), (hundoThousands) ->
       value = hundoThousands * 100000
       `<option key={hundoThousands} value={value}>{value}</option>`
 
