@@ -6,5 +6,6 @@
       <BedroomSelector />
       <BathroomSelector />
       <ParkingSelector />
+      <InternalM2Selector />
     </form>`
 

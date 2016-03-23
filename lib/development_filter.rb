@@ -54,6 +54,7 @@ class DevelopmentFilter
       filter_count(:bedrooms, params[:bedrooms]).
       filter_count(:bathrooms, params[:bathrooms]).
       filter_count(:parking, params[:parking]).
+      where_if(['internal_in_meters > ?', params[:internal_in_meters]]) { params[:internal_in_meters].present? }.
       where_if(['price <= ?', params[:max_price]])   { params[:max_price].present? }.
       group('units.development_id, units.id').
       order('price ASC').
