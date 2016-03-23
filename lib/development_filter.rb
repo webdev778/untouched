@@ -39,7 +39,8 @@ class DevelopmentFilter
     ResultSet.new.
       where_if(bedrooms: params[:bedrooms])          { params[:bedrooms] }.
       where_if(bathrooms: params[:bathrooms])        { params[:bathrooms] }.
-      where_if(['price <= ?', params[:max_price]])  { params[:max_price].present? }.
+      where_if(parking: params[:parking])            { params[:parking] }.
+      where_if(['price <= ?', params[:max_price]])   { params[:max_price].present? }.
       group('units.development_id, units.id').
       order('price ASC').
       to_a.uniq {|e| e.development.id}

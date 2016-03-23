@@ -5,6 +5,6 @@
       <LocationSelector />
       <BedroomSelector />
       <BathroomSelector />
-
+      <ParkingSelector />
     </form>`
 
