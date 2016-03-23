@@ -52,8 +52,8 @@ class DevelopmentFilter
   def results
     ResultSet.new.
       filter_count(:bedrooms, params[:bedrooms]).
-      where_if(bathrooms: params[:bathrooms])        { params[:bathrooms] }.
-      where_if(parking: params[:parking])            { params[:parking] }.
+      filter_count(:bathrooms, params[:bathrooms]).
+      filter_count(:parking, params[:parking]).
       where_if(['price <= ?', params[:max_price]])   { params[:max_price].present? }.
       group('units.development_id, units.id').
       order('price ASC').
