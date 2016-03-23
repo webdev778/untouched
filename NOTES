@@ -5,3 +5,7 @@ Maybe we use this in place of Harvest Chosen?
 
 How should items be sorted in the results?
 
+We'll need to handle URL routing so filters retain their values after page refresh/back buttons.
+
+Bedrooms '4+' needs to handle the '+'
+
