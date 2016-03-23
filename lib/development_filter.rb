@@ -22,6 +22,20 @@ class DevelopmentFilter
       end
     end
 
+    def where(*args)
+      ResultSet.new(collection.where(*args))
+    end
+
+    def filter_count(column, value)
+      return self if value.blank?
+
+      if data = value.match(/^(\d)\+$/)
+        where(["#{column} >= ?", data[1]])
+      else
+        where(column => value)
+      end
+    end
+
     def order(*args)
       ResultSet.new(collection.order(*args))
     end
@@ -37,7 +51,7 @@ class DevelopmentFilter
 
   def results
     ResultSet.new.
-      where_if(bedrooms: params[:bedrooms])          { params[:bedrooms] }.
+      filter_count(:bedrooms, params[:bedrooms]).
       where_if(bathrooms: params[:bathrooms])        { params[:bathrooms] }.
       where_if(parking: params[:parking])            { params[:parking] }.
       where_if(['price <= ?', params[:max_price]])   { params[:max_price].present? }.
