@@ -26,14 +26,29 @@ class DevelopmentFilter
       ResultSet.new(collection.where(*args))
     end
 
-    def filter_count(column, value)
-      return self if value.blank?
+    def sanitize_sql_array(*args)
+      ActiveRecord::Base.send(:sanitize_sql_array, *args)
+    end
 
-      if data = value.match(/^(\d)\+$/)
-        where(["#{column} >= ?", data[1]])
-      else
-        where(column => value)
-      end
+    def filter_count(column, values)
+      values = [ values ].flatten.compact # make sure we have a flat array
+      return self if values.empty?
+
+      where(
+        values.map do |value|
+          if data = value.match(/^(\d)\+$/)
+            ["#{column} >= ?", data[1]]
+          else
+            ["#{column} = ?", value]
+          end
+        end.
+          map {|p| sanitize_sql_array(p)}.
+          join(' OR ')
+      )
+    end
+
+    def where_greater_than(column, value)
+      where_if(["#{column} > ?", value]) { value.present? }
     end
 
     def order(*args)
@@ -54,7 +69,9 @@ class DevelopmentFilter
       filter_count(:bedrooms, params[:bedrooms]).
       filter_count(:bathrooms, params[:bathrooms]).
       filter_count(:parking, params[:parking]).
-      where_if(['internal_in_meters > ?', params[:internal_in_meters]]) { params[:internal_in_meters].present? }.
+      where_greater_than(:internal_in_meters, params[:internal_in_meters]).
+      where_greater_than(:master_bedroom_in_meters, params[:master_bedroom_in_meters]).
+      where_greater_than(:external_in_meters, params[:external_in_meters]).
       where_if(['price <= ?', params[:max_price]])   { params[:max_price].present? }.
       group('units.development_id, units.id').
       order('price ASC').

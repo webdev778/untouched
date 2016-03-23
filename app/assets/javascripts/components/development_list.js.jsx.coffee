@@ -8,6 +8,12 @@
           <tr>
             <th>Suburb</th>
             <th className="active">Price (000's)</th>
+            <th>Beds</th>
+            <th>Baths</th>
+            <th>Parking</th>
+            <th>Int M2</th>
+            <th>Master M2</th>
+            <th>External M2</th>
           </tr>
         </thead>
         <tbody>

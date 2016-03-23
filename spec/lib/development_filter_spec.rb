@@ -57,6 +57,36 @@ describe DevelopmentFilter do
       end
 
     end
+
+    context "when 3, and 4 or more bedrooms are specified" do
+      subject { DevelopmentFilter.new(bedrooms: [ '3', '4+' ]) }
+
+      context "and there's only a 1- and 2-bedroom unit" do
+        it "returns nothing" do
+          expect(subject.results).to be_empty
+        end
+      end
+
+      context "and there's only a 3-bedroom unit" do
+        let!(:three_bedroom_unit) { create(:unit, bedrooms: 3, development: development) }
+
+        it "only has one result" do
+          expect(subject.results.length).to eq(1)
+        end
+
+        it "returns the three-bedroom unit" do
+          expect(subject.results).to include(three_bedroom_unit)
+        end
+      end
+
+      context "and there's only a 4-bedroom unit" do
+        let!(:four_bedroom_unit) { create(:unit, bedrooms: 4, development: development) }
+        it "returns the four-bedroom unit" do
+          expect(subject.results).to include(four_bedroom_unit)
+        end
+      end
+
+    end
   end
 end
 
