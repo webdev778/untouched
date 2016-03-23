@@ -14,6 +14,11 @@ class DevelopmentFilter
         where(bedrooms: params[:bedrooms])
     end
 
+    if params[:bathrooms]
+      base = base.
+        where(bathrooms: params[:bathrooms])
+    end
+
     if params[:max_price].present?
       base = base.
         where(['price <= ?', params[:max_price]])

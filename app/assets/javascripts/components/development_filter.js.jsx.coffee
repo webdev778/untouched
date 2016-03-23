@@ -4,6 +4,7 @@
       <MaxPriceSelector />
       <LocationSelector />
       <BedroomSelector />
+      <BathroomSelector />
 
     </form>`
 
