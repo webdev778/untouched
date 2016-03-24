@@ -19,5 +19,6 @@
       <td>{this.props.data.internal_in_meters}</td>
       <td>{this.props.data.master_bedroom_in_meters}</td>
       <td>{this.props.data.external_in_meters}</td>
+      <td>{this.props.data.aspect}</td>
     </tr>`
 

@@ -72,6 +72,7 @@ class DevelopmentFilter
       where_greater_than(:internal_in_meters, params[:internal_in_meters]).
       where_greater_than(:master_bedroom_in_meters, params[:master_bedroom_in_meters]).
       where_greater_than(:external_in_meters, params[:external_in_meters]).
+      where_if(aspect: (params[:aspect] || []).map {|a| Unit.aspects[a]}) { params[:aspect].present? && params[:aspect].any? }.
       where_if(['price <= ?', params[:max_price]])   { params[:max_price].present? }.
       group('units.development_id, units.id').
       order('price ASC').

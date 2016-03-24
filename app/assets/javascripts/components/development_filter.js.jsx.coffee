@@ -30,5 +30,7 @@
         label="External" 
         id="external_m2_selector" 
         paramName="external_in_meters" />
+
+      <AspectSelector />
     </form>`
 

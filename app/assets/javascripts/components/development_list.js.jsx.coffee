@@ -14,6 +14,7 @@
             <th>Int M2</th>
             <th>Master M2</th>
             <th>External M2</th>
+            <th>Aspect</th>
           </tr>
         </thead>
         <tbody>
