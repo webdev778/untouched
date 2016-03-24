@@ -6,6 +6,22 @@ class DevelopmentFilter
 
   attr_reader :params
 
+  def results
+    ResultSet.new.
+      filter_bedrooms(params[:bedrooms]).
+      filter_bathrooms(params[:bathrooms]).
+      filter_parking(params[:parking]).
+      filter_internal_in_meters(params[:internal_in_meters]).
+      filter_master_bedroom_in_meters(params[:master_bedroom_in_meters]).
+      filter_external_in_meters(params[:external_in_meters]).
+      filter_aspect(params[:aspect]).
+      filter_max_price(params[:max_price]).
+      group_by_development.
+      order_by_ascending_price.
+      reduce_by_distinct_developments
+  end
+
+
   class ResultSet
 
     def initialize(collection=Unit.all)
@@ -13,6 +29,55 @@ class DevelopmentFilter
     end
 
     attr_reader :collection
+
+    def filter_bedrooms(bedrooms)
+      filter_count(:bedrooms, bedrooms)
+    end
+
+    def filter_bathrooms(bathrooms)
+      filter_count(:bathrooms, bathrooms)
+    end
+
+    def filter_parking(parking)
+      filter_count(:parking, parking)
+    end
+
+    def filter_internal_in_meters(internal_in_meters)
+      where_greater_than(:internal_in_meters, internal_in_meters)
+    end
+
+    def filter_master_bedroom_in_meters(master_bedroom_in_meters)
+      where_greater_than(:master_bedroom_in_meters, master_bedroom_in_meters)
+    end
+
+    def filter_external_in_meters(external_in_meters)
+      where_greater_than(:external_in_meters, external_in_meters)
+    end
+
+    def filter_aspect(aspects)
+      where_if(aspect: (aspects || []).map {|a| Unit.aspects[a]}) { aspects.present? && aspects.any? }
+    end
+
+    def filter_max_price(max_price)
+      where_if(['price <= ?', max_price])   { max_price.present? }
+    end
+
+    def group_by_development
+      group('units.development_id, units.id')
+    end
+
+    def order_by_ascending_price
+      order('price ASC')
+    end
+
+    def reduce_by_distinct_developments
+      to_a.uniq {|e| e.development.id}
+    end
+
+
+
+
+    protected
 
     def where_if(conditions, &block)
       if block.call
@@ -62,21 +127,6 @@ class DevelopmentFilter
     def to_a
       @collection.to_a
     end
-  end
-
-  def results
-    ResultSet.new.
-      filter_count(:bedrooms, params[:bedrooms]).
-      filter_count(:bathrooms, params[:bathrooms]).
-      filter_count(:parking, params[:parking]).
-      where_greater_than(:internal_in_meters, params[:internal_in_meters]).
-      where_greater_than(:master_bedroom_in_meters, params[:master_bedroom_in_meters]).
-      where_greater_than(:external_in_meters, params[:external_in_meters]).
-      where_if(aspect: (params[:aspect] || []).map {|a| Unit.aspects[a]}) { params[:aspect].present? && params[:aspect].any? }.
-      where_if(['price <= ?', params[:max_price]])   { params[:max_price].present? }.
-      group('units.development_id, units.id').
-      order('price ASC').
-      to_a.uniq {|e| e.development.id}
   end
 
 end
