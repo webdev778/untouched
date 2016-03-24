@@ -35,5 +35,6 @@
       <ResidenceFilterGroup />
       <BodyCorpSelector />
       <BuildingFilterGroup />
+      <CeilingHeightSelector />
     </form>`
 

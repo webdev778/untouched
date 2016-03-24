@@ -19,6 +19,7 @@ class DevelopmentFilter
       filter_max_body_corporate_fee(params[:max_body_corporate_fee]).
       filter_residence_amenities(params).
       filter_building_amenities(params).
+      filter_ceiling_height_at_living_area_in_meters(params[:ceiling_height_at_living_area_in_meters]).
       group_by_development.
       order_by_ascending_price.
       reduce_by_distinct_developments
@@ -79,6 +80,10 @@ class DevelopmentFilter
 
     def filter_max_body_corporate_fee(max_body_corporate_fee)
       where_if(['max_body_corporate_fee <= ?', max_body_corporate_fee])   { max_body_corporate_fee.present? }
+    end
+
+    def filter_ceiling_height_at_living_area_in_meters(value)
+      where_greater_than(:ceiling_height_at_living_area_in_meters, value)
     end
 
     def group_by_development
