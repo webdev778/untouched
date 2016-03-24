@@ -11,6 +11,7 @@ gem 'active_model_serializers'
 gem "bower-rails", "~> 0.10.0"
 gem 'carrierwave'
 gem 'fog'
+gem "administrate", "~> 0.1.4"
 
 gem 'jquery-rails'
 gem 'react-rails', '~> 1.6.0'
