@@ -18,6 +18,7 @@ class DevelopmentFilter
       filter_max_price(params[:max_price]).
       filter_max_body_corporate_fee(params[:max_body_corporate_fee]).
       filter_residence_amenities(params).
+      filter_building_amenities(params).
       group_by_development.
       order_by_ascending_price.
       reduce_by_distinct_developments
@@ -26,7 +27,7 @@ class DevelopmentFilter
 
   class ResultSet
 
-    def initialize(collection=Unit.all)
+    def initialize(collection=Unit.all.joins(:development))
       @collection = collection
     end
 
@@ -35,6 +36,12 @@ class DevelopmentFilter
     def filter_residence_amenities(params)
       Unit::RESIDENCE_AMENITIES.inject(self) do |_, key|
         _.filter_boolean(key, params[key])
+      end
+    end
+
+    def filter_building_amenities(params)
+      Development::BUILDING_AMENITIES.inject(self) do |_, key|
+        _.filter_boolean("developments.has_#{key}", params['has_' + key])
       end
     end
 
