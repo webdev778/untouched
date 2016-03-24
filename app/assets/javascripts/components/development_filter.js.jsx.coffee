@@ -33,5 +33,6 @@
 
       <AspectSelector />
       <ResidenceFilterGroup />
+      <BodyCorpSelector />
     </form>`
 
