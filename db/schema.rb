@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160322221748) do
+ActiveRecord::Schema.define(version: 20160324203548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(version: 20160322221748) do
     t.string   "region",                                  limit: 255,                                         null: false
     t.string   "suburb",                                  limit: 255
     t.date     "ready_at"
-    t.boolean  "has_gym",                                                                     default: false, null: false
-    t.boolean  "has_pool",                                                                    default: false, null: false
-    t.boolean  "has_spa",                                                                     default: false, null: false
-    t.boolean  "has_sauna",                                                                   default: false, null: false
-    t.boolean  "has_steam_room",                                                              default: false, null: false
-    t.boolean  "has_rooftop_deck",                                                            default: false, null: false
+    t.boolean  "gym",                                                                         default: false, null: false
+    t.boolean  "pool",                                                                        default: false, null: false
+    t.boolean  "spa",                                                                         default: false, null: false
+    t.boolean  "sauna",                                                                       default: false, null: false
+    t.boolean  "steam_room",                                                                  default: false, null: false
+    t.boolean  "rooftop_deck",                                                                default: false, null: false
     t.boolean  "has_double_glazed_windows",                                                   default: false, null: false
     t.decimal  "ceiling_height_at_living_area_in_meters",             precision: 5, scale: 1,                 null: false
     t.datetime "created_at",                                                                                  null: false

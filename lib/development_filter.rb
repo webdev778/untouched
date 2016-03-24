@@ -41,7 +41,7 @@ class DevelopmentFilter
 
     def filter_building_amenities(params)
       Development::BUILDING_AMENITIES.inject(self) do |_, key|
-        _.filter_boolean("developments.has_#{key}", params['has_' + key])
+        _.filter_boolean("developments.#{key}", params[key])
       end
     end
 

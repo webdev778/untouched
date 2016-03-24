@@ -23,10 +23,9 @@
     params = {}
 
     if $(event.target).is(':checked')
-      # These params are prepended with 'has', unlike units. Probably should change that.
-      params['has_' + event.target.id] = true
+      params[event.target.id] = true
     else
-      params['has_' + event.target.id] = undefined
+      params[event.target.id] = undefined
 
     DevelopmentActions.filterData(params)
 
