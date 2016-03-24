@@ -32,5 +32,6 @@
         paramName="external_in_meters" />
 
       <AspectSelector />
+      <ResidenceFilterGroup />
     </form>`
 

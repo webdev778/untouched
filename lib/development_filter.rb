@@ -16,6 +16,7 @@ class DevelopmentFilter
       filter_external_in_meters(params[:external_in_meters]).
       filter_aspect(params[:aspect]).
       filter_max_price(params[:max_price]).
+      filter_residence_amenities(params).
       group_by_development.
       order_by_ascending_price.
       reduce_by_distinct_developments
@@ -29,6 +30,12 @@ class DevelopmentFilter
     end
 
     attr_reader :collection
+
+    def filter_residence_amenities(params)
+      Unit::RESIDENCE_AMENITIES.inject(self) do |_, key|
+        _.filter_boolean(key, params[key])
+      end
+    end
 
     def filter_bedrooms(bedrooms)
       filter_count(:bedrooms, bedrooms)
@@ -93,6 +100,10 @@ class DevelopmentFilter
 
     def sanitize_sql_array(*args)
       ActiveRecord::Base.send(:sanitize_sql_array, *args)
+    end
+
+    def filter_boolean(column, value)
+      where_if(column => true) { value }
     end
 
     def filter_count(column, values)
