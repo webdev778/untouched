@@ -2,7 +2,8 @@ class UnitSerializer < ActiveModel::Serializer
 
   has_one :development
 
-  attributes :price,
+  attributes :id,
+    :price,
     :bedrooms,
     :bathrooms,
     :parking,

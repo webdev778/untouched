@@ -13,7 +13,7 @@
   renderCheckboxes: ->
     handler = @handleClick
     _.map @fields, (value, key) =>
-      `<CheckboxField id={key} value="true" label={value} onClick={handler} name={'residence_' + key} />`
+      `<CheckboxField key={key} id={key} value="true" label={value} onClick={handler} name={'residence_' + key} />`
 
   render: ->
     `<div className='sidebar__box'>
