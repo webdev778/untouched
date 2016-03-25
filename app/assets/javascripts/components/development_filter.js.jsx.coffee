@@ -36,5 +36,6 @@
       <BodyCorpSelector />
       <BuildingFilterGroup />
       <CeilingHeightSelector />
+      <DevelopmentSizeSelector />
     </form>`
 

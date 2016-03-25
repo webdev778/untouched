@@ -21,6 +21,7 @@ class DevelopmentFilter
       filter_residence_amenities(params).
       filter_building_amenities(params).
       filter_ceiling_height_at_living_area_in_meters(params[:ceiling_height_at_living_area_in_meters]).
+      filter_units_count(params[:units_count]).
       group_by_development.
       order_by_ascending_price.
       reduce_by_distinct_developments
@@ -37,6 +38,10 @@ class DevelopmentFilter
 
     def filter_region(region)
       where_if(["developments.region = ?", region]) { region.present? }
+    end
+
+    def filter_units_count(units_count)
+      where_less_than(:units_count, units_count)
     end
 
     def filter_residence_amenities(params)
@@ -147,6 +152,10 @@ class DevelopmentFilter
 
     def where_greater_than(column, value)
       where_if(["#{column} > ?", value]) { value.present? }
+    end
+
+    def where_less_than(column, value)
+      where_if(["#{column} < ?", value]) { value.present? }
     end
 
     def order(*args)
