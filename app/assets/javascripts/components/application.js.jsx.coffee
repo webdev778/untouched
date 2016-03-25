@@ -15,15 +15,32 @@
 
   render: ->
     `<div className='application'>
+
+      <div 
+        className="sidebar-overlay" 
+        onClick={this.handleClickSidebarOverlay}></div>
+
       <Header />
+
       <div className='container'>
         <aside className='sidebar'>
-          <DevelopmentFilter filters={this.props.params} developments={this.state.developments} regions={this.state.regions} />
+          <DismissSidebarTrigger />
+          <DevelopmentFilter 
+            filters={this.props.params} 
+            developments={this.state.developments} 
+            regions={this.state.regions} />
         </aside>
+
         <main className='main'>
-          <DevelopmentList filters={this.props.params} developments={this.state.developments} />
+          <DevelopmentList 
+            filters={this.props.params} 
+            developments={this.state.developments} />
         </main>
       </div>
+
      </div>`
 
+
+  handleClickSidebarOverlay: ->
+    $('body').removeClass('sidebar-on')
 
