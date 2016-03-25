@@ -16,6 +16,7 @@ class DevelopmentFilter
       filter_external_in_meters(params[:external_in_meters]).
       filter_aspect(params[:aspect]).
       filter_max_price(params[:max_price]).
+      filter_ready_at(params[:ready_at]).
       filter_region(params[:region]).
       filter_max_body_corporate_fee(params[:max_body_corporate_fee]).
       filter_residence_amenities(params).
@@ -94,6 +95,10 @@ class DevelopmentFilter
 
     def filter_max_price(max_price)
       where_if(['price <= ?', max_price])   { max_price.present? }
+    end
+
+    def filter_ready_at(ready_at)
+      where_if(['ready_at < ?', ready_at])  { ready_at.present? }
     end
 
     def filter_max_body_corporate_fee(max_body_corporate_fee)

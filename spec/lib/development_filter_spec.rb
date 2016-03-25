@@ -26,6 +26,30 @@ describe DevelopmentFilter do
     end
   end
 
+  context "with ready date specified" do
+    let(:q4_2017) { Time.parse("November 1, 2017") }
+    let!(:development) { create(:development, units_count: 0, photo: nil, ready_at: q4_2017) }
+    let!(:unit) { create(:unit, bedrooms: 1, development: development) }
+
+    subject { DevelopmentFilter.new(filter_params) }
+
+    context "with a development that will be ready 2017 Q4" do
+      context "when querying all developments ready before 2018 Q1" do
+        let(:filter_params) { { ready_at: Time.parse("Jan 1, 2018") } }
+        it "returns the development" do
+          expect(subject.results).to include(unit)
+        end
+      end
+
+      context "when querying all developments ready before 2017 Q1" do
+        let(:filter_params) { { ready_at: Time.parse("Jan 1, 2017") } }
+        it "doesn't return the development" do
+          expect(subject.results).not_to include(unit)
+        end
+      end
+    end
+  end
+
   context "with number of bedrooms specified" do
     let!(:development) { create(:development, units_count: 0, photo: nil) }
     let!(:one_bedroom_unit) { create(:unit, bedrooms: 1, development: development) }
