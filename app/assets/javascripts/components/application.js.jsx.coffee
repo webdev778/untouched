@@ -4,6 +4,9 @@
     DevelopmentStore.listen(@onChange)
     DevelopmentActions.fetch()
 
+    RegionStore.listen(@onChange)
+    RegionActions.fetch()
+
   componentWillUnmount: ->
     @
 
@@ -15,7 +18,7 @@
       <Header />
       <div className='container'>
         <aside className='sidebar'>
-          <DevelopmentFilter developments={this.state.developments} regions={this.props.regions} />
+          <DevelopmentFilter developments={this.state.developments} regions={this.state.regions} />
         </aside>
         <main className='main'>
           <DevelopmentList developments={this.state.developments} />

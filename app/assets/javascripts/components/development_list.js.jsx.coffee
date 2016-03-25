@@ -1,7 +1,6 @@
 @DevelopmentList = React.createClass
 
   render: ->
-    console.log @props
     `<div className='table-responsive'>
       <table className='table'>
         <thead>
