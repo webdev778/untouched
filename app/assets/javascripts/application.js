@@ -20,6 +20,7 @@
 //= require alt/dist/alt
 //= require moment/moment
 //= require init
+//= require route_generator
 //= require actions/region_actions
 //= require stores/region_store
 //= require actions/development_actions

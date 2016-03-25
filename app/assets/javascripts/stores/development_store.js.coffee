@@ -16,7 +16,6 @@ class DevelopmentStore
 
   onFilterData: (params) ->
     _.assign @filterParams, params
-
     @fetch()
 
   fetch: ->
@@ -25,6 +24,9 @@ class DevelopmentStore
       url: '/api/developments'
       data: @filterParams
       success: (response) =>
+        # We really shouldn't do this here...
+        ReactRouter.hashHistory.push(new RouteGenerator(response.filters).generate())
+
         @developments = response.developments
         @emitChange()
       error: (response) ->

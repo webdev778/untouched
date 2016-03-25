@@ -6,7 +6,7 @@ ReactDOM.render((
   <Router history={ReactRouter.hashHistory}>
     <Route path="/" component={Application}>
       <IndexRoute component={Application} />
-      <Route path="/:city/:region/:suburb" component={Application} />
+      <Route path={new RouteGenerator().interpolatedRouterString()} component={Application} />
     </Route>
   </Router>
 ), document.getElementById('app'));

@@ -1,7 +1,7 @@
 @DevelopmentFilter = React.createClass
   render: ->
     `<form>
-      <MaxPriceSelector />
+      <MaxPriceSelector filters={this.props.filters} />
       <LocationSelector filters={this.props.filters} regions={this.props.regions} />
       <BedroomSelector />
       <BathroomSelector />
