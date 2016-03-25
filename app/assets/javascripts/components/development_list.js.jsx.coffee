@@ -5,8 +5,8 @@
       <table className='table'>
         <thead>
           <tr>
-            <th>Suburb</th>
-            <th className="active">Price (000's)</th>
+            <th onClick={this.sortBySuburb}>Suburb</th>
+            <th onClick={this.sortByPrice} className="active">Price (000's)</th>
           </tr>
         </thead>
         <tbody>
@@ -16,4 +16,17 @@
         </tbody>
       </table>
     </div>`
+
+  sortBySuburb: (event) ->
+    $(event.target).parent().children().removeClass('active')
+    $(event.target).addClass('active')
+
+    DevelopmentActions.filterData(sort: 'suburb')
+
+  sortByPrice: (event) ->
+    $(event.target).parent().children().removeClass('active')
+    $(event.target).addClass('active')
+
+    DevelopmentActions.filterData(sort: 'price')
+
 
