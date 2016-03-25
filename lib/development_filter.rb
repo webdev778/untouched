@@ -25,7 +25,7 @@ class DevelopmentFilter
       filter_ceiling_height_at_living_area_in_meters(params[:ceiling_height_at_living_area_in_meters]).
       filter_units_count(params[:units_count]).
       group_by_development.
-      order_by_ascending_price.
+      order_by_sort_field(params[:sort]).
       reduce_by_distinct_developments
   end
 
@@ -110,11 +110,16 @@ class DevelopmentFilter
     end
 
     def group_by_development
-      group('units.development_id, units.id')
+      group('units.development_id, units.id, developments.suburb')
     end
 
-    def order_by_ascending_price
-      order('price ASC')
+    def order_by_sort_field(sort)
+      case sort
+      when 'suburb'
+        order('developments.suburb ASC')
+      else
+        order('price ASC')
+      end
     end
 
     def reduce_by_distinct_developments

@@ -26,6 +26,28 @@ describe DevelopmentFilter do
     end
   end
 
+  context "when sorting by suburb" do
+    let(:suburbs) { [ "Bellevue", "Tacoma", "Everett" ] }
+    let!(:developments) { suburbs.map {|s| create(:development, photo: nil, suburb: s) } }
+    subject { DevelopmentFilter.new(sort: 'suburb') }
+
+    it "sorts them in alphabetical order by suburb" do
+      expect(subject.results.map(&:development).map(&:suburb)).
+        to eq([ 'Bellevue', 'Everett', 'Tacoma' ])
+    end
+  end
+
+  context "when sorting by price" do
+    let!(:developments) { (0..2).map { create(:development, photo: nil) } }
+    subject { DevelopmentFilter.new(sort: 'price') }
+
+    it "sorts them in ascending order by price" do
+      expect(subject.results.map(&:price)).
+        to eq(developments.map {|d| d.units.order('price ASC').first.price}.sort)
+    end
+  end
+
+
   context "with ready date specified" do
     let(:q4_2017) { Time.parse("November 1, 2017") }
     let!(:development) { create(:development, units_count: 0, photo: nil, ready_at: q4_2017) }
