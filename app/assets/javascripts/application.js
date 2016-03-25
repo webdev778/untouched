@@ -18,6 +18,7 @@
 //= require react_ujs
 //= require ReactRouter.min
 //= require alt/dist/alt
+//= require moment/moment
 //= require init
 //= require actions/region_actions
 //= require stores/region_store
