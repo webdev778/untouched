@@ -16,6 +16,7 @@ class DevelopmentFilter
       filter_external_in_meters(params[:external_in_meters]).
       filter_aspect(params[:aspect]).
       filter_max_price(params[:max_price]).
+      filter_region(params[:region]).
       filter_max_body_corporate_fee(params[:max_body_corporate_fee]).
       filter_residence_amenities(params).
       filter_building_amenities(params).
@@ -33,6 +34,10 @@ class DevelopmentFilter
     end
 
     attr_reader :collection
+
+    def filter_region(region)
+      where_if(["developments.region = ?", region]) { region.present? }
+    end
 
     def filter_residence_amenities(params)
       Unit::RESIDENCE_AMENITIES.inject(self) do |_, key|

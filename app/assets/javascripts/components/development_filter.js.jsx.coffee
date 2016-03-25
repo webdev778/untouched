@@ -2,7 +2,7 @@
   render: ->
     `<form>
       <MaxPriceSelector />
-      <LocationSelector />
+      <LocationSelector regions={this.props.regions} />
       <BedroomSelector />
       <BathroomSelector />
       <ParkingSelector />
