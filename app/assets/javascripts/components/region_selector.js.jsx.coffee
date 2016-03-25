@@ -1,8 +1,9 @@
 @RegionSelector = React.createClass
 
   renderOptions: ->
-    _.map @props.regions, (region) ->
-      `<option key={region.name} value={region.name}>{region.name}</option>`
+    currentValue = this.props.filters.region
+    _.map @props.regions, (region) =>
+      `<option selected={currentValue == region.name} key={region.name} value={region.name}>{region.name}</option>`
 
   render: ->
     `<div className='form__group'>

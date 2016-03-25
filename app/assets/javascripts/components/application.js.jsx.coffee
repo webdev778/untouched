@@ -18,10 +18,10 @@
       <Header />
       <div className='container'>
         <aside className='sidebar'>
-          <DevelopmentFilter developments={this.state.developments} regions={this.state.regions} />
+          <DevelopmentFilter filters={this.props.params} developments={this.state.developments} regions={this.state.regions} />
         </aside>
         <main className='main'>
-          <DevelopmentList developments={this.state.developments} />
+          <DevelopmentList filters={this.props.params} developments={this.state.developments} />
         </main>
       </div>
      </div>`
