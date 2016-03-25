@@ -37,5 +37,6 @@
       <BuildingFilterGroup />
       <CeilingHeightSelector />
       <DevelopmentSizeSelector />
+      <DevelopmentTypeFilterGroup />
     </form>`
 

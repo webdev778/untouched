@@ -4,6 +4,7 @@ FactoryGirl.define do
     unless Rails.env.test?
       photo { open("http://lorempixel.com/#{Faker::Number.between(400, 1000)}/#{Faker::Number.between(400, 1000)}/city") }
     end
+    development_type { Faker::Number.between(0, 1) }
     city { Faker::Address.city }
     region { Faker::Address.state }
     suburb { Faker::Address.street_address }

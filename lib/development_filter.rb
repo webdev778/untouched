@@ -20,6 +20,7 @@ class DevelopmentFilter
       filter_max_body_corporate_fee(params[:max_body_corporate_fee]).
       filter_residence_amenities(params).
       filter_building_amenities(params).
+      filter_development_type(params[:development_type]).
       filter_ceiling_height_at_living_area_in_meters(params[:ceiling_height_at_living_area_in_meters]).
       filter_units_count(params[:units_count]).
       group_by_development.
@@ -54,6 +55,13 @@ class DevelopmentFilter
       Development::BUILDING_AMENITIES.inject(self) do |_, key|
         _.filter_boolean("developments.#{key}", params[key])
       end
+    end
+
+    def filter_development_type(development_types)
+      where_if(
+        ['developments.development_type IN (?)', 
+          (development_types || []).map {|i| Development.development_types[i]} ]
+      ) { development_types.present? && development_types.any? }
     end
 
     def filter_bedrooms(bedrooms)
