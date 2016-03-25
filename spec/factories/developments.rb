@@ -6,8 +6,9 @@ FactoryGirl.define do
     end
     development_type { Faker::Number.between(0, 1) }
     city { Faker::Address.city }
-    region { Faker::Address.state }
-    suburb { Faker::Address.street_address }
+    region { Faker::Name.last_name }
+    address { Faker::Address.street_address }
+    suburb { Faker::Name.last_name}
     ready_at { Faker::Date.forward(180) }
     gym { Faker::Boolean.boolean }
     pool { Faker::Boolean.boolean }
