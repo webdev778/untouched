@@ -15,12 +15,5 @@
         </a>
       </td>
       <td>{this.formattedPrice()}</td>
-      <td>{this.props.data.bedrooms}</td>
-      <td>{this.props.data.bathrooms}</td>
-      <td>{this.props.data.parking}</td>
-      <td>{this.props.data.internal_in_meters}</td>
-      <td>{this.props.data.master_bedroom_in_meters}</td>
-      <td>{this.props.data.external_in_meters}</td>
-      <td>{this.props.data.aspect}</td>
     </tr>`
 
