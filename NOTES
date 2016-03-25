@@ -1,12 +1,15 @@
-Does your UI designer have the original SASS/LESS source for the CSS (if it was SASS/LESS)?
+Add region + suburb filters.
+Add development size filter.
+Add type filter.
+Add ready date filter.
+Add ability to sort columns.
 
-Maybe we use this in place of Harvest Chosen?
+Integrate this:
   http://jedwatson.github.io/react-select/
 
 How should items be sorted in the results?
 
 We'll need to handle URL routing so filters retain their values after page refresh/back buttons.
 
-Bedrooms '4+' needs to handle the '+'
-Bathrooms '3+' needs to handle the '+'
+
 

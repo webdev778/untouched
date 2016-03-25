@@ -1,7 +1,9 @@
 FactoryGirl.define do
 
   factory :development do
-    photo { open("http://lorempixel.com/#{Faker::Number.between(400, 1000)}/#{Faker::Number.between(400, 1000)}/city") }
+    unless Rails.env.test?
+      photo { open("http://lorempixel.com/#{Faker::Number.between(400, 1000)}/#{Faker::Number.between(400, 1000)}/city") }
+    end
     city { Faker::Address.city }
     region { Faker::Address.state }
     suburb { Faker::Address.street_address }
