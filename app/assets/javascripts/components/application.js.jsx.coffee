@@ -7,6 +7,16 @@
     RegionStore.listen(@onChange)
     RegionActions.fetch()
 
+    $(window).resize => @onResize()
+
+  componentDidUpdate: ->
+    @onResize()
+
+  onResize: ->
+    $('.asset-wrap').each ->
+      assetW = $(@).width()
+      $(@).css('height', assetW / 1.75)
+
   componentWillUnmount: ->
     @
 
