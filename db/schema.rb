@@ -11,15 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325005716) do
+ActiveRecord::Schema.define(version: 20160327190052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "developments", force: :cascade do |t|
     t.string   "city",                                    limit: 255,                                         null: false
-    t.string   "region",                                  limit: 255,                                         null: false
-    t.string   "suburb",                                  limit: 255
     t.date     "ready_at"
     t.boolean  "gym",                                                                         default: false, null: false
     t.boolean  "pool",                                                                        default: false, null: false
@@ -35,7 +33,25 @@ ActiveRecord::Schema.define(version: 20160325005716) do
     t.integer  "units_count",                                                                 default: 0,     null: false
     t.integer  "development_type",                                                            default: 0,     null: false
     t.string   "address",                                 limit: 255,                                         null: false
+    t.integer  "suburb_id",                                                                                   null: false
   end
+
+  add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree
+
+  create_table "regions", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "suburbs", force: :cascade do |t|
+    t.string   "name",       limit: 255, null: false
+    t.integer  "region_id",              null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "suburbs", ["region_id"], name: "index_suburbs_on_region_id", using: :btree
 
   create_table "units", force: :cascade do |t|
     t.decimal  "price",                    precision: 10, scale: 2,                 null: false
@@ -62,4 +78,6 @@ ActiveRecord::Schema.define(version: 20160325005716) do
 
   add_index "units", ["development_id"], name: "index_units_on_development_id", using: :btree
 
+  add_foreign_key "developments", "suburbs"
+  add_foreign_key "suburbs", "regions"
 end

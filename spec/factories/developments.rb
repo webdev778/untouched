@@ -4,11 +4,10 @@ FactoryGirl.define do
     unless Rails.env.test?
       photo { open("http://lorempixel.com/#{Faker::Number.between(400, 1000)}/#{Faker::Number.between(400, 1000)}/city") }
     end
+    suburb
     development_type { Faker::Number.between(0, 1) }
     city { Faker::Address.city }
-    region { Faker::Name.last_name }
     address { Faker::Address.street_address }
-    suburb { Faker::Name.last_name}
     ready_at { Faker::Date.forward(180) }
     gym { Faker::Boolean.boolean }
     pool { Faker::Boolean.boolean }
@@ -20,7 +19,7 @@ FactoryGirl.define do
     ceiling_height_at_living_area_in_meters { Faker::Number.between(24, 50).to_f / 10 }
 
     transient do
-      units_count Faker::Number.between(10, 100)
+      units_count { Faker::Number.between(10, 100) }
     end
 
     after :create do |development, evaluator|

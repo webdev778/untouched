@@ -3,7 +3,7 @@
   renderOptions: ->
     currentValue = this.props.filters.region
     _.map @props.regions, (region) =>
-      `<option key={region.name} value={region.name}>{region.name}</option>`
+      `<option key={region.name} value={region.id}>{region.name}</option>`
 
   defaultValue: ->
     @props.params?.region

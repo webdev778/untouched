@@ -32,14 +32,14 @@ class DevelopmentFilter
 
   class ResultSet
 
-    def initialize(collection=Unit.all.joins(:development))
+    def initialize(collection=Unit.all.joins(:development => :suburb))
       @collection = collection
     end
 
     attr_reader :collection
 
-    def filter_region(region)
-      where_if(["developments.region = ?", region]) { region.present? }
+    def filter_region(region_id)
+      where_if(["suburbs.region_id = ?", region_id]) { region_id.present? }
     end
 
     def filter_units_count(units_count)
@@ -110,7 +110,7 @@ class DevelopmentFilter
     end
 
     def group_by_development
-      group('units.development_id, units.id, developments.suburb')
+      group('units.development_id, units.id, suburbs.name')
     end
 
     def order_by_sort_field(sort, sort_order='asc')
@@ -118,7 +118,7 @@ class DevelopmentFilter
 
       case sort
       when 'suburb'
-        order("developments.suburb #{sort_order}")
+        order("suburbs.name #{sort_order}")
       else
         order("price #{sort_order}")
       end

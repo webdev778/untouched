@@ -14,34 +14,34 @@ describe "listing regions", type: :api do
     JSON.parse last_response.body
   end
 
-  context "with no developments" do
+  context "with no regions" do
     it "is an empty set" do
       do_get
       expect(parsed_response['regions']).to eql([])
     end
   end
 
-  context "with one development" do
-    let!(:development) { create(:development, region: "Oxford") }
+  context "with one region" do
+    let!(:region) { create(:region, name: "Oxford") }
 
     it "includes the region of that development" do
       do_get
-      expect(parsed_response['regions']).to include("name" => 'Oxford')
+      expect(parsed_response['regions'][0]).to include("name" => 'Oxford')
     end
   end
 
   context "with two developments" do
-    let!(:development1) { create(:development, region: "Oxford") }
-    let!(:development2) { create(:development, region: "Dinkleberry") }
+    let!(:region1) { create(:region, name: "Oxford") }
+    let!(:region2) { create(:region, name: "Dinkleberry") }
 
     it "includes the region of the first development" do
       do_get
-      expect(parsed_response['regions']).to include("name" => 'Oxford')
+      expect(parsed_response['regions'][0]).to include("name" => 'Oxford')
     end
 
     it "includes the region of the second development" do
       do_get
-      expect(parsed_response['regions']).to include("name" => 'Dinkleberry')
+      expect(parsed_response['regions'][1]).to include("name" => 'Dinkleberry')
     end
   end
 

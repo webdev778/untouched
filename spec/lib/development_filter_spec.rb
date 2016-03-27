@@ -27,13 +27,13 @@ describe DevelopmentFilter do
   end
 
   context "when sorting by suburb" do
-    let(:suburbs) { [ "Bellevue", "Tacoma", "Everett" ] }
+    let(:suburbs) { [ "Bellevue", "Tacoma", "Everett" ].map {|name| create(:suburb, name: name) } }
     let!(:developments) { suburbs.map {|s| create(:development, photo: nil, suburb: s) } }
 
     context "in ascending order" do
       subject { DevelopmentFilter.new(sort: 'suburb', sort_order: 'asc') }
       it "sorts them in alphabetical order by suburb" do
-        expect(subject.results.map(&:development).map(&:suburb)).
+        expect(subject.results.map(&:development).map(&:suburb).map(&:name)).
           to eq([ 'Bellevue', 'Everett', 'Tacoma' ])
       end
     end
@@ -41,7 +41,7 @@ describe DevelopmentFilter do
     context "in descending order" do
       subject { DevelopmentFilter.new(sort: 'suburb', sort_order: 'desc') }
       it "sorts them in alphabetical order by suburb" do
-        expect(subject.results.map(&:development).map(&:suburb)).
+        expect(subject.results.map(&:development).map(&:suburb).map(&:name)).
           to eq([ 'Bellevue', 'Everett', 'Tacoma' ].reverse)
       end
     end

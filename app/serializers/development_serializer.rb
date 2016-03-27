@@ -3,8 +3,8 @@ class DevelopmentSerializer < ActiveModel::Serializer
   attributes :photo_url,
     :address,
     :city, 
-    :region, 
-    :suburb, 
+    :region_name, 
+    :suburb_name, 
     :ready_at,
     :gym,
     :pool,
@@ -19,6 +19,14 @@ class DevelopmentSerializer < ActiveModel::Serializer
 
   def photo_url
     object.photo.url
+  end
+
+  def region_name
+    object.region.name
+  end
+
+  def suburb_name
+    object.suburb.name
   end
 
 end
