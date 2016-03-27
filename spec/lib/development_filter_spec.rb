@@ -29,21 +29,41 @@ describe DevelopmentFilter do
   context "when sorting by suburb" do
     let(:suburbs) { [ "Bellevue", "Tacoma", "Everett" ] }
     let!(:developments) { suburbs.map {|s| create(:development, photo: nil, suburb: s) } }
-    subject { DevelopmentFilter.new(sort: 'suburb') }
 
-    it "sorts them in alphabetical order by suburb" do
-      expect(subject.results.map(&:development).map(&:suburb)).
-        to eq([ 'Bellevue', 'Everett', 'Tacoma' ])
+    context "in ascending order" do
+      subject { DevelopmentFilter.new(sort: 'suburb', sort_order: 'asc') }
+      it "sorts them in alphabetical order by suburb" do
+        expect(subject.results.map(&:development).map(&:suburb)).
+          to eq([ 'Bellevue', 'Everett', 'Tacoma' ])
+      end
+    end
+
+    context "in descending order" do
+      subject { DevelopmentFilter.new(sort: 'suburb', sort_order: 'desc') }
+      it "sorts them in alphabetical order by suburb" do
+        expect(subject.results.map(&:development).map(&:suburb)).
+          to eq([ 'Bellevue', 'Everett', 'Tacoma' ].reverse)
+      end
     end
   end
 
   context "when sorting by price" do
     let!(:developments) { (0..2).map { create(:development, photo: nil) } }
-    subject { DevelopmentFilter.new(sort: 'price') }
 
-    it "sorts them in ascending order by price" do
-      expect(subject.results.map(&:price)).
-        to eq(developments.map {|d| d.units.order('price ASC').first.price}.sort)
+    context "in ascending order" do
+      subject { DevelopmentFilter.new(sort: 'price', sort_order: 'asc') }
+      it "sorts them in ascending order by price" do
+        expect(subject.results.map(&:price)).
+          to eq(developments.map {|d| d.units.order('price ASC').first.price}.sort)
+      end
+    end
+
+    context "in descending order" do
+      subject { DevelopmentFilter.new(sort: 'price', sort_order: 'desc') }
+      it "sorts them in descending order by price" do
+        expect(subject.results.map(&:price)).
+          to eq(developments.map {|d| d.units.order('price DESC').first.price}.sort.reverse)
+      end
     end
   end
 

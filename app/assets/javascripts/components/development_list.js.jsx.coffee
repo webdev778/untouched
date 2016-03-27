@@ -1,12 +1,15 @@
 @DevelopmentList = React.createClass
 
+  componentDidMount: ->
+    @sort_order = 'asc'
+
   render: ->
     `<div className='table-responsive'>
       <table className='table'>
         <thead>
           <tr>
-            <th onClick={this.sortBySuburb}>Suburb</th>
-            <th onClick={this.sortByPrice} className="active">Price (000's)</th>
+            <th onClick={this.handleClickSuburbHeading}>Suburb</th>
+            <th onClick={this.handleClickPriceHeading} className="active">From $ ('000)</th>
           </tr>
         </thead>
         <tbody>
@@ -17,16 +20,26 @@
       </table>
     </div>`
 
-  sortBySuburb: (event) ->
-    $(event.target).parent().children().removeClass('active')
-    $(event.target).addClass('active')
+  handleClickSuburbHeading: (event) ->
+    @sortColumn(event.target, 'suburb')
 
-    DevelopmentActions.filterData(sort: 'suburb')
+  handleClickPriceHeading: (event) ->
+    @sortColumn(event.target, 'price')
 
-  sortByPrice: (event) ->
-    $(event.target).parent().children().removeClass('active')
-    $(event.target).addClass('active')
+  sortColumn: (heading_el, name) ->
+    @initSortOrder(heading_el)
+    $(heading_el).parent().children().removeClass('active')
+    $(heading_el).addClass('active')
+    DevelopmentActions.filterData(sort: name, sort_order: @sort_order)
 
-    DevelopmentActions.filterData(sort: 'price')
 
+
+  toggleSortOrder: ->
+    @sort_order = if @sort_order == 'desc' then 'asc' else 'desc'
+
+  initSortOrder: (heading_el) ->
+    if $(heading_el).hasClass('active')
+      @toggleSortOrder()
+    else
+      @sort_order = 'asc'
 
