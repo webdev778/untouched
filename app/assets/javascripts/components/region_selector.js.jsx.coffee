@@ -7,8 +7,9 @@
 
   renderSuburbSelectors: ->
     return unless @state?.suburbs
-    _.map @state.suburbs, (suburb) =>
-      `<CheckboxField value={suburb.id} key={suburb.id} label={suburb.name} onClick={this.handleChange} name="suburb" />`
+    handler = @handleChangeSuburb
+    _.map @state.suburbs, (suburb) ->
+      `<CheckboxField id={'suburb'+suburb.id} value={suburb.id} label={suburb.name} onClick={handler} name="suburb" />`
 
   renderSuburbTitle: ->
     return unless @state?.suburbs
@@ -19,7 +20,7 @@
 
   render: ->
     `<div className='form__group'>
-      <select defaultValue={this.defaultValue()} id='region_selector' className='select' onChange={this.handleChange}>
+      <select defaultValue={this.defaultValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
         <option key='any' value=''>{'All Regions (' + this.props.regions.length + ')'}</option>
         {this.renderOptions()}
       </select>
@@ -28,11 +29,16 @@
       {this.renderSuburbSelectors()}
     </div>`
 
-  val: ->
+  regionVal: ->
     $('select#region_selector').val()
 
-  handleChange: ->
-    DevelopmentActions.filterData(region: @val())
-    region = _.find @props.regions, (r) => r.id == parseInt(@val())
+  suburbVal: ->
+    _.map $("input[name='suburb']:checked"), (el) -> el.value
+
+  handleChangeRegion: ->
+    DevelopmentActions.filterData(region: @regionVal(), suburb: [])
+    region = _.find @props.regions, (r) => r.id == parseInt(@regionVal())
     @setState(suburbs: region.suburbs)
 
+  handleChangeSuburb: ->
+    DevelopmentActions.filterData(suburb: @suburbVal())

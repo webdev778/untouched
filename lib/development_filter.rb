@@ -18,6 +18,7 @@ class DevelopmentFilter
       filter_max_price(params[:max_price]).
       filter_ready_at(params[:ready_at]).
       filter_region(params[:region]).
+      filter_suburb(params[:suburb]).
       filter_max_body_corporate_fee(params[:max_body_corporate_fee]).
       filter_residence_amenities(params).
       filter_building_amenities(params).
@@ -40,6 +41,10 @@ class DevelopmentFilter
 
     def filter_region(region_id)
       where_if(["suburbs.region_id = ?", region_id]) { region_id.present? }
+    end
+
+    def filter_suburb(suburb_ids)
+      where_if(["suburbs.id IN (?)", suburb_ids]) { suburb_ids.present? && suburb_ids.any? }
     end
 
     def filter_units_count(units_count)
