@@ -2,6 +2,7 @@
 
   componentWillMount: ->
     DevelopmentStore.listen(@onChange)
+    DevelopmentActions.filterData(@parseFilters())
     DevelopmentActions.fetch()
 
     RegionStore.listen(@onChange)
@@ -23,6 +24,9 @@
   onChange: (state) ->
     @setState(state)
 
+  parseFilters: ->
+    RouteGenerator.parse(@props.params.splat)
+
   render: ->
     `<div className='application'>
 
@@ -36,7 +40,7 @@
         <aside className='sidebar'>
           <DismissSidebarTrigger />
           <DevelopmentFilter 
-            filters={this.props.params} 
+            filters={this.parseFilters()} 
             developments={this.state.developments} 
             regions={this.state.regions} />
         </aside>

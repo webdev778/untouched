@@ -1,7 +1,6 @@
 @RegionSelector = React.createClass
 
   renderOptions: ->
-    currentValue = this.props.filters.region
     _.map @props.regions, (region) =>
       `<option key={region.name} value={region.id}>{region.name}</option>`
 
@@ -9,18 +8,18 @@
     return unless @state?.suburbs
     handler = @handleChangeSuburb
     _.map @state.suburbs, (suburb) ->
-      `<CheckboxField id={'suburb'+suburb.id} value={suburb.id} label={suburb.name} onClick={handler} name="suburb" />`
+      `<CheckboxField id={'suburb'+suburb.id} key={suburb.id} value={suburb.id} label={suburb.name} onClick={handler} name="suburb" />`
 
   renderSuburbTitle: ->
     return unless @state?.suburbs
     `<SidebarTitle value='Suburb' />`
 
   defaultValue: ->
-    @props.params?.region
+    @props.filters?.region
 
   render: ->
     `<div className='form__group'>
-      <select defaultValue={this.defaultValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
+      <select value={this.defaultValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
         <option key='any' value=''>{'All Regions (' + this.props.regions.length + ')'}</option>
         {this.renderOptions()}
       </select>

@@ -13,7 +13,8 @@
         step="5" 
         label="Internal" 
         id="internal_m2_selector" 
-        paramName="internal_in_meters" />
+        paramName="internal_in_meters"
+        filters={this.props.filters} />
 
       <M2Selector 
         rangeStart="10" 
@@ -21,7 +22,8 @@
         step="5" 
         label="Master Bedroom" 
         id="master_bedroom_m2_selector" 
-        paramName="master_bedroom_in_meters" />
+        paramName="master_bedroom_in_meters"
+        filters={this.props.filters} />
 
       <M2Selector 
         rangeStart="5" 
@@ -29,7 +31,8 @@
         step="5" 
         label="External" 
         id="external_m2_selector" 
-        paramName="external_in_meters" />
+        paramName="external_in_meters"
+        filters={this.props.filters} />
 
       <AspectSelector />
       <ResidenceFilterGroup />

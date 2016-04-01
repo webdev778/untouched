@@ -6,10 +6,13 @@
     _.map _.range(@props.rangeStart, parseInt(@props.rangeEnd) + 1, @props.step), (value) ->
       `<option key={value} value={value}>&gt; {value}</option>`
 
+  initialVal: ->
+    @props.filters[@props.paramName]
+
   render: ->
     `<div className='sidebar__box'>
       <SidebarTitle value={this.props.label + ' (M2)'}/>
-      <select id={this.props.id} className='select' onChange={this.handleChange}>
+      <select value={this.initialVal()} id={this.props.id} className='select' onChange={this.handleChange}>
         {this.renderNumericOptions()}
       </select>
     </div>`
