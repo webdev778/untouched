@@ -12,11 +12,14 @@
   render: ->
     `<div className='sidebar__box'>
       <SidebarTitle value="Body Corp (Annual)" />
-      <select id="max_body_corporate_fee" className='select' onChange={this.handleChange}>
+      <select value={this.initialValue()} id="max_body_corporate_fee" className='select' onChange={this.handleChange}>
         <option key='any' value=''>Any</option>
         {this.renderNumericOptions()}
       </select>
     </div>`
+
+  initialValue: ->
+    @props.filters?.max_body_corporate_fee
 
   val: ->
     $("select#max_body_corporate_fee").val()

@@ -39,7 +39,7 @@
 
   hasInitialValue: (value) ->
     return false unless @props.filters?.aspect
-    _.includes @props.filters.aspect.split(','), value
+    _.includes @props.filters.aspect, value
 
   val: ->
     _.map $("input[name='aspect']:checked"), (el) -> el.value

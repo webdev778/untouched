@@ -10,8 +10,16 @@
 
   renderCheckboxes: ->
     handler = @handleClick
+    hasInitialValue = @hasInitialValue
     _.map @fields, (value, key) =>
-      `<CheckboxField key={key} id={key} value="true" label={value} onClick={handler} name={'building_' + key} />`
+      `<CheckboxField 
+        checked={hasInitialValue(key)}
+        key={key} 
+        id={key} 
+        value="true" 
+        label={value} 
+        onClick={handler} 
+        name={'building_' + key} />`
 
   render: ->
     `<div className='sidebar__box'>
@@ -28,6 +36,9 @@
       params[event.target.id] = undefined
 
     DevelopmentActions.filterData(params)
+
+  hasInitialValue: (key) ->
+    !! @props.filters?[key]
 
 
 

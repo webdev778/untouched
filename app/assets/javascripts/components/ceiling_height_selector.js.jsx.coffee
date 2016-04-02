@@ -11,10 +11,13 @@
   render: ->
     `<div className='sidebar__box'>
       <SidebarTitle value="Ceiling Height (Living Area)" />
-      <select id="ceiling_height" className='select' onChange={this.handleChange}>
+      <select value={this.initialValue()} id="ceiling_height" className='select' onChange={this.handleChange}>
         {this.renderNumericOptions()}
       </select>
     </div>`
+
+  initialValue: ->
+    @props.filters?.ceiling_height_at_living_area_in_meters
 
   val: ->
     $("select#ceiling_height").val()

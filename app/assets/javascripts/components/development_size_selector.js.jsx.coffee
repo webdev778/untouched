@@ -9,11 +9,14 @@
   render: ->
     `<div className='sidebar__box'>
       <SidebarTitle value="Development Size" />
-      <select id="development_size" className='select' onChange={this.handleChange}>
+      <select value={this.initialValue()} id="development_size" className='select' onChange={this.handleChange}>
         <option value="">Any</option>
         {this.renderOptions()}
       </select>
     </div>`
+
+  initialValue: ->
+    @props.filters?.units_count
 
   val: ->
     $("select#development_size").val()

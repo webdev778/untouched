@@ -16,7 +16,7 @@
   render: ->
     `<div className='sidebar__box'>
       <SidebarTitle value="Ready" />
-      <select id="ready_date" className='select' onChange={this.handleChange}>
+      <select value={this.initialValue()} id="ready_date" className='select' onChange={this.handleChange}>
         <option key='any' value=''>Any</option>
         {this.renderNumericOptions()}
       </select>
@@ -28,3 +28,5 @@
   handleChange: ->
     DevelopmentActions.filterData(ready_at: @val())
 
+  initialValue: ->
+    @props.filters?.ready_at
