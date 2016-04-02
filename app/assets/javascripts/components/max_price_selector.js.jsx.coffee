@@ -8,7 +8,6 @@
       `<option key={hundoThousands} value={value}>{value}</option>`
 
   render: ->
-    console.log(this.props.filters)
     `<div className='sidebar__box'>
       <h4 className='sidebar__title'>Max Price</h4>
       <select defaultValue={this.props.filters.max_price} id='max_price_selector' className='select' onChange={this.handleChange}>
