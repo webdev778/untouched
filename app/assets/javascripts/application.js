@@ -18,6 +18,7 @@
 //= require react_ujs
 //= require ReactRouter.min
 //= require alt/dist/alt
+//= require accounting/accounting
 //= require moment/moment
 //= require init
 //= require route_generator

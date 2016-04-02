@@ -5,7 +5,7 @@
   renderNumericOptions: ->
     _.map _.range(@RANGE_IN_HUNDRED_THOUSANDS...), (hundoThousands) ->
       value = hundoThousands * 100000
-      `<option key={hundoThousands} value={value}>{value}</option>`
+      `<option key={hundoThousands} value={value}>{accounting.formatMoney(value, '$', 0)}</option>`
 
   render: ->
     `<div className='sidebar__box'>

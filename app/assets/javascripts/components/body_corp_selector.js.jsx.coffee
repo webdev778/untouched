@@ -7,7 +7,7 @@
     # We add 1 to the rangeEnd in order to ensure the last entry 
     # is the value of rangeEnd...
     _.map _.range(@RANGE[0], parseInt(@RANGE[1]) + 1, @STEP), (value) ->
-      `<option key={value} value={value}>&lt; ${value}</option>`
+      `<option key={value} value={value}>&lt; {accounting.formatMoney(value, '$', 0)}</option>`
 
   render: ->
     `<div className='sidebar__box'>
