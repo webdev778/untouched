@@ -3,7 +3,7 @@
     `<div className="form__group">
       <input 
         type="checkbox" 
-        checked={this.props.checked} 
+        defaultChecked={this.props.checked} 
         name={this.props.name} 
         id={this.props.id} 
         value={this.props.value} 
