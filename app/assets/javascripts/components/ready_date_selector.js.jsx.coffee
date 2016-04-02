@@ -10,7 +10,7 @@
     _.map _.range(@startYear(), @endYear(), 0.25), (value) ->
       year = Math.floor(value)
       quarter = ((value - year) / 0.25) + 1
-      value = moment("#{year}-#{(quarter*3)-2}-01").toJSON()
+      value = moment(new Date("#{year}-#{(quarter*3)-2}-01")).toJSON()
       `<option key={value} value={value}>&lt; {year} Q{quarter}</option>`
 
   render: ->
