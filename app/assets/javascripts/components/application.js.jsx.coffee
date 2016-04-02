@@ -5,9 +5,6 @@
     DevelopmentActions.filterData(@parseFilters())
     DevelopmentActions.fetch()
 
-    RegionStore.listen(@onChange)
-    RegionActions.fetch()
-
     $(window).resize => @onResize()
 
   componentDidUpdate: ->
@@ -41,8 +38,7 @@
           <DismissSidebarTrigger />
           <DevelopmentFilter 
             filters={this.parseFilters()} 
-            developments={this.state.developments} 
-            regions={this.state.regions} />
+            developments={this.state.developments} />
         </aside>
 
         <main className='main'>

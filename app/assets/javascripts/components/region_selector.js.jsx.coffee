@@ -1,26 +1,46 @@
 @RegionSelector = React.createClass
 
+  componentWillMount: ->
+    RegionStore.listen(@onChange)
+    RegionActions.fetch()
+
   renderOptions: ->
-    _.map @props.regions, (region) =>
+    _.map @state.regions, (region) =>
       `<option key={region.name} value={region.id}>{region.name}</option>`
 
+  onChange: (state) ->
+    @setState(state)
+
   renderSuburbSelectors: ->
-    return unless @state?.suburbs
-    handler = @handleChangeSuburb
-    _.map @state.suburbs, (suburb) ->
-      `<CheckboxField id={'suburb'+suburb.id} key={suburb.id} value={suburb.id} label={suburb.name} onClick={handler} name="suburb" />`
+    return unless @getSelectedRegion()
+
+    handler          = @handleChangeSuburb
+    hasInitialSuburb = @hasInitialSuburb
+
+    _.map @getSelectedRegion().suburbs, (suburb) ->
+      `<CheckboxField 
+        id={'suburb'+suburb.id} 
+        checked={hasInitialSuburb(suburb.id)}
+        key={suburb.id} 
+        value={suburb.id} 
+        label={suburb.name} 
+        onClick={handler} 
+        name="suburb" />`
 
   renderSuburbTitle: ->
-    return unless @state?.suburbs
+    return unless @getSelectedRegion()
     `<SidebarTitle value='Suburb' />`
 
-  defaultValue: ->
+  initialValue: ->
     @props.filters?.region
+
+  hasInitialSuburb: (id) ->
+    _.includes @props.filters?.suburb, id
 
   render: ->
     `<div className='form__group'>
-      <select value={this.defaultValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
-        <option key='any' value=''>{'All Regions (' + this.props.regions.length + ')'}</option>
+      <select value={this.initialValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
+        <option key='any' value=''>{'All Regions (' + this.state.regions.length + ')'}</option>
         {this.renderOptions()}
       </select>
 
@@ -34,10 +54,11 @@
   suburbVal: ->
     _.map $("input[name='suburb']:checked"), (el) -> el.value
 
+  getSelectedRegion: ->
+    _.find @state.regions, (r) => r.id == parseInt(@props.filters?.region)
+
   handleChangeRegion: ->
     DevelopmentActions.filterData(region: @regionVal(), suburb: [])
-    region = _.find @props.regions, (r) => r.id == parseInt(@regionVal())
-    @setState(suburbs: region.suburbs)
 
   handleChangeSuburb: ->
     DevelopmentActions.filterData(suburb: @suburbVal())

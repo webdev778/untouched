@@ -2,7 +2,7 @@
   render: ->
     `<form>
       <MaxPriceSelector filters={this.props.filters} />
-      <LocationSelector filters={this.props.filters} regions={this.props.regions} />
+      <LocationSelector filters={this.props.filters} />
       <BedroomSelector filters={this.props.filters} />
       <BathroomSelector filters={this.props.filters} />
       <ParkingSelector filters={this.props.filters} />
