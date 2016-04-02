@@ -33,7 +33,13 @@ class DevelopmentFilter
 
   class ResultSet
 
-    def initialize(collection=Unit.all.joins(:development => :suburb))
+    def initialize(
+      collection=
+        Unit.
+          all.
+          joins(:development => :suburb).
+          includes(:development => { :suburb => :region })
+    )
       @collection = collection
     end
 
