@@ -6,7 +6,7 @@ class DevelopmentStore
   @PARAM_TYPES:
     city: 'string'
     region: 'string'
-    suburb: 'string'
+    suburb: 'array'
     max_price: 'number'
     bedrooms: 'array'
     bathrooms: 'array'
