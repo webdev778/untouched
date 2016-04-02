@@ -3,9 +3,9 @@
     `<form>
       <MaxPriceSelector filters={this.props.filters} />
       <LocationSelector filters={this.props.filters} regions={this.props.regions} />
-      <BedroomSelector />
-      <BathroomSelector />
-      <ParkingSelector />
+      <BedroomSelector filters={this.props.filters} />
+      <BathroomSelector filters={this.props.filters} />
+      <ParkingSelector filters={this.props.filters} />
 
       <M2Selector 
         rangeStart="40" 
@@ -34,13 +34,13 @@
         paramName="external_in_meters"
         filters={this.props.filters} />
 
-      <AspectSelector />
-      <ResidenceFilterGroup />
-      <BodyCorpSelector />
-      <BuildingFilterGroup />
-      <CeilingHeightSelector />
-      <DevelopmentSizeSelector />
-      <DevelopmentTypeFilterGroup />
-      <ReadyDateSelector />
+      <AspectSelector filters={this.props.filters} />
+      <ResidenceFilterGroup filters={this.props.filters} />
+      <BodyCorpSelector filters={this.props.filters} />
+      <BuildingFilterGroup filters={this.props.filters} />
+      <CeilingHeightSelector filters={this.props.filters} />
+      <DevelopmentSizeSelector filters={this.props.filters} />
+      <DevelopmentTypeFilterGroup filters={this.props.filters} />
+      <ReadyDateSelector filters={this.props.filters} />
     </form>`
 
