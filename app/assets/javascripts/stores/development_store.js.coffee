@@ -34,11 +34,15 @@ class DevelopmentStore
     units_count: 'number'
     development_type: 'array'
     ready_at: 'date'
+
+  DEFAULT_FILTER_PARAMS:
+    sort: 'price'
+    sort_order: 'asc'
     
   constructor: ->
     @bindActions(DevelopmentActions)
     @developments = []
-    @filterParams = {}
+    @filterParams = @DEFAULT_FILTER_PARAMS
 
     @exportPublicMethods(
       getDevelopments: @getDevelopments

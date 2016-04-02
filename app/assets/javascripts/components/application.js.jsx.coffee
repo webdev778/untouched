@@ -47,7 +47,7 @@
 
         <main className='main'>
           <DevelopmentList 
-            filters={this.props.params} 
+            filters={this.parseFilters()} 
             developments={this.state.developments} />
         </main>
       </div>

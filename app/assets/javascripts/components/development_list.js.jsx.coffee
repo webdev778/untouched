@@ -1,15 +1,14 @@
 @DevelopmentList = React.createClass
 
   componentDidMount: ->
-    @sort_order = 'asc'
 
   render: ->
     `<div className='table-responsive'>
       <table className='table'>
         <thead>
           <tr>
-            <th onClick={this.handleClickSuburbHeading}>Suburb</th>
-            <th onClick={this.handleClickPriceHeading} className="active">From $ ('000)</th>
+            <th className={this.classForHeading('suburb')} onClick={this.handleSortColumn('suburb')}>Suburb</th>
+            <th className={this.classForHeading('price')} onClick={this.handleSortColumn('price')}>From $ ('000)</th>
           </tr>
         </thead>
         <tbody>
@@ -20,26 +19,15 @@
       </table>
     </div>`
 
-  handleClickSuburbHeading: (event) ->
-    @sortColumn(event.target, 'suburb')
+  classForHeading: (name) ->
+    'active' if @props.filters?.sort == name
 
-  handleClickPriceHeading: (event) ->
-    @sortColumn(event.target, 'price')
-
-  sortColumn: (heading_el, name) ->
-    @initSortOrder(heading_el)
-    $(heading_el).parent().children().removeClass('active')
-    $(heading_el).addClass('active')
-    DevelopmentActions.filterData(sort: name, sort_order: @sort_order)
-
-
+  handleSortColumn: (name) ->
+    => @sortColumn(name)
+      
+  sortColumn: (name) ->
+    DevelopmentActions.filterData(sort: name, sort_order: @toggleSortOrder())
 
   toggleSortOrder: ->
-    @sort_order = if @sort_order == 'desc' then 'asc' else 'desc'
-
-  initSortOrder: (heading_el) ->
-    if $(heading_el).hasClass('active')
-      @toggleSortOrder()
-    else
-      @sort_order = 'asc'
+    if @props.filters?.sort_order == 'desc' then 'asc' else 'desc'
 
