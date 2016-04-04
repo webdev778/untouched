@@ -62,7 +62,7 @@ describe DevelopmentFilter do
       subject { DevelopmentFilter.new(sort: 'price', sort_order: 'desc') }
       it "sorts them in descending order by price" do
         expect(subject.results.map(&:price)).
-          to eq(developments.map {|d| d.units.order('price DESC').first.price}.sort.reverse)
+          to eq(developments.map {|d| d.units.order('price ASC').first.price}.sort.reverse)
       end
     end
   end
