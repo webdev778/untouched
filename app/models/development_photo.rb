@@ -1,0 +1,3 @@
+class DevelopmentPhoto < Image
+end
+

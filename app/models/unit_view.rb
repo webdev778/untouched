@@ -1,0 +1,3 @@
+class UnitView < Image
+end
+

@@ -1,7 +1,7 @@
 class Development < ActiveRecord::Base
   belongs_to :suburb
   has_many :units
-  mount_uploader :photo, DevelopmentPhotoUploader
+  has_many :photos, class_name: 'DevelopmentPhoto', as: :imageable
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
   enum development_type: [ :apartment, :townhouse ]
 

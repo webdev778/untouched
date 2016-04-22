@@ -20,10 +20,14 @@ FactoryGirl.define do
 
     transient do
       units_count { Faker::Number.between(10, 100) }
+      images_count { Faker::Number.between(1,4) }
     end
 
     after :create do |development, evaluator|
       create_list :unit, evaluator.units_count, development: development
+      unless Rails.env.test?
+        create_list :image, evaluator.images_count, imageable: development
+      end
     end
   end
 
