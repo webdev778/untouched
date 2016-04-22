@@ -10,6 +10,12 @@ module Untouched
       def asset(asset_path)
         File.open Rails.root.join(path, 'assets', asset_path)
       end
+
+      def puts(*args)
+        unless Rails.env.test?
+          Kernel.puts *args
+        end
+      end
     end
 
     class Developments < Base
