@@ -14,6 +14,7 @@ class Unit < ActiveRecord::Base
     string(:aspect) { Unit.aspects[self.aspect] }
     double :price
     date(:ready_at) { development.ready_at }
+    string(:development_id_str) { development_id.to_s }
     integer(:region_id) { suburb.region_id }
     integer(:suburb_id) { suburb.id }
     double :max_body_corporate_fee

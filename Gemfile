@@ -42,4 +42,5 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'sunspot_test'
 end

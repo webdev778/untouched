@@ -1,4 +1,5 @@
 require 'factory_girl'
+require 'sunspot_test/rspec'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
