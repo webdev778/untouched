@@ -31,6 +31,8 @@ module Untouched
           end
 
           Units.new(path, development, development_params['units']).run
+
+          puts "+ #{development.address}"
         end
       end
 
