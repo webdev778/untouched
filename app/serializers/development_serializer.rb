@@ -18,7 +18,7 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :updated_at
 
   def photo_url
-    object.photo.url
+    object.photos.first.try(:file_url)
   end
 
   def region_name
