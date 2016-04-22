@@ -25,6 +25,7 @@ module Untouched
     config.autoload_paths << Rails.root.join('lib')
 
     config.assets.precompile << "modernizr.js"
+    config.eager_load_paths  << "#{Rails.root}/lib"
   end
 end
 

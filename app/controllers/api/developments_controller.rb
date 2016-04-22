@@ -1,11 +1,10 @@
 class API::DevelopmentsController < API::BaseController
 
   def index
-    filter = DevelopmentFilter.new(params)
-
     render json: {
       developments: developments_json,
-      filters: filter.params
+      filters: filter.params,
+      facets: [ filter.search.facet(:bathrooms).rows ]
     }
   end
 
@@ -19,7 +18,7 @@ class API::DevelopmentsController < API::BaseController
   end
 
   def filter
-    @filter ||= DevelopmentFilter.new(filter_params)
+    @filter ||= SolrDevelopmentFilter.new(filter_params)
   end
 
   def developments_json

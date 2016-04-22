@@ -5,6 +5,7 @@ class Development < ActiveRecord::Base
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
   enum development_type: [ :apartment, :townhouse ]
 
+
   def region
     suburb.region
   end

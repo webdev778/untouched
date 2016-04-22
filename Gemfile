@@ -23,6 +23,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'factory_girl_rails'
 gem 'faker'
 
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
