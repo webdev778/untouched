@@ -2,6 +2,7 @@ class DevelopmentActions
   constructor: ->
     @generateActions(
       'initData',
+      'select',
       'fetch',
       'filterData'
     )

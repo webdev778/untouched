@@ -9,6 +9,11 @@ class API::DevelopmentsController < API::BaseController
     }
   end
 
+  def show
+    development = Development.find(params[:id])
+    render json: DevelopmentSerializer.new(development).as_json
+  end
+
   private
 
   def filter_params

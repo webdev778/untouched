@@ -1,6 +1,9 @@
 class DevelopmentSerializer < ActiveModel::Serializer
 
-  attributes :photo_url,
+  has_many :photos
+
+  attributes :id,
+    :photo_url,
     :address,
     :city, 
     :region_name, 

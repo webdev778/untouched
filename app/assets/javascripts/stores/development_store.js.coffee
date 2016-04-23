@@ -55,6 +55,17 @@ class DevelopmentStore
     _.assign @filterParams, params
     @fetch()
 
+  onSelect: (id) ->
+    $.ajax
+      method: 'GET'
+      url: '/api/developments/' + id
+      success: (response) =>
+        @development = response.development
+        @emitChange()
+      error: (response) ->
+        console.log 'error'
+        console.log response
+
   fetch: ->
     $.ajax
       method: 'GET'

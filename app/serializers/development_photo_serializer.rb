@@ -1,0 +1,3 @@
+class DevelopmentPhotoSerializer < ImageSerializer
+end
+
