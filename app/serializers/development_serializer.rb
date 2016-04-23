@@ -1,9 +1,9 @@
 class DevelopmentSerializer < ActiveModel::Serializer
 
   has_many :photos
+  has_one :logo
 
   attributes :id,
-    :photo_url,
     :address,
     :city, 
     :region_name, 
@@ -19,10 +19,6 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :ceiling_height_at_living_area_in_meters,
     :created_at,
     :updated_at
-
-  def photo_url
-    object.photos.first.try(:file_url)
-  end
 
   def region_name
     object.region.name

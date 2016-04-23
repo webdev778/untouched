@@ -15,6 +15,10 @@ describe Untouched::Seeds::Developments do
       expect(subject.suburb.name).to eq('Astoria')
     end
 
+    it "has a logo" do
+      expect(subject.logo.file).to_not be_blank
+    end
+
     it "has an address" do
       expect(subject.address).to eq('123 Main Street')
     end

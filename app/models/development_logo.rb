@@ -1,0 +1,3 @@
+class DevelopmentLogo < Image
+end
+

@@ -16,6 +16,9 @@ developments:
     has_double_glazed_windows: false
     ceiling_height_at_living_area_in_meters: 10
 
+    logo:
+      path: example-development-logo.png
+
     photos:
       - path: example-development-photo.jpg # relative to db/seeds/assets
         caption: Look at this balcony!

@@ -32,6 +32,8 @@ module Untouched
             development_attributes(development_params)
           )
 
+          create_logo(development, development_params['logo'])
+
           development_params['photos'].each do |photo_params|
             create_photo(development, photo_params)
           end
@@ -39,6 +41,12 @@ module Untouched
           Units.new(path, development, development_params['units']).run
 
           puts "+ #{development.address}"
+        end
+      end
+
+      def create_logo(development, logo_params)
+        if logo_params
+          development.create_logo(file: asset(logo_params['path']))
         end
       end
 
