@@ -10,6 +10,7 @@ class UnitDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     development: Field::BelongsTo,
     id: Field::Number,
+    status: EnumField,
     price: Field::Number.with_options(prefix: '$', decimals: 0),
     bedrooms: Field::Number,
     bathrooms: Field::Number,
@@ -48,7 +49,7 @@ class UnitDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :development,
-    :id,
+    :status,
     :price,
     :bedrooms,
     :bathrooms,
@@ -66,8 +67,6 @@ class UnitDashboard < Administrate::BaseDashboard
     :penthouse_level,
     :no_stacker,
     :max_body_corporate_fee,
-    :created_at,
-    :updated_at,
   ]
 
   # FORM_ATTRIBUTES
@@ -75,6 +74,7 @@ class UnitDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :development,
+    :status,
     :price,
     :bedrooms,
     :bathrooms,
