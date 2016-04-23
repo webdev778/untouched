@@ -10,7 +10,7 @@ class UnitDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     development: Field::BelongsTo,
     id: Field::Number,
-    price: Field::String.with_options(searchable: false),
+    price: Field::Number.with_options(prefix: '$', decimals: 0),
     bedrooms: Field::Number,
     bathrooms: Field::Number,
     parking: Field::Number,
@@ -26,7 +26,7 @@ class UnitDashboard < Administrate::BaseDashboard
     bathtub: Field::Boolean,
     penthouse_level: Field::Boolean,
     no_stacker: Field::Boolean,
-    max_body_corporate_fee: Field::String.with_options(searchable: false),
+    max_body_corporate_fee: Field::Number.with_options(prefix: '$', decimals: 0),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }
@@ -38,9 +38,10 @@ class UnitDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :development,
-    :id,
     :price,
     :bedrooms,
+    :bathrooms,
+    :parking
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -96,7 +97,7 @@ class UnitDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how units are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(unit)
-  #   "Unit ##{unit.id}"
-  # end
+  def display_resource(unit)
+    "Unit ##{unit.id}"
+  end
 end

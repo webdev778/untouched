@@ -9,4 +9,8 @@ class Development < ActiveRecord::Base
   def region
     suburb.region
   end
+
+  def to_s
+    [ address, suburb.name, suburb.region.name, city ].join(', ')
+  end
 end

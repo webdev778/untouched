@@ -1,0 +1,2 @@
+class DevelopmentLogoDashboard < ImageDashboard
+end

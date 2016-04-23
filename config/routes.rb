@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :developments
     resources :units
+    resources :suburbs
+    resources :regions
+    resources :development_photos
+    resources :development_logos
     root to: "developments#index"
   end
 
