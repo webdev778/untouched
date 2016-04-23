@@ -44,7 +44,7 @@ developments:
         penthouse_level: false
         no_stacker: false
         max_body_corporate_fee: 10000
-        status: available # or sold, or held
+        status: active # or sold, or held
 
         views:
           - path: example-unit-view.jpg # relative to db/seeds/assets
