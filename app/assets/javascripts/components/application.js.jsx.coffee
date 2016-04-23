@@ -1,11 +1,20 @@
 @Application = React.createClass
 
+  getInitialState: ->
+    {
+      developments: []
+    }
+
   componentWillMount: ->
     DevelopmentStore.listen(@onChange)
+    $(window).resize => @onResize()
+
+  componentDidMount: ->
     DevelopmentActions.filterData(@parseFilters())
     DevelopmentActions.fetch()
 
-    $(window).resize => @onResize()
+  componentWillUnmount: ->
+    DevelopmentStore.unlisten(@onChange)
 
   componentDidUpdate: ->
     @onResize()
