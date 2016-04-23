@@ -1,0 +1,3 @@
+class DevelopmentLogoSerializer < ImageSerializer
+end
+

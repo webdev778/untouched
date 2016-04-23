@@ -13,5 +13,5 @@
           <a href="#pricing">pricing</a>
         </li>
       </ul>
-      <img src="images/development-logo01.png" alt="Development Logo" className="scroll__logo" />
+      <img src={this.props.development.logo.url} alt="Development Logo" className="scroll__logo" />
     </div>`
