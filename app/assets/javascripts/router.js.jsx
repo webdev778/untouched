@@ -5,7 +5,7 @@ IndexRoute = ReactRouter.IndexRoute;
 ReactDOM.render((
   <Router history={ReactRouter.hashHistory}>
 
-    <Route path="/developments/:developmentId" component={Development} />
+    <Route path="/developments/:developmentId" component={DevelopmentPage} />
 
     <Route path="/" component={DevelopmentsPage}>
       <IndexRoute component={DevelopmentsPage} />

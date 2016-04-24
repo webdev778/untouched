@@ -1,4 +1,4 @@
-@Development = React.createClass
+@DevelopmentPage = React.createClass
 
   status:
     loading: {}
