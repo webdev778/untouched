@@ -1,0 +1,13 @@
+require 'rails_helper'
+
+describe UnitSerializer do
+
+  let(:unit) { create(:unit) }
+  subject { UnitSerializer.new(unit).as_json(root: false) }
+
+  it "has a number" do
+    expect(subject).to include(number: unit.number)
+  end
+
+end
+

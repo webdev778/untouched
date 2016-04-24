@@ -3,6 +3,8 @@ class Unit < ActiveRecord::Base
   enum aspect: [ :north, :east, :south, :west ]
   enum status: [ :active, :held, :sold ]
 
+  validates_uniqueness_of :number, scope: :development_id
+
   has_many :views, class_name: 'UnitView', as: :imageable, dependent: :destroy
   has_many :plans, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
 
