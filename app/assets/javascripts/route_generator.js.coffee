@@ -4,7 +4,7 @@ class RouteGenerator
 
   @parseParam: (pair) ->
     [ name, value ] = pair
-    paramType = DevelopmentStore.PARAM_TYPES[name]
+    paramType = Schema[name]
     if paramType == 'array'
       [ name, value.split(',') ]
     else

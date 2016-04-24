@@ -1,22 +1,22 @@
-class DevelopmentStore
+class UnitStore
 
-  @displayName: 'DevelopmentStore'
+  @displayName: 'UnitStore'
 
   DEFAULT_FILTER_PARAMS:
     sort: 'price'
     sort_order: 'asc'
     
   constructor: ->
-    @bindActions(DevelopmentActions)
-    @developments = []
+    @bindActions(UnitActions)
+    @units = []
     @filterParams = @DEFAULT_FILTER_PARAMS
 
     @exportPublicMethods(
-      getDevelopments: @getDevelopments
+      getUnits: @getUnits
     )
 
   onInitData: (props) ->
-    @developments = props.developments
+    @units = props.units
 
   onFilterData: (params) ->
     _.assign @filterParams, params
@@ -25,7 +25,7 @@ class DevelopmentStore
   onSelect: (id) ->
     $.ajax
       method: 'GET'
-      url: '/api/developments/' + id
+      url: '/api/developments/' + @developmentId + '/units/' + id
       success: (response) =>
         @development = response.development
         @emitChange()
@@ -36,20 +36,17 @@ class DevelopmentStore
   fetch: ->
     $.ajax
       method: 'GET'
-      url: '/api/developments'
+      url: '/api/units'
       data: @filterParams
       success: (response) =>
-        # We really shouldn't do this here...
-        ReactRouter.hashHistory.push(new RouteGenerator(response.filters).generate())
-
-        @developments = response.developments
+        @units = response.units
         @emitChange()
       error: (response) ->
         console.log 'error'
         console.log response
 
-  getDevelopments: ->
-    @getState().developments
+  getUnits: ->
+    @getState().units
 
- window.DevelopmentStore = alt.createStore(DevelopmentStore)
+ window.UnitStore = alt.createStore(UnitStore)
 

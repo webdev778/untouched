@@ -9,7 +9,7 @@
         </div>
         <div className="right">
           <div className="spaced3x container--reset">
-            <DevelopmentPricingTable development={this.props.development}/>
+            <UnitList development={this.props.development}/>
           </div>
           <DevelopmentUnitsSoldProgressBar development={this.props.development}/>
         </div>

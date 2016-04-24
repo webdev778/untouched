@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     root to: "developments#index"
   end
 
+  get 'api/units' => 'api/units#index'
   get 'api/developments/:id' => 'api/developments#show'
   get 'api/developments' => 'api/developments#index'
   get 'api/regions' => 'api/regions#index'
