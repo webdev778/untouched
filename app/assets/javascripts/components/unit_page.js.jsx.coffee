@@ -47,6 +47,13 @@
             <UnitScrollNav unit={this.state.unit} />
           </div>
         </div>
+        <div className="scroll__wrap">
+          <div className="scroll__content">
+            <UnitViewsSection unit={this.state.unit}/>
+            <UnitPlansSection unit={this.state.unit}/>
+            <UnitCostsSection unit={this.state.unit}/>
+          </div>
+        </div>
       </div>
 
      </div>`

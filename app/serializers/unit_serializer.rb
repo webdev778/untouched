@@ -2,6 +2,9 @@ class UnitSerializer < ActiveModel::Serializer
 
   has_one :development
 
+  has_many :views
+  has_many :plans
+
   attributes :id,
     :development_id,
     :number,

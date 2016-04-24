@@ -1,0 +1,3 @@
+class UnitPlanSerializer < ImageSerializer
+end
+
