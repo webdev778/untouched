@@ -9,10 +9,13 @@
   photoUrl: ->
     @props.data.development.photos[0]?.url
 
+  unitUrl: ->
+    "#/developments/#{@props.unit.development_id}/units/#{@props.unit.id}"
+
   render: ->
     `<tr>
       <td>&nbsp;</td>
-      <td>TODO</td>
+      <td><a href={this.unitUrl()}>{this.props.unit.number}</a></td>
       <td>{this.props.unit.bedrooms}</td>
       <td>{this.props.unit.bathrooms}</td>
       <td>{this.props.unit.internal_in_meters}</td>

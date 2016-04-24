@@ -9,5 +9,9 @@ describe UnitSerializer do
     expect(subject).to include(number: unit.number)
   end
 
+  it "includes the unit's development ID" do
+    expect(subject).to include(development_id: unit.development_id)
+  end
+
 end
 
