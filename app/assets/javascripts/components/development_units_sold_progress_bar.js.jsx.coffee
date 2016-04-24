@@ -13,5 +13,4 @@
     </div>`
 
   soldPercentage: ->
-    console.log @props.development
     (@props.development.units_sold_count / @props.development.units_count) * 100
