@@ -7,9 +7,9 @@ ReactDOM.render((
 
     <Route path="/developments/:developmentId" component={Development} />
 
-    <Route path="/" component={Application}>
-      <IndexRoute component={Application} />
-      <Route path="*" component={Application} />
+    <Route path="/" component={DevelopmentsPage}>
+      <IndexRoute component={DevelopmentsPage} />
+      <Route path="*" component={DevelopmentsPage} />
     </Route>
   </Router>
 ), document.getElementById('app'));

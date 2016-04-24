@@ -1,4 +1,4 @@
-@Application = React.createClass
+@DevelopmentsPage = React.createClass
 
   getInitialState: ->
     {
@@ -34,7 +34,7 @@
     RouteGenerator.parse(@props.params.splat)
 
   render: ->
-    `<div className='application'>
+    `<div className="developments-page">
 
       <div 
         className="sidebar-overlay" 
