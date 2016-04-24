@@ -17,6 +17,8 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :rooftop_deck,
     :has_double_glazed_windows,
     :ceiling_height_at_living_area_in_meters,
+    :units_count,
+    :units_sold_count,
     :created_at,
     :updated_at
 
@@ -26,6 +28,10 @@ class DevelopmentSerializer < ActiveModel::Serializer
 
   def suburb_name
     object.suburb.name
+  end
+
+  def units_sold_count
+    object.units.sold.count
   end
 
 end

@@ -3,6 +3,10 @@ class Unit < ActiveRecord::Base
   enum aspect: [ :north, :east, :south, :west ]
   enum status: [ :active, :held, :sold ]
 
+  scope :active, -> { where(status: Unit.statuses[:active]) }
+  scope :sold, -> { where(status: Unit.statuses[:sold]) }
+  scope :held, -> { where(status: Unit.statuses[:held]) }
+
   has_many :views, class_name: 'UnitView', as: :imageable, dependent: :destroy
   has_many :plans, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
 

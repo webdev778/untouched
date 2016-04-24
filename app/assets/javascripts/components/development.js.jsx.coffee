@@ -46,6 +46,7 @@
           <div className="scroll__content">
             <DevelopmentOverviewSection development={this.state.development}/>
             <DevelopmentLocationSection development={this.state.development}/>
+            <DevelopmentPricingSection development={this.state.development}/>
           </div>
         </div>
       </main>
