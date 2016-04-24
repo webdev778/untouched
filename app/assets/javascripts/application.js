@@ -26,6 +26,8 @@
 //= require stores/region_store
 //= require actions/development_actions
 //= require stores/development_store
+//= require actions/unit_actions
+//= require stores/unit_store
 //= require components
 //= require router
 //= require_tree .

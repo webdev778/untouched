@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   get 'api/units' => 'api/units#index'
+  get 'api/developments/:development_id/units/:id' => 'api/units#show'
   get 'api/developments/:id' => 'api/developments#show'
   get 'api/developments' => 'api/developments#index'
   get 'api/regions' => 'api/regions#index'

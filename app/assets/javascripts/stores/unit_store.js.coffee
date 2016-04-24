@@ -22,12 +22,12 @@ class UnitStore
     _.assign @filterParams, params
     @fetch()
 
-  onSelect: (id) ->
+  onSelect: (args) ->
     $.ajax
       method: 'GET'
-      url: '/api/developments/' + @developmentId + '/units/' + id
+      url: '/api/developments/' + args[0] + '/units/' + args[1]
       success: (response) =>
-        @development = response.development
+        @unit = response.unit
         @emitChange()
       error: (response) ->
         console.log 'error'
