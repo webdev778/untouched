@@ -22,8 +22,14 @@ class UnitSerializer < ActiveModel::Serializer
     :penthouse_level,
     :no_stacker,
     :max_body_corporate_fee,
+    :development_logo,
     :created_at,
     :updated_at
+
+
+  def development_logo
+    DevelopmentLogoSerializer.new(object.development.logo).as_json(root: false)
+  end
 
 end
 
