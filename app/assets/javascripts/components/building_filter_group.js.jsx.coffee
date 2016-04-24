@@ -35,7 +35,7 @@
     else
       params[event.target.id] = undefined
 
-    DevelopmentActions.filterData(params)
+    @props.actions.filterData(params)
 
   hasInitialValue: (key) ->
     !! @props.filters?[key]

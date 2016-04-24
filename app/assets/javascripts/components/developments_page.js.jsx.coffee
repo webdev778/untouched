@@ -47,7 +47,7 @@
           <DismissSidebarTrigger />
           <FilterSidebar
             filters={this.parseFilters()} 
-            developments={this.state.developments} />
+            actions={DevelopmentActions} />
         </aside>
 
         <main className='main'>

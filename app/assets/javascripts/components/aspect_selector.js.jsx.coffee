@@ -45,7 +45,7 @@
     _.map $("input[name='aspect']:checked"), (el) -> el.value
 
   handleClick: (event) ->
-    DevelopmentActions.filterData(aspect: @val())
+    @props.actions.filterData(aspect: @val())
 
 
 

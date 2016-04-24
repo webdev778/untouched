@@ -58,7 +58,7 @@
     _.find @state.regions, (r) => r.id == parseInt(@props.filters?.region)
 
   handleChangeRegion: ->
-    DevelopmentActions.filterData(region: @regionVal(), suburb: [])
+    @props.actions.filterData(region: @regionVal(), suburb: [])
 
   handleChangeSuburb: ->
-    DevelopmentActions.filterData(suburb: @suburbVal())
+    @props.actions.filterData(suburb: @suburbVal())

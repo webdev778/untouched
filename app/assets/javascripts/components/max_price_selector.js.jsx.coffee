@@ -20,5 +20,5 @@
     $('select#max_price_selector').val()
 
   handleChange: ->
-    DevelopmentActions.filterData(max_price: @val())
+    @props.actions.filterData(max_price: @val())
 

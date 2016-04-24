@@ -27,7 +27,7 @@
     _.map $("input[name='development_type']:checked"), (el) -> el.value
 
   handleClick: (event) ->
-    DevelopmentActions.filterData(development_type: @val())
+    @props.actions.filterData(development_type: @val())
 
   hasInitialValue: (key) ->
     _.includes @props.filters?.development_type, key

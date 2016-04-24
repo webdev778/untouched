@@ -1,11 +1,11 @@
 @FilterSidebar = React.createClass
   render: ->
     `<form>
-      <MaxPriceSelector filters={this.props.filters} />
-      <LocationSelector filters={this.props.filters} />
-      <BedroomSelector filters={this.props.filters} />
-      <BathroomSelector filters={this.props.filters} />
-      <ParkingSelector filters={this.props.filters} />
+      <MaxPriceSelector actions={this.props.actions} filters={this.props.filters} />
+      <LocationSelector actions={this.props.actions} filters={this.props.filters} />
+      <BedroomSelector actions={this.props.actions} filters={this.props.filters} />
+      <BathroomSelector actions={this.props.actions} filters={this.props.filters} />
+      <ParkingSelector actions={this.props.actions} filters={this.props.filters} />
 
       <M2Selector 
         rangeStart="40" 
@@ -14,6 +14,7 @@
         label="Internal" 
         id="internal_m2_selector" 
         paramName="internal_in_meters"
+        actions={this.props.actions}
         filters={this.props.filters} />
 
       <M2Selector 
@@ -23,6 +24,7 @@
         label="Master Bedroom" 
         id="master_bedroom_m2_selector" 
         paramName="master_bedroom_in_meters"
+        actions={this.props.actions}
         filters={this.props.filters} />
 
       <M2Selector 
@@ -32,15 +34,16 @@
         label="External" 
         id="external_m2_selector" 
         paramName="external_in_meters"
+        actions={this.props.actions}
         filters={this.props.filters} />
 
-      <AspectSelector filters={this.props.filters} />
-      <ResidenceFilterGroup filters={this.props.filters} />
-      <BodyCorpSelector filters={this.props.filters} />
-      <BuildingFilterGroup filters={this.props.filters} />
-      <CeilingHeightSelector filters={this.props.filters} />
-      <DevelopmentSizeSelector filters={this.props.filters} />
-      <DevelopmentTypeFilterGroup filters={this.props.filters} />
-      <ReadyDateSelector filters={this.props.filters} />
+      <AspectSelector actions={this.props.actions} filters={this.props.filters} />
+      <ResidenceFilterGroup actions={this.props.actions} filters={this.props.filters} />
+      <BodyCorpSelector actions={this.props.actions} filters={this.props.filters} />
+      <BuildingFilterGroup actions={this.props.actions} filters={this.props.filters} />
+      <CeilingHeightSelector actions={this.props.actions} filters={this.props.filters} />
+      <DevelopmentSizeSelector actions={this.props.actions} filters={this.props.filters} />
+      <DevelopmentTypeFilterGroup actions={this.props.actions} filters={this.props.filters} />
+      <ReadyDateSelector actions={this.props.actions} filters={this.props.filters} />
     </form>`
 

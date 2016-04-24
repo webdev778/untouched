@@ -35,7 +35,7 @@
     _.map $("input[name='bathrooms']:checked"), (el) -> el.value
 
   handleClick: (event) ->
-    DevelopmentActions.filterData(bathrooms: @val())
+    @props.actions.filterData(bathrooms: @val())
 
 
 

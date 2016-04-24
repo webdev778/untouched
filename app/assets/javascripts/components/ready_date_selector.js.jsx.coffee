@@ -26,7 +26,7 @@
     $("select#ready_date").val()
 
   handleChange: ->
-    DevelopmentActions.filterData(ready_at: @val())
+    @props.actions.filterData(ready_at: @val())
 
   initialValue: ->
     @props.filters?.ready_at

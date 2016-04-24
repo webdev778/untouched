@@ -25,5 +25,5 @@
     $("select#max_body_corporate_fee").val()
 
   handleChange: ->
-    DevelopmentActions.filterData(max_body_corporate_fee: @val())
+    @props.actions.filterData(max_body_corporate_fee: @val())
 

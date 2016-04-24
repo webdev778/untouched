@@ -44,7 +44,7 @@
     _.includes @props.filters.parking, value
 
   handleClick: (event) ->
-    DevelopmentActions.filterData(parking: @val())
+    @props.actions.filterData(parking: @val())
 
 
 
