@@ -45,7 +45,7 @@
     classForHeading = @classForHeading
     handleSortColumn = @handleSortColumn
     _.map @HEADINGS, (title, column) =>
-      `<th className={classForHeading(column)} onClick={handleSortColumn(column)}>{title}</th>`
+      `<th key={column} className={classForHeading(column)} onClick={handleSortColumn(column)}>{title}</th>`
 
   classForHeading: (name) ->
     'active' if @props.filters?.sort == name
