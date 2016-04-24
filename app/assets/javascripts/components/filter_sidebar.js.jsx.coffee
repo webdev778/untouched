@@ -1,4 +1,4 @@
-@DevelopmentFilter = React.createClass
+@FilterSidebar = React.createClass
   render: ->
     `<form>
       <MaxPriceSelector filters={this.props.filters} />

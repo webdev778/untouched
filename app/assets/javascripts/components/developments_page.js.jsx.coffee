@@ -45,7 +45,7 @@
       <div className='container'>
         <aside className='sidebar'>
           <DismissSidebarTrigger />
-          <DevelopmentFilter 
+          <FilterSidebar
             filters={this.parseFilters()} 
             developments={this.state.developments} />
         </aside>

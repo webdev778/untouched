@@ -2,7 +2,7 @@
   render: ->
     `<aside className='sidebar'>
       <DismissSidebarTrigger />
-      <DevelopmentFilter 
+      <FilterSidebar
         filters={this.parseFilters()} />
     </aside>`
 
