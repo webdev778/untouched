@@ -1,3 +1,10 @@
 @DevelopmentPricingSidebar = React.createClass
   render: ->
-    `<div></div>`
+    `<aside className='sidebar'>
+      <DismissSidebarTrigger />
+      <DevelopmentFilter 
+        filters={this.parseFilters()} />
+    </aside>`
+
+  parseFilters: ->
+    RouteGenerator.parse(@props.params.splat)
