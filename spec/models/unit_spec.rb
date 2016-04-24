@@ -1,7 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Unit, type: :model do
-  it { should belong_to(:development) }
+  subject { build(:unit) } 
+
+  describe "relationships" do
+    it { should belong_to(:development) }
+  end
+
+  describe "validations" do
+    it { is_expected.to validate_uniqueness_of(:number).scoped_to(:development_id) }
+  end
 
   describe "statuses" do
     it "allows setting the status to 'active'" do

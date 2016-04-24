@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe "listing units for a given development", type: :api do
+describe "listing units", type: :api do
 
   def do_get
-    get "/api/developments/#{development.id}/units", format: :json
+    get "/api/units?development_id=#{development.id}", format: :json
   end
 
   def parsed_response

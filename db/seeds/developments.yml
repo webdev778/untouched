@@ -27,7 +27,8 @@ developments:
 
     units:
       # First Unit:
-      - bedrooms: 2
+      - number: 101
+        bedrooms: 2
         price: 17000000
         bathrooms: 1
         parking: 1
@@ -60,7 +61,8 @@ developments:
 
 
       # Second Unit:
-      - bedrooms: 2
+      - number: 102
+        bedrooms: 2
         price: 17000000
         bathrooms: 1
         parking: 1

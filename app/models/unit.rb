@@ -7,6 +7,8 @@ class Unit < ActiveRecord::Base
   scope :sold, -> { where(status: Unit.statuses[:sold]) }
   scope :held, -> { where(status: Unit.statuses[:held]) }
 
+  validates_uniqueness_of :number, scope: :development_id
+
   has_many :views, class_name: 'UnitView', as: :imageable, dependent: :destroy
   has_many :plans, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
 

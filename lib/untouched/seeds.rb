@@ -128,6 +128,7 @@ module Untouched
 
       def unit_attributes(h)
         {
+          number: h['number'],
           bedrooms: h['bedrooms'],
           price: h['price'],
           bathrooms: h['bathrooms'],

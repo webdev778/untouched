@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :unit do
+    development
+    sequence(:number) {|n| "#{n}A" }
     bedrooms { Faker::Number.between(1, 5) }
     price { Faker::Number.between(bedrooms * 400_000, bedrooms * 500_000) }
     bathrooms { Faker::Number.between(1, 4) }
