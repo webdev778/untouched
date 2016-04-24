@@ -1,9 +1,13 @@
 @DevelopmentLocationSection = React.createClass
   componentDidMount: ->
-    @initializeMap()
+    @initializeMap() if @hasGeoData()
+
+  hasGeoData: ->
+    @props.development.lat &&
+      @props.development.lng
 
   initializeMap: ->
-    loc = new google.maps.LatLng(-37.864718,144.9823433)
+    loc = new google.maps.LatLng(@props.development.lat, @props.development.lng)
 
     map = new google.maps.Map(document.getElementById("map"), {
       zoom: 17,
@@ -33,6 +37,13 @@
     infobox.open map, marker
 
   render: ->
+
+    if @hasGeoData()
+      @renderMap()
+    else
+      @renderBlank()
+
+  renderMap: ->
     `<section className="scroll__section">
       <a name="location"></a>
       <div className="container">
@@ -46,3 +57,7 @@
     `<div id="infobox">
       {this.props.development.address}, {this.props.development.suburb_name}, {this.props.development.region_name}, {this.props.development.city}
     </div>`
+
+  renderBlank: ->
+    `<section className="scroll__section"></section>`
+

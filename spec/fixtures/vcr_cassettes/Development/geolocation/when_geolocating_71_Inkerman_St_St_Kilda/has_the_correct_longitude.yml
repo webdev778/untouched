@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.google.com/maps/api/geocode/json?address=71%20Inkerman%20St,%20St%20Kilda,%20Australia&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 24 Apr 2016 15:34:40 GMT
+      Expires:
+      - Mon, 25 Apr 2016 15:34:40 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="32,31,30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "71",
+                       "short_name" : "71",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "Inkerman Street",
+                       "short_name" : "Inkerman St",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "City of Port Phillip",
+                       "short_name" : "City of Port Phillip",
+                       "types" : [ "sublocality_level_1", "sublocality", "political" ]
+                    },
+                    {
+                       "long_name" : "Saint Kilda",
+                       "short_name" : "St Kilda",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "Victoria",
+                       "short_name" : "VIC",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "Australia",
+                       "short_name" : "AU",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "3182",
+                       "short_name" : "3182",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "71 Inkerman St, St Kilda VIC 3182, Australia",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : -37.864718,
+                       "lng" : 144.984532
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : -37.8633690197085,
+                          "lng" : 144.9858809802915
+                       },
+                       "southwest" : {
+                          "lat" : -37.86606698029149,
+                          "lng" : 144.9831830197085
+                       }
+                    }
+                 },
+                 "place_id" : "ChIJAcE7jUJo1moRCt1LtYTsd0k",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 24 Apr 2016 15:34:40 GMT
+recorded_with: VCR 3.0.1

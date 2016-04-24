@@ -6,11 +6,30 @@ class Development < ActiveRecord::Base
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
   enum development_type: [ :apartment, :townhouse ]
 
+  before_save :geocode_if_address_changed
+
   def region
     suburb.region
   end
 
   def to_s
-    [ address, suburb.name, suburb.region.name, city ].join(', ')
+    [ address, suburb.name ].join(', ')
+  end
+
+  def full_address
+    [ address, suburb.name, 'Australia' ].join(', ')
+  end
+
+  protected
+
+  def geocode_if_address_changed
+    if address_changed? ||
+      city_changed? ||
+      suburb_changed?
+
+      geo = Geokit::Geocoders::GoogleGeocoder.geocode(full_address)
+
+      self.lat, self.lng = geo.ll.split(',')
+    end
   end
 end

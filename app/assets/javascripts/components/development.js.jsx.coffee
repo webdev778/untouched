@@ -19,11 +19,9 @@
     DevelopmentActions.select(@props.params.developmentId)
 
   componentWillUnmount: ->
-    console.log 'unmounted development'
     DevelopmentStore.unlisten(@onChange)
 
   onChange: (state) ->
-    console.log state
     @setState(state)
 
   render: ->
