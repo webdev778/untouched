@@ -17,6 +17,7 @@ FactoryGirl.define do
     rooftop_deck { Faker::Boolean.boolean }
     has_double_glazed_windows { Faker::Boolean.boolean }
     ceiling_height_at_living_area_in_meters { Faker::Number.between(24, 50).to_f / 10 }
+    deposit_percent { Faker::Number.between(1, 50).to_f / 100 }
 
     transient do
       units_count { Faker::Number.between(10, 100) }

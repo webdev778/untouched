@@ -25,6 +25,15 @@ RSpec.describe Unit, type: :model do
     end
   end
 
+  describe "#deposit_percent" do
+    let(:development) { build(:development, deposit_percent: 0.1) }
+    let(:unit) { build(:unit, development: development, price: 100_000) }
+
+    it "delegates to its development" do
+      expect(unit.deposit_percent).to eq(0.1)
+    end
+  end
+
   describe "#deposit" do
     context "when the development has a 10% deposit and the unit costs $100,000" do
       let(:development) { build(:development, deposit_percent: 0.1) }

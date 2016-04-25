@@ -22,6 +22,7 @@
 //= require moment/moment
 //= require init
 //= require route_generator
+//= require schema
 //= require actions/region_actions
 //= require stores/region_store
 //= require actions/development_actions

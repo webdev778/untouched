@@ -17,6 +17,10 @@ describe DevelopmentSerializer do
     expect(subject).to have_key(:lng)
   end
 
+  it "has a deposit percent" do
+    expect(subject).to include(deposit_percent: development.deposit_percent)
+  end
+
   it "has a count of the total number of units" do
     expect(subject).to include(units_count: development.units.count)
   end

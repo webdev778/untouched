@@ -21,5 +21,9 @@ describe UnitSerializer do
     expect(subject).to include(deposit: unit.deposit)
   end
 
+  it "has a deposit percent" do
+    expect(subject).to include(deposit_percent: unit.deposit_percent)
+  end
+
 end
 

@@ -1,7 +1,16 @@
 @UnitCostsSection = React.createClass
 
+  formattedDepositPercent: ->
+    Math.round(@props.unit.deposit_percent * 100)
+
+  formattedDeposit: ->
+    accounting.formatMoney(@props.unit.deposit, '$', 0)
+
+  formattedStampDuty: ->
+    accounting.formatMoney(@props.unit.stamp_duty, '$', 0)
+
   render: ->
-    `<section class="scroll__section">
+    `<section className="scroll__section">
       <a name="cost"></a>
       <form className="cost-form">
         <div className="form__group">
@@ -10,17 +19,17 @@
               <tbody>
                 <tr>
                   <td>
-                    <strong>10% Deposit</strong>
+                    <strong>{this.formattedDepositPercent()}% Deposit</strong>
                     <span className="cost__light">Due within 14 days of signing <a href="#!">contract</a></span>
                   </td>
-                  <td>$50,000</td>
+                  <td>{this.formattedDeposit()}</td>
                 </tr>
                 <tr>
                   <td>
                     <strong>Stamp Duty</strong>
                     <span className="cost__light">Save $23,500</span>
                   </td>
-                  <td>$2000</td>
+                  <td>{this.formattedStampDuty()}</td>
                 </tr>
                 <tr>
                   <td>

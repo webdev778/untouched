@@ -27,6 +27,7 @@ class UnitSerializer < ActiveModel::Serializer
     :max_body_corporate_fee,
     :development_logo,
     :stamp_duty,
+    :deposit_percent,
     :deposit,
     :created_at,
     :updated_at
