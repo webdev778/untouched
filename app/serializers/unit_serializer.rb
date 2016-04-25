@@ -21,6 +21,7 @@ class UnitSerializer < ActiveModel::Serializer
     :penthouse_level,
     :no_stacker,
     :max_body_corporate_fee,
+    :stamp_duty,
     :created_at,
     :updated_at
 

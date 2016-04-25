@@ -45,6 +45,7 @@ developments:
         penthouse_level: false
         no_stacker: false
         max_body_corporate_fee: 10000
+        stamp_duty: 2000
         status: active # or sold, or held
 
         views:
@@ -79,6 +80,7 @@ developments:
         penthouse_level: false
         no_stacker: false
         max_body_corporate_fee: 10000
+        stamp_duty: 2000
         status: sold
 
         # ...

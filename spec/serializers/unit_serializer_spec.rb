@@ -9,5 +9,9 @@ describe UnitSerializer do
     expect(subject).to include(number: unit.number)
   end
 
+  it "has stamp duty" do
+    expect(subject).to include(stamp_duty: unit.stamp_duty)
+  end
+
 end
 

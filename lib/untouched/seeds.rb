@@ -146,6 +146,7 @@ module Untouched
           penthouse_level: h['penthouse_level'],
           no_stacker: h['no_stacker'],
           max_body_corporate_fee: h['max_body_corporate_fee'],
+          stamp_duty: h['stamp_duty'],
           status: h['status']
         }
       end
