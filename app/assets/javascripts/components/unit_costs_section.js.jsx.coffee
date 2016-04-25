@@ -9,6 +9,15 @@
   formattedStampDuty: ->
     accounting.formatMoney(@props.unit.stamp_duty, '$', 0)
 
+  formattedStampDutySavings: ->
+    accounting.formatMoney(@props.unit.stamp_duty_savings, '$', 0)
+
+  formattedAnnualBodyCorporate: ->
+    accounting.formatMoney(@props.unit.max_body_corporate_fee, '$', 0)
+
+  formattedAnnualCouncilRate: ->
+    accounting.formatMoney(@props.unit.annual_council_rate, '$', 0)
+
   render: ->
     `<section className="scroll__section">
       <a name="cost"></a>
@@ -20,14 +29,14 @@
                 <tr>
                   <td>
                     <strong>{this.formattedDepositPercent()}% Deposit</strong>
-                    <span className="cost__light">Due within 14 days of signing <a href="#!">contract</a></span>
+                    <span className="cost__light">Due within {this.props.unit.deposit_due_in_days} days of signing <a href="#!">contract</a></span>
                   </td>
                   <td>{this.formattedDeposit()}</td>
                 </tr>
                 <tr>
                   <td>
                     <strong>Stamp Duty</strong>
-                    <span className="cost__light">Save $23,500</span>
+                    <span className="cost__light">Save {this.formattedStampDutySavings()}</span>
                   </td>
                   <td>{this.formattedStampDuty()}</td>
                 </tr>
@@ -35,13 +44,13 @@
                   <td>
                     <strong>Annual Body Corporate (Estimated)</strong>
                   </td>
-                  <td>$2000</td>
+                  <td>{this.formattedAnnualBodyCorporate()}</td>
                 </tr>
                 <tr>
                   <td>
                     <strong>Annual Coucil Rates (Estimated)</strong>
                   </td>
-                  <td>$1000</td>
+                  <td>{this.formattedAnnualCouncilRate()}</td>
                 </tr>
               </tbody>
             </table>

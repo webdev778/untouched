@@ -28,6 +28,9 @@ class UnitSerializer < ActiveModel::Serializer
     :development_logo,
     :stamp_duty,
     :deposit_percent,
+    :deposit_due_in_days,
+    :stamp_duty_savings,
+    :annual_council_rate,
     :deposit,
     :created_at,
     :updated_at
