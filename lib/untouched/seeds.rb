@@ -78,7 +78,8 @@ module Untouched
           steam_room: h['steam_room'],
           rooftop_deck: h['rooftop_deck'],
           has_double_glazed_windows: h['has_double_glazed_windows'],
-          ceiling_height_at_living_area_in_meters: h['ceiling_height_at_living_area_in_meters']
+          ceiling_height_at_living_area_in_meters: h['ceiling_height_at_living_area_in_meters'],
+          deposit_percent: h['deposit_percent']
         }
       end
     end
@@ -146,6 +147,7 @@ module Untouched
           penthouse_level: h['penthouse_level'],
           no_stacker: h['no_stacker'],
           max_body_corporate_fee: h['max_body_corporate_fee'],
+          stamp_duty: h['stamp_duty'],
           status: h['status']
         }
       end

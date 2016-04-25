@@ -15,6 +15,7 @@ developments:
     rooftop_deck: false
     has_double_glazed_windows: false
     ceiling_height_at_living_area_in_meters: 10
+    deposit_percent: 0.1 # 10% deposit
 
     logo:
       path: example-development-logo.png
@@ -45,6 +46,7 @@ developments:
         penthouse_level: false
         no_stacker: false
         max_body_corporate_fee: 10000
+        stamp_duty: 2000
         status: active # or sold, or held
 
         views:
@@ -79,6 +81,7 @@ developments:
         penthouse_level: false
         no_stacker: false
         max_body_corporate_fee: 10000
+        stamp_duty: 2000
         status: sold
 
         # ...

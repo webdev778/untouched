@@ -15,6 +15,7 @@ developments:
     rooftop_deck: false
     has_double_glazed_windows: false
     ceiling_height_at_living_area_in_meters: 10
+    deposit_percent: 0.1 # 10% deposit
 
     logo:
       path: example-development-logo.png
@@ -27,6 +28,41 @@ developments:
 
     units:
       # First Unit:
+      - number: 100
+        bedrooms: 2
+        price: 17000000
+        bathrooms: 1
+        parking: 1
+        internal_in_meters: 600
+        master_bedroom_in_meters: 100
+        external_in_meters: 0
+        aspect: north
+        kitchen_island: false
+        ensuite: false
+        study_nook: false
+        storage_cage: false
+        walk_in_wardrobe: false
+        bathtub: false
+        penthouse_level: false
+        no_stacker: false
+        max_body_corporate_fee: 10000
+        stamp_duty: 2000
+        status: active # or sold, or held
+
+        views:
+          - path: example-unit-view.jpg # relative to db/seeds/assets
+            caption: Wow! What a unit!
+          - path: example-unit-view.jpg # relative to db/seeds/assets
+            caption: It even has quartz countertops.
+
+        plans:
+          - path: example-unit-plan.jpg # relative to db/seeds/assets
+            caption: It's spacious, as you can see.
+          - path: example-unit-plan.jpg # relative to db/seeds/assets
+            caption: These are some dank blueprints.
+
+
+      # Second Unit:
       - number: 101
         bedrooms: 2
         price: 17000000
@@ -45,40 +81,7 @@ developments:
         penthouse_level: false
         no_stacker: false
         max_body_corporate_fee: 10000
-        status: active # or sold, or held
-
-        views:
-          - path: example-unit-view.jpg # relative to db/seeds/assets
-            caption: Wow! What a unit!
-          - path: example-unit-view.jpg # relative to db/seeds/assets
-            caption: It even has quartz countertops.
-
-        plans:
-          - path: example-unit-plan.jpg # relative to db/seeds/assets
-            caption: It's spacious, as you can see.
-          - path: example-unit-plan.jpg # relative to db/seeds/assets
-            caption: These are some dank blueprints.
-
-
-      # Second Unit:
-      - number: 102
-        bedrooms: 2
-        price: 17000000
-        bathrooms: 1
-        parking: 1
-        internal_in_meters: 600
-        master_bedroom_in_meters: 100
-        external_in_meters: 0
-        aspect: north
-        kitchen_island: false
-        ensuite: false
-        study_nook: false
-        storage_cage: false
-        walk_in_wardrobe: false
-        bathtub: false
-        penthouse_level: false
-        no_stacker: false
-        max_body_corporate_fee: 10000
+        stamp_duty: 2000
         status: sold
 
         # ...

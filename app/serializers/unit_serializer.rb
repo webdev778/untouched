@@ -26,6 +26,8 @@ class UnitSerializer < ActiveModel::Serializer
     :no_stacker,
     :max_body_corporate_fee,
     :development_logo,
+    :stamp_duty,
+    :deposit,
     :created_at,
     :updated_at
 
