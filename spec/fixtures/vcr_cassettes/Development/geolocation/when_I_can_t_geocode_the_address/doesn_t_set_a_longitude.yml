@@ -408,4 +408,55 @@ http_interactions:
         }
     http_version: 
   recorded_at: Mon, 25 Apr 2016 01:27:27 GMT
+- request:
+    method: get
+    uri: https://maps.google.com/maps/api/geocode/json?address=I%20DONT%20KNOW%20WHAT%20THIS%20IS%20HELLLLLP,%20Kling,%20Australia&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 25 Apr 2016 01:55:40 GMT
+      Expires:
+      - Tue, 26 Apr 2016 01:55:40 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Access-Control-Allow-Origin:
+      - "*"
+      Server:
+      - mafe
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="32,31,30,29,28,27,26,25"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "results" : [],
+           "status" : "ZERO_RESULTS"
+        }
+    http_version: 
+  recorded_at: Mon, 25 Apr 2016 01:55:40 GMT
 recorded_with: VCR 3.0.1

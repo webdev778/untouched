@@ -25,7 +25,7 @@ class Development < ActiveRecord::Base
   def geocode_if_address_changed
     if address_changed? ||
       city_changed? ||
-      suburb_changed?
+      suburb_id_changed?
 
       geo = Geokit::Geocoders::GoogleGeocoder.geocode(full_address)
 

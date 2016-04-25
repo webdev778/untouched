@@ -23,6 +23,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     rooftop_deck: Field::Boolean,
     has_double_glazed_windows: Field::Boolean,
     ceiling_height_at_living_area_in_meters: Field::Number,
+    deposit_percent: Field::Number.with_options(decimals: 2),
+    deposit_due_in_days: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     logo: Field::HasOne.with_options(class_name: 'DevelopmentLogo'),
@@ -56,6 +58,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :rooftop_deck,
     :has_double_glazed_windows,
     :ceiling_height_at_living_area_in_meters,
+    :deposit_percent,
+    :deposit_due_in_days
   ]
 
   # FORM_ATTRIBUTES
@@ -76,7 +80,9 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :steam_room,
     :rooftop_deck,
     :has_double_glazed_windows,
-    :ceiling_height_at_living_area_in_meters
+    :ceiling_height_at_living_area_in_meters,
+    :deposit_percent,
+    :deposit_due_in_days
   ]
 
   # Overwrite this method to customize how developments are displayed

@@ -28,6 +28,7 @@ class UnitDashboard < Administrate::BaseDashboard
     penthouse_level: Field::Boolean,
     no_stacker: Field::Boolean,
     max_body_corporate_fee: Field::Number.with_options(prefix: '$', decimals: 0),
+    annual_council_rate: Field::Number.with_options(prefix: '$', decimals: 0),
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }
@@ -67,6 +68,7 @@ class UnitDashboard < Administrate::BaseDashboard
     :penthouse_level,
     :no_stacker,
     :max_body_corporate_fee,
+    :annual_council_rate
   ]
 
   # FORM_ATTRIBUTES
@@ -92,6 +94,7 @@ class UnitDashboard < Administrate::BaseDashboard
     :penthouse_level,
     :no_stacker,
     :max_body_corporate_fee,
+    :annual_council_rate
   ]
 
   # Overwrite this method to customize how units are displayed
