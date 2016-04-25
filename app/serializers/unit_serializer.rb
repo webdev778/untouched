@@ -23,6 +23,7 @@ class UnitSerializer < ActiveModel::Serializer
     :max_body_corporate_fee,
     :stamp_duty,
     :stamp_duty_savings,
+    :annual_council_rate,
     :deposit,
     :created_at,
     :updated_at
