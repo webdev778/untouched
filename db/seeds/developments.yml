@@ -47,6 +47,7 @@ developments:
         no_stacker: false
         max_body_corporate_fee: 10000
         stamp_duty: 2000
+        stamp_duty_savings: 20000
         status: active # or sold, or held
 
         views:
@@ -82,6 +83,7 @@ developments:
         no_stacker: false
         max_body_corporate_fee: 10000
         stamp_duty: 2000
+        stamp_duty_savings: 20000
         status: sold
 
         # ...

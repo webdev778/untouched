@@ -20,5 +20,6 @@ FactoryGirl.define do
     no_stacker { Faker::Boolean.boolean }
     max_body_corporate_fee { Faker::Number.between(2_000, 8_000) }
     stamp_duty { Faker::Number.between(1_000, 3_000) }
+    stamp_duty_savings { Faker::Number.between(10_000, 30_000) }
   end
 end

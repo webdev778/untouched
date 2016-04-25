@@ -148,6 +148,7 @@ module Untouched
           no_stacker: h['no_stacker'],
           max_body_corporate_fee: h['max_body_corporate_fee'],
           stamp_duty: h['stamp_duty'],
+          stamp_duty_savings: h['stamp_duty_savings'],
           status: h['status']
         }
       end

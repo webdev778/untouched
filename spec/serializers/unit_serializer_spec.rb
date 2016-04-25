@@ -13,6 +13,10 @@ describe UnitSerializer do
     expect(subject).to include(stamp_duty: unit.stamp_duty)
   end
 
+  it "has stamp duty savings" do
+    expect(subject).to include(stamp_duty_savings: unit.stamp_duty_savings)
+  end
+
   it "has a deposit" do
     expect(subject).to include(deposit: unit.deposit)
   end
