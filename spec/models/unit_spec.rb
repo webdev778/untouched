@@ -24,4 +24,25 @@ RSpec.describe Unit, type: :model do
       expect(Unit.statuses).to have_key('sold')
     end
   end
+
+  describe "#deposit" do
+    context "when the development has a 10% deposit and the unit costs $100,000" do
+      let(:development) { build(:development, deposit_percent: 0.1) }
+      let(:unit) { build(:unit, development: development, price: 100_000) }
+
+      it "has a $10_000 deposit" do
+        expect(unit.deposit).to eq(10_000)
+      end
+    end
+
+    context "when the development has a 5% deposit and the unit costs $100,000" do
+      let(:development) { build(:development, deposit_percent: 0.05) }
+      let(:unit) { build(:unit, development: development, price: 100_000) }
+
+      it "has a $5_000 deposit" do
+        expect(unit.deposit).to eq(5_000)
+      end
+    end
+  end
 end
+

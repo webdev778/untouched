@@ -15,6 +15,7 @@ developments:
     rooftop_deck: false
     has_double_glazed_windows: false
     ceiling_height_at_living_area_in_meters: 10
+    deposit_percent: 0.1 # 10% deposit
 
     logo:
       path: example-development-logo.png

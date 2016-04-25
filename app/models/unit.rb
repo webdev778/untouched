@@ -9,4 +9,8 @@ class Unit < ActiveRecord::Base
   has_many :plans, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
 
   RESIDENCE_AMENITIES = %w(kitchen_island study_nook storage_cage ensuite walk_in_wardrobe bathtub penthouse_level no_stacker)
+
+  def deposit
+    price * development.deposit_percent
+  end
 end

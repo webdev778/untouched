@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425005301) do
+ActiveRecord::Schema.define(version: 20160425005833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160425005301) do
     t.integer  "suburb_id",                                                                                   null: false
     t.float    "lat"
     t.float    "lng"
+    t.decimal  "deposit_percent",                                                             default: 0.0,   null: false
   end
 
   add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree

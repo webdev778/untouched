@@ -13,5 +13,9 @@ describe UnitSerializer do
     expect(subject).to include(stamp_duty: unit.stamp_duty)
   end
 
+  it "has a deposit" do
+    expect(subject).to include(deposit: unit.deposit)
+  end
+
 end
 
