@@ -29,4 +29,8 @@ class Unit < ActiveRecord::Base
   def deposit
     price * deposit_percent
   end
+
+  def contract_url
+    development.contract_url
+  end
 end

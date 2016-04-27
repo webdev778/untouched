@@ -21,6 +21,10 @@ class Development < ActiveRecord::Base
     [ address, suburb.name, 'Australia' ].join(', ')
   end
 
+  def contract_url
+    contract.url
+  end
+
   protected
 
   def geocode_if_address_changed

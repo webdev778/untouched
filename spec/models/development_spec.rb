@@ -31,4 +31,23 @@ RSpec.describe Development, type: :model do
       end
     end
   end
+
+  describe "#contract_url" do
+    let(:development) { build(:development) }
+    let(:contract) { double('contract') }
+
+    context "when there's a contract" do
+      before { expect(development).to receive(:contract).and_return(contract) }
+      it "returns the contract's URL" do
+        expect(contract).to receive(:url).and_return('http://the.contract')
+        expect(development.contract_url).to eq('http://the.contract')
+      end
+    end
+
+    context "when there's not a contract" do
+      it "returns nil" do
+        expect(development.contract_url).to be_nil
+      end
+    end
+  end
 end

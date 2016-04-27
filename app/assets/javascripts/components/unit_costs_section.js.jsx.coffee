@@ -29,7 +29,10 @@
                 <tr>
                   <td>
                     <strong>{this.formattedDepositPercent()}% Deposit</strong>
-                    <span className="cost__light">Due within {this.props.unit.deposit_due_in_days} days of signing <a href="#!">contract</a></span>
+                    <span className="cost__light">
+                      Due within {this.props.unit.deposit_due_in_days} days of signing&nbsp;
+                      <a target="_blank" href={this.props.unit.contract_url}>contract</a>
+                    </span>
                   </td>
                   <td>{this.formattedDeposit()}</td>
                 </tr>

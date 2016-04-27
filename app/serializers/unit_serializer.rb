@@ -33,6 +33,7 @@ class UnitSerializer < ActiveModel::Serializer
     :stamp_duty_savings,
     :annual_council_rate,
     :deposit,
+    :contract_url,
     :created_at,
     :updated_at
 

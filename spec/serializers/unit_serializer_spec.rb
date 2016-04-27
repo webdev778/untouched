@@ -29,6 +29,10 @@ describe UnitSerializer do
     expect(subject).to include(price_per_m2: unit.price_per_m2)
   end
 
+  it "has a contract URL" do
+    expect(subject).to include(contract_url: unit.contract_url)
+  end
+
   it "has a deposit" do
     expect(subject).to include(deposit: unit.deposit)
   end

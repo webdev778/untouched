@@ -25,6 +25,13 @@ RSpec.describe Unit, type: :model do
     end
   end
 
+  describe "#contract_url" do
+    it "delegates to the development" do
+      expect(subject.development).to receive(:contract_url).and_return('http://the.contract')
+      expect(subject.contract_url).to eq('http://the.contract')
+    end
+  end
+
   describe "#price_per_m2" do
     let(:unit) { build(:unit, internal_in_meters: 50, external_in_meters: 50, price: 1000) }
     it "includes both the internal and external square footage" do
