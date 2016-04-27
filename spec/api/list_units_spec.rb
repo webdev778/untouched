@@ -28,4 +28,21 @@ describe "listing units", type: :api do
     end
   end
 
+  context "with one active unit and one sold unit" do
+    let(:development) { create(:development, units_count: 2) }
+
+    before { development.units.first.update_attributes(status: 'active') }
+    before { development.units.last.update_attributes(status: 'sold') }
+
+    it "includes only responds with one unit" do
+      do_get
+      expect(parsed_response['units'].length).to eq(1)
+    end
+
+    it "includes the active unit in the response" do
+      do_get
+      expect(parsed_response['units'].first['id']).to eq(development.units.first.id)
+    end
+  end
+
 end

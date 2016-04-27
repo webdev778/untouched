@@ -1,7 +1,7 @@
 class API::UnitsController < API::BaseController
 
   def index
-    units = Unit.where(
+    units = Unit.active.where(
       development_id: params[:development_id]
     )
     render json: units
