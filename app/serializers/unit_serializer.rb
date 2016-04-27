@@ -9,6 +9,7 @@ class UnitSerializer < ActiveModel::Serializer
     :development_id,
     :number,
     :price,
+    :price_per_m2,
     :bedrooms,
     :bathrooms,
     :parking,

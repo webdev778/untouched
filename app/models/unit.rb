@@ -14,6 +14,10 @@ class Unit < ActiveRecord::Base
 
   RESIDENCE_AMENITIES = %w(kitchen_island study_nook storage_cage ensuite walk_in_wardrobe bathtub penthouse_level no_stacker)
 
+  def price_per_m2
+    price / (internal_in_meters + external_in_meters)
+  end
+
   def deposit_due_in_days
     development.deposit_due_in_days
   end

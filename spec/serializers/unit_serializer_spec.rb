@@ -25,6 +25,10 @@ describe UnitSerializer do
     expect(subject).to include(annual_council_rate: unit.annual_council_rate)
   end
 
+  it "has a price per M2" do
+    expect(subject).to include(price_per_m2: unit.price_per_m2)
+  end
+
   it "has a deposit" do
     expect(subject).to include(deposit: unit.deposit)
   end

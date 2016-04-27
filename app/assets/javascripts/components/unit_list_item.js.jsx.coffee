@@ -4,7 +4,7 @@
     Math.round(@props.unit.price / 1000.0)
 
   formattedPricePerM2: ->
-    Math.round((@props.unit.price / @props.unit.internal_in_meters) / 1000.0)
+    Math.round(@props.unit.price_per_m2 / 1000.0)
 
   photoUrl: ->
     @props.data.development.photos[0]?.url

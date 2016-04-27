@@ -25,6 +25,13 @@ RSpec.describe Unit, type: :model do
     end
   end
 
+  describe "#price_per_m2" do
+    let(:unit) { build(:unit, internal_in_meters: 50, external_in_meters: 50, price: 1000) }
+    it "includes both the internal and external square footage" do
+      expect(unit.price_per_m2).to eq(10)
+    end
+  end
+
   describe "#deposit_due_in_days" do
     let(:development) { build(:development, deposit_due_in_days: 12) }
     let(:unit) { build(:unit, development: development) }
