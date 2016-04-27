@@ -5,6 +5,10 @@ class CarrierwaveField < Administrate::Field::Base
     data.url
   end
 
+  def image?
+    data.is_a?(ImageUploader)
+  end
+
   def thumbnail
     data.url
   end

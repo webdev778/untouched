@@ -1,1 +1,5 @@
-<%= image_tag field.url %>
+<% if field.image? %>
+  <%= image_tag field.url %>
+<% else %>
+  <%= link_to "Download", field.url %>
+<% end %>

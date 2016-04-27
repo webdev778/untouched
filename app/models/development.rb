@@ -5,6 +5,7 @@ class Development < ActiveRecord::Base
   has_one :logo, class_name: 'DevelopmentLogo', as: :imageable, dependent: :destroy
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
   enum development_type: [ :apartment, :townhouse ]
+  mount_uploader :contract, ContractUploader
 
   before_save :geocode_if_address_changed
 

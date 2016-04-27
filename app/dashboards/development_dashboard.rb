@@ -28,7 +28,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     logo: Field::HasOne.with_options(class_name: 'DevelopmentLogo'),
-    photos: Field::HasMany.with_options(class_name: 'DevelopmentPhoto')
+    photos: Field::HasMany.with_options(class_name: 'DevelopmentPhoto'),
+    contract: CarrierwaveField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -59,7 +60,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :has_double_glazed_windows,
     :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
-    :deposit_due_in_days
+    :deposit_due_in_days,
+    :contract
   ]
 
   # FORM_ATTRIBUTES
@@ -82,7 +84,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :has_double_glazed_windows,
     :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
-    :deposit_due_in_days
+    :deposit_due_in_days,
+    :contract
   ]
 
   # Overwrite this method to customize how developments are displayed
