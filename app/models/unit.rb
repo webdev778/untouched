@@ -9,8 +9,8 @@ class Unit < ActiveRecord::Base
 
   validates_uniqueness_of :number, scope: :development_id
 
-  has_many :views, class_name: 'UnitView', as: :imageable, dependent: :destroy
-  has_many :plans, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
+  has_many :views, -> { order('sort, id ASC') }, class_name: 'UnitView', as: :imageable, dependent: :destroy
+  has_many :plans, -> { order('sort, id ASC') }, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
 
   RESIDENCE_AMENITIES = %w(kitchen_island study_nook storage_cage ensuite walk_in_wardrobe bathtub penthouse_level no_stacker)
 

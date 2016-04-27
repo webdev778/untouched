@@ -10,6 +10,7 @@ class ImageDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     imageable: Field::Polymorphic,
     id: Field::Number,
+    sort: Field::Number,
     file: CarrierwaveField,
     caption: Field::String,
     created_at: Field::DateTime,
@@ -26,6 +27,7 @@ class ImageDashboard < Administrate::BaseDashboard
     :imageable,
     :file,
     :caption,
+    :sort
   ]
 
   # SHOW_PAGE_ATTRIBUTES
@@ -33,7 +35,8 @@ class ImageDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :imageable,
     :file,
-    :caption
+    :caption,
+    :sort
   ]
 
   # FORM_ATTRIBUTES
@@ -43,6 +46,7 @@ class ImageDashboard < Administrate::BaseDashboard
     :imageable,
     :file,
     :caption,
+    :sort
   ]
 
   # Overwrite this method to customize how development photos are displayed

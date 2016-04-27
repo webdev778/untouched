@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160427203232) do
+ActiveRecord::Schema.define(version: 20160427205720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,14 @@ ActiveRecord::Schema.define(version: 20160427203232) do
   add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree
 
   create_table "images", force: :cascade do |t|
-    t.string   "file",           limit: 255, null: false
-    t.integer  "imageable_id",               null: false
-    t.string   "imageable_type", limit: 255, null: false
+    t.string   "file",           limit: 255,             null: false
+    t.integer  "imageable_id",                           null: false
+    t.string   "imageable_type", limit: 255,             null: false
     t.string   "caption",        limit: 255
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.string   "type",           limit: 255, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "type",           limit: 255,             null: false
+    t.integer  "sort",                       default: 0, null: false
   end
 
   add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
