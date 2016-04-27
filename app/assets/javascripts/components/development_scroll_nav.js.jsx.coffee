@@ -13,5 +13,9 @@
           <a href="#pricing">pricing</a>
         </li>
       </ul>
-      <img src={this.props.development.logo.url} alt="Development Logo" className="scroll__logo" />
+      {this.renderLogo()}
     </div>`
+
+  renderLogo: ->
+    return '' unless @props.development.logo
+    `<img src={this.props.development.logo.url} alt="Development Logo" className="scroll__logo" />`

@@ -8,6 +8,7 @@ class Unit < ActiveRecord::Base
   scope :held, -> { where(status: Unit.statuses[:held]) }
 
   validates_uniqueness_of :number, scope: :development_id
+  validates_presence_of :number
 
   has_many :views, -> { order('sort, id ASC') }, class_name: 'UnitView', as: :imageable, dependent: :destroy
   has_many :plans, -> { order('sort, id ASC') }, class_name: 'UnitPlan', as: :imageable, dependent: :destroy

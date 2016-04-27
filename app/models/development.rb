@@ -7,6 +7,14 @@ class Development < ActiveRecord::Base
   enum development_type: [ :apartment, :townhouse ]
   mount_uploader :contract, ContractUploader
 
+  validates_presence_of :address
+  validates_presence_of :city
+  validates_presence_of :suburb_id
+  validates_presence_of :ready_at
+  validates_presence_of :deposit_percent
+  validates_presence_of :deposit_due_in_days
+  validates_presence_of :ceiling_height_at_living_area_in_meters
+
   before_save :geocode_if_address_changed
 
   def region

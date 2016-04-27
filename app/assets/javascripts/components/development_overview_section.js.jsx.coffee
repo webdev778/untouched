@@ -12,5 +12,5 @@
   renderPhotos: ->
     return unless @props.development
     _.map @props.development.photos, (photo) ->
-      `<ImageCard image={photo} />`
+      `<ImageCard key={photo.id} image={photo} />`
 

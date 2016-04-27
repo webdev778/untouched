@@ -9,6 +9,7 @@ class UnitDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     development: Field::BelongsTo,
+    number: Field::String,
     id: Field::Number,
     status: EnumField,
     price: Field::Number.with_options(prefix: '$', decimals: 0),
@@ -76,6 +77,7 @@ class UnitDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
     :development,
+    :number,
     :status,
     :price,
     :bedrooms,
