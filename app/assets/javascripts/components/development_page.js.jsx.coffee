@@ -10,9 +10,6 @@
     }
 
   componentWillMount: ->
-    # TODO: Can we find a less intrusive way to set the body class?
-    $('body').addClass('sidebar-hide development')
-
     DevelopmentStore.listen(@onChange)
 
   componentDidMount: ->
@@ -36,7 +33,7 @@
     </div>`
 
   renderSuccess: ->
-    `<div className='development'>
+    `<div className='sidebar-hide development'>
 
       <Header />
 

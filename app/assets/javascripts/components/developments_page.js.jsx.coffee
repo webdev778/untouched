@@ -14,7 +14,6 @@
     DevelopmentActions.fetch()
 
   componentWillUnmount: ->
-    p 'unmounting'
     DevelopmentStore.unlisten(@onChange)
 
   componentDidUpdate: ->
