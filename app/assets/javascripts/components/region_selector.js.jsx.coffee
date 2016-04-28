@@ -4,6 +4,9 @@
     RegionStore.listen(@onChange)
     RegionActions.fetch()
 
+  componentWillUnmount: ->
+    RegionStore.unlisten(@onChange)
+
   renderOptions: ->
     _.map @state.regions, (region) =>
       `<option key={region.name} value={region.id}>{region.name}</option>`
