@@ -3,11 +3,11 @@
   render: ->
     `<div className="scroll__nav scroll__nav--static">
       <ul>
-        <li role="presentation" className="scroll__li active">
-          <a href="#overview">Views</a>
-        </li>
         <li role="presentation" className="scroll__li">
           <a href="#location">Plans</a>
+        </li>
+        <li role="presentation" className="scroll__li">
+          <a href="#overview">Views</a>
         </li>
         <li role="presentation" className="scroll__li">
           <a href="#pricing">Costs</a>
