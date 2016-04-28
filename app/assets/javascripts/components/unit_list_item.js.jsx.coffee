@@ -10,7 +10,7 @@
     @props.data.development.photos[0]?.url
 
   unitUrl: ->
-    "#/developments/#{@props.unit.development_id}/units/#{@props.unit.id}"
+    "/developments/#{@props.unit.development_id}/units/#{@props.unit.id}"
 
   render: ->
     `<tr>

@@ -22,7 +22,7 @@ class DevelopmentStore
     _.assign @filterParams, params
 
     # We really shouldn't do this here...
-    ReactRouter.hashHistory.push(new RouteGenerator(@filterParams).generate())
+    ReactRouter.browserHistory.push(new RouteGenerator(@filterParams).generate())
 
     @fetch()
 

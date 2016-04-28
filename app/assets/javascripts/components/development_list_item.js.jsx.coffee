@@ -9,7 +9,7 @@
   render: ->
     `<tr>
       <td className="asset-wrap">
-        <a href={'#/developments/' + this.props.data.development.id} className="asset" style={{backgroundImage: 'url(' + this.photoUrl() + ')'}}>
+        <a href={'/developments/' + this.props.data.development.id} className="asset" style={{backgroundImage: 'url(' + this.photoUrl() + ')'}}>
           <div className="asset__text">
             <span className="asset__location">
               {this.props.data.development.address}, {this.props.data.development.suburb_name}

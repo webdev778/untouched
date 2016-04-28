@@ -6,7 +6,7 @@
           <div className="justifize__box">
             <SidebarTrigger />
             <a href="/" className="header__logo">
-              <img src="images/logo-untouched.svg" alt="Untouched" />
+              <img src="/images/logo-untouched.svg" alt="Untouched" />
             </a>
           </div>
         </div>

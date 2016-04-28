@@ -7,7 +7,7 @@
     Math.round(@props.unit.price_per_m2 / 1000.0)
 
   developmentUrl: ->
-    "#/developments/#{@props.unit.development_id}"
+    "/developments/#{@props.unit.development_id}"
 
   render: ->
     `<div className="table-responsive table--noactive">

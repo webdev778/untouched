@@ -3,7 +3,7 @@ Route      = ReactRouter.Route,
 IndexRoute = ReactRouter.IndexRoute;
 
 ReactDOM.render((
-  <Router history={ReactRouter.hashHistory}>
+  <Router history={ReactRouter.browserHistory}>
 
     <Route path="/developments/:developmentId/units/:unitId" component={UnitPage} />
     <Route path="/developments/:developmentId" component={DevelopmentPage} />
