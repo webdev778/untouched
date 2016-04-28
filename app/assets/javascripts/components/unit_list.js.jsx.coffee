@@ -7,6 +7,9 @@
 
   componentWillMount: ->
     UnitStore.listen(@onChange)
+  componentWillUnmount: ->
+    UnitStore.unlisten(@onChange)
+
   componentDidMount: ->
     UnitActions.filterData(development_id: @props.development.id)
     UnitActions.fetch()
