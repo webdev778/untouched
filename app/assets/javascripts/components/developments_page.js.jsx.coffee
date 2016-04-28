@@ -14,6 +14,7 @@
     DevelopmentActions.fetch()
 
   componentWillUnmount: ->
+    p 'unmounting'
     DevelopmentStore.unlisten(@onChange)
 
   componentDidUpdate: ->
@@ -23,9 +24,6 @@
     $('.asset-wrap').each ->
       assetW = $(@).width()
       $(@).css('height', assetW / 1.75)
-
-  componentWillUnmount: ->
-    @
 
   onChange: (state) ->
     @setState(state)
