@@ -3,6 +3,8 @@
   "dependencies": {
     "alt": "latest",
     "moment": "latest",
-    "accounting": "latest"
+    "accounting": "latest",
+    "onScreen": "latest",
+    "floatThead": "latest"
   }
 }

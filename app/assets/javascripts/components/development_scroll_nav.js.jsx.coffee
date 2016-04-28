@@ -7,7 +7,7 @@
           <a href="#overview">Overview</a>
         </li>
         <li role="presentation" className="scroll__li">
-          <a href="#location">location</a>
+          <a href="#location">Location</a>
         </li>
         <li role="presentation" className="scroll__li">
           <a href="#pricing">pricing</a>
