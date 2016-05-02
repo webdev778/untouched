@@ -2978,3 +2978,21 @@ tbody.collapse.in {
 .img--full {
   width: 100%;
 }
+
+/* ----------------------------------------------------------------- */
+// Enhancements not found in original front-man.com CSS
+/* ----------------------------------------------------------------- */
+
+/* ----------------------------------------------------------------- */ 
+// https://3.basecamp.com/3328637/buckets/650195/todos/92760487
+// Content section should stay fixed on the developments page
+@media (min-width: 768px) {
+  .developments-page .sidebar {
+    position: fixed;
+    height: calc(100% - 50px);
+    overflow: auto;
+  }
+}
+/* ----------------------------------------------------------------- */ 
+
+
