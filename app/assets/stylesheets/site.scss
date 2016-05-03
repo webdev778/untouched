@@ -2996,3 +2996,17 @@ tbody.collapse.in {
 /* ----------------------------------------------------------------- */ 
 
 
+/* ----------------------------------------------------------------- */
+// https://3.basecamp.com/3328637/buckets/650195/todos/92759675
+// Centers UNTOUCHED logo in mobile so the filter icons stand out more.
+@media (max-width: 768px) {
+  .header .sidebar-trigger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px;
+  }
+  .header .justifize {
+    text-align: center;
+  }
+}
