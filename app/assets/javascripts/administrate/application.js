@@ -1,0 +1,10 @@
+//= require jquery
+//= require jquery_ujs
+//= require lodash
+//= require react
+//= require react_ujs
+//= require reactabular
+//= require selectize
+//= require moment
+//= require datetime_picker
+//= require_tree .

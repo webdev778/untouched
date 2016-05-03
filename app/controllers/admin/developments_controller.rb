@@ -1,5 +1,9 @@
 module Admin
   class DevelopmentsController < Admin::ApplicationController
+    def editor
+      @development = Development.find(params[:id])
+    end
+
     # To customize the behavior of this controller,
     # simply overwrite any of the RESTful actions. For example:
     #
