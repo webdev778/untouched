@@ -6,5 +6,9 @@
 //= require reactabular
 //= require selectize
 //= require moment
+//= require alt/dist/alt
+//= require ./init
 //= require datetime_picker
-//= require_tree .
+//= require ./actions/unit_actions
+//= require ./stores/unit_store
+//= require_tree ./components

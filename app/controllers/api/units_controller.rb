@@ -12,5 +12,17 @@ class API::UnitsController < API::BaseController
     render json: UnitSerializer.new(unit).as_json
   end
 
+  def update
+    params.require(:id)
+    params.require(:unit).permit!
+
+    unit = Unit.find(params[:id])
+    if unit.update_attributes(params[:unit])
+      render json: UnitSerializer.new(unit).as_json
+    else
+      render json: unit.errors, status: 406
+    end
+  end
+
 end
 

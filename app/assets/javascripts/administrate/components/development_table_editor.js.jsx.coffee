@@ -4,6 +4,28 @@ cells = Reactabular.cells
 
 @DevelopmentTableEditor = React.createClass
 
+  componentWillMount: ->
+    UnitStore.listen(@onChange)
+
+  componentDidMount: ->
+    UnitActions.filterData(development_id: 791)
+    UnitActions.fetch()
+
+  componentWillUnmount: ->
+    UnitStore.unlisten(@onChange)
+
+  formatData: (data) ->
+    _.map(data, (u) ->
+      {
+        id: u.id
+        number: parseInt(u.number)
+        status: u.status?.toString() || ''
+      }
+    )
+
+  onChange: (state) ->
+    @setState(data: @formatData(state.units))
+
   getInitialState: ->
     {
       data: @getInitialData()
@@ -16,11 +38,9 @@ cells = Reactabular.cells
 
     `<Table className="collection-data" columns={columns} data={data} />`
 
-
-
   properties: 
     number:
-      type: 'number'
+      type: 'string'
     status:
       type: 'string'
       options: [
@@ -56,12 +76,15 @@ cells = Reactabular.cells
 
   getColumns: ->
     editable = cells.edit.bind(@, 'editedCell', (value, cellData, rowIndex, property) =>
-      idx = _.findIndex(@state.data, {
-        id: cellData[rowIndex].id
-      })
+      id  = cellData[rowIndex].id
+      idx = _.findIndex(@state.data, { id: id })
 
       @state.data[idx][property] = value
-      @setState(data: @state.data)
+
+      params = {}
+      params[property] = value
+
+      UnitActions.updateUnit(id, params)
     )
 
     [
