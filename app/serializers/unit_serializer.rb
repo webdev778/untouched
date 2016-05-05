@@ -6,6 +6,7 @@ class UnitSerializer < ActiveModel::Serializer
   has_many :plans
 
   attributes :id,
+    :status,
     :development_id,
     :number,
     :price,
