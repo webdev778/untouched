@@ -138,6 +138,7 @@ cells = Reactabular.cells
     {
       property: countProp
       header: header
+      type: 'images'
       cell: (value, cellData, rowIndex, property) ->
         id  = cellData[rowIndex].id
         `<span><a href={'/admin/units/'+id+'/'+prop}>{value} {prop}</a></span>`

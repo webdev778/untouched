@@ -9,6 +9,8 @@
           @renderDropdownEditor(column)
         when 'boolean'
           @renderBooleanEditor(column)
+        when 'images'
+          `<td key={column.property}>&nbsp;</td>`
 
 
   renderInputEditor: (column) ->
