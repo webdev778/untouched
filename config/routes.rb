@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :developments do
       resources :units
+      resources :photos, controller: :development_photos
     end
     resources :units
     resources :suburbs

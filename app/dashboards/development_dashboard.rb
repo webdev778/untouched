@@ -28,7 +28,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     logo: Field::HasOne.with_options(class_name: 'DevelopmentLogo'),
-    photos: Field::HasMany.with_options(class_name: 'DevelopmentPhoto'),
+    photos: HasManyDevelopmentPhotosField,
     contract: CarrierwaveField
   }
 
