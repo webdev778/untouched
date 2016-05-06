@@ -5,6 +5,7 @@ class UnitActions
       'fetch',
       'updateUnit',
       'createUnit',
+      'deleteUnit',
       'filterData'
     )
 

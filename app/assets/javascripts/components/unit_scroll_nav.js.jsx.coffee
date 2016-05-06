@@ -13,6 +13,10 @@
           <a href="#pricing">Costs</a>
         </li>
       </ul>
-      <img src={this.props.unit.development_logo.url} alt="Development Logo" className="scroll__logo" />
+      {this.renderDevelopmentLogo()}
     </div>`
+
+  renderDevelopmentLogo: ->
+    if @props.unit.development_logo
+      `<img src={this.props.unit.development_logo.url} alt="Development Logo" className="scroll__logo" />`
 

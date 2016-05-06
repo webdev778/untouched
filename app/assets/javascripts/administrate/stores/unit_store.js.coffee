@@ -48,6 +48,16 @@ class UnitStore
       error: (response) =>
         alert("Oops! Something went wrong. Check your data and try again.")
 
+  onDeleteUnit: (id) ->
+    $.ajax
+      method: 'DELETE'
+      url: '/api/units/'+id
+      success: (response) =>
+        @units = _.reject(@units, (u) -> u.id == parseInt(id))
+        @emitChange()
+      error: (response) =>
+        alert("Oops! Something went wrong. Please try again.")
+
   fetch: ->
     $.ajax
       method: 'GET'

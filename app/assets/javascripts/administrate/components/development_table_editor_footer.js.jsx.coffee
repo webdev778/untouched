@@ -52,7 +52,9 @@
       switch column.type
         when 'boolean'
           h[column.property] = @refs[column.property].checked
-        else
+        when 'input'
+          h[column.property] = @refs[column.property].value
+        when 'dropdown'
           h[column.property] = @refs[column.property].value
 
       _.assign(acc, h)

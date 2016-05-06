@@ -3,6 +3,7 @@ class UnitStore
   @displayName: 'UnitStore'
 
   DEFAULT_FILTER_PARAMS:
+    status: 'active'
     sort: 'price'
     sort_order: 'asc'
     

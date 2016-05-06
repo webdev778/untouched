@@ -33,5 +33,4 @@
 //= require stores/unit_store
 //= require components
 //= require router
-//= require_tree .
 

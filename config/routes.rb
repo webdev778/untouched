@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'api/units' => 'api/units#index'
   put 'api/units/:id' => 'api/units#update'
   post 'api/units' => 'api/units#create'
+  delete 'api/units/:id' => 'api/units#destroy'
   post 'api/images' => 'api/images#create'
   put 'api/images/:id' => 'api/images#update'
   delete 'api/images/:id' => 'api/images#destroy'

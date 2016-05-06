@@ -1,9 +1,14 @@
 class API::UnitsController < API::BaseController
 
   def index
-    units = Unit.active.where(
+    units = Unit.where(
       development_id: params[:development_id]
     )
+
+    if params[:status]
+      units = units.where(status: params[:status])
+    end
+
     render json: units
   end
 
@@ -35,5 +40,13 @@ class API::UnitsController < API::BaseController
     end
   end
 
+  def destroy
+    params.require(:id)
+
+    unit = Unit.find(params[:id])
+    unit.destroy
+
+    render nothing: true
+  end
 end
 

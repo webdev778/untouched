@@ -144,6 +144,14 @@ cells = Reactabular.cells
         `<span><a href={'/admin/units/'+id+'/'+prop}>{value} {prop}</a></span>`
     }
 
+  actionsColumn: ->
+    onDeleteUnit = @onDeleteUnit
+    {
+      property: 'id'
+      cell: (value) ->
+        `<span><button value={value} onClick={onDeleteUnit}>Delete</button></span>`
+    }
+
   formatters:
     number: (v) -> parseInt(v)
     capitalize: (v) -> _.upperFirst(v)
@@ -175,6 +183,9 @@ cells = Reactabular.cells
       @booleanColumn('bathtub', 'BT')
       @booleanColumn('penthouse_level', 'PH')
       @booleanColumn('no_stacker', 'NS')
-
+      @actionsColumn()
     ]
+
+  onDeleteUnit: (event) ->
+    UnitActions.deleteUnit(event.target.value)
 
