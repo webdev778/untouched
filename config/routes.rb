@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :developments do
-      get 'editor', on: :member
+      resources :units
     end
     resources :units
     resources :suburbs

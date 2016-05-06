@@ -10,7 +10,7 @@ cells = Reactabular.cells
     UnitStore.listen(@onChange)
 
   componentDidMount: ->
-    UnitActions.filterData(development_id: 791)
+    UnitActions.filterData(development_id: @props.development.id)
     UnitActions.fetch()
 
   componentWillUnmount: ->
@@ -38,7 +38,10 @@ cells = Reactabular.cells
     data    = @state.data    || []
 
     `<Table className="development-table-editor collection-data" columns={columns} data={data}>
-      <DevelopmentTableEditorFooter properties={this.properties} columns={columns} />
+      <DevelopmentTableEditorFooter 
+        development={this.props.development}
+        properties={this.properties} 
+        columns={columns} />
     </Table>`
 
   properties: 

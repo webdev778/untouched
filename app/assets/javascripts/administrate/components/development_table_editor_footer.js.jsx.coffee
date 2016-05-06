@@ -54,7 +54,7 @@
           h[column.property] = @refs[column.property].value
 
       _.assign(acc, h)
-    ), {})
+    ), { development_id: @props.development.id })
 
 
   handleSubmit: (event) ->

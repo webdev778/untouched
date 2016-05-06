@@ -19,7 +19,7 @@ class Unit < ActiveRecord::Base
   validates_presence_of :master_bedroom_in_meters
   validates_presence_of :aspect
   validates_presence_of :max_body_corporate_fee
-  validates_presence_of :annual_council_fee
+  validates_presence_of :annual_council_rate
 
 
   has_many :views, -> { order('sort, id ASC') }, class_name: 'UnitView', as: :imageable, dependent: :destroy

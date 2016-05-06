@@ -8,7 +8,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    units: Field::HasMany,
+    units: HasManyUnitsField,
     id: Field::Number,
     address: Field::String,
     city: Field::String,
@@ -72,8 +72,6 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :city,
     :suburb,
     :units,
-    :logo,
-    :photos,
     :ready_at,
     :gym,
     :pool,
