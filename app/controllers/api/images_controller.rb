@@ -22,6 +22,15 @@ class API::ImagesController < API::BaseController
       render json: image.errors, status: 406
     end
   end
+
+  def destroy
+    params.require(:id)
+
+    image = Image.find(params[:id])
+    image.destroy
+
+    render nothing: true
+  end
   
   
 end

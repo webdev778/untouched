@@ -16,8 +16,9 @@
     </div>`
 
   renderPreviews: ->
+    onDeleteItem = @onDeleteItem
     _.map @state.images, (image) ->
-      `<CompositeImageUploaderItem key={image.id} image={image} />`
+      `<CompositeImageUploaderItem onDelete={onDeleteItem} key={image.id} image={image} />`
 
   onDrop: (files) ->
     _.each files, (file) =>
@@ -41,3 +42,14 @@
           console.log [ data, textStatus, jqXHR ]
 
   
+  onDeleteItem: (event) ->
+    if confirm("Are you sure you want to delete this?")
+      $.ajax
+        url: '/api/images/' + event.target.value
+        method: 'DELETE'
+        success: (data, textStatus, jqXHR) =>
+          @setState(images: _.reject(@state.images, (i) -> i.id == parseInt(event.target.value)))
+        error: (jqXHR, textStatus, error) ->
+          console.log [ textStatus, jqXHR ]
+
+

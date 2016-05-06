@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   post 'api/units' => 'api/units#create'
   post 'api/images' => 'api/images#create'
   put 'api/images/:id' => 'api/images#update'
+  delete 'api/images/:id' => 'api/images#destroy'
   get 'api/developments/:development_id/units/:id' => 'api/units#show'
   get 'api/developments/:id' => 'api/developments#show'
   get 'api/developments' => 'api/developments#index'
