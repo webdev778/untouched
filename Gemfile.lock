@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     CFPropertyList (2.3.2)
     actionmailer (4.2.5.2)
@@ -268,6 +269,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.5.2)
       sprockets-rails
+    rails-assets-react-dropzone (3.4.0)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -335,6 +337,10 @@ GEM
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
+    sprockets-es6 (0.9.0)
+      babel-source (>= 5.8.11)
+      babel-transpiler
+      sprockets (>= 3.0.0)
     sprockets-rails (3.0.4)
       actionpack (>= 4.0)
       activesupport (>= 4.0)
@@ -387,6 +393,7 @@ DEPENDENCIES
   lodash-rails
   pg
   rails (= 4.2.5.2)
+  rails-assets-react-dropzone!
   rails_12factor
   react-rails (~> 1.6.0)
   rspec-rails (~> 3.4.2)
@@ -394,6 +401,8 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 3.1)
   spring
+  sprockets (>= 3.0.0.beta)
+  sprockets-es6
   steak
   turbolinks
   uglifier (>= 1.3.0)

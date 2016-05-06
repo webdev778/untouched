@@ -1,0 +1,27 @@
+section {
+  margin: 1.5em;
+}
+.composite-image-uploader {
+  .dropzone {
+    width: 100%;
+    background: $grey-0;
+    text-align: center;
+    padding: 1.5em; }
+}
+
+.composite-image-uploader-item {
+  clear: both;
+  .image {
+    float: left;
+    width: 50%;
+    img {
+      width: 100%;
+    }
+    padding: 1.5em;
+  }
+  .form {
+    float: left;
+    width: 50%;
+    padding: 1.5em;
+  }
+}
