@@ -134,6 +134,15 @@ cells = Reactabular.cells
       ]
     }
 
+  imagesColumn: (prop, countProp, header) ->
+    {
+      property: countProp
+      header: header
+      cell: (value, cellData, rowIndex, property) ->
+        id  = cellData[rowIndex].id
+        `<span><a href={'/admin/units/'+id+'/'+prop}>{value} {prop}</a></span>`
+    }
+
   formatters:
     number: (v) -> parseInt(v)
     capitalize: (v) -> _.upperFirst(v)
@@ -144,6 +153,8 @@ cells = Reactabular.cells
       @inputColumn('number', 'Number')
       @dropdownColumn('status', 'Status', @properties.status.options, @formatters.capitalize)
       @inputColumn('price', 'Price', @formatters.money)
+      @imagesColumn('views', 'views_count', 'Views')
+      @imagesColumn('plans', 'plans_count', 'Plans')
       @inputColumn('bedrooms', 'Bd')
       @inputColumn('bathrooms', 'Bt')
       @inputColumn('parking', 'P')
@@ -163,5 +174,6 @@ cells = Reactabular.cells
       @booleanColumn('bathtub', 'BT')
       @booleanColumn('penthouse_level', 'PH')
       @booleanColumn('no_stacker', 'NS')
+
     ]
 

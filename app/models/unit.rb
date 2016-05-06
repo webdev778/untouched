@@ -46,4 +46,8 @@ class Unit < ActiveRecord::Base
   def contract_url
     development.contract_url
   end
+
+  def to_s
+    [ development.to_s, "##{number}" ].join(' ')
+  end
 end

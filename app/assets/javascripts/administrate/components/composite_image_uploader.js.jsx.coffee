@@ -23,9 +23,9 @@
     _.each files, (file) =>
       data = new FormData()
       data.append('image[file]', file)
-      data.append('image[type]', 'DevelopmentPhoto')
+      data.append('image[type]', @props.type)
       data.append('image[imageable_id]', @props.imageable.id)
-      data.append('image[imageable_type]', 'Development')
+      data.append('image[imageable_type]', @props.imageable_type)
 
       $.ajax
         url: '/api/images'

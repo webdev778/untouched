@@ -36,8 +36,17 @@ class UnitSerializer < ActiveModel::Serializer
     :deposit,
     :contract_url,
     :created_at,
-    :updated_at
+    :updated_at,
+    :views_count,
+    :plans_count
 
+  def views_count
+    object.views.count
+  end
+
+  def plans_count
+    object.plans.count
+  end
 
   def development_logo
     DevelopmentLogoSerializer.new(object.development.logo).as_json(root: false)

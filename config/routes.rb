@@ -4,7 +4,10 @@ Rails.application.routes.draw do
       resources :units
       resources :photos, controller: :development_photos
     end
-    resources :units
+    resources :units do
+      resources :plans, controller: :unit_plans
+      resources :views, controller: :unit_views
+    end
     resources :suburbs
     resources :regions
     resources :development_photos
