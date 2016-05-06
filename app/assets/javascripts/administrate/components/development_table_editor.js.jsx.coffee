@@ -37,7 +37,9 @@ cells = Reactabular.cells
     columns = @state.columns || []
     data    = @state.data    || []
 
-    `<Table className="development-table-editor collection-data" columns={columns} data={data} />`
+    `<Table className="development-table-editor collection-data" columns={columns} data={data}>
+      <DevelopmentTableEditorFooter properties={this.properties} columns={columns} />
+    </Table>`
 
   properties: 
     number:
@@ -103,6 +105,7 @@ cells = Reactabular.cells
     {
       property: prop
       header: header
+      type: 'input'
       cell: _.compact([ @editable()(editor: editors.input()), formatter ])
     }
 
@@ -110,6 +113,7 @@ cells = Reactabular.cells
     {
       property: prop
       header: header
+      type: 'dropdown'
       cell: [ 
         @editable()({editor: editors.dropdown(options)})
         formatter
@@ -120,33 +124,41 @@ cells = Reactabular.cells
     {
       property: prop
       header: header
+      type: 'boolean'
       cell: [ 
         @editable()({editor: editors.boolean()})
         (active) => active && `<span>&#10003;</span>`
       ]
     }
 
+  formatters:
+    number: (v) -> parseInt(v)
+    capitalize: (v) -> _.upperFirst(v)
+    money: (v) -> accounting.formatMoney(v, '$', 0)
+
   getColumns: ->
     [
       @inputColumn('number', 'Number')
-      @dropdownColumn('status', 'Status', @properties.status.options, ((v) -> _.upperFirst(v)))
-      @inputColumn('price', 'Price ($)', ((v) -> accounting.formatMoney(v)))
-      @inputColumn('bedrooms', 'Beds')
-      @inputColumn('bathrooms', 'Baths')
-      @inputColumn('parking', 'Parking')
-      @inputColumn('internal_in_meters', 'Int M2', ((v) -> parseInt(v)))
-      @inputColumn('master_bedroom_in_meters', 'Master M2', ((v) -> parseInt(v)))
-      @inputColumn('external_in_meters', 'Ext M2', ((v) -> parseInt(v)))
-      @dropdownColumn('aspect', 'Aspect', @properties.aspect.options, ((v) -> _.upperFirst(v)))
-      @inputColumn('max_body_corporate_fee', 'Body Corp ($)', ((v) -> accounting.formatMoney(v)))
-      @inputColumn('annual_council_rate', 'Annual Council ($)', ((v) -> accounting.formatMoney(v)))
-      @booleanColumn('kitchen_island', 'Kitchen Island')
-      @booleanColumn('ensuite', 'Ensuite')
-      @booleanColumn('study_nook', 'Study Nook')
-      @booleanColumn('storage_cage', 'Storage Cage')
-      @booleanColumn('walk_in_wardrobe', 'Walk-in Wardrobe')
-      @booleanColumn('bathtub', 'Bathtub')
-      @booleanColumn('penthouse_level', 'Penthouse')
-      @booleanColumn('no_stacker', 'No Stacker')
+      @dropdownColumn('status', 'Status', @properties.status.options, @formatters.capitalize)
+      @inputColumn('price', 'Price', @formatters.money)
+      @inputColumn('bedrooms', 'Bd')
+      @inputColumn('bathrooms', 'Bt')
+      @inputColumn('parking', 'P')
+      @inputColumn('internal_in_meters', 'IM2', @formatters.number)
+      @inputColumn('master_bedroom_in_meters', 'MM2', @formatters.number)
+      @inputColumn('external_in_meters', 'EM2', @formatters.number)
+      @dropdownColumn('aspect', 'Aspect', @properties.aspect.options, @formatters.capitalize)
+      @inputColumn('max_body_corporate_fee', 'Body', @formatters.money)
+      @inputColumn('annual_council_rate', 'Council', @formatters.money)
+      @inputColumn('stamp_duty', 'Stamp', @formatters.money)
+      @inputColumn('stamp_duty_savings', 'Stamp Sav', @formatters.money)
+      @booleanColumn('kitchen_island', 'KI')
+      @booleanColumn('ensuite', 'E')
+      @booleanColumn('study_nook', 'SN')
+      @booleanColumn('storage_cage', 'SC')
+      @booleanColumn('walk_in_wardrobe', 'WIW')
+      @booleanColumn('bathtub', 'BT')
+      @booleanColumn('penthouse_level', 'PH')
+      @booleanColumn('no_stacker', 'NS')
     ]
 

@@ -34,8 +34,19 @@ class UnitStore
         @units[idx] = response.unit
         @emitChange()
       error: (response) =>
-        console.log 'error'
-        console.log response
+        alert("Oops! Something went wrong. Check your data and try again.")
+
+  onCreateUnit: (params) ->
+    $.ajax
+      method: 'POST'
+      url: '/api/units'
+      data: 
+        unit: params
+      success: (response) =>
+        @units.push(response.unit)
+        @emitChange()
+      error: (response) =>
+        alert("Oops! Something went wrong. Check your data and try again.")
 
   fetch: ->
     $.ajax

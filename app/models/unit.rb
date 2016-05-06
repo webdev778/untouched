@@ -9,6 +9,18 @@ class Unit < ActiveRecord::Base
 
   validates_uniqueness_of :number, scope: :development_id
   validates_presence_of :number
+  validates_presence_of :price
+  validates_presence_of :development_id
+  validates_presence_of :bedrooms
+  validates_presence_of :bathrooms
+  validates_presence_of :parking
+  validates_presence_of :internal_in_meters
+  validates_presence_of :external_in_meters
+  validates_presence_of :master_bedroom_in_meters
+  validates_presence_of :aspect
+  validates_presence_of :max_body_corporate_fee
+  validates_presence_of :annual_council_fee
+
 
   has_many :views, -> { order('sort, id ASC') }, class_name: 'UnitView', as: :imageable, dependent: :destroy
   has_many :plans, -> { order('sort, id ASC') }, class_name: 'UnitPlan', as: :imageable, dependent: :destroy

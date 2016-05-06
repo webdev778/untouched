@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'api/units' => 'api/units#index'
   put 'api/units/:id' => 'api/units#update'
+  post 'api/units' => 'api/units#create'
   get 'api/developments/:development_id/units/:id' => 'api/units#show'
   get 'api/developments/:id' => 'api/developments#show'
   get 'api/developments' => 'api/developments#index'
