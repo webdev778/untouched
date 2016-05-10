@@ -22,7 +22,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     steam_room: Field::Boolean,
     rooftop_deck: Field::Boolean,
     has_double_glazed_windows: Field::Boolean,
-    ceiling_height_at_living_area_in_meters: Field::Number,
+    ceiling_height_at_living_area_in_meters: Field::Number.with_options(decimals: 2),
     deposit_percent: Field::Number.with_options(decimals: 2),
     deposit_due_in_days: Field::Number,
     created_at: Field::DateTime,
