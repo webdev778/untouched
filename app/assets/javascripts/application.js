@@ -23,6 +23,7 @@
 //= require floatThead/dist/jquery.floatThead
 //= require moment/moment
 //= require init
+//= require infobox
 //= require route_generator
 //= require schema
 //= require actions/region_actions
