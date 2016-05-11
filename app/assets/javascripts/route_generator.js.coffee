@@ -24,7 +24,8 @@ class RouteGenerator
 
   generate: ->
     '/' + (_.map @params, (value, key) =>
-      "#{key}/#{value}"
+      if value.length > 0
+        "#{key}/#{value}"
     ).join('/')
 
 window.RouteGenerator = RouteGenerator
