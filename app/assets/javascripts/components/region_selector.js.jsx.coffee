@@ -38,7 +38,7 @@
     @props.filters?.region
 
   hasInitialSuburb: (id) ->
-    _.includes @props.filters?.suburb, id
+    _.includes @props.filters?.suburb, id.toString()
 
   render: ->
     `<div className='form__group'>
