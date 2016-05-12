@@ -18,16 +18,6 @@
         filters={this.props.filters} />
 
       <M2Selector 
-        rangeStart="10" 
-        rangeEnd="50"
-        step="5" 
-        label="Master Bedroom" 
-        id="master_bedroom_m2_selector" 
-        paramName="master_bedroom_in_meters"
-        actions={this.props.actions}
-        filters={this.props.filters} />
-
-      <M2Selector 
         rangeStart="5" 
         rangeEnd="100"
         step="5" 
