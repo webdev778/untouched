@@ -17,5 +17,5 @@
     </div>`
 
   renderLogo: ->
-    return '' unless @props.development.logo
-    `<img src={this.props.development.logo.url} alt="Development Logo" className="scroll__logo" />`
+    return '' unless @props.development.logo_url
+    `<img src={this.props.development.logo_url} alt={this.props.development.address} className="scroll__logo" />`

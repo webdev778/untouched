@@ -27,7 +27,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     deposit_due_in_days: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    logo: Field::HasOne.with_options(class_name: 'DevelopmentLogo'),
+    logo: CarrierwaveField,
     photos: HasManyDevelopmentPhotosField,
     contract: CarrierwaveField
   }
@@ -68,6 +68,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :logo,
     :address,
     :city,
     :suburb,

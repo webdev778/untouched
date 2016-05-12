@@ -27,7 +27,7 @@ class UnitSerializer < ActiveModel::Serializer
     :penthouse_level,
     :no_stacker,
     :max_body_corporate_fee,
-    :development_logo,
+    :development_logo_url,
     :stamp_duty,
     :deposit_percent,
     :deposit_due_in_days,
@@ -48,8 +48,8 @@ class UnitSerializer < ActiveModel::Serializer
     object.plans.count
   end
 
-  def development_logo
-    DevelopmentLogoSerializer.new(object.development.logo).as_json(root: false)
+  def development_logo_url
+    object.development.logo.try(:url)
   end
 
 end

@@ -3,6 +3,7 @@ class DevelopmentSerializer < ActiveModel::Serializer
   has_many :photos
 
   attributes :id, :lat, :lng,
+    :logo_url,
     :address,
     :city, 
     :region_name, 
@@ -22,6 +23,10 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :units_sold_count,
     :created_at,
     :updated_at
+
+  def logo_url
+    object.logo.try(:url)
+  end
 
   def region_name
     object.region.name

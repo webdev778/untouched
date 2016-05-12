@@ -17,6 +17,6 @@
     </div>`
 
   renderDevelopmentLogo: ->
-    if @props.unit.development_logo
-      `<img src={this.props.unit.development_logo.url} alt="Development Logo" className="scroll__logo" />`
+    if @props.unit.development_logo_url
+      `<img src={this.props.unit.development_logo_url} alt={this.props.unit.development.address} className="scroll__logo" />`
 

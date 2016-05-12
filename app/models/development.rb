@@ -2,10 +2,10 @@ class Development < ActiveRecord::Base
   belongs_to :suburb
   has_many :units, dependent: :destroy
   has_many :photos, -> { order('sort, id ASC') }, class_name: 'DevelopmentPhoto', as: :imageable, dependent: :destroy
-  has_one :logo, class_name: 'DevelopmentLogo', as: :imageable, dependent: :destroy
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
   enum development_type: [ :apartment, :townhouse ]
   mount_uploader :contract, ContractUploader
+  mount_uploader :logo, DevelopmentLogoUploader
 
   validates_presence_of :address
   validates_presence_of :city
