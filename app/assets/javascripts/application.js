@@ -26,6 +26,8 @@
 //= require infobox
 //= require route_generator
 //= require schema
+//= require actions/enquiry_actions
+//= require stores/enquiry_store
 //= require actions/region_actions
 //= require stores/region_store
 //= require actions/development_actions

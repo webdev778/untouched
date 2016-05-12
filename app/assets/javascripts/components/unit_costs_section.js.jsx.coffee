@@ -75,6 +75,7 @@
       </form>
 
       <EnquiryModal 
+        unit={this.props.unit}
         onClose={this.onCloseModal} 
         isOpen={this.state.isModalOpen} />
     </section>`

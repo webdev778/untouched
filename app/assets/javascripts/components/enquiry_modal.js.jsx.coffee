@@ -57,6 +57,7 @@
        email: @refs.email.value
        body: @refs.body.value
        mortgage: @refs.mortgage.value
+       unit_id: @props.unit.id
      )
 
      @props.onClose?.call()

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get 'api/developments/:id' => 'api/developments#show'
   get 'api/developments' => 'api/developments#index'
   get 'api/regions' => 'api/regions#index'
+  post 'api/enquiries' => 'api/enquiries#create'
 
   root 'site#show'
   get '/*path' => 'site#show'
