@@ -74,7 +74,9 @@
         </button>
       </form>
 
-      <EnquiryModal onClose={this.onCloseModal} isOpen={this.state.isModalOpen} />
+      <EnquiryModal 
+        onClose={this.onCloseModal} 
+        isOpen={this.state.isModalOpen} />
     </section>`
 
   onCloseModal: ->

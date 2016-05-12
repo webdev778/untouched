@@ -1000,6 +1000,12 @@ input:-ms-input-placeholder,
 .form__control:-ms-input-placeholder {
   color: #aaa;
 }
+button:disabled {
+  background-color: #aaa;
+  &:hover {
+    background-color: #aaa;
+  }
+}
 input:disabled,
 .form__control:disabled {
   background-color: #fafafa;
