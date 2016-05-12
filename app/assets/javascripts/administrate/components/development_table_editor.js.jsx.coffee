@@ -168,7 +168,6 @@ cells = Reactabular.cells
       @inputColumn('bathrooms', 'Bt')
       @inputColumn('parking', 'P')
       @inputColumn('internal_in_meters', 'IM2', @formatters.number)
-      @inputColumn('master_bedroom_in_meters', 'MM2', @formatters.number)
       @inputColumn('external_in_meters', 'EM2', @formatters.number)
       @dropdownColumn('aspect', 'Aspect', @properties.aspect.options, @formatters.capitalize)
       @inputColumn('max_body_corporate_fee', 'Body', @formatters.money)
