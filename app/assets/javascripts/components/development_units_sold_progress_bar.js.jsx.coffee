@@ -13,5 +13,10 @@
     </div>`
 
   soldPercentage: ->
-    Math.round((@props.development.units_sold_count / @props.development.units_count) * 100)
+    Math.round(
+      (
+        (@props.development.units_count - @props.development.units_active_count) / 
+        @props.development.units_count
+      ) * 100
+    )
 

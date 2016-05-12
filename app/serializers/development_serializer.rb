@@ -18,6 +18,7 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
     :units_count,
+    :units_active_count,
     :units_sold_count,
     :created_at,
     :updated_at
@@ -28,6 +29,10 @@ class DevelopmentSerializer < ActiveModel::Serializer
 
   def suburb_name
     object.suburb.name
+  end
+
+  def units_active_count
+    object.units.active.count
   end
 
   def units_sold_count
