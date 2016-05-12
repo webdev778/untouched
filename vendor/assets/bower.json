@@ -5,6 +5,7 @@
     "moment": "latest",
     "accounting": "latest",
     "onScreen": "latest",
-    "floatThead": "latest"
+    "floatThead": "latest",
+    "react-modal": "latest"
   }
 }

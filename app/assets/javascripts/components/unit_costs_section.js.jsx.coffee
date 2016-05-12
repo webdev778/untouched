@@ -1,5 +1,10 @@
 @UnitCostsSection = React.createClass
 
+  getInitialState: ->
+    {
+      isModalOpen: false
+    }
+
   formattedDepositPercent: ->
     Math.round(@props.unit.deposit_percent * 100)
 
@@ -59,7 +64,22 @@
             </table>
           </div>
         </div>
-        <button type="button" className="btn btn--light btn--lg btn--full" data-toggle="modal" data-target="#modal-enquire">Enquire Now</button>
+        <button 
+          onClick={this.onClickEnquire}
+          type="button" 
+          className="btn btn--light btn--lg btn--full" 
+          data-toggle="modal" 
+          data-target="#modal-enquire">
+          Enquire Now
+        </button>
       </form>
+
+      <EnquiryModal onClose={this.onCloseModal} isOpen={this.state.isModalOpen} />
     </section>`
+
+  onCloseModal: ->
+    @setState(isModalOpen: false)
+
+  onClickEnquire: (event) ->
+    @setState(isModalOpen: true)
 
