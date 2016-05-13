@@ -2,7 +2,7 @@
 
   render: ->
     `<div key={this.props.image.id} className="card">
-      <div className="card__img" style={{backgroundImage: 'url('+this.props.image.url+')'}}></div>
+      <img src={this.props.image.url} />
       {this.renderCaption()}
     </div>`
 
