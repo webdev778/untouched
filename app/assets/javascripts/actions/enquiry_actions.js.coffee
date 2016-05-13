@@ -1,16 +1,15 @@
 class EnquiryActions
   submitEnquiry: (params) ->
-    $.ajax
-      method: 'POST'
-      url: '/api/enquiries'
-      data:
-        enquiry: params
-      success: (response) ->
-        p response
-      error: (response) ->
-        p response
+    EnquirySource.
+      create(params).
+      then((response) => @updateEnquiry(response.data)).
+      catch((error) => @submitEnquiryFailed(error))
 
-    @
+  updateEnquiry: (enquiry) ->
+    enquiry
+
+  submitEnquiryFailed: (error) ->
+    error
 
 window.EnquiryActions = alt.createActions(EnquiryActions)
 

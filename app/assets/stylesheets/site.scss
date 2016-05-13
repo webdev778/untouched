@@ -693,6 +693,11 @@ button:focus, button:active {
   transition: all .3s ease 0s;
 }
 
+.form__error {
+  margin: 1em 0;
+  font-weight: bold;
+}
+
 textarea.form__control {
   padding: 10px 15px;
   resize: none;
@@ -2423,6 +2428,18 @@ input[type=radio]:checked + label:hover:before {
   width: 100%;
   max-height: -webkit-calc(100vh - 300px);
   max-height: calc(100vh - 300px);
+}
+.alert-modal {
+  p {
+    text-align: center;
+    padding: 4em;
+  }
+  .form__group {
+    text-align: center
+  }
+  .btn--primary {
+    margin-bottom: 2em;
+  }
 }
 @media (max-width: 768px) {
   .modal-body {

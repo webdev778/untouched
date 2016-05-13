@@ -22,10 +22,12 @@
 //= require onScreen/jquery.onscreen
 //= require floatThead/dist/jquery.floatThead
 //= require moment/moment
+//= require axios/dist/axios
 //= require init
 //= require infobox
 //= require route_generator
 //= require schema
+//= require sources/enquiry_source
 //= require actions/enquiry_actions
 //= require stores/enquiry_store
 //= require actions/region_actions

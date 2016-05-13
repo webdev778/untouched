@@ -6,6 +6,6 @@
     "accounting": "latest",
     "onScreen": "latest",
     "floatThead": "latest",
-    "react-modal": "latest"
+    "axios": "latest"
   }
 }
