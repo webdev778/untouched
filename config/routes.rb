@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  if Rails.env.development?
+    get '/rails/mailers' => "rails/mailers#index"
+    get '/rails/mailers/*path' => "rails/mailers#preview"
+  end
+
   namespace :admin do
     resources :developments do
       resources :units
