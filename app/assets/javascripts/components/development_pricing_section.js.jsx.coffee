@@ -1,8 +1,7 @@
-@DevelopmentPricingSection = React.createClass
+window.DevelopmentPricingSection = React.createClass
 
   render: ->
     `<section className="scroll__section scroll__pricing">
-      <a name="pricing"></a>
       <div className="container">
         <div className="sidebar-wrap">
           <DevelopmentPricingSidebar params={this.props.params} development={this.props.development}/>

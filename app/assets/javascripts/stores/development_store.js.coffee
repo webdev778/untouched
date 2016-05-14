@@ -1,3 +1,5 @@
+browserHistory = require('react-router').browserHistory
+
 class DevelopmentStore
 
   @displayName: 'DevelopmentStore'
@@ -22,7 +24,7 @@ class DevelopmentStore
     _.assign @filterParams, params
 
     # We really shouldn't do this here...
-    ReactRouter.browserHistory.push(new RouteGenerator(@filterParams).generate())
+    browserHistory.push(new RouteGenerator(@filterParams).generate())
 
     @fetch()
 

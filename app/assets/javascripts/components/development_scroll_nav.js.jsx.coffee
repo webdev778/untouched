@@ -1,16 +1,25 @@
-@DevelopmentScrollNav = React.createClass
+Scroll = require('react-scroll')
+Link   = Scroll.Link
+
+window.DevelopmentScrollNav = React.createClass
 
   render: ->
     `<div className="scroll__nav scroll__nav--fixed">
       <ul>
         <li role="presentation" className="scroll__li active">
-          <a href="#overview">Overview</a>
+          <Link activeClass="active" to="overview">
+            Overview
+          </Link>
         </li>
         <li role="presentation" className="scroll__li">
-          <a href="#location">Location</a>
+          <Link activeClass="active" to="location">
+            Location
+          </Link>
         </li>
         <li role="presentation" className="scroll__li">
-          <a href="#pricing">pricing</a>
+          <Link activeClass="active" to="location">
+            Pricing
+          </Link>
         </li>
       </ul>
       {this.renderLogo()}

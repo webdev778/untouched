@@ -1,7 +1,6 @@
-@DevelopmentOverviewSection = React.createClass
+window.DevelopmentOverviewSection = React.createClass
   render: ->
     `<section className="scroll__section">
-      <a name="overview"></a>
       <div className="container">
         <div className="container__reset">
           {this.renderPhotos()}

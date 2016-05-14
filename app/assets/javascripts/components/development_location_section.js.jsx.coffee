@@ -1,4 +1,4 @@
-@DevelopmentLocationSection = React.createClass
+window.DevelopmentLocationSection = React.createClass
   componentDidMount: ->
     @initializeMap() if @hasGeoData()
 
@@ -45,7 +45,6 @@
 
   renderMap: ->
     `<section className="scroll__section">
-      <a name="location"></a>
       <div className="container">
         <div id="map" className="map"></div>
         {this.renderInfoBox()}

@@ -2703,7 +2703,7 @@ tbody.collapse.in {
   position: relative;
   text-align: center;
 }
-.scroll__nav li:after {
+.scroll__nav li a:after {
   content: '';
   width: 0;
   height: 2px;
@@ -2733,13 +2733,13 @@ tbody.collapse.in {
 .scroll__nav a:focus {
   color: #444444 !important;
 }
-.scroll__nav .active a {
+.scroll__nav a.active {
   color: #03a9f4;
 }
-.scroll__nav .active a:focus {
+.scroll__nav a.active:focus {
   color: #03a9f4 !important;
 }
-.scroll__nav .active:after {
+.scroll__nav a.active:after {
   width: 100%;
 }
 .modal-open .scroll__nav {
