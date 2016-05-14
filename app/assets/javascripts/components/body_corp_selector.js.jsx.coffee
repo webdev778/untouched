@@ -1,4 +1,6 @@
-@BodyCorpSelector = React.createClass
+accounting = require('accounting')
+
+window.BodyCorpSelector = React.createClass
 
   STEP: 1000
   RANGE: [ 2000, 8000 ]

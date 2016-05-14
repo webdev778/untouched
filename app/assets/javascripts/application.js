@@ -17,12 +17,6 @@
 //= require react
 //= require react_ujs
 //= require ReactRouter.min
-//= require alt/dist/alt
-//= require accounting/accounting
-//= require onScreen/jquery.onscreen
-//= require floatThead/dist/jquery.floatThead
-//= require moment/moment
-//= require axios/dist/axios
 //= require init
 //= require infobox
 //= require route_generator

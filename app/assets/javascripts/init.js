@@ -1,3 +1,6 @@
+axios = require('axios')
+
+Alt = require('alt')
 window.alt = new Alt();
 window.p = function(msg) { console.log(msg); }
 

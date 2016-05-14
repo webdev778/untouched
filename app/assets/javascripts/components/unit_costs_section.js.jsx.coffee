@@ -1,4 +1,6 @@
-@UnitCostsSection = React.createClass
+accounting = require('accounting')
+
+window.UnitCostsSection = React.createClass
 
   getInitialState: ->
     {

@@ -1,8 +1,7 @@
 Table = Reactabular.Table
 editors = Reactabular.editors
 cells = Reactabular.cells
-
-
+accounting = require('accounting')
 
 @DevelopmentTableEditor = React.createClass
 

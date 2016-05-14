@@ -1,4 +1,6 @@
-@ReadyDateSelector = React.createClass
+moment = require('moment')
+
+window.ReadyDateSelector = React.createClass
 
   startYear: ->
     new Date().getFullYear()

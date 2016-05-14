@@ -1,4 +1,6 @@
-@MaxPriceSelector = React.createClass
+accounting = require('accounting')
+
+window.MaxPriceSelector = React.createClass
 
   RANGE_IN_HUNDRED_THOUSANDS: [ 4, 20 ]
 

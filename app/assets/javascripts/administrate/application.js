@@ -6,8 +6,6 @@
 //= require reactabular
 //= require selectize
 //= require moment
-//= require accounting/accounting
-//= require alt/dist/alt
 //= require react-dropzone
 //= require ./init
 //= require datetime_picker
