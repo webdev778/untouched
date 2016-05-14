@@ -1,4 +1,12 @@
-@UnitPage = React.createClass
+Scroll = require('react-scroll')
+Link   = Scroll.Link
+Element = Scroll.Element
+
+window.UnitPage = React.createClass
+
+  scrollNav:
+    offset: -200
+    duration: 500
 
   status:
     loading: {}
@@ -44,18 +52,68 @@
         <div className="scroll__fixed">
           <div className="container">
             <UnitHeaderTable unit={this.state.unit} />
-            <UnitScrollNav unit={this.state.unit} />
+            {this.renderNav()}
           </div>
         </div>
         <div className="scroll__wrap">
           <div className="scroll__content">
-            <UnitPlansSection unit={this.state.unit}/>
-            <UnitViewsSection unit={this.state.unit}/>
-            <UnitCostsSection unit={this.state.unit}/>
+            <Element name="plans">
+              <UnitPlansSection unit={this.state.unit}/>
+            </Element>
+            <Element name="views">
+              <UnitViewsSection unit={this.state.unit}/>
+            </Element>
+            <Element name="costs">
+              <UnitCostsSection unit={this.state.unit}/>
+            </Element>
           </div>
         </div>
       </div>
 
      </div>`
 
+
+  renderNav: ->
+    `<div className="scroll__nav scroll__nav--static">
+      <ul>
+        <li role="presentation" className="scroll__li">
+          <Link 
+            activeClass="active" 
+            spy={true} 
+            smooth={true} 
+            offset={this.scrollNav.offset} 
+            duration={this.scrollNav.duration} 
+            to="plans">
+            Plans
+          </Link>
+        </li>
+        <li role="presentation" className="scroll__li">
+          <Link 
+            activeClass="active" 
+            spy={true} 
+            smooth={true} 
+            offset={this.scrollNav.offset} 
+            duration={this.scrollNav.duration} 
+            to="views">
+            Views
+          </Link>
+        </li>
+        <li role="presentation" className="scroll__li">
+          <Link 
+            activeClass="active" 
+            spy={true} 
+            smooth={true} 
+            offset={this.scrollNav.offset} 
+            duration={this.scrollNav.duration} 
+            to="costs">
+            Costs
+          </Link>
+        </li>
+      </ul>
+      {this.renderDevelopmentLogo()}
+    </div>`
+
+  renderDevelopmentLogo: ->
+    if @state.unit.development_logo_url
+      `<img src={this.state.unit.development_logo_url} alt={this.state.unit.development.address} className="scroll__logo" />`
 
