@@ -3,6 +3,7 @@
   getInitialState: ->
     {
       developments: []
+      filterParams: {}
     }
 
   componentWillMount: ->
@@ -10,7 +11,7 @@
     $(window).resize => @onResize()
 
   componentDidMount: ->
-    DevelopmentActions.filterData(@parseFilters())
+    DevelopmentActions.filterData(@parseFiltersFromUrl())
     DevelopmentActions.fetch()
 
   componentWillUnmount: ->
@@ -27,7 +28,7 @@
   onChange: (state) ->
     @setState(state)
 
-  parseFilters: ->
+  parseFiltersFromUrl: ->
     RouteGenerator.parse(@props.params.splat)
 
   render: ->
@@ -43,13 +44,13 @@
         <aside className='sidebar'>
           <DismissSidebarTrigger />
           <FilterSidebar
-            filters={this.parseFilters()} 
+            filters={this.parseFiltersFromUrl()} 
             actions={DevelopmentActions} />
         </aside>
 
         <main className='main'>
           <DevelopmentList 
-            filters={this.parseFilters()} 
+            filters={this.state.filterParams} 
             developments={this.state.developments} />
         </main>
       </div>
