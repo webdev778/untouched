@@ -9,4 +9,7 @@
     </aside>`
 
   parseFilters: ->
-    RouteGenerator.parse(@props.params.splat)
+    RouteGenerator.parse(
+      @props.params.splat,
+      '/developments/' + @props.development.id
+    )

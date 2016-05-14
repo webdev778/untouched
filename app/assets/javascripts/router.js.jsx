@@ -7,7 +7,9 @@ ReactDOM.render((
   <Router history={browserHistory}>
 
     <Route path="/developments/:developmentId/units/:unitId" component={UnitPage} />
-    <Route path="/developments/:developmentId" component={DevelopmentPage} />
+    <Route path="/developments/:developmentId" component={DevelopmentPage}>
+      <Route path="*" component={DevelopmentPage} />
+    </Route>
 
     <Route path="/" component={DevelopmentsPage}>
       <IndexRoute component={DevelopmentsPage} />

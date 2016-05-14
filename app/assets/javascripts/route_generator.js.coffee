@@ -11,8 +11,12 @@ class RouteGenerator
       [ name, value ]
 
 
-  @parse: (str) ->
+  @parse: (str, prefix) ->
     return {} unless str
+
+    if prefix
+      str = str.replace(prefix, '')
+
     _.fromPairs(
       _.map(
         _.chunk(str.split('/'), 2),

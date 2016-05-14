@@ -1,3 +1,5 @@
+browserHistory = require('react-router').browserHistory
+
 class UnitStore
 
   @displayName: 'UnitStore'
