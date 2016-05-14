@@ -23,10 +23,10 @@ class RouteGenerator
     )
 
   generate: ->
-    '/' + (_.map @params, (value, key) =>
+    '/' + _.chain(@params).map((value, key) =>
       if value.length > 0
         "#{key}/#{value}"
-    ).join('/')
+    ).compact().value().join('/')
 
 window.RouteGenerator = RouteGenerator
 
