@@ -3,6 +3,8 @@
     `<aside className='sidebar'>
       <DismissSidebarTrigger />
       <FilterSidebar
+        development={this.props.development}
+        actions={UnitActions}
         filters={this.parseFilters()} />
     </aside>`
 
