@@ -3,7 +3,7 @@ editors = Reactabular.editors
 cells = Reactabular.cells
 accounting = require('accounting')
 
-@DevelopmentTableEditor = React.createClass
+window.DevelopmentTableEditor = React.createClass
 
   componentWillMount: ->
     UnitStore.listen(@onChange)
