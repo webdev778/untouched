@@ -7,31 +7,107 @@ class SolrDevelopmentFilter
   attr_reader :params
 
   def results
-    ResultSet.new(
-      search.group(:development_id_str).groups.map do |group|
-        group.results.first
-      end.compact
-    ).sort(params[:sort], params[:sort_order])
+    ResultSet.
+      new(search.results).
+      sort(params[:sort], params[:sort_order])
   end
 
   def search
-    @search ||= Unit.search(include: [:development]) do
-      group :development_id_str do
-        order_by :price, :asc
+    @search ||= SolrSearch.new(params)
+  end
+
+  def facets
+    search.facets
+  end
+
+  class SolrSearch
+
+    GROUP_BY           = :group__development_id
+    PAGINATION_OPTIONS = { per_page: 10000 }
+    FACETS             = %w(bedrooms bathrooms)
+    FACET_PREFIX       = 'facet__'
+
+    def initialize(params)
+      @delegate = Unit.search(solr_options) do
+        group(GROUP_BY)
+        paginate(PAGINATION_OPTIONS)
+
+        adjust_solr_params do |params|
+          params['group.facet'] = true
+        end
+
+        FACETS.each do |facet_name|
+          facet('facet__' + facet_name)
+        end
+
+        if params[:bedrooms]
+          with(:bedrooms, params[:bedrooms])
+        end
+
+        if params[:bathrooms]
+          with(:bathrooms, params[:bathrooms])
+        end
+
+        if params[:parking]
+          with(:parking, params[:parking])
+        end
+
+        if params[:internal_in_meters]
+          with(:internal_in_meters).greater_than(params[:internal_in_meters])
+        end
+
+        if params[:external_in_meters]
+          with(:external_in_meters).greater_than(params[:external_in_meters]) 
+        end
+
+        if params[:aspect].present? && params[:aspect].any?
+          with(:aspect, params[:aspect])
+        end
+
+        if params[:max_price].present?
+          with(:price).less_than_or_equal_to(params[:max_price]) 
+        end
+
+        if params[:ready_at].present?
+          with(:ready_at).less_than(params[:ready_at]) 
+        end
       end
+    end
 
-      with(:bedrooms, params[:bedrooms])                                  
-      with(:bathrooms, params[:bathrooms])                                if params[:bathrooms]
-      with(:parking, params[:parking])                                    if params[:parking]
-      with(:internal_in_meters).greater_than(params[:internal_in_meters]) if params[:internal_in_meters]
-      with(:master_bedroom_in_meters).greater_than(params[:master_bedroom_in_meters]) if params[:master_bedroom_in_meters]
-      with(:external_in_meters).greater_than(params[:external_in_meters]) if params[:external_in_meters]
-      with(:aspect, params[:aspect]) if params[:aspect].present? && params[:aspect].any?
-      with(:price).less_than_or_equal_to(params[:max_price]) if params[:max_price].present?
-      with(:ready_at).less_than(params[:ready_at]) if params[:ready_at].present?
+    def facets
+      FACETS.inject({}) do |_, facet_name|
+        facet = delegate.facet('facet__' + facet_name)
+        _.merge(
+          facet_name =>
+          facet.rows.map do |row|
+            [ row.value.to_s, row.count ]
+          end
+        )
+      end
+    end
 
-      facet :bathrooms
-      paginate per_page: 10000
+    attr_reader :delegate
+
+    def solr_options
+      {
+        include: {
+          development: { 
+            suburb: :region
+          }
+        }
+      }
+    end
+
+    def fetch_facet(*args)
+      delegate.facet(*args)
+    end
+
+    def results
+      delegate.
+        group(GROUP_BY).
+        groups.
+        map(&:results).
+        flatten
     end
   end
 

@@ -6,9 +6,11 @@
         defaultChecked={this.props.checked} 
         name={this.props.name} 
         id={this.props.id} 
-        value={this.props.value} 
+        value={this.props.value}
         onClick={this.props.onClick} />
 
-      <label htmlFor={this.props.id}>{this.props.label}</label>
+      <label htmlFor={this.props.id}>{this.generateLabel()}</label>
     </div>`
 
+  generateLabel: ->
+    "#{@props.value} (#{@props.facetCount || 0})"

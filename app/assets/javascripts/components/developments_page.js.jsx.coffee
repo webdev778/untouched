@@ -45,6 +45,7 @@
           <DismissSidebarTrigger />
           <FilterSidebar
             filters={this.parseFiltersFromUrl()} 
+            facets={this.state.facets}
             actions={DevelopmentActions} />
         </aside>
 

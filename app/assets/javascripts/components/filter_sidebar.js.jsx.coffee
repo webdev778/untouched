@@ -3,7 +3,7 @@
     `<form>
       <MaxPriceSelector actions={this.props.actions} filters={this.props.filters} />
       {this.renderLocationSelector()}
-      <BedroomSelector actions={this.props.actions} filters={this.props.filters} />
+      <BedroomSelector actions={this.props.actions} facets={this.getFacet('bedrooms')} filters={this.props.filters} />
       <BathroomSelector actions={this.props.actions} filters={this.props.filters} />
       <ParkingSelector actions={this.props.actions} filters={this.props.filters} />
 
@@ -36,6 +36,9 @@
       {this.renderDevelopmentTypeFilterGroup()}
       {this.renderReadyDateSelector()}
     </form>`
+
+  getFacet: (name) ->
+    @props.facets?[name]
 
   renderLocationSelector: ->
     unless @props.development

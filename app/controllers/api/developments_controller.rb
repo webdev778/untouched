@@ -4,7 +4,7 @@ class API::DevelopmentsController < API::BaseController
     render json: {
       developments: developments_json,
       filters: filter.params,
-      facets: [ filter.search.facet(:bathrooms).rows ]
+      facets: filter.facets
     }
   end
 

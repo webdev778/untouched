@@ -46,6 +46,7 @@ class DevelopmentStore
       data: @filterParams
       success: (response) =>
         @developments = response.developments
+        @facets = response.facets
         @emitChange()
       error: (response) ->
         console.log 'error'
