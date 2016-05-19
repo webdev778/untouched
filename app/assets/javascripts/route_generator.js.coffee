@@ -4,15 +4,19 @@ class RouteGenerator
 
   @parseParam: (pair) ->
     [ name, value ] = pair
-    paramType = DevelopmentStore.PARAM_TYPES[name]
+    paramType = Schema[name]
     if paramType == 'array'
       [ name, value.split(',') ]
     else
       [ name, value ]
 
 
-  @parse: (str) ->
+  @parse: (str, prefix) ->
     return {} unless str
+
+    if prefix
+      str = str.replace(prefix, '')
+
     _.fromPairs(
       _.map(
         _.chunk(str.split('/'), 2),
@@ -23,9 +27,10 @@ class RouteGenerator
     )
 
   generate: ->
-    '/' + (_.map @params, (value, key) =>
-      "#{key}/#{value}"
-    ).join('/')
+    '/' + _.chain(@params).map((value, key) =>
+      if value.length > 0
+        "#{key}/#{value}"
+    ).compact().value().join('/')
 
 window.RouteGenerator = RouteGenerator
 

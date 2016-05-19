@@ -23,5 +23,5 @@
     $("select#ceiling_height").val()
 
   handleChange: ->
-    DevelopmentActions.filterData(ceiling_height_at_living_area_in_meters: @val())
+    @props.actions.filterData(ceiling_height_at_living_area_in_meters: @val())
 

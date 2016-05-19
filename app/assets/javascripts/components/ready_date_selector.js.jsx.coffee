@@ -1,4 +1,6 @@
-@ReadyDateSelector = React.createClass
+moment = require('moment')
+
+window.ReadyDateSelector = React.createClass
 
   startYear: ->
     new Date().getFullYear()
@@ -26,7 +28,7 @@
     $("select#ready_date").val()
 
   handleChange: ->
-    DevelopmentActions.filterData(ready_at: @val())
+    @props.actions.filterData(ready_at: @val())
 
   initialValue: ->
     @props.filters?.ready_at

@@ -1,4 +1,6 @@
-@BodyCorpSelector = React.createClass
+accounting = require('accounting')
+
+window.BodyCorpSelector = React.createClass
 
   STEP: 1000
   RANGE: [ 2000, 8000 ]
@@ -25,5 +27,5 @@
     $("select#max_body_corporate_fee").val()
 
   handleChange: ->
-    DevelopmentActions.filterData(max_body_corporate_fee: @val())
+    @props.actions.filterData(max_body_corporate_fee: @val())
 

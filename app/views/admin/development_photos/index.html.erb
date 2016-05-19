@@ -1,0 +1,13 @@
+<header class="header">
+  <h1 id="page-title" class="header__heading">Photos of <%= @development.to_s %></h1>
+  <p><%= link_to "Back to Development", admin_development_path(@development) %></p>
+</header>
+
+<section>
+  <%= react_component 'CompositeImageUploader', 
+    imageable: DevelopmentSerializer.new(@development).as_json(root: false), 
+    type: 'DevelopmentPhoto',
+    imageable_type: 'Development',
+    images: ActiveModel::ArraySerializer.new(@development.photos, each_serializer: DevelopmentPhotoSerializer).as_json(root: false) %>
+</section>
+

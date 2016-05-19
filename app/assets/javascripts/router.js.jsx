@@ -1,12 +1,19 @@
-var Router = ReactRouter.Router,
-Route      = ReactRouter.Route,
-IndexRoute = ReactRouter.IndexRoute;
+Router     = require('react-router').Router
+Route      = require('react-router').Route
+IndexRoute = require('react-router').IndexRoute
+browserHistory = require('react-router').browserHistory
 
 ReactDOM.render((
-  <Router history={ReactRouter.hashHistory}>
-    <Route path="/" component={Application}>
-      <IndexRoute component={Application} />
-      <Route path="*" component={Application} />
+  <Router history={browserHistory}>
+
+    <Route path="/developments/:developmentId/units/:unitId" component={UnitPage} />
+    <Route path="/developments/:developmentId" component={DevelopmentPage}>
+      <Route path="*" component={DevelopmentPage} />
+    </Route>
+
+    <Route path="/" component={DevelopmentsPage}>
+      <IndexRoute component={DevelopmentsPage} />
+      <Route path="*" component={DevelopmentsPage} />
     </Route>
   </Router>
 ), document.getElementById('app'));

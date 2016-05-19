@@ -1,0 +1,15 @@
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+
+<div class="field-unit__field">
+  <% if resource.id %>
+    <% if resource.units.count == 0 %>
+      <%= link_to "Add Units", admin_development_units_path(resource) %>
+    <% else %>
+      <%= link_to field.to_s, admin_development_units_path(resource) %>
+    <% end %>
+  <% else %>
+    To add units to your new development,<br/>click the link "Add Units" on the next page.
+  <% end %>
+</div>

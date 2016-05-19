@@ -1,0 +1,2 @@
+class UnitViewSerializer < ImageSerializer
+end

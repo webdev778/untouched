@@ -1,0 +1,20 @@
+{
+  "name": "untouched",
+  "dependencies": {
+    "browserify": "~10.2.4",
+    "browserify-incremental": "^3.0.1",
+    "alt": "*",
+    "moment": "*",
+    "accounting": "*",
+    "axios": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-scroll": "*",
+    "react-router": "*"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 0.10"
+  }
+}
+

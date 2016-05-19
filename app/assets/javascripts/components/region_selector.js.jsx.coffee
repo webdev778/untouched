@@ -4,6 +4,9 @@
     RegionStore.listen(@onChange)
     RegionActions.fetch()
 
+  componentWillUnmount: ->
+    RegionStore.unlisten(@onChange)
+
   renderOptions: ->
     _.map @state.regions, (region) =>
       `<option key={region.name} value={region.id}>{region.name}</option>`
@@ -35,7 +38,7 @@
     @props.filters?.region
 
   hasInitialSuburb: (id) ->
-    _.includes @props.filters?.suburb, id
+    _.includes @props.filters?.suburb, id.toString()
 
   render: ->
     `<div className='form__group'>
@@ -58,7 +61,7 @@
     _.find @state.regions, (r) => r.id == parseInt(@props.filters?.region)
 
   handleChangeRegion: ->
-    DevelopmentActions.filterData(region: @regionVal(), suburb: [])
+    @props.actions.filterData(region: @regionVal(), suburb: [])
 
   handleChangeSuburb: ->
-    DevelopmentActions.filterData(suburb: @suburbVal())
+    @props.actions.filterData(suburb: @suburbVal())

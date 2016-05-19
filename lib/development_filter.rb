@@ -36,7 +36,7 @@ class DevelopmentFilter
     def initialize(
       collection=
         Unit.
-          all.
+          active.
           joins(:development => :suburb).
           includes(:development => { :suburb => :region })
     )

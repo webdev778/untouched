@@ -1,6 +1,9 @@
 class DevelopmentSerializer < ActiveModel::Serializer
 
-  attributes :photo_url,
+  has_many :photos
+
+  attributes :id, :lat, :lng,
+    :logo_url,
     :address,
     :city, 
     :region_name, 
@@ -14,11 +17,15 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :rooftop_deck,
     :has_double_glazed_windows,
     :ceiling_height_at_living_area_in_meters,
+    :deposit_percent,
+    :units_count,
+    :units_active_count,
+    :units_sold_count,
     :created_at,
     :updated_at
 
-  def photo_url
-    object.photo.url
+  def logo_url
+    object.logo.try(:url)
   end
 
   def region_name
@@ -27,6 +34,14 @@ class DevelopmentSerializer < ActiveModel::Serializer
 
   def suburb_name
     object.suburb.name
+  end
+
+  def units_active_count
+    object.units.active.count
+  end
+
+  def units_sold_count
+    object.units.sold.count
   end
 
 end

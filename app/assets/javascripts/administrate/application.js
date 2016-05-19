@@ -1,0 +1,13 @@
+//= require jquery
+//= require jquery_ujs
+//= require lodash
+//= require react_ujs
+//= require selectize
+//= require moment
+//= require ./init
+//= require reactabular
+//= require react-dropzone
+//= require datetime_picker
+//= require ./actions/unit_actions
+//= require ./stores/unit_store
+//= require_tree ./components

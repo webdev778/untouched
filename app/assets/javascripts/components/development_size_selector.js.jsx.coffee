@@ -22,5 +22,5 @@
     $("select#development_size").val()
 
   handleChange: ->
-    DevelopmentActions.filterData(units_count: @val())
+    @props.actions.filterData(units_count: @val())
 

@@ -1,4 +1,6 @@
-@MaxPriceSelector = React.createClass
+accounting = require('accounting')
+
+window.MaxPriceSelector = React.createClass
 
   RANGE_IN_HUNDRED_THOUSANDS: [ 4, 20 ]
 
@@ -20,5 +22,5 @@
     $('select#max_price_selector').val()
 
   handleChange: ->
-    DevelopmentActions.filterData(max_price: @val())
+    @props.actions.filterData(max_price: @val())
 

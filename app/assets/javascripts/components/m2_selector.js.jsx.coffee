@@ -23,5 +23,5 @@
   handleChange: ->
     params = {}
     params[@props.paramName] = @val()
-    DevelopmentActions.filterData(params)
+    @props.actions.filterData(params)
 

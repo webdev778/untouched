@@ -1,0 +1,23 @@
+.collection-data.development-table-editor {
+  th {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+  td {
+    &:hover {
+      background-color: $grey-0;
+    }
+    button {
+      padding: 0.5em;
+    }
+  }
+
+  tfoot {
+    input {
+      min-width: 3em;
+    }
+    select {
+      min-width: 6em;
+    }
+  }
+}

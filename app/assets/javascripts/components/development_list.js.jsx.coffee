@@ -12,12 +12,15 @@
           </tr>
         </thead>
         <tbody>
-          {this.props.developments.map(function(development) {
-            return <DevelopmentListItem key={development.id} data={development} />;
-          })}
+          {this.renderItems()}
         </tbody>
       </table>
     </div>`
+
+  renderItems: ->
+    filters = @props.filters
+    _.map @props.developments, (development) ->
+      `<DevelopmentListItem key={development.id} filters={filters} data={development} />`
 
   classForHeading: (name) ->
     'active' if @props.filters?.sort == name

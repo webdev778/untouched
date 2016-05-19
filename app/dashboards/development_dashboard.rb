@@ -8,11 +8,12 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    units: Field::HasMany,
+    units: HasManyUnitsField,
     id: Field::Number,
+    address: Field::String,
     city: Field::String,
-    region: Field::String,
-    suburb: Field::String,
+    region: Field::BelongsTo,
+    suburb: Field::BelongsTo,
     ready_at: Field::DateTime,
     gym: Field::Boolean,
     pool: Field::Boolean,
@@ -21,10 +22,14 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     steam_room: Field::Boolean,
     rooftop_deck: Field::Boolean,
     has_double_glazed_windows: Field::Boolean,
-    ceiling_height_at_living_area_in_meters: Field::String.with_options(searchable: false),
+    ceiling_height_at_living_area_in_meters: Field::Number.with_options(decimals: 2),
+    deposit_percent: Field::Number.with_options(decimals: 2),
+    deposit_due_in_days: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    photo: Field::Image,
+    logo: CarrierwaveField,
+    photos: HasManyDevelopmentPhotosField,
+    contract: CarrierwaveField
   }
 
   # COLLECTION_ATTRIBUTES
@@ -33,20 +38,18 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :address,
     :suburb,
-    :units,
     :city,
-    :region
+    :units
   ]
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :logo,
     :units,
-    :id,
-    :city,
-    :region,
-    :suburb,
+    :photos,
     :ready_at,
     :gym,
     :pool,
@@ -56,19 +59,20 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :rooftop_deck,
     :has_double_glazed_windows,
     :ceiling_height_at_living_area_in_meters,
-    :created_at,
-    :updated_at,
-    :photo,
+    :deposit_percent,
+    :deposit_due_in_days,
+    :contract
   ]
 
   # FORM_ATTRIBUTES
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :units,
+    :logo,
+    :address,
     :city,
-    :region,
     :suburb,
+    :units,
     :ready_at,
     :gym,
     :pool,
@@ -78,13 +82,15 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :rooftop_deck,
     :has_double_glazed_windows,
     :ceiling_height_at_living_area_in_meters,
-    :photo,
+    :deposit_percent,
+    :deposit_due_in_days,
+    :contract
   ]
 
   # Overwrite this method to customize how developments are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(development)
-  #   "Development ##{development.id}"
-  # end
+  def display_resource(development)
+    development.to_s
+  end
 end

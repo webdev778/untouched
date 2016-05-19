@@ -14,19 +14,20 @@
 //= require jquery_ujs
 //= require lodash
 //= require turbolinks
-//= require react
-//= require react_ujs
-//= require ReactRouter.min
-//= require alt/dist/alt
-//= require accounting/accounting
-//= require moment/moment
 //= require init
+//= require react_ujs
+//= require infobox
 //= require route_generator
+//= require schema
+//= require sources/enquiry_source
+//= require actions/enquiry_actions
+//= require stores/enquiry_store
 //= require actions/region_actions
 //= require stores/region_store
 //= require actions/development_actions
 //= require stores/development_store
+//= require actions/unit_actions
+//= require stores/unit_store
 //= require components
 //= require router
-//= require_tree .
 

@@ -1,0 +1,13 @@
+<header class="header">
+  <h1 id="page-title" class="header__heading"><%= @unit.to_s %> Plans</h1>
+  <p><%= link_to "Back to Units", admin_development_units_path(@unit.development) %></p>
+</header>
+
+<section>
+  <%= react_component 'CompositeImageUploader', 
+    imageable: UnitSerializer.new(@unit).as_json(root: false), 
+    imageable_type: 'Unit',
+    type: 'UnitPlan',
+    images: ActiveModel::ArraySerializer.new(@unit.plans, each_serializer: UnitPlanSerializer).as_json(root: false) %>
+</section>
+

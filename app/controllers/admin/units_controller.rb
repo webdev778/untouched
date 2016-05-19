@@ -1,12 +1,8 @@
 module Admin
   class UnitsController < Admin::ApplicationController
-    # To customize the behavior of this controller,
-    # simply overwrite any of the RESTful actions. For example:
-    #
-    # def index
-    #   super
-    #   @resources = Unit.all.paginate(10, params[:page])
-    # end
+    def index
+      @development = Development.find(params[:development_id])
+    end
 
     # Define a custom finder by overriding the `find_resource` method:
     # def find_resource(param)

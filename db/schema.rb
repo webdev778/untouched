@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327190052) do
+ActiveRecord::Schema.define(version: 20160512222524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,9 +34,38 @@ ActiveRecord::Schema.define(version: 20160327190052) do
     t.integer  "development_type",                                                            default: 0,     null: false
     t.string   "address",                                 limit: 255,                                         null: false
     t.integer  "suburb_id",                                                                                   null: false
+    t.float    "lat"
+    t.float    "lng"
+    t.decimal  "deposit_percent",                                                             default: 0.0,   null: false
+    t.integer  "deposit_due_in_days",                                                         default: 0,     null: false
+    t.string   "contract",                                limit: 255
+    t.string   "logo",                                    limit: 255
   end
 
   add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree
+
+  create_table "enquiries", force: :cascade do |t|
+    t.string   "name",       limit: 255,                 null: false
+    t.string   "email",      limit: 255,                 null: false
+    t.text     "body",                                   null: false
+    t.boolean  "mortgage",               default: false, null: false
+    t.integer  "unit_id",                                null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "file",           limit: 255,             null: false
+    t.integer  "imageable_id",                           null: false
+    t.string   "imageable_type", limit: 255,             null: false
+    t.string   "caption",        limit: 255
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "type",           limit: 255,             null: false
+    t.integer  "sort",                       default: 0, null: false
+  end
+
+  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
 
   create_table "regions", force: :cascade do |t|
     t.string   "name",       limit: 255, null: false
@@ -54,26 +83,31 @@ ActiveRecord::Schema.define(version: 20160327190052) do
   add_index "suburbs", ["region_id"], name: "index_suburbs_on_region_id", using: :btree
 
   create_table "units", force: :cascade do |t|
-    t.decimal  "price",                    precision: 10, scale: 2,                 null: false
-    t.integer  "bedrooms",                                                          null: false
-    t.integer  "bathrooms",                                                         null: false
-    t.integer  "parking",                                                           null: false
-    t.decimal  "internal_in_meters",       precision: 10, scale: 1,                 null: false
-    t.decimal  "master_bedroom_in_meters", precision: 10, scale: 1
-    t.decimal  "external_in_meters",       precision: 10, scale: 1
-    t.integer  "aspect",                                                            null: false
-    t.boolean  "kitchen_island",                                    default: false, null: false
-    t.boolean  "ensuite",                                           default: false, null: false
-    t.boolean  "study_nook",                                        default: false, null: false
-    t.boolean  "storage_cage",                                      default: false, null: false
-    t.boolean  "walk_in_wardrobe",                                  default: false, null: false
-    t.boolean  "bathtub",                                           default: false, null: false
-    t.boolean  "penthouse_level",                                   default: false, null: false
-    t.boolean  "no_stacker",                                        default: false, null: false
-    t.decimal  "max_body_corporate_fee",   precision: 10, scale: 2,                 null: false
-    t.integer  "development_id",                                                    null: false
-    t.datetime "created_at",                                                        null: false
-    t.datetime "updated_at",                                                        null: false
+    t.decimal  "price",                               precision: 10, scale: 2,                 null: false
+    t.integer  "bedrooms",                                                                     null: false
+    t.integer  "bathrooms",                                                                    null: false
+    t.integer  "parking",                                                                      null: false
+    t.decimal  "internal_in_meters",                  precision: 10, scale: 1,                 null: false
+    t.decimal  "master_bedroom_in_meters",            precision: 10, scale: 1
+    t.decimal  "external_in_meters",                  precision: 10, scale: 1
+    t.integer  "aspect",                                                                       null: false
+    t.boolean  "kitchen_island",                                               default: false, null: false
+    t.boolean  "ensuite",                                                      default: false, null: false
+    t.boolean  "study_nook",                                                   default: false, null: false
+    t.boolean  "storage_cage",                                                 default: false, null: false
+    t.boolean  "walk_in_wardrobe",                                             default: false, null: false
+    t.boolean  "bathtub",                                                      default: false, null: false
+    t.boolean  "penthouse_level",                                              default: false, null: false
+    t.boolean  "no_stacker",                                                   default: false, null: false
+    t.decimal  "max_body_corporate_fee",              precision: 10, scale: 2,                 null: false
+    t.integer  "development_id",                                                               null: false
+    t.datetime "created_at",                                                                   null: false
+    t.datetime "updated_at",                                                                   null: false
+    t.integer  "status",                                                       default: 0,     null: false
+    t.string   "number",                   limit: 10,                                          null: false
+    t.decimal  "stamp_duty",                                                   default: 0.0,   null: false
+    t.decimal  "stamp_duty_savings",                                           default: 0.0,   null: false
+    t.decimal  "annual_council_rate",                                          default: 0.0,   null: false
   end
 
   add_index "units", ["development_id"], name: "index_units_on_development_id", using: :btree
