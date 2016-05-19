@@ -6001,6 +6001,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        render: function render() {
 	            return React.createElement('input', _extends({
+                  ref: 'input',
 	                value: this.state.value,
 	                onFocus: this.onFocus,
 	                onChange: this.onChange,
@@ -6027,7 +6028,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        },
 	        done: function done() {
-	            this.props.onValue(this.getDOMNode().value);
+	            this.props.onValue(this.refs.input.value);
 	        }
 	    });
 	};
