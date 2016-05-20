@@ -13,4 +13,4 @@
     </div>`
 
   generateLabel: ->
-    "#{@props.value} (#{@props.facetCount || 0})"
+    "#{@props.label} (#{@props.facetCount || 0})"

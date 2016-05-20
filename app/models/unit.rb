@@ -26,9 +26,15 @@ class Unit < ActiveRecord::Base
 
   RESIDENCE_AMENITIES = %w(kitchen_island study_nook storage_cage ensuite walk_in_wardrobe bathtub penthouse_level no_stacker)
 
+
+  FACETS = %w(bedrooms bathrooms parking aspect)
+
   searchable do
-    string(:facet__bedrooms) { bedrooms.to_s }
-    string(:facet__bathrooms) { bathrooms.to_s }
+    FACETS.each do |facet_name|
+      string(:"facet__#{facet_name}") { send(facet_name).to_s }
+    end
+
+    string(:facet__aspect) { Unit.aspects[self.aspect] }
     string(:group__development_id) { development_id.to_s }
 
     integer :bedrooms

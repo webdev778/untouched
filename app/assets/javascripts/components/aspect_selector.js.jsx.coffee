@@ -1,41 +1,32 @@
 @AspectSelector = React.createClass
 
+  VALUES: [ 'North', 'East', 'South', 'West' ]
+
   render: ->
     `<div className='sidebar__box'>
       <SidebarTitle value="Aspect" />
-
-      <CheckboxField 
-        id="aspect_north" 
-        checked={this.hasInitialValue('north')} 
-        value="north" 
-        label="North" 
-        onClick={this.handleClick} 
-        name="aspect" />
-
-      <CheckboxField 
-        id="aspect_east" 
-        checked={this.hasInitialValue('east')} 
-        value="east" 
-        label="East" 
-        onClick={this.handleClick} 
-        name="aspect" />
-
-      <CheckboxField 
-        id="aspect_south" 
-        checked={this.hasInitialValue('south')} 
-        value="south" 
-        label="South" 
-        onClick={this.handleClick} 
-        name="aspect" />
-
-      <CheckboxField 
-        id="aspect_west" 
-        checked={this.hasInitialValue('west')} 
-        value="west" 
-        label="West" 
-        onClick={this.handleClick} 
-        name="aspect" />
+      {this.renderCheckboxes()}
     </div>`
+
+  renderCheckboxes: ->
+    hasInitialValue = @hasInitialValue
+    handleClick     = @handleClick
+    getFacetCount   = @getFacetCount
+
+    _.map @VALUES, (value) =>
+      strippedValue = _.toLower(value)
+      `<CheckboxField 
+        id={'aspect_'+strippedValue}
+        key={value}
+        checked={hasInitialValue(strippedValue)} 
+        facetCount={getFacetCount(strippedValue)}
+        value={strippedValue}
+        label={value}
+        onClick={handleClick} 
+        name="aspect" />`
+
+  getFacetCount: (value) ->
+    _.find(@props.facets, (pair) -> pair[0] == value)?[1]
 
   hasInitialValue: (value) ->
     return false unless @props.filters?.aspect

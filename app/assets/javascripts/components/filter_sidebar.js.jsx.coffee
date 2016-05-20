@@ -4,8 +4,8 @@
       <MaxPriceSelector actions={this.props.actions} filters={this.props.filters} />
       {this.renderLocationSelector()}
       <BedroomSelector actions={this.props.actions} facets={this.getFacet('bedrooms')} filters={this.props.filters} />
-      <BathroomSelector actions={this.props.actions} filters={this.props.filters} />
-      <ParkingSelector actions={this.props.actions} filters={this.props.filters} />
+      <BathroomSelector actions={this.props.actions} facets={this.getFacet('bathrooms')} filters={this.props.filters} />
+      <ParkingSelector actions={this.props.actions} facets={this.getFacet('parking')} filters={this.props.filters} />
 
       <M2Selector 
         rangeStart="40" 
@@ -27,7 +27,7 @@
         actions={this.props.actions}
         filters={this.props.filters} />
 
-      <AspectSelector actions={this.props.actions} filters={this.props.filters} />
+      <AspectSelector actions={this.props.actions} facets={this.getFacet('aspect')} filters={this.props.filters} />
       <ResidenceFilterGroup actions={this.props.actions} filters={this.props.filters} />
       <BodyCorpSelector actions={this.props.actions} filters={this.props.filters} />
       {this.renderBuildingFilterGroup()}

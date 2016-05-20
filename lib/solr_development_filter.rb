@@ -24,7 +24,6 @@ class SolrDevelopmentFilter
 
     GROUP_BY           = :group__development_id
     PAGINATION_OPTIONS = { per_page: 10000 }
-    FACETS             = %w(bedrooms bathrooms)
     FACET_PREFIX       = 'facet__'
 
     def initialize(params)
@@ -36,7 +35,7 @@ class SolrDevelopmentFilter
           params['group.facet'] = true
         end
 
-        FACETS.each do |facet_name|
+        Unit::FACETS.each do |facet_name|
           facet('facet__' + facet_name)
         end
 
@@ -75,7 +74,7 @@ class SolrDevelopmentFilter
     end
 
     def facets
-      FACETS.inject({}) do |_, facet_name|
+      Unit::FACETS.inject({}) do |_, facet_name|
         facet = delegate.facet('facet__' + facet_name)
         _.merge(
           facet_name =>

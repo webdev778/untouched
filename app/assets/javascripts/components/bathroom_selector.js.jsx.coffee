@@ -1,35 +1,36 @@
 @BathroomSelector = React.createClass
 
+  VALUES: [ '1', '2', '3+' ]
+
   render: ->
     `<div className='sidebar__box'>
       <SidebarTitle value="Bathrooms" />
-      <CheckboxField id="bathrooms1" 
-        value="1" 
-        checked={this.hasInitialValue('1')} 
-        label="1" 
-        onClick={this.handleClick} 
-        name="bathrooms" />
-
-      <CheckboxField 
-        id="bathrooms2" 
-        value="2" 
-        checked={this.hasInitialValue('2')} 
-        label="2" 
-        onClick={this.handleClick} 
-        name="bathrooms" />
-
-      <CheckboxField 
-        id="bathrooms3" 
-        value="3" 
-        label="3+" 
-        checked={this.hasInitialValue('3')}
-        onClick={this.handleClick} 
-        name="bathrooms" />
+      {this.renderCheckboxes()}
     </div>`
+
+  renderCheckboxes: ->
+    hasInitialValue = @hasInitialValue
+    handleClick     = @handleClick
+    getFacetCount   = @getFacetCount
+
+    _.map @VALUES, (value) =>
+      strippedValue = value.replace('+', '')
+      `<CheckboxField 
+        id={'bathrooms'+strippedValue}
+        key={value}
+        checked={hasInitialValue(strippedValue)} 
+        facetCount={getFacetCount(strippedValue)}
+        value={strippedValue}
+        label={value}
+        onClick={handleClick} 
+        name="bathrooms" />`
 
   hasInitialValue: (value) ->
     return false unless @props.filters?.bathrooms
     _.includes @props.filters.bathrooms, value
+
+  getFacetCount: (value) ->
+    _.find(@props.facets, (pair) -> pair[0] == value)?[1]
 
   val: ->
     _.map $("input[name='bathrooms']:checked"), (el) -> el.value
