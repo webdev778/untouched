@@ -6,7 +6,7 @@
         <img key={this.props.image.id} src={this.props.image.url} />
       </div>
       <div className="form">
-        <input ref="caption" type="text" onChange={this.onChange} defaultValue={this.props.image.caption} placeholder="Enter a caption" />
+        <textarea ref="caption" onChange={this.onChange} defaultValue={this.props.image.caption} placeholder="Enter a caption" />
         <br/>
         <input ref="sort" type="number" onChange={this.onChange} defaultValue={this.props.image.sort} placeholder="Enter a sort value" />
         <br/>

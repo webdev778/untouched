@@ -22,6 +22,9 @@ gem 'lodash-rails'
 gem 'carrierwave'
 gem 'fog'
 
+# For processing image captions
+gem 'redcarpet'
+
 gem "administrate", "~> 0.1.4"
 
 gem 'turbolinks'
@@ -35,7 +38,6 @@ gem 'faker'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
-gem 'rails_12factor', group: :production
 
 # Error handling
 gem 'sentry-raven'

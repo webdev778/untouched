@@ -308,6 +308,7 @@ GEM
       execjs
       rails (>= 3.2)
       tilt
+    redcarpet (3.3.4)
     rsolr (1.1.1)
       builder (>= 2.1.2)
     rspec-core (3.4.3)
@@ -416,6 +417,7 @@ DEPENDENCIES
   rails-assets-react-dropzone!
   rails_12factor
   react-rails (~> 1.6.0)
+  redcarpet
   rspec-rails (~> 3.4.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

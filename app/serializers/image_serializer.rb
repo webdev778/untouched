@@ -1,7 +1,12 @@
 class ImageSerializer < ActiveModel::Serializer
-  attributes :id, :caption, :url, :sort
+  attributes :id, :caption, :caption_html, :url, :sort
 
   def url
     object.file_url
+  end
+
+  def caption_html
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    markdown.render(object.caption)
   end
 end

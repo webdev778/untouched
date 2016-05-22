@@ -8,5 +8,5 @@
 
   renderCaption: ->
     if @props.image.caption
-      `<h4 className="card__caption">{this.props.image.caption}</h4>`
+      `<h4 className="card__caption" dangerouslySetInnerHTML={{__html: this.props.image.caption_html}} />`
 
