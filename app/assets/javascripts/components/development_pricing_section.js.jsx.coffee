@@ -4,7 +4,10 @@ window.DevelopmentPricingSection = React.createClass
     `<section className="scroll__section scroll__pricing">
       <div className="container">
         <div className="sidebar-wrap">
-          <DevelopmentPricingSidebar params={this.props.params} development={this.props.development}/>
+          <DevelopmentPricingSidebar 
+            facets={this.props.facets}
+            params={this.props.params} 
+            development={this.props.development}/>
         </div>
         <div className="right">
           <div className="spaced3x container--reset">

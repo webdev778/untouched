@@ -12,6 +12,7 @@ class UnitStore
   constructor: ->
     @bindActions(UnitActions)
     @units = []
+    @facets = {}
     @filterParams = @DEFAULT_FILTER_PARAMS
 
     @exportPublicMethods(
@@ -43,6 +44,7 @@ class UnitStore
       data: @filterParams
       success: (response) =>
         @units = response.units
+        @facets = response.facets
         @emitChange()
       error: (response) ->
         console.log 'error'
