@@ -42,7 +42,7 @@
 
   renderLocationSelector: ->
     unless @props.development
-      `<LocationSelector actions={this.props.actions} filters={this.props.filters} />`
+      `<LocationSelector actions={this.props.actions} facets={this.props.facets} filters={this.props.filters} />`
 
   renderBuildingFilterGroup: ->
     unless @props.development

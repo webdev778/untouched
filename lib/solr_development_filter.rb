@@ -31,17 +31,7 @@ class SolrDevelopmentFilter
         group(GROUP_BY)
         paginate(PAGINATION_OPTIONS)
 
-        adjust_solr_params do |params|
-          params['group.facet'] = true
-        end
-
-        Unit::FACETS.each do |facet_name|
-          facet('facet__' + facet_name)
-        end
-
-        Unit::DEVELOPMENT_FACETS.each do |facet_name|
-          facet('facet__' + facet_name)
-        end
+        filters = {}
 
         if params[:bedrooms]
           with(:bedrooms, params[:bedrooms])
@@ -76,7 +66,7 @@ class SolrDevelopmentFilter
         end
 
         if params[:region].present?
-          with(:region_id, params[:region])
+          filters['region_name'] = with(:region_id, params[:region])
         end
 
         if params[:suburb].present?
@@ -98,6 +88,24 @@ class SolrDevelopmentFilter
         if params[:development_type].present?
           with(:development_type, params[:development_type])
         end
+
+
+
+
+        adjust_solr_params do |params|
+          params['group.facet'] = true
+        end
+
+        Unit::FACETS.each do |facet_name|
+          facet('facet__' + facet_name)
+        end
+
+        Unit::DEVELOPMENT_FACETS.each do |facet_name|
+          options = {}
+          options[:exclude] = filters[facet_name] if filters[facet_name]
+          facet('facet__' + facet_name, options)
+        end
+
       end
     end
 

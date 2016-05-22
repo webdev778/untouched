@@ -8,17 +8,26 @@
     RegionStore.unlisten(@onChange)
 
   renderOptions: ->
+    getFacetCount = @getFacetCount
     _.map @state.regions, (region) =>
-      `<option key={region.name} value={region.id}>{region.name}</option>`
+      `<option key={region.name} value={region.id}>{region.name} ({getFacetCount(region.name)})</option>`
 
   onChange: (state) ->
     @setState(state)
+
+  getFacetCount: (regionName) ->
+    return 0 unless @props.facets
+    facet = @props.facets.region_name
+    pair = _.find(facet, (pair) -> pair[0] == regionName)
+    return 0 unless pair
+    pair[1]
 
   renderSuburbSelectors: ->
     return unless @getSelectedRegion()
 
     handler          = @handleChangeSuburb
     hasInitialSuburb = @hasInitialSuburb
+    getSuburbFacetCount = @getSuburbFacetCount
 
     _.map @getSelectedRegion().suburbs, (suburb) ->
       `<CheckboxField 
@@ -26,9 +35,17 @@
         checked={hasInitialSuburb(suburb.id)}
         key={suburb.id} 
         value={suburb.id} 
+        facetCount={getSuburbFacetCount(suburb)}
         label={suburb.name} 
         onClick={handler} 
         name="suburb" />`
+
+  getSuburbFacetCount: (suburb) ->
+    facet = @props.facets.suburb_name
+    reutrn 0 unless facet
+    pair = _.find(facet, (pair) -> pair[0] == suburb.name)
+    return 0 unless pair
+    pair[1]
 
   renderSuburbTitle: ->
     return unless @getSelectedRegion()
