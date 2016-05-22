@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     root to: "developments#index"
   end
 
-  get 'api/units' => 'api/units#index'
+  get 'api/units' => 'api/units/index#index'
   put 'api/units/:id' => 'api/units#update'
   post 'api/units' => 'api/units#create'
   delete 'api/units/:id' => 'api/units#destroy'
