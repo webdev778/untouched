@@ -11,11 +11,14 @@
     UnitStore.unlisten(@onChange)
 
   componentDidMount: ->
-    UnitActions.filterData(development_id: @props.development.id)
+    UnitActions.filterData(@getFilterParams())
     UnitActions.fetch()
 
   onChange: (state) ->
     @setState(state)
+
+  getFilterParams: ->
+    _.assign { development_id: @props.development.id }, @props.filters
 
   render: ->
     `<div className='table-responsive'>

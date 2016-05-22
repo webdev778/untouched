@@ -1,4 +1,4 @@
-browserHistory = require('react-router').browserHistory
+BrowserHistoryManager = require('./../browser_history_manager.js.coffee')
 
 class UnitStore
 
@@ -24,6 +24,9 @@ class UnitStore
 
   onFilterData: (params) ->
     _.assign @filterParams, params
+
+    BrowserHistoryManager.push(@filterParams)
+
     @fetch()
 
   onSelect: (args) ->

@@ -15,6 +15,7 @@ window.DevelopmentPage = React.createClass
   getInitialState: ->
     {
       development: @status.loading
+      filterParams: @parseFiltersFromUrl()
     }
 
   componentWillMount: ->
@@ -22,6 +23,9 @@ window.DevelopmentPage = React.createClass
 
   componentDidMount: ->
     DevelopmentActions.select(@props.params.developmentId)
+
+  parseFiltersFromUrl: ->
+    RouteGenerator.parse(@props.params.splat)
 
   componentDidUpdate: ->
     @
@@ -114,6 +118,9 @@ window.DevelopmentPage = React.createClass
         <DevelopmentLocationSection development={this.state.development}/>
       </Element>
       <Element name="pricing">
-        <DevelopmentPricingSection params={this.props.params} development={this.state.development}/>
+        <DevelopmentPricingSection 
+          params={this.props.params} 
+          filters={this.parseFiltersFromUrl()} 
+          development={this.state.development}/>
       </Element>
     </div>`

@@ -1,4 +1,4 @@
-browserHistory = require('react-router').browserHistory
+BrowserHistoryManager = require('./../browser_history_manager.js.coffee')
 
 class DevelopmentStore
 
@@ -23,8 +23,7 @@ class DevelopmentStore
   onFilterData: (params) ->
     _.assign @filterParams, params
 
-    # We really shouldn't do this here...
-    browserHistory.push(new RouteGenerator(@filterParams).generate())
+    BrowserHistoryManager.push(@filterParams)
 
     @fetch()
 
