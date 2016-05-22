@@ -48,10 +48,12 @@ class Unit < ActiveRecord::Base
     integer :bathrooms
     integer :parking
     double :internal_in_meters
+    double :external_in_meters
     double :master_bedroom_in_meters
     string :aspect
     double :price
     date(:ready_at) { development.ready_at }
+    integer(:development_id) { development_id }
     integer(:region_id) { suburb.region_id }
     integer(:suburb_id) { suburb.id }
     double :max_body_corporate_fee

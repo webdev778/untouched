@@ -4,6 +4,10 @@ class SolrSearch
     ResultSet
   end
 
+  def group?
+    true
+  end
+
   GROUP_BY           = :group__development_id
   PAGINATION_OPTIONS = { per_page: 10000 }
   FACET_PREFIX       = 'facet__'
@@ -11,7 +15,7 @@ class SolrSearch
   def initialize(params)
     @params = params
     @delegate = Unit.search(solr_options) do
-      group(GROUP_BY)
+      group(GROUP_BY) if group?
       paginate(PAGINATION_OPTIONS)
 
       filters = {}
@@ -72,11 +76,15 @@ class SolrSearch
         with(:development_type, params[:development_type])
       end
 
+      if params[:development_id].present?
+        with(:development_id, params[:development_id])
+      end
 
 
-
-      adjust_solr_params do |params|
-        params['group.facet'] = true
+      if group?
+        adjust_solr_params do |params|
+          params['group.facet'] = true
+        end
       end
 
       Unit::FACETS.each do |facet_name|
