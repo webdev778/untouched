@@ -39,6 +39,10 @@ class SolrDevelopmentFilter
           facet('facet__' + facet_name)
         end
 
+        Unit::DEVELOPMENT_FACETS.each do |facet_name|
+          facet('facet__' + facet_name)
+        end
+
         if params[:bedrooms]
           with(:bedrooms, params[:bedrooms])
         end
@@ -70,11 +74,35 @@ class SolrDevelopmentFilter
         if params[:ready_at].present?
           with(:ready_at).less_than(params[:ready_at]) 
         end
+
+        if params[:region].present?
+          with(:region_id, params[:region])
+        end
+
+        if params[:suburb].present?
+          with(:suburb_id, params[:suburb])
+        end
+
+        if params[:max_body_corporate_fee].present?
+          with(:max_body_corporate_fee).less_than_or_equal_to(params[:max_body_corporate_fee])
+        end
+
+        Unit::RESIDENCE_AMENITIES.each do |key|
+          with(key, true) if params[key]
+        end
+
+        Development::BUILDING_AMENITIES.each do |key|
+          with(key, true) if params[key]
+        end
+
+        if params[:development_type].present?
+          with(:development_type, params[:development_type])
+        end
       end
     end
 
     def facets
-      Unit::FACETS.inject({}) do |_, facet_name|
+      (Unit::FACETS + Unit::DEVELOPMENT_FACETS).inject({}) do |_, facet_name|
         facet = delegate.facet('facet__' + facet_name)
         _.merge(
           facet_name =>

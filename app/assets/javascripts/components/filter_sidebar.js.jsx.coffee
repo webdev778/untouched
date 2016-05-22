@@ -28,7 +28,7 @@
         filters={this.props.filters} />
 
       <AspectSelector actions={this.props.actions} facets={this.getFacet('aspect')} filters={this.props.filters} />
-      <ResidenceFilterGroup actions={this.props.actions} filters={this.props.filters} />
+      <ResidenceFilterGroup actions={this.props.actions} facets={this.props.facets} filters={this.props.filters} />
       <BodyCorpSelector actions={this.props.actions} filters={this.props.filters} />
       {this.renderBuildingFilterGroup()}
       <CeilingHeightSelector actions={this.props.actions} filters={this.props.filters} />
@@ -46,7 +46,7 @@
 
   renderBuildingFilterGroup: ->
     unless @props.development
-      `<BuildingFilterGroup actions={this.props.actions} filters={this.props.filters} />`
+      `<BuildingFilterGroup actions={this.props.actions} facets={this.props.facets} filters={this.props.filters} />`
 
   renderDevelopmentSizeSelector: ->
     unless @props.development
@@ -54,7 +54,7 @@
 
   renderDevelopmentTypeFilterGroup: ->
     unless @props.development
-      `<DevelopmentTypeFilterGroup actions={this.props.actions} filters={this.props.filters} />`
+      `<DevelopmentTypeFilterGroup actions={this.props.actions} facets={this.getFacet('development_type')} filters={this.props.filters} />`
 
   renderReadyDateSelector: ->
     unless @props.development

@@ -11,6 +11,7 @@
   renderCheckboxes: ->
     handler = @handleClick
     hasInitialValue = @hasInitialValue
+    getFacetCount   = @getFacetCount
     _.map @fields, (value, key) =>
       `<CheckboxField 
         checked={hasInitialValue(key)}
@@ -18,6 +19,7 @@
         id={key} 
         value="true" 
         label={value} 
+        facetCount={getFacetCount(key)}
         onClick={handler} 
         name={'building_' + key} />`
 
@@ -26,6 +28,12 @@
       <SidebarTitle value="Building" />
       {this.renderCheckboxes()}
     </div>`
+
+  getFacetCount: (key) ->
+    value = @hasInitialValue(key)
+    facet = @props.facets?[key]
+    return 0 unless facet
+    _.find(facet, (pair) -> pair[0] == value.toString())?[1]
 
   handleClick: (event) ->
     params = {}

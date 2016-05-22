@@ -27,14 +27,21 @@ class Unit < ActiveRecord::Base
   RESIDENCE_AMENITIES = %w(kitchen_island study_nook storage_cage ensuite walk_in_wardrobe bathtub penthouse_level no_stacker)
 
 
-  FACETS = %w(bedrooms bathrooms parking aspect)
+  FACETS = 
+    %w(bedrooms bathrooms parking aspect) +
+    RESIDENCE_AMENITIES
+  DEVELOPMENT_FACETS = 
+    %w(development_type) + 
+    Development::BUILDING_AMENITIES
 
   searchable do
     FACETS.each do |facet_name|
       string(:"facet__#{facet_name}") { send(facet_name).to_s }
     end
+    DEVELOPMENT_FACETS.each do |facet_name|
+      string(:"facet__#{facet_name}") { development.send(facet_name).to_s }
+    end
 
-    string(:facet__aspect) { Unit.aspects[self.aspect] }
     string(:group__development_id) { development_id.to_s }
 
     integer :bedrooms
@@ -42,7 +49,7 @@ class Unit < ActiveRecord::Base
     integer :parking
     double :internal_in_meters
     double :master_bedroom_in_meters
-    string(:aspect) { Unit.aspects[self.aspect] }
+    string :aspect
     double :price
     date(:ready_at) { development.ready_at }
     integer(:region_id) { suburb.region_id }

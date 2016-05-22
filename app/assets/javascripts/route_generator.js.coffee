@@ -28,7 +28,7 @@ class RouteGenerator
 
   generate: ->
     '/' + _.chain(@params).map((value, key) =>
-      if value.length > 0
+      if value && value.toString().length > 0
         "#{key}/#{value}"
     ).compact().value().join('/')
 
