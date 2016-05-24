@@ -6,6 +6,7 @@ class ImageSerializer < ActiveModel::Serializer
   end
 
   def caption_html
+    return nil if object.caption.blank?
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     markdown.render(object.caption)
   end
