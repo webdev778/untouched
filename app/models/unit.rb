@@ -19,7 +19,6 @@ class Unit < ActiveRecord::Base
   validates_presence_of :parking
   validates_presence_of :internal_in_meters
   validates_presence_of :external_in_meters
-  validates_presence_of :master_bedroom_in_meters
   validates_presence_of :aspect
   validates_presence_of :max_body_corporate_fee
   validates_presence_of :annual_council_rate
@@ -27,11 +26,11 @@ class Unit < ActiveRecord::Base
   RESIDENCE_AMENITIES = %w(kitchen_island study_nook storage_cage ensuite walk_in_wardrobe bathtub penthouse_level no_stacker)
 
 
-  FACETS = 
+  FACETS =
     %w(bedrooms bathrooms parking aspect) +
     RESIDENCE_AMENITIES
-  DEVELOPMENT_FACETS = 
-    %w(development_type city region_name suburb_name) + 
+  DEVELOPMENT_FACETS =
+    %w(development_type city region_name suburb_name) +
     Development::BUILDING_AMENITIES
 
   searchable do
