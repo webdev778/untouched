@@ -37,7 +37,7 @@ class SolrSearch
       end
 
       if params[:external_in_meters]
-        with(:external_in_meters).greater_than(params[:external_in_meters]) 
+        with(:external_in_meters).greater_than(params[:external_in_meters])
       end
 
       if params[:aspect].present? && params[:aspect].any?
@@ -45,11 +45,11 @@ class SolrSearch
       end
 
       if params[:max_price].present?
-        with(:price).less_than_or_equal_to(params[:max_price]) 
+        with(:price).less_than_or_equal_to(params[:max_price])
       end
 
       if params[:ready_at].present?
-        with(:ready_at).less_than(params[:ready_at]) 
+        with(:ready_at).less_than(params[:ready_at])
       end
 
       if params[:region].present?
@@ -78,6 +78,16 @@ class SolrSearch
 
       if params[:development_id].present?
         with(:development_id, params[:development_id])
+      end
+
+      if params[:ceiling_height_at_living_area_in_meters]
+        with(:ceiling_height_at_living_area_in_meters).
+            greater_than(params[:ceiling_height_at_living_area_in_meters])
+      end
+
+      if params[:units_count]
+        with(:units_count).
+            less_than(params[:units_count])
       end
 
 
@@ -117,7 +127,7 @@ class SolrSearch
   def solr_options
     {
       include: {
-        development: { 
+        development: {
           suburb: :region
         }
       }
