@@ -1,4 +1,6 @@
 axios = require('axios')
+getCSRFToken = require('../get_csrf_token')
+axios.defaults.headers['X-CSRF-Token'] = getCSRFToken()
 
 class EnquirySource
 
