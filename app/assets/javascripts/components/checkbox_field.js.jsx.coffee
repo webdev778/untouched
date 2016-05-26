@@ -1,12 +1,13 @@
 @CheckboxField = React.createClass
   render: ->
     `<div className="form__group">
-      <input 
-        type="checkbox" 
-        defaultChecked={this.props.checked} 
-        name={this.props.name} 
-        id={this.props.id} 
+      <input
+        type="checkbox"
+        defaultChecked={this.props.checked}
+        name={this.props.name}
+        id={this.props.id}
         value={this.props.value}
+        ref="input"
         onClick={this.props.onClick} />
 
       <label htmlFor={this.props.id}>{this.generateLabel()}</label>
@@ -14,3 +15,6 @@
 
   generateLabel: ->
     "#{@props.label} (#{@props.facetCount || 0})"
+
+  isChecked: ->
+    @refs.input.checked

@@ -15,14 +15,15 @@
     hasInitialValue = @hasInitialValue
     getFacetCount   = @getFacetCount
     _.map @fields, (value, key) =>
-      `<CheckboxField 
+      `<CheckboxField
         checked={hasInitialValue(key)}
-        key={key} 
-        id={key} 
-        value="true" 
+        ref={key}
+        key={key}
+        id={key}
+        value="true"
         facetCount={getFacetCount(key)}
-        label={value} 
-        onClick={handler} 
+        label={value}
+        onClick={handler}
         name={'residence_' + key} />`
 
   render: ->
@@ -32,7 +33,7 @@
     </div>`
 
   getFacetCount: (key) ->
-    value = @hasInitialValue(key)
+    value = @refs[key]?.isChecked()
     facet = @props.facets?[key]
     return 0 unless facet
     _.find(facet, (pair) -> pair[0] == value.toString())?[1]

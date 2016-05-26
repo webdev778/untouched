@@ -43,7 +43,7 @@ class SolrSearch
       end
 
       if params[:aspect].present? && params[:aspect].any?
-        filters['aspect'] = with(:aspect, params[:aspect])
+        filter['aspect'] = with(:aspect, params[:aspect])
       end
 
       if params[:max_price].present?
@@ -67,15 +67,15 @@ class SolrSearch
       end
 
       Unit::RESIDENCE_AMENITIES.each do |key|
-        with(key, true) if params[key]
+        filters[key] = with(key, true) if params[key]
       end
 
       Development::BUILDING_AMENITIES.each do |key|
-        with(key, true) if params[key]
+        filters[key] = with(key, true) if params[key]
       end
 
       if params[:development_type].present?
-        with(:development_type, params[:development_type])
+        filters['development_type'] = with(:development_type, params[:development_type])
       end
 
       if params[:development_id].present?
