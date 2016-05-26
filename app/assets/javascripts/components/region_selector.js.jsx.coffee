@@ -30,14 +30,14 @@
     getSuburbFacetCount = @getSuburbFacetCount
 
     _.map @getSelectedRegion().suburbs, (suburb) ->
-      `<CheckboxField 
-        id={'suburb'+suburb.id} 
+      `<CheckboxField
+        id={'suburb'+suburb.id}
         checked={hasInitialSuburb(suburb.id)}
-        key={suburb.id} 
-        value={suburb.id} 
+        key={suburb.id}
+        value={suburb.id}
         facetCount={getSuburbFacetCount(suburb)}
-        label={suburb.name} 
-        onClick={handler} 
+        label={suburb.name}
+        onClick={handler}
         name="suburb" />`
 
   getSuburbFacetCount: (suburb) ->
@@ -57,10 +57,16 @@
   hasInitialSuburb: (id) ->
     _.includes @props.filters?.suburb, id.toString()
 
+  getTotalFacetCount: ->
+    return 0 unless @props.facets?.city
+    facet = _.find(@props.facets.city, (pair) -> pair[0] == 'Melbourne')
+    return 0 unless facet
+    facet[1]
+
   render: ->
     `<div className='form__group'>
       <select value={this.initialValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
-        <option key='any' value=''>{'All Regions (' + this.state.regions.length + ')'}</option>
+        <option key='any' value=''>{'All Regions (' + this.getTotalFacetCount() + ')'}</option>
         {this.renderOptions()}
       </select>
 

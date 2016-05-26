@@ -23,15 +23,15 @@ class SolrSearch
       with(:status, 'active')
 
       if params[:bedrooms]
-        with(:bedrooms, params[:bedrooms])
+        filters['bedrooms'] = with(:bedrooms, params[:bedrooms])
       end
 
       if params[:bathrooms]
-        with(:bathrooms, params[:bathrooms])
+        filters['bathrooms'] = with(:bathrooms, params[:bathrooms])
       end
 
       if params[:parking]
-        with(:parking, params[:parking])
+        filters['parking'] = with(:parking, params[:parking])
       end
 
       if params[:internal_in_meters]
@@ -43,7 +43,7 @@ class SolrSearch
       end
 
       if params[:aspect].present? && params[:aspect].any?
-        with(:aspect, params[:aspect])
+        filters['aspect'] = with(:aspect, params[:aspect])
       end
 
       if params[:max_price].present?
@@ -100,7 +100,9 @@ class SolrSearch
       end
 
       Unit::FACETS.each do |facet_name|
-        facet('facet__' + facet_name)
+        options = {}
+        options[:exclude] = filters[facet_name] if filters[facet_name]
+        facet('facet__' + facet_name, options)
       end
 
       Unit::DEVELOPMENT_FACETS.each do |facet_name|
