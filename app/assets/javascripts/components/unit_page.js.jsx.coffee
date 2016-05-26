@@ -26,6 +26,10 @@ window.UnitPage = React.createClass
   componentDidMount: ->
     UnitActions.select(@props.params.developmentId, @props.params.unitId)
 
+  componentDidUpdate: ->
+    if @state.unit
+      document.title = [ @state.unit.development.address, @state.unit.number ].join(' ')
+
   componentWillUnmount: ->
     UnitStore.unlisten(@onChange)
 
@@ -77,34 +81,34 @@ window.UnitPage = React.createClass
     `<div className="scroll__nav scroll__nav--static">
       <ul>
         <li role="presentation" className="scroll__li">
-          <Link 
-            activeClass="active" 
-            spy={true} 
-            smooth={true} 
-            offset={this.scrollNav.offset} 
-            duration={this.scrollNav.duration} 
+          <Link
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            offset={this.scrollNav.offset}
+            duration={this.scrollNav.duration}
             to="plans">
             Plans
           </Link>
         </li>
         <li role="presentation" className="scroll__li">
-          <Link 
-            activeClass="active" 
-            spy={true} 
-            smooth={true} 
-            offset={this.scrollNav.offset} 
-            duration={this.scrollNav.duration} 
+          <Link
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            offset={this.scrollNav.offset}
+            duration={this.scrollNav.duration}
             to="views">
             Views
           </Link>
         </li>
         <li role="presentation" className="scroll__li">
-          <Link 
-            activeClass="active" 
-            spy={true} 
-            smooth={true} 
-            offset={this.scrollNav.offset} 
-            duration={this.scrollNav.duration} 
+          <Link
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            offset={this.scrollNav.offset}
+            duration={this.scrollNav.duration}
             to="costs">
             Costs
           </Link>

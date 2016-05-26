@@ -9,7 +9,7 @@ window.DevelopmentTableEditor = React.createClass
     UnitStore.listen(@onChange)
 
   componentDidMount: ->
-    UnitActions.filterData(development_id: @props.development.id)
+    UnitActions.filterData(status: 'any', development_id: @props.development.id)
     UnitActions.fetch()
 
   componentWillUnmount: ->
@@ -37,13 +37,13 @@ window.DevelopmentTableEditor = React.createClass
     data    = @state.data    || []
 
     `<Table className="development-table-editor collection-data" columns={columns} data={data}>
-      <DevelopmentTableEditorFooter 
+      <DevelopmentTableEditorFooter
         development={this.props.development}
-        properties={this.properties} 
+        properties={this.properties}
         columns={columns} />
     </Table>`
 
-  properties: 
+  properties:
     number:
       type: 'string'
     aspect:
@@ -116,7 +116,7 @@ window.DevelopmentTableEditor = React.createClass
       property: prop
       header: header
       type: 'dropdown'
-      cell: [ 
+      cell: [
         @editable()({editor: editors.dropdown(options)})
         formatter
       ]
@@ -127,7 +127,7 @@ window.DevelopmentTableEditor = React.createClass
       property: prop
       header: header
       type: 'boolean'
-      cell: [ 
+      cell: [
         @editable()({editor: editors.boolean()})
         (active) => active && `<span>&#10003;</span>`
       ]

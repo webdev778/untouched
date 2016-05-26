@@ -28,6 +28,8 @@ window.DevelopmentPage = React.createClass
     RouteGenerator.parse(@props.params.splat)
 
   componentDidUpdate: ->
+    if @state.development
+      document.title = @state.development.address
     @
 
   componentWillUnmount: ->
@@ -69,34 +71,34 @@ window.DevelopmentPage = React.createClass
     `<div className="scroll__nav scroll__nav--fixed">
       <ul>
         <li role="presentation" className="scroll__li">
-          <Link 
-            activeClass="active" 
-            spy={true} 
-            smooth={true} 
-            offset={this.scrollNav.offset} 
-            duration={this.scrollNav.duration} 
+          <Link
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            offset={this.scrollNav.offset}
+            duration={this.scrollNav.duration}
             to="overview">
             Overview
           </Link>
         </li>
         <li role="presentation" className="scroll__li">
-          <Link 
-            activeClass="active" 
-            spy={true} 
-            smooth={true} 
-            offset={this.scrollNav.offset} 
-            duration={this.scrollNav.duration} 
+          <Link
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            offset={this.scrollNav.offset}
+            duration={this.scrollNav.duration}
             to="location">
             Location
           </Link>
         </li>
         <li role="presentation" className="scroll__li">
-          <Link 
-            activeClass="active" 
-            spy={true} 
-            smooth={true} 
-            offset={this.scrollNav.offset} 
-            duration={this.scrollNav.duration} 
+          <Link
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            offset={this.scrollNav.offset}
+            duration={this.scrollNav.duration}
             to="pricing">
             Pricing
           </Link>
@@ -118,9 +120,9 @@ window.DevelopmentPage = React.createClass
         <DevelopmentLocationSection development={this.state.development}/>
       </Element>
       <Element name="pricing">
-        <DevelopmentPricingSection 
-          params={this.props.params} 
-          filters={this.parseFiltersFromUrl()} 
+        <DevelopmentPricingSection
+          params={this.props.params}
+          filters={this.parseFiltersFromUrl()}
           development={this.state.development}/>
       </Element>
     </div>`

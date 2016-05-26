@@ -3,9 +3,10 @@ class UnitStore
   @displayName: 'UnitStore'
 
   DEFAULT_FILTER_PARAMS:
+    status: 'any'
     sort: 'price'
     sort_order: 'asc'
-    
+
   constructor: ->
     @bindActions(UnitActions)
     @units        = []
@@ -27,7 +28,7 @@ class UnitStore
     $.ajax
       method: 'PUT'
       url: '/api/units/' + id
-      data: 
+      data:
         unit: params
       success: (response) =>
         idx = _.findIndex(@units, { id: id })
@@ -40,7 +41,7 @@ class UnitStore
     $.ajax
       method: 'POST'
       url: '/api/units'
-      data: 
+      data:
         unit: params
       success: (response) =>
         @units.push(response.unit)
