@@ -20,6 +20,8 @@ class SolrSearch
 
       filters = {}
 
+      with(:status, 'active')
+
       if params[:bedrooms]
         with(:bedrooms, params[:bedrooms])
       end
