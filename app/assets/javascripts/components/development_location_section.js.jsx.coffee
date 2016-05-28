@@ -14,7 +14,7 @@ window.DevelopmentLocationSection = React.createClass
       center: loc,
       scrollwheel: false,
       div: '#map',
-      draggable: !('ontouchstart' in document.documentElement)
+      draggable: document.documentElement.ontouchstart is undefined
     })
 
     marker = new google.maps.Marker
