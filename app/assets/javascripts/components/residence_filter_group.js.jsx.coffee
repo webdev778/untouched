@@ -33,10 +33,9 @@
     </div>`
 
   getFacetCount: (key) ->
-    value = @refs[key]?.isChecked()
     facet = @props.facets?[key]
     return 0 unless facet
-    _.find(facet, (pair) -> pair[0] == value.toString())?[1]
+    _.find(facet, (pair) -> pair[0] == true.toString())?[1]
 
   handleClick: (event) ->
     params = {}
