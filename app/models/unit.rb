@@ -43,6 +43,7 @@ class Unit < ActiveRecord::Base
 
     string(:group__development_id) { development_id.to_s }
 
+    string :number
     string :status
     integer :bedrooms
     integer :bathrooms

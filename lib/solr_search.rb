@@ -15,7 +15,14 @@ class SolrSearch
   def initialize(params)
     @params = params
     @delegate = Unit.search(solr_options) do
-      group(GROUP_BY) if group?
+      if group?
+        group(GROUP_BY) do
+          order_by(:price, :asc)
+        end
+      else
+        order_by(:price, :asc)
+      end
+
       paginate(PAGINATION_OPTIONS)
 
       filters = {}
@@ -149,7 +156,8 @@ class SolrSearch
       delegate.
         group(GROUP_BY).
         groups.
-        map(&:results).
+        map {|g| g.results.first}.
+        compact.
         flatten
     ).
       sort(params[:sort], params[:sort_order])

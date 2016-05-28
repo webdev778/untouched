@@ -27,10 +27,12 @@
 
   handleSortColumn: (name) ->
     => @sortColumn(name)
-      
-  sortColumn: (name) ->
-    DevelopmentActions.filterData(sort: name, sort_order: @toggleSortOrder())
 
-  toggleSortOrder: ->
+  sortColumn: (name) ->
+    DevelopmentActions.filterData(sort: name, sort_order: @toggleSortOrder(name))
+
+  toggleSortOrder: (columnName) ->
+    # We want to sort ascending if the sort column has changed.
+    return 'asc' if @props.filters?.sort != columnName
     if @props.filters?.sort_order == 'desc' then 'asc' else 'desc'
 

@@ -54,14 +54,16 @@
       `<th key={column} className={classForHeading(column)} onClick={handleSortColumn(column)}>{title}</th>`
 
   classForHeading: (name) ->
-    'active' if @props.filters?.sort == name
+    'active' if @state.filterParams?.sort == name
 
   handleSortColumn: (name) ->
     => @sortColumn(name)
-      
-  sortColumn: (name) ->
-    #DevelopmentActions.filterData(sort: name, sort_order: @toggleSortOrder())
 
-  toggleSortOrder: ->
-    if @props.filters?.sort_order == 'desc' then 'asc' else 'desc'
+  sortColumn: (name) ->
+    UnitActions.filterData(sort: name, sort_order: @toggleSortOrder(name))
+
+  toggleSortOrder: (columnName) ->
+    # We want to sort ascending if the sort column has changed.
+    return 'asc' if @state.filterParams?.sort != columnName
+    if @state.filterParams?.sort_order == 'desc' then 'asc' else 'desc'
 
