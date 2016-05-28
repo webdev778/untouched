@@ -9,13 +9,19 @@
   developmentUrl: ->
     "/developments/#{@props.unit.development_id}"
 
+  handleBack: (event) ->
+    event.preventDefault()
+    event.stopPropagation()
+    window.history.back()
+    return false
+
   render: ->
     `<div className="table-responsive table--noactive">
       <table className="table table--fixed">
         <tbody>
           <tr className="thead">
             <td rowSpan="2" className="btn-wrap">
-              <a href={this.developmentUrl()} className="btn--back">
+              <a href={this.developmentUrl()} onClick={this.handleBack} className="btn--back">
                 <SVGIcon icon="arrow-left" />
               </a>
             </td>
