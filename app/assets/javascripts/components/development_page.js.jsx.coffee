@@ -48,12 +48,12 @@ window.DevelopmentPage = React.createClass
       @renderSuccess()
 
   renderLoading: ->
-    `<div className='development'>
+    `<div className='development development-page'>
       <Header />
     </div>`
 
   renderSuccess: ->
-    `<div className='sidebar-hide development'>
+    `<div className='development development-page'>
 
       <Header />
 

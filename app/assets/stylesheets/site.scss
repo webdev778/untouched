@@ -3009,7 +3009,7 @@ tbody.collapse.in {
 // Enhancements not found in original front-man.com CSS
 /* ----------------------------------------------------------------- */
 
-/* ----------------------------------------------------------------- */ 
+/* ----------------------------------------------------------------- */
 // https://3.basecamp.com/3328637/buckets/650195/todos/92760487
 // Content section should stay fixed on the developments page
 @media (min-width: 768px) {
@@ -3019,9 +3019,6 @@ tbody.collapse.in {
     overflow: auto;
   }
 }
-/* ----------------------------------------------------------------- */ 
-
-
 /* ----------------------------------------------------------------- */
 // https://3.basecamp.com/3328637/buckets/650195/todos/92759675
 // Centers UNTOUCHED logo in mobile so the filter icons stand out more.
@@ -3036,3 +3033,14 @@ tbody.collapse.in {
     text-align: center;
   }
 }
+/* ----------------------------------------------------------------- */
+// https://3.basecamp.com/3328637/buckets/650195/todos/134063097
+// Development filter trigger should appear on mobile.
+@media (min-width: 768px) {
+  .development-page .main {
+    width: 100%;
+    float: none;
+  }
+}
+/* ----------------------------------------------------------------- */
+
