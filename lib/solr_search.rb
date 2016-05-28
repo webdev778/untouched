@@ -68,7 +68,7 @@ class SolrSearch
       end
 
       if params[:suburb].present?
-        with(:suburb_id, params[:suburb])
+        filters['suburb_name'] = with(:suburb_id, params[:suburb])
       end
 
       if params[:max_body_corporate_fee].present?

@@ -2,10 +2,12 @@
 
   componentWillMount: ->
     RegionStore.listen(@onChange)
+    DevelopmentStore.listen(@onChange)
     RegionActions.fetch()
 
   componentWillUnmount: ->
     RegionStore.unlisten(@onChange)
+    DevelopmentStore.unlisten(@onChange)
 
   renderOptions: ->
     getFacetCount = @getFacetCount
@@ -52,7 +54,7 @@
     `<SidebarTitle value='Suburb' />`
 
   initialValue: ->
-    @props.filters?.region
+    @state.filterParams?.region
 
   hasInitialSuburb: (id) ->
     _.includes @props.filters?.suburb, id.toString()
@@ -65,7 +67,7 @@
 
   render: ->
     `<div className='form__group'>
-      <select value={this.initialValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
+      <select ref="regionSelector" value={this.initialValue()} id='region_selector' className='select' onChange={this.handleChangeRegion}>
         <option key='any' value=''>{'All Regions (' + this.getTotalFacetCount() + ')'}</option>
         {this.renderOptions()}
       </select>
@@ -74,17 +76,21 @@
       {this.renderSuburbSelectors()}
     </div>`
 
-  regionVal: ->
-    $('select#region_selector').val()
-
   suburbVal: ->
     _.map $("input[name='suburb']:checked"), (el) -> el.value
 
+  getSelectedRegionId: ->
+    id = @refs.regionSelector?.value
+    if id
+      parseInt(id)
+    else
+      null
+
   getSelectedRegion: ->
-    _.find @state.regions, (r) => r.id == parseInt(@props.filters?.region)
+    _.find @state.regions, (r) => r.id == @getSelectedRegionId()
 
   handleChangeRegion: ->
-    @props.actions.filterData(region: @regionVal(), suburb: [])
+    @props.actions.filterData(region: @getSelectedRegionId(), suburb: [])
 
   handleChangeSuburb: ->
     @props.actions.filterData(suburb: @suburbVal())
