@@ -4,13 +4,13 @@ class UnitStore
 
   DEFAULT_FILTER_PARAMS:
     status: 'any'
-    sort: 'price'
+    sort: 'number'
     sort_order: 'asc'
 
   constructor: ->
     @bindActions(UnitActions)
     @units        = []
-    @filterParams = {}
+    @filterParams = @DEFAULT_FILTER_PARAMS
 
     @exportPublicMethods(
       getUnits: @getUnits
