@@ -52,7 +52,7 @@ class SolrSearch
       end
 
       if params[:aspect].present? && params[:aspect].any?
-        filter['aspect'] = with(:aspect, params[:aspect])
+        filters['aspect'] = with(:aspect, params[:aspect])
       end
 
       if params[:max_price].present?
