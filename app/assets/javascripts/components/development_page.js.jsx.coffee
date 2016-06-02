@@ -35,9 +35,6 @@ window.DevelopmentPage = React.createClass
   componentWillUnmount: ->
     DevelopmentStore.unlisten(@onChange)
 
-    $(window).off 'resize:development_page'
-    $(window).off 'scroll:development_page'
-
   onChange: (state) ->
     @setState(state)
 
