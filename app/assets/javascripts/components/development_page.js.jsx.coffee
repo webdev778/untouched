@@ -20,6 +20,14 @@ window.DevelopmentPage = React.createClass
 
   componentWillMount: ->
     DevelopmentStore.listen(@onChange)
+    $(window).on 'click.development_page', (event) => @hideSidebarIfClickedOutside(event)
+
+  hideSidebarIfClickedOutside: (event) ->
+    sidebarEl = $('aside.sidebar').get(0)
+    triggerEl = $('button.sidebar-trigger').get(0)
+
+    unless $.contains(sidebarEl, event.target) || $.contains(triggerEl, event.target)
+      $('body').removeClass('sidebar-on')
 
   componentDidMount: ->
     DevelopmentActions.select(@props.params.developmentId)
