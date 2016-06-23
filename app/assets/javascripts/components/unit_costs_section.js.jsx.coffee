@@ -58,7 +58,7 @@ window.UnitCostsSection = React.createClass
                 </tr>
                 <tr>
                   <td>
-                    <strong>Annual Coucil Rates (Estimated)</strong>
+                    <strong>Annual Council Rates (Estimated)</strong>
                   </td>
                   <td>{this.formattedAnnualCouncilRate()}</td>
                 </tr>
@@ -66,19 +66,19 @@ window.UnitCostsSection = React.createClass
             </table>
           </div>
         </div>
-        <button 
+        <button
           onClick={this.onClickEnquire}
-          type="button" 
-          className="btn btn--light btn--lg btn--full" 
-          data-toggle="modal" 
+          type="button"
+          className="btn btn--light btn--lg btn--full"
+          data-toggle="modal"
           data-target="#modal-enquire">
           Enquire Now
         </button>
       </form>
 
-      <EnquiryModal 
+      <EnquiryModal
         unit={this.props.unit}
-        onClose={this.onCloseModal} 
+        onClose={this.onCloseModal}
         isOpen={this.state.isModalOpen} />
     </section>`
 
