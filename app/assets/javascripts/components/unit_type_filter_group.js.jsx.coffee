@@ -1,4 +1,4 @@
-@DevelopmentTypeFilterGroup = React.createClass
+@UnitTypeFilterGroup = React.createClass
 
   fields:
     apartment: 'Apartment'
@@ -10,15 +10,15 @@
     getFacetCount   = @getFacetCount
 
     _.map @fields, (value, key) =>
-      `<CheckboxField 
+      `<CheckboxField
         checked={hasInitialValue(key)}
-        key={key} 
-        id={key} 
-        value={key} 
+        key={key}
+        id={key}
+        value={key}
         facetCount={getFacetCount(key)}
-        label={value} 
-        onClick={handler} 
-        name='development_type' />`
+        label={value}
+        onClick={handler}
+        name='unit_type' />`
 
   getFacetCount: (key) ->
     _.find(@props.facets, (pair) -> pair[0] == key)?[1]
@@ -30,13 +30,13 @@
     </div>`
 
   val: ->
-    _.map $("input[name='development_type']:checked"), (el) -> el.value
+    _.map $("input[name='unit_type']:checked"), (el) -> el.value
 
   handleClick: (event) ->
-    @props.actions.filterData(development_type: @val())
+    @props.actions.filterData(unit_type: @val())
 
   hasInitialValue: (key) ->
-    _.includes @props.filters?.development_type, key
+    _.includes @props.filters?.unit_type, key
 
 
 

@@ -27,6 +27,6 @@ window.Schema =
   rooftop_deck: 'boolean'
   ceiling_height_at_living_area_in_meters: 'number'
   units_count: 'number'
-  development_type: 'array'
+  unit_type: 'array'
   ready_at: 'date'
 

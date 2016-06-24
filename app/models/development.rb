@@ -3,7 +3,6 @@ class Development < ActiveRecord::Base
   has_many :units, dependent: :destroy
   has_many :photos, -> { order('sort, id ASC') }, class_name: 'DevelopmentPhoto', as: :imageable, dependent: :destroy
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
-  enum development_type: [ :apartment, :townhouse ]
   mount_uploader :contract, ContractUploader
   mount_uploader :logo, DevelopmentLogoUploader
 

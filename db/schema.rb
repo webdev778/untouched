@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522172651) do
+ActiveRecord::Schema.define(version: 20160624222524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20160522172651) do
     t.datetime "updated_at",                                                                                  null: false
     t.string   "photo",                                   limit: 255
     t.integer  "units_count",                                                                 default: 0,     null: false
-    t.integer  "development_type",                                                            default: 0,     null: false
     t.string   "address",                                 limit: 255,                                         null: false
     t.integer  "suburb_id",                                                                                   null: false
     t.float    "lat"
@@ -108,6 +107,7 @@ ActiveRecord::Schema.define(version: 20160522172651) do
     t.decimal  "stamp_duty",                                                   default: 0.0,   null: false
     t.decimal  "stamp_duty_savings",                                           default: 0.0,   null: false
     t.decimal  "annual_council_rate",                                          default: 0.0,   null: false
+    t.integer  "unit_type",                                                    default: 0,     null: false
   end
 
   add_index "units", ["development_id"], name: "index_units_on_development_id", using: :btree

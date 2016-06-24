@@ -7,6 +7,7 @@ class UnitSerializer < ActiveModel::Serializer
 
   attributes :id,
     :status,
+    :unit_type,
     :development_id,
     :number,
     :price,

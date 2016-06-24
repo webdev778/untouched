@@ -46,6 +46,18 @@ window.DevelopmentTableEditor = React.createClass
   properties:
     number:
       type: 'string'
+    unit_type:
+      type: 'string'
+      options: [
+        {
+          name: 'Apartment'
+          value: 'apartment'
+        }
+        {
+          name: 'Townhouse'
+          value: 'townhouse'
+        }
+      ]
     aspect:
       type: 'string'
       options: [
@@ -160,6 +172,7 @@ window.DevelopmentTableEditor = React.createClass
     [
       @inputColumn('number', 'Number')
       @dropdownColumn('status', 'Status', @properties.status.options, @formatters.capitalize)
+      @dropdownColumn('unit_type', 'Type', @properties.unit_type.options, @formatters.capitalize)
       @inputColumn('price', 'Price', @formatters.money)
       @imagesColumn('views', 'views_count', 'Views')
       @imagesColumn('plans', 'plans_count', 'Plans')

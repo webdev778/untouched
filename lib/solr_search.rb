@@ -83,8 +83,8 @@ class SolrSearch
         filters[key] = with(key, true) if params[key]
       end
 
-      if params[:development_type].present?
-        filters['development_type'] = with(:development_type, params[:development_type])
+      if params[:unit_type].present?
+        filters['unit_type'] = with(:unit_type, params[:unit_type])
       end
 
       if params[:development_id].present?

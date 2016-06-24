@@ -3,6 +3,7 @@ class Unit < ActiveRecord::Base
   has_many :views, -> { order('sort, id ASC') }, class_name: 'UnitView', as: :imageable, dependent: :destroy
   has_many :plans, -> { order('sort, id ASC') }, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
 
+  enum unit_type: [ :apartment, :townhouse ]
   enum aspect: [ :north, :east, :south, :west ]
   enum status: [ :active, :held, :sold ]
 
@@ -27,10 +28,10 @@ class Unit < ActiveRecord::Base
 
 
   FACETS =
-    %w(bedrooms bathrooms parking aspect) +
+    %w(bedrooms bathrooms parking aspect unit_type) +
     RESIDENCE_AMENITIES
   DEVELOPMENT_FACETS =
-    %w(development_type city region_name suburb_name) +
+    %w(city region_name suburb_name) +
     Development::BUILDING_AMENITIES
 
   searchable do
@@ -64,7 +65,7 @@ class Unit < ActiveRecord::Base
     Development::BUILDING_AMENITIES.each do |key|
       boolean(key) { development.send(key) }
     end
-    string(:development_type) { development.development_type }
+    string :unit_type
     double(:ceiling_height_at_living_area_in_meters) { development.ceiling_height_at_living_area_in_meters }
     integer(:units_count) { development.units_count }
   end
