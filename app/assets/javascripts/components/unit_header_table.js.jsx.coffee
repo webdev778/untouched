@@ -32,7 +32,7 @@
             <td><span className="vertical">Int M2</span></td>
             <td><span className="vertical">Ext M2</span></td>
             <td><span className="vertical">Aspect</span></td>
-            <td><span className="vertical">Parking</span></td>
+            <td><span className="vertical">Car Spaces</span></td>
             <td><span className="vertical">Price</span></td>
             <td><span className="vertical">/ M2</span></td>
           </tr>

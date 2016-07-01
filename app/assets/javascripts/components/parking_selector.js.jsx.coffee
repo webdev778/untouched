@@ -4,7 +4,7 @@
 
   render: ->
     `<div className='sidebar__box'>
-      <SidebarTitle value="Parking" />
+      <SidebarTitle value="Car Spaces" />
       {this.renderCheckboxes()}
     </div>`
 
@@ -15,14 +15,14 @@
 
     _.map @VALUES, (value) =>
       strippedValue = value.replace('+', '')
-      `<CheckboxField 
+      `<CheckboxField
         id={'parking'+strippedValue}
         key={value}
-        checked={hasInitialValue(strippedValue)} 
+        checked={hasInitialValue(strippedValue)}
         facetCount={getFacetCount(strippedValue)}
         value={strippedValue}
         label={value}
-        onClick={handleClick} 
+        onClick={handleClick}
         name="parking" />`
 
   getFacetCount: (value) ->
