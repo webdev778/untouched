@@ -99,7 +99,7 @@ window.UnitPage = React.createClass
             offset={this.scrollNav.offset}
             duration={this.scrollNav.duration}
             to="views">
-            Views
+            Aspect
           </Link>
         </li>
         <li role="presentation" className="scroll__li">
