@@ -45,7 +45,7 @@
     external_in_meters: 'Ext M2'
     aspect: 'Aspect'
     price: 'Price'
-    price_per_m2: '/M2'
+    price_per_m2: '$/M2'
 
   renderHeadings: ->
     classForHeading = @classForHeading

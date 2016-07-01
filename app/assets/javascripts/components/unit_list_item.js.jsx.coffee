@@ -1,10 +1,12 @@
-@UnitListItem = React.createClass
+accounting = require('accounting')
+
+window.UnitListItem = React.createClass
 
   formattedPrice: ->
-    Math.round(@props.unit.price / 1000.0)
+    accounting.formatMoney(@props.unit.price, '$', 0)
 
   formattedPricePerM2: ->
-    Math.round(@props.unit.price_per_m2 / 1000.0)
+    accounting.formatMoney(@props.unit.price_per_m2, '$', 0)
 
   photoUrl: ->
     @props.data.development.photos[0]?.url

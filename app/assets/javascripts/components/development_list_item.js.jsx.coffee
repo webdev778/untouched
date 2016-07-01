@@ -1,13 +1,15 @@
-@DevelopmentListItem = React.createClass
+accounting = require('accounting')
+
+window.DevelopmentListItem = React.createClass
 
   formattedPrice: ->
-    Math.round(@props.data.price / 1000.0)
+    accounting.formatMoney(@props.data.price, '$', 0)
 
   photoUrl: ->
     @props.data.development.photos[0]?.url
 
   developmentUrl: ->
-    '/developments/' + @props.data.development.id + 
+    '/developments/' + @props.data.development.id +
       new RouteGenerator(@props.filters).generate()
 
   render: ->

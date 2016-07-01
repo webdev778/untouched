@@ -8,7 +8,7 @@
         <thead>
           <tr>
             <th className={this.classForHeading('suburb')} onClick={this.handleSortColumn('suburb')}>Suburb</th>
-            <th className={this.classForHeading('price')} onClick={this.handleSortColumn('price')}>From $ ('000)</th>
+            <th className={this.classForHeading('price')} onClick={this.handleSortColumn('price')}>From</th>
           </tr>
         </thead>
         <tbody>
