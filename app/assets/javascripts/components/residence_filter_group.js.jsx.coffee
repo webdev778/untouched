@@ -1,12 +1,10 @@
 @ResidenceFilterGroup = React.createClass
 
   fields:
-    kitchen_island: 'Kitchen island'
     study_nook: 'Study nook'
     storage_cage: 'Storage cage'
     ensuite: 'Ensuite'
     walk_in_wardrobe: 'Walk-in wardrobe'
-    bathtub: 'Bathtub'
     penthouse_level: 'Penthouse level'
     no_stacker: 'No stacker'
 
