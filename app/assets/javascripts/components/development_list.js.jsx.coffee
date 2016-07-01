@@ -5,12 +5,6 @@
   render: ->
     `<div className='table-responsive'>
       <table className='table'>
-        <thead>
-          <tr>
-            <th className={this.classForHeading('suburb')} onClick={this.handleSortColumn('suburb')}>Suburb</th>
-            <th className={this.classForHeading('price')} onClick={this.handleSortColumn('price')}>From</th>
-          </tr>
-        </thead>
         <tbody>
           {this.renderItems()}
         </tbody>

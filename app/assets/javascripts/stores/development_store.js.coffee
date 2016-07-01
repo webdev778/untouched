@@ -6,7 +6,7 @@ class DevelopmentStore
 
   DEFAULT_FILTER_PARAMS:
     sort: 'price'
-    sort_order: 'asc'
+    sort_order: 'desc'
 
   constructor: ->
     @bindActions(DevelopmentActions)
