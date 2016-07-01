@@ -24,6 +24,5 @@ window.UnitListItem = React.createClass
       <td>{Math.round(this.props.unit.external_in_meters)}</td>
       <td>{this.props.unit.aspect}</td>
       <td>{this.formattedPrice()}</td>
-      <td>{this.formattedPricePerM2()}</td>
     </tr>`
 
