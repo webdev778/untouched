@@ -15,6 +15,7 @@ class Development < ActiveRecord::Base
   validates_presence_of :ceiling_height_at_living_area_in_meters
 
   before_save :geocode_if_address_changed
+  after_commit :reindex_units
 
 
   def region
@@ -52,5 +53,9 @@ class Development < ActiveRecord::Base
 
       self.lat, self.lng = geo.ll.split(',')
     end
+  end
+
+  def reindex_units
+    units.each {|u| u.solr_index}
   end
 end
