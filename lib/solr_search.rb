@@ -23,6 +23,7 @@ class SolrSearch
         order_by(:price, :asc)
       end
 
+      with(:private, false)
       paginate(PAGINATION_OPTIONS)
 
       filters = {}

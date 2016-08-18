@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624222524) do
+ActiveRecord::Schema.define(version: 20160818225135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160624222524) do
     t.integer  "deposit_due_in_days",                                                         default: 0,     null: false
     t.string   "contract",                                limit: 255
     t.string   "logo",                                    limit: 255
+    t.boolean  "private",                                                                     default: false, null: false
   end
 
   add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree

@@ -9,6 +9,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     units: HasManyUnitsField,
+    private: Field::Boolean,
     id: Field::Number,
     lat: Field::Number,
     lng: Field::Number,
@@ -49,6 +50,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :private,
     :lat,
     :lng,
     :logo,
@@ -72,6 +74,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :private,
     :logo,
     :lat,
     :lng,
