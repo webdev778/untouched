@@ -4,6 +4,10 @@ class UnitSolrSearch < SolrSearch
     false
   end
 
+  def show_private?
+    true
+  end
+
   def results
     self.class.result_set_class.new(
       delegate.results

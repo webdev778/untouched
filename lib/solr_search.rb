@@ -8,6 +8,10 @@ class SolrSearch
     true
   end
 
+  def show_private?
+    false
+  end
+
   GROUP_BY           = :group__development_id
   PAGINATION_OPTIONS = { per_page: 10000 }
   FACET_PREFIX       = 'facet__'
@@ -23,7 +27,10 @@ class SolrSearch
         order_by(:price, :asc)
       end
 
-      with(:private, false)
+      if !show_private?
+        with(:private, false)
+      end
+
       paginate(PAGINATION_OPTIONS)
 
       filters = {}
