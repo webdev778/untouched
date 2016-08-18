@@ -44,6 +44,9 @@ class Unit < ActiveRecord::Base
 
     string(:group__development_id) { development_id.to_s }
 
+    boolean :private do
+      development.private
+    end
     string :number
     string :status
     integer :bedrooms
