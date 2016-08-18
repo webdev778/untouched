@@ -1,4 +1,4 @@
-# Untouched
+# Untouched.co
 
 ## Seeding Data
 
@@ -25,7 +25,7 @@ page.
 detail page.
 
 You'll notice each of these are represented as separate lists in the YAML
-specification. 
+specification.
 
 ### Running seeds
 
