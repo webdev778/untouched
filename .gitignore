@@ -21,3 +21,5 @@ ftags
 public/uploads
 solr
 .idea
+
+node_modules
