@@ -5,9 +5,9 @@ class DevelopmentSerializer < ActiveModel::Serializer
   attributes :id, :lat, :lng,
     :logo_url,
     :address,
-    :city, 
-    :region_name, 
-    :suburb_name, 
+    :city,
+    :region_name,
+    :suburb_name,
     :ready_at,
     :gym,
     :pool,
@@ -22,7 +22,8 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :units_active_count,
     :units_sold_count,
     :created_at,
-    :updated_at
+    :updated_at,
+    :intercom_app_id
 
   def logo_url
     object.logo.try(:url)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818225135) do
+ActiveRecord::Schema.define(version: 20160819215201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20160818225135) do
     t.string   "contract",                                limit: 255
     t.string   "logo",                                    limit: 255
     t.boolean  "private",                                                                     default: false, null: false
+    t.string   "intercom_app_id",                         limit: 255
   end
 
   add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree
