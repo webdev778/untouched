@@ -32,7 +32,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     logo: CarrierwaveField,
     photos: HasManyDevelopmentPhotosField,
-    contract: CarrierwaveField
+    contract: CarrierwaveField,
+    intercom_app_id: Field::String
   }
 
   # COLLECTION_ATTRIBUTES
@@ -67,7 +68,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
     :deposit_due_in_days,
-    :contract
+    :contract,
+    :intercom_app_id
   ]
 
   # FORM_ATTRIBUTES
@@ -93,7 +95,8 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
     :deposit_due_in_days,
-    :contract
+    :contract,
+    :intercom_app_id
   ]
 
   # Overwrite this method to customize how developments are displayed
