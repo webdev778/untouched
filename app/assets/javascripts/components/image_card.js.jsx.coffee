@@ -1,8 +1,14 @@
 @ImageCard = React.createClass
 
+  getDefaultProps: ->
+    {
+      handleImageLoaded: () -> {}
+      handleImageErrored: () -> {}
+    }
+
   render: ->
     `<div key={this.props.image.id} className="card">
-      <img src={this.props.image.url} />
+      <img src={this.props.image.url} onLoad={this.props.handleImageLoaded} onError={this.props.handleImageErrored}/>
       {this.renderCaption()}
     </div>`
 

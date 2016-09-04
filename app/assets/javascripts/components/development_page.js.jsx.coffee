@@ -1,6 +1,8 @@
+Joyride = require('react-joyride').default
 Scroll = require('react-scroll')
 Link   = Scroll.Link
 Element = Scroll.Element
+
 
 window.DevelopmentPage = React.createClass
 
@@ -16,11 +18,17 @@ window.DevelopmentPage = React.createClass
     {
       development: @status.loading
       filterParams: @parseFiltersFromUrl()
+      steps: [{
+        title: 'Floorplans',
+        text: 'To see floorplans, <i>click</i> the unit number.',
+        selector: '.unit-list-item__tip',
+        position: 'top',
+        type: 'hover',
+        style: {
+          mainColor: '#03a9f4'
+        }
+      }]
     }
-
-  componentWillMount: ->
-    DevelopmentStore.listen(@onChange)
-    $(window).on 'click.development_page', (event) => @hideSidebarIfClickedOutside(event)
 
   hideSidebarIfClickedOutside: (event) ->
     sidebarEl = $('aside.sidebar').get(0)
@@ -29,22 +37,40 @@ window.DevelopmentPage = React.createClass
     unless $.contains(sidebarEl, event.target) || $.contains(triggerEl, event.target)
       $('body').removeClass('sidebar-on')
 
-  componentDidMount: ->
-    DevelopmentActions.select(@props.params.developmentId)
-
   parseFiltersFromUrl: ->
     RouteGenerator.parse(@props.params.splat)
 
-  componentDidUpdate: ->
-    if @state.development
+  onChange: (state) ->
+    @setState(state)
+
+  componentWillMount: ->
+    DevelopmentStore.listen(@onChange)
+    TipStore.listen(@onChange)
+    $(window).on 'click.development_page', (event) => @hideSidebarIfClickedOutside(event)
+
+  componentDidMount: ->
+    DevelopmentActions.select(@props.params.developmentId)
+
+  componentDidUpdate: (prevProps, prevState) ->
+    unless @state.development is @status.loading
       document.title = @state.development.address
+
+      unless prevState.development is @status.loading
+        if @state.development.intercom_app_id
+          window.Intercom('boot', { app_id: @state.development.intercom_app_id })
+        else
+          window.Intercom('shutdown')
+
+      if (@state.joyrideStart && !prevState.joyrideStart)
+        setTimeout (->
+          @joyride.start(true)
+        ).bind(this), 100
+
     @
 
   componentWillUnmount: ->
     DevelopmentStore.unlisten(@onChange)
-
-  onChange: (state) ->
-    @setState(state)
+    TipStore.unlisten(@onChange)
 
   render: ->
     if @state.development is @status.loading
@@ -60,6 +86,8 @@ window.DevelopmentPage = React.createClass
   renderSuccess: ->
     `<div className='development development-page'>
 
+      <Joyride ref={c => this.joyride = c} callback={TipActions.joyrideCallback} steps={this.state.steps} scrollToFirstStep scrollOffset={200} locale={{ close: 'Got it' }} />
+
       <Header />
 
       <main className="main">
@@ -69,8 +97,7 @@ window.DevelopmentPage = React.createClass
         </div>
       </main>
 
-     </div>`
-
+    </div>`
 
   renderNav: ->
     `<div className="scroll__nav scroll__nav--fixed">
@@ -83,7 +110,7 @@ window.DevelopmentPage = React.createClass
             offset={this.scrollNav.offset}
             duration={this.scrollNav.duration}
             to="overview">
-            Overview
+          Overview
           </Link>
         </li>
         <li role="presentation" className="scroll__li">
@@ -94,7 +121,7 @@ window.DevelopmentPage = React.createClass
             offset={this.scrollNav.offset}
             duration={this.scrollNav.duration}
             to="location">
-            Location
+          Location
           </Link>
         </li>
         <li role="presentation" className="scroll__li">
@@ -105,7 +132,7 @@ window.DevelopmentPage = React.createClass
             offset={this.scrollNav.offset}
             duration={this.scrollNav.duration}
             to="pricing">
-            Pricing
+          Pricing
           </Link>
         </li>
       </ul>
@@ -128,6 +155,7 @@ window.DevelopmentPage = React.createClass
         <DevelopmentPricingSection
           params={this.props.params}
           filters={this.parseFiltersFromUrl()}
-          development={this.state.development}/>
+          development={this.state.development}
+          tip={!this.joyrideShowed}/>
       </Element>
     </div>`

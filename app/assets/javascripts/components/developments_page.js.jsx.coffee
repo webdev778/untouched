@@ -9,6 +9,7 @@
   componentWillMount: ->
     DevelopmentStore.listen(@onChange)
     $(window).resize => @onResize()
+    window.Intercom('boot', { app_id: window.INTERCOM_APP_ID })
 
   componentDidMount: ->
     DevelopmentActions.filterData(@parseFiltersFromUrl())
@@ -34,8 +35,8 @@
   render: ->
     `<div className="developments-page">
 
-      <div 
-        className="sidebar-overlay" 
+      <div
+        className="sidebar-overlay"
         onClick={this.handleClickSidebarOverlay}></div>
 
       <Header />
@@ -44,14 +45,14 @@
         <aside className='sidebar'>
           <DismissSidebarTrigger />
           <FilterSidebar
-            filters={this.parseFiltersFromUrl()} 
+            filters={this.parseFiltersFromUrl()}
             facets={this.state.facets}
             actions={DevelopmentActions} />
         </aside>
 
         <main className='main'>
-          <DevelopmentList 
-            filters={this.state.filterParams} 
+          <DevelopmentList
+            filters={this.state.filterParams}
             developments={this.state.developments} />
         </main>
       </div>

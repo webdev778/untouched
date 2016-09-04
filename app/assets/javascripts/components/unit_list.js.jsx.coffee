@@ -7,12 +7,10 @@
 
   componentWillMount: ->
     UnitStore.listen(@onChange)
+    UnitActions.filterData(@getFilterParams())
+
   componentWillUnmount: ->
     UnitStore.unlisten(@onChange)
-
-  componentDidMount: ->
-    UnitActions.filterData(@getFilterParams())
-    UnitActions.fetch()
 
   onChange: (state) ->
     @setState(state)
@@ -30,8 +28,12 @@
           </tr>
         </thead>
         <tbody>
-          {this.state.units.map(function(unit) {
-            return <UnitListItem key={unit.id} unit={unit} />;
+          {this.state.units.map((unit, index) => {
+            if (index === 0) {
+              return <UnitListItem key={unit.id} unit={unit} tip={this.props.tip}/>;
+            } else {
+              return <UnitListItem key={unit.id} unit={unit} />;
+            }
           })}
         </tbody>
       </table>

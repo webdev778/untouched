@@ -1,0 +1,14 @@
+default: &default
+  username: teejayvanslyke
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  <<: *default
+  database: untouched_development
+
+test:
+  <<: *default
+  database: untouched_test
+

@@ -430,7 +430,6 @@ body {
   font-weight: 400;
   background-color: #fff;
   color: #444444;
-  min-height: 100%;
   position: relative;
   padding-top: 50px;
 }
@@ -2986,6 +2985,11 @@ tbody.collapse.in {
   font-weight: bold !important;
   text-shadow: -1px -1px 0 #fff,   1px -1px 0 #fff, -1px  1px 0 #fff, 1px  1px 0 #fff;
 }
+
+/*------------------------------------*\
+	@COMPONENTS #TIPS
+\*------------------------------------*/
+@import '../../../node_modules/react-joyride/lib/styles/react-joyride';
 
 /*------------------------------------*\
 	@TRUMPS #COLORS

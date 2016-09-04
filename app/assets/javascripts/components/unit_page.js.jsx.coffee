@@ -2,6 +2,7 @@ Scroll = require('react-scroll')
 Link   = Scroll.Link
 Element = Scroll.Element
 
+
 window.UnitPage = React.createClass
 
   scrollNav:
@@ -20,15 +21,20 @@ window.UnitPage = React.createClass
   componentWillMount: ->
     # TODO: Can we find a less intrusive way to set the body class?
     $('body').addClass('sidebar-hide development')
-
     UnitStore.listen(@onChange)
 
   componentDidMount: ->
     UnitActions.select(@props.params.developmentId, @props.params.unitId)
 
-  componentDidUpdate: ->
-    if @state.unit
+  componentDidUpdate: (prevProps, prevState) ->
+    unless @state.unit is @status.loading
       document.title = [ @state.unit.development.address, @state.unit.number ].join(' ')
+
+      unless prevState.unit is @status.loading
+        if @state.unit.development.intercom_app_id
+          window.Intercom('boot', { app_id: @state.unit.development.intercom_app_id })
+        else
+          window.Intercom('shutdown')
 
   componentWillUnmount: ->
     UnitStore.unlisten(@onChange)
