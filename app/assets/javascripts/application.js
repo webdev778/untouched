@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require lodash
-//= require turbolinks
 //= require init
 //= require react_ujs
 //= require infobox

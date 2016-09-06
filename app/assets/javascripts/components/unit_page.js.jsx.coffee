@@ -30,11 +30,12 @@ window.UnitPage = React.createClass
     unless @state.unit is @status.loading
       document.title = [ @state.unit.development.address, @state.unit.number ].join(' ')
 
-      unless prevState.unit is @status.loading
+      if prevState.unit is @status.loading
         if @state.unit.development.intercom_app_id
           window.Intercom('boot', { app_id: @state.unit.development.intercom_app_id })
         else
           window.Intercom('shutdown')
+    @
 
   componentWillUnmount: ->
     UnitStore.unlisten(@onChange)

@@ -35,9 +35,7 @@
   render: ->
     `<div className="developments-page">
 
-      <div
-        className="sidebar-overlay"
-        onClick={this.handleClickSidebarOverlay}></div>
+      <div className="sidebar-overlay" onClick={this.handleClickSidebarOverlay} />
 
       <Header />
 
@@ -57,7 +55,7 @@
         </main>
       </div>
 
-     </div>`
+    </div>`
 
 
   handleClickSidebarOverlay: ->

@@ -55,17 +55,16 @@ window.DevelopmentPage = React.createClass
     unless @state.development is @status.loading
       document.title = @state.development.address
 
-      unless prevState.development is @status.loading
-        if @state.development.intercom_app_id
-          window.Intercom('boot', { app_id: @state.development.intercom_app_id })
-        else
-          window.Intercom('shutdown')
-
       if (@state.joyrideStart && !prevState.joyrideStart)
         setTimeout (->
           @joyride.start(true)
         ).bind(this), 100
 
+      if prevState.development is @status.loading
+        if @state.development.intercom_app_id
+          window.Intercom('boot', { app_id: @state.development.intercom_app_id })
+        else
+          window.Intercom('shutdown')
     @
 
   componentWillUnmount: ->
