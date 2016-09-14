@@ -2904,6 +2904,10 @@ tbody.collapse.in {
   }
 }
 
+.scroll__privacy {
+  height: 900px;
+}
+
 .body-overflow {
   overflow: hidden;
 }
@@ -3044,6 +3048,11 @@ tbody.collapse.in {
   .development-page .main {
     width: 100%;
     float: none;
+  }
+
+  .legal-page .main {
+      width: 100%;
+      float: none;
   }
 }
 /* ----------------------------------------------------------------- */

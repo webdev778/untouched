@@ -10,11 +10,13 @@ ReactDOM.render((
     <Route path="/developments/:developmentId" component={DevelopmentPage}>
       <Route path="*" component={DevelopmentPage} />
     </Route>
+    <Route path="/legal" component={LegalPage} />
 
     <Route path="/" component={DevelopmentsPage}>
       <IndexRoute component={DevelopmentsPage} />
       <Route path="*" component={DevelopmentsPage} />
     </Route>
+
   </Router>
 ), document.getElementById('app'));
 
