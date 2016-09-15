@@ -15,7 +15,8 @@ gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
 gem "browserify-rails"
 gem 'jquery-rails'
-gem 'react-rails', '~> 1.8.2'
+# gem 'react-rails', '~> 1.8.2'
+gem "react_on_rails", "~> 6"
 gem 'lodash-rails'
 
 # Image assets
