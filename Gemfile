@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
-gem "browserify-rails"
+# gem "browserify-rails"
 gem 'jquery-rails'
 # gem 'react-rails', '~> 1.8.2'
 gem "react_on_rails", "~> 6"
@@ -28,7 +28,7 @@ gem 'redcarpet'
 
 gem "administrate", "~> 0.1.4"
 
-gem 'turbolinks'
+gem 'turbolinks', '~> 5.0.0'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -66,3 +66,5 @@ group :test do
   gem 'vcr'
   gem 'webmock'
 end
+
+gem 'mini_racer', platforms: :ruby

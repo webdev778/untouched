@@ -1,5 +1,5 @@
 default: &default
-  username: teejayvanslyke
+  username: beautyfree 
   adapter: postgresql
   pool: 5
   timeout: 5000

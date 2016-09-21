@@ -10,26 +10,29 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require lodash
-//= require init
-//= require react_ujs
+// require webpack-bundle
+//= require vendor-bundle
+//= require app-bundle
+
+// require jquery
+// require jquery_ujs
+// require lodash
+// require init
 //= require infobox
-//= require route_generator
-//= require schema
-//= require config
-//= require sources/enquiry_source
-//= require actions/enquiry_actions
-//= require stores/enquiry_store
-//= require actions/region_actions
-//= require stores/region_store
-//= require actions/development_actions
-//= require stores/development_store
-//= require actions/unit_actions
-//= require stores/unit_store
-//= require actions/tip_actions
-//= require stores/tip_store
-//= require components
-//= require router
+// require route_generator
+// require schema
+// require config
+// require sources/enquiry_source
+// require actions/enquiry_actions
+// require stores/enquiry_store
+// require actions/region_actions
+// require stores/region_store
+// require actions/development_actions
+// require stores/development_store
+// require actions/unit_actions
+// require stores/unit_store
+// require actions/tip_actions
+// require stores/tip_store
+// require components
+// require router
 

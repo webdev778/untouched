@@ -1,7 +1,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require lodash
-//= require react_ujs
 //= require selectize
 //= require moment
 //= require ./init

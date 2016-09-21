@@ -27,7 +27,7 @@ module Untouched
     config.assets.precompile << "modernizr.js"
     config.eager_load_paths  << "#{Rails.root}/lib"
 
-    config.browserify_rails.commandline_options = "-t coffeeify --extension=\".js.coffee\""
+    # config.browserify_rails.commandline_options = "-t coffeeify --extension=\".js.coffee\""
   end
 end
 
