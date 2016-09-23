@@ -6,13 +6,13 @@
     "npm": "3.5.0"
   },
   "scripts": {
-    "build:production": "npm run build:app:production && npm run build:admin:production",
-    "build:app:test": "webpack --config webpack.config.js",
-    "build:app:production": "NODE_ENV=production webpack --config webpack.app.config.js",
-    "build:app:development": "webpack -w --config webpack.app.config.js",
-    "build:admin:test": "webpack --config webpack.admin.config.js",
-    "build:admin:production": "NODE_ENV=production webpack --config webpack.admin.config.js",
-    "build:admin:development": "webpack -w --config webpack.admin.config.js"
+    "build:production": "npm i && npm run build:app:production && npm run build:admin:production",
+    "build:app:test": "./node_modules/.bin/webpack --config webpack.app.config.js",
+    "build:app:production": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.app.config.js",
+    "build:app:development": "./node_modules/.bin/webpack -w --config webpack.app.config.js",
+    "build:admin:test": "./node_modules/.bin/webpack --config webpack.admin.config.js",
+    "build:admin:production": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.admin.config.js",
+    "build:admin:development": "./node_modules/.bin/webpack -w --config webpack.admin.config.js"
   },
   "cacheDirectories": [
     "node_modules",
