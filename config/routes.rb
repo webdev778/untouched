@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'hello_world', to: 'hello_world#index'
-  
   if Rails.env.development?
     get '/rails/mailers' => "rails/mailers#index"
     get '/rails/mailers/*path' => "rails/mailers#preview"

@@ -10,14 +10,9 @@ gem 'active_model_serializers'
 
 # JavaScript
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
 gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
-# gem "browserify-rails"
-gem 'jquery-rails'
-# gem 'react-rails', '~> 1.8.2'
 gem "react_on_rails", "~> 6"
-gem 'lodash-rails'
 
 # Image assets
 gem 'carrierwave'
@@ -45,8 +40,6 @@ gem 'sentry-raven'
 
 # Geolocation
 gem 'geokit'
-
-gem 'rails-assets-react-dropzone', source: 'https://rails-assets.org'
 
 group :development, :test do
   gem 'byebug'

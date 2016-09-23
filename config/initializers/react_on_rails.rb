@@ -1,3 +1,6 @@
+# Fix: https://github.com/shakacode/react_on_rails/issues/385
+ActiveSupport.on_load(:action_view) do include ReactOnRailsHelper end 
+
 # Shown below are the defaults for configuration
 ReactOnRails.configure do |config|
   # Client bundles are configured in application.js
