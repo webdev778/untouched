@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import accounting from 'accounting';
+import moment from 'moment';
 
 import EnquiryModal from '../enquiry/EnquiryModal';
 
@@ -34,6 +35,10 @@ export default class UnitCostsSection extends Component {
     return accounting.formatMoney(this.props.unit.annual_council_rate, '$', 0);
   }
 
+  formattedReadyAt() {
+    return moment(this.props.unit.development.ready_at).format('ll');
+  }
+
   render() {
     return (
       <section className="scroll__section">
@@ -49,26 +54,27 @@ export default class UnitCostsSection extends Component {
                       <span className="cost__light">
                         Due within {this.props.unit.deposit_due_in_days} days of signing&nbsp;
                         <Link target="_blank" to={this.props.unit.contract_url}>contract</Link>
+                        , with balance payable upon completion in {this.formattedReadyAt()}
                       </span>
                     </td>
                     <td>{this.formattedDeposit()}</td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Stamp Duty</strong>
+                      <strong>Stamp Duty (estimate)</strong>
                       <span className="cost__light">Save {this.formattedStampDutySavings()}</span>
                     </td>
                     <td>{this.formattedStampDuty()}</td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Annual Body Corporate (Estimated)</strong>
+                      <strong>Body Corporate (estimate)</strong>
                     </td>
                     <td>{this.formattedAnnualBodyCorporate()}</td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Annual Council Rates (Estimated)</strong>
+                      <strong>Council Rates (estimate)</strong>
                     </td>
                     <td>{this.formattedAnnualCouncilRate()}</td>
                   </tr>
