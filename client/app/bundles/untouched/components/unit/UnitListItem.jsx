@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import Waypoint from 'react-waypoint';
 import accounting from 'accounting';
 
 import TipActions from '../../actions/tip_actions';
@@ -22,47 +23,18 @@ export default class UnitListItem extends Component {
     return `/developments/${this.props.unit.development_id}/units/${this.props.unit.id}`;
   }
 
-  _checkViewport = () => {
-    let el = document.querySelector('.unit-list-item__tip');
-    if (!el) {
-      this.stopWatching();
-      return;
-    }
-
-    let position = el.getBoundingClientRect();
-    let isBelowViewBox = window.innerHeight - position.top < 0;
-    let isAboveViewBox = position.bottom < 0;
-    if (!isBelowViewBox && !isAboveViewBox) {
-      this.stopWatching();
-      TipActions.tipVisible(true);
-    }
-  }
-
-  startWatching() {
-    window.addEventListener('scroll', this._checkViewport);
-    this._interval = setInterval(this._checkViewport, 500);
-  }
-
-  stopWatching() {
-    window.removeEventListener('scroll', this._checkViewport);
-    clearInterval(this._interval);
-  }
-
-  componentDidMount() {
-    if (this.props.tip) {
-      this.startWatching();
-    }
-  }
-
-  componentWillUnmount() {
-    this.stopWatching;
+  _handleWaypointEnter = () => {
+    TipActions.tipVisible(true);
   }
 
   render() {
     return (
       <tr>
         <td>&nbsp;</td>
-        <td className={this.props.tip ? 'unit-list-item__tip' : ''}><Link to={this.unitUrl()}>{this.props.unit.number}</Link></td>
+        <td className={this.props.tip ? 'unit-list-item__tip' : ''}>
+          <Waypoint scrollableAncestor={window} onEnter={this._handleWaypointEnter} />
+          <Link to={this.unitUrl()}>{this.props.unit.number}</Link>
+        </td>
         <td>{this.props.unit.bedrooms}</td>
         <td>{this.props.unit.bathrooms}</td>
         <td>{Math.round(this.props.unit.internal_in_meters)}</td>

@@ -2,6 +2,11 @@ const webpack = require('webpack');
 
 const config = require('./webpack.base.config');
 
+config.entry.vendor.push(
+  'reactabular',
+  'react-dropzone',
+  'react-router'
+);
 config.entry.admin = [
   './app/bundles/administrate/startup/clientRegistration'
 ];

@@ -33,6 +33,8 @@ class TipStore {
   }
 
   changeJoyrideStart() {
+    console.log(!this.joyrideShowed, this.overviewLoaded, this.tipVisible);
+
     this.joyrideStart = !this.joyrideShowed && this.overviewLoaded && this.tipVisible;
     this.emitChange();
   }

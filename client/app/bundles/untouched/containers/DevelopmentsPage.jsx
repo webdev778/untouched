@@ -35,7 +35,7 @@ export default class DevelopmentsPage extends Component {
     this.onResize();
   }
 
-  onResize() {
+  onResize = () => {
     $('.asset-wrap').each(function() {
       let assetW = $(this).width();
       $(this).css('height', assetW / 1.75);
@@ -81,7 +81,7 @@ export default class DevelopmentsPage extends Component {
   }
 
 
-  handleClickSidebarOverlay() {
+  handleClickSidebarOverlay = () => {
     $('body').removeClass('sidebar-on');
   }
 }

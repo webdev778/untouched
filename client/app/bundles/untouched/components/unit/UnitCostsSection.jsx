@@ -36,7 +36,7 @@ export default class UnitCostsSection extends Component {
   }
 
   formattedReadyAt() {
-    return moment(this.props.unit.development.ready_at).format('ll');
+    return moment(this.props.unit.development.ready_at).format('MMM, YYYY');
   }
 
   render() {

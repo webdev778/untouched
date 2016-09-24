@@ -4,6 +4,9 @@ const config = require('./webpack.base.config');
 
 config.entry.vendor.push(
   'axios',
+  'react-waypoint',
+  'react-joyride',
+  'react-scroll',
   'react-router'
 );
 config.entry.app = [

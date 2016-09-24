@@ -8,9 +8,6 @@ export default class DevelopmentOverviewSection extends Component {
 
   imagesLoaded(parentNode) {
     let imgElements = parentNode.querySelectorAll('img');
-    if (!imgElements.length) {
-      return true;
-    }
 
     for (let i = 0; i < imgElements.length; i++) {
       let img = imgElements[i];
@@ -25,7 +22,7 @@ export default class DevelopmentOverviewSection extends Component {
   handleStateChange = () => {
     let overviewElement = this.overview;
     if (this.imagesLoaded(overviewElement)) {
-      return TipActions.overviewLoaded(true);
+      TipActions.overviewLoaded(true);
     }
   }
 
@@ -43,6 +40,9 @@ export default class DevelopmentOverviewSection extends Component {
 
   renderPhotos() {
     if (!this.props.development) { return; }
+    if (!this.props.development.photos.length) { 
+      TipActions.overviewLoaded(true); 
+    }
     return _.map(this.props.development.photos, photo => (
       <ImageCard
         key={photo.id}
