@@ -1,4 +1,7 @@
 import alt from '../alt';
+import axios from 'axios';
+import ReactOnRails from 'react-on-rails';
+axios.defaults.headers = ReactOnRails.authenticityHeaders();
 
 import UnitActions from '../actions/unit_actions';
 
@@ -33,67 +36,58 @@ class UnitStore {
 
   onUpdateUnit(args) {
     const [ id, params ] = args;
-    return $.ajax({
+    return axios({
       method: 'PUT',
       url: `/api/units/${id}`,
       data: {
         unit: params
       },
-      success: response => {
-        const idx = _.findIndex(this.units, { id });
-        this.units[idx] = response.unit;
-        return this.emitChange();
-      },
-      error: response => {
-        return alert("Oops! Something went wrong. Check your data and try again.");
-      }
+    }).then((response) => {
+      const idx = _.findIndex(this.units, { id });
+      this.units[idx] = response.data.unit;
+      return this.emitChange();
+    }).catch((error) => {
+      alert("Oops! Something went wrong. Please try again.");
     });
   }
 
   onCreateUnit(params) {
-    $.ajax({
+    axios({
       method: 'POST',
       url: '/api/units',
       data: {
         unit: params
-      },
-      success: response => {
-        this.units.push(response.unit);
-        this.emitChange();
-      },
-      error: response => {
-        alert("Oops! Something went wrong. Check your data and try again.");
       }
+    }).then((response) => {
+      this.units.push(response.data.unit);
+      this.emitChange();
+    }).catch((error) => {
+      alert("Oops! Something went wrong. Please try again.");
     });
   }
 
   onDeleteUnit(id) {
-    $.ajax({
+    axios({
       method: 'DELETE',
       url: `/api/units/${id}`,
-      success: response => {
-        this.units = _.reject(this.units, u => u.id === parseInt(id));
-        this.emitChange();
-      },
-      error: response => {
-        alert("Oops! Something went wrong. Please try again.");
-      }
+    }).then((response) => {
+      this.units = _.reject(this.units, u => u.id === parseInt(id));
+      this.emitChange();
+    }).catch((error) => {
+      alert("Oops! Something went wrong. Please try again.");
     });
   }
 
   fetch() {
-    return $.ajax({
+    return axios({
       method: 'GET',
       url: '/api/units',
-      data: this.filterParams,
-      success: response => {
-        this.units = response.units;
-        return this.emitChange();
-      },
-      error(response) {
-        console.log('error');
-        return console.log(response);
-      }
+      params: this.filterParams,
+    }).then((response) => {
+      this.units = response.data.units;
+      this.emitChange();
+    }).catch((error) => {
+      alert("Oops! Something went wrong. Please try again.");
     });
   }
 

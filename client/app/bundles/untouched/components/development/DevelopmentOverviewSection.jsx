@@ -40,9 +40,6 @@ export default class DevelopmentOverviewSection extends Component {
 
   renderPhotos() {
     if (!this.props.development) { return; }
-    if (!this.props.development.photos.length) { 
-      TipActions.overviewLoaded(true); 
-    }
     return _.map(this.props.development.photos, photo => (
       <ImageCard
         key={photo.id}

@@ -15,28 +15,25 @@ class TipStore {
     this.tipVisible = false;
   }
 
-  joyrideCallback(props){
+  joyrideCallback(props) {
     if (props.type === 'finished') {
       this.joyrideShowed = true;
       localStorage.setItem('joyrideShowed', true);
     }
   }
 
-  overviewLoaded(prop){
+  overviewLoaded(prop) {
     this.overviewLoaded = prop;
     this.changeJoyrideStart();
   }
 
-  tipVisible(prop){
+  tipVisible(prop) {
     this.tipVisible = prop;
     this.changeJoyrideStart();
   }
 
   changeJoyrideStart() {
-    console.log(!this.joyrideShowed, this.overviewLoaded, this.tipVisible);
-
     this.joyrideStart = !this.joyrideShowed && this.overviewLoaded && this.tipVisible;
-    this.emitChange();
   }
 }
 

@@ -41,11 +41,11 @@ class UnitStore {
       url: `/api/developments/${args[0]}/units/${args[1]}`,
       success: response => {
         this.unit = response.unit;
-        return this.emitChange();
+        this.emitChange();
       },
       error(response) {
         console.log('error');
-        return console.log(response);
+        console.log(response);
       }
     });
   }
@@ -62,7 +62,7 @@ class UnitStore {
       },
       error(response) {
         console.log('error');
-        return console.log(response);
+        console.log(response);
       }
     });
   }

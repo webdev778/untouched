@@ -31,8 +31,10 @@ export default class UnitListItem extends Component {
     return (
       <tr>
         <td>&nbsp;</td>
-        <td className={this.props.tip ? 'unit-list-item__tip' : ''}>
-          <Waypoint scrollableAncestor={window} onEnter={this._handleWaypointEnter} />
+        <td className={this.props.tip ? 'unit-list-item__tip' : null}>
+          {this.props.tip &&
+          <Waypoint scrollableAncestor={window} onEnter={this._handleWaypointEnter} bottomOffset="50px" />
+          }
           <Link to={this.unitUrl()}>{this.props.unit.number}</Link>
         </td>
         <td>{this.props.unit.bedrooms}</td>

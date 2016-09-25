@@ -29,6 +29,7 @@ export default class DevelopmentsPage extends Component {
 
   componentWillUnmount() {
     DevelopmentStore.unlisten(this.onChange);
+    window.Intercom('shutdown');
   }
 
   componentDidUpdate() {

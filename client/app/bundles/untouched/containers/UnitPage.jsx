@@ -53,6 +53,7 @@ export default class UnitPage extends Component {
   componentWillUnmount() {
     $('body').removeClass('sidebar-hide development');
     UnitStore.unlisten(this.onChange);
+    window.Intercom('shutdown');
   }
 
   onChange = (state) => {

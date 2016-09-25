@@ -26,11 +26,11 @@ class RegionStore {
       data: this.filterParams,
       success: response => {
         this.regions = response.regions;
-        return this.emitChange();
+        this.emitChange();
       },
       error(response) {
         console.log('error');
-        return console.log(response);
+        console.log(response);
       }
     });
   }

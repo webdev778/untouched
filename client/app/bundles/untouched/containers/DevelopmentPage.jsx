@@ -60,7 +60,7 @@ export default class DevelopmentPage extends Component {
   componentWillMount() {
     DevelopmentStore.listen(this.onChange);
     TipStore.listen(this.onChange);
-    $(window).on('click.development_page', event => this.hideSidebarIfClickedOutside(event));
+    $(document).on('click.development_page', event => this.hideSidebarIfClickedOutside(event));
   }
 
   componentDidMount() {
@@ -71,12 +71,6 @@ export default class DevelopmentPage extends Component {
     if (this.state.development !== this.status.loading) {
       document.title = this.state.development.address;
 
-      if (this.state.joyrideStart && !prevState.joyrideStart) {
-        setTimeout((() => {
-          return this.joyride.start(true);
-        }), 100);
-      }
-
       if (prevState.development === this.status.loading) {
         if (this.state.development.intercom_app_id) {
           window.Intercom('boot', { app_id: this.state.development.intercom_app_id });
@@ -85,12 +79,19 @@ export default class DevelopmentPage extends Component {
         }
       }
     }
+
+    if (this.state.joyrideStart && !prevState.joyrideStart) {
+      setTimeout(() => {
+        this.joyride.start(true);
+      }, 100);
+    }
   }
 
   componentWillUnmount() {
     DevelopmentStore.unlisten(this.onChange);
     TipStore.unlisten(this.onChange);
-    $(window).off('click.development_page');
+    $(document).off('click.development_page');
+    window.Intercom('shutdown');
   }
 
   render() {
@@ -113,7 +114,15 @@ export default class DevelopmentPage extends Component {
     return (
       <div className='development development-page'>
 
-        <Joyride ref={c => this.joyride = c} callback={TipActions.joyrideCallback} steps={this.state.steps} scrollToFirstStep scrollOffset={200} locale={{ close: 'Got it' }} />
+        {!this.state.joyrideShowed &&
+        <Joyride 
+          ref={c => this.joyride = c} 
+          callback={TipActions.joyrideCallback} 
+          steps={this.state.steps} 
+          scrollToFirstStep 
+          scrollOffset={200} 
+          locale={{ close: 'Got it' }} />
+        }
 
         <Header />
 
@@ -190,7 +199,7 @@ export default class DevelopmentPage extends Component {
             params={this.props.params}
             filters={this.parseFiltersFromUrl()}
             development={this.state.development}
-            tip={!this.joyrideShowed}/>
+            tip={!this.state.joyrideShowed && this.state.overviewLoaded}/>
         </Element>
       </div>
     );

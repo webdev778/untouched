@@ -57,11 +57,11 @@ class DevelopmentStore {
       success: response => {
         this.developments = response.developments;
         this.facets = response.facets;
-        return this.emitChange();
+        this.emitChange();
       },
       error(response) {
         console.log('error');
-        return console.log(response);
+        console.log(response);
       }
     });
   }
