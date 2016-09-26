@@ -24,7 +24,6 @@ export default class DevelopmentsPage extends Component {
 
   componentDidMount() {
     DevelopmentActions.filterData(this.parseFiltersFromUrl());
-    DevelopmentActions.fetch();
   }
 
   componentWillUnmount() {

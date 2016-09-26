@@ -40,11 +40,11 @@ class DevelopmentStore {
       url: `/api/developments/${id}`,
       success: response => {
         this.development = response.development;
-        return this.emitChange();
+        this.emitChange();
       },
       error(response) {
         console.log('error');
-        return console.log(response);
+        console.log(response);
       }
     });
   }
@@ -57,6 +57,7 @@ class DevelopmentStore {
       success: response => {
         this.developments = response.developments;
         this.facets = response.facets;
+        delete this.development; // TODO: Why this fixed strange transition between developments and development page? Look url.
         this.emitChange();
       },
       error(response) {
