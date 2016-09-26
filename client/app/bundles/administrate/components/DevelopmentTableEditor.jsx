@@ -50,7 +50,7 @@ export default class DevelopmentTableEditor extends Component {
     const data    = this.state.data    || [];
 
     return (
-      <Table className="development-table-editor collection-data" columns={columns} data={data} rowKey="development">
+      <Table className="development-table-editor collection-data" columns={columns} data={data} rowKey="id">
         <DevelopmentTableEditorFooter
           development={this.props.development}
           properties={this.properties}
