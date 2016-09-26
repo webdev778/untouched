@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Element } from 'react-scroll';
 
+import Header from '../components/Header';
+
 export default class LegalPage extends Component {
 
   static scrollNav = {
