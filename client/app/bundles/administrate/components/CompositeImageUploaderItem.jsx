@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactOnRails from 'react-on-rails';
 
 export default class CompositeImageUploaderItem extends Component {
 
@@ -23,6 +24,7 @@ export default class CompositeImageUploaderItem extends Component {
     return $.ajax({
       url: `/api/images/${this.props.image.id}`,
       method: 'PUT',
+      headers: ReactOnRails.authenticityHeaders(),
       data: {
         image: {
           caption: this.caption.value,

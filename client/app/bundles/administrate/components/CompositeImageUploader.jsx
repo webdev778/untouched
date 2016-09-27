@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
+import ReactOnRails from 'react-on-rails';
 import CompositeImageUploaderItem from './CompositeImageUploaderItem';
 
 export default class CompositeImageUploader extends Component {
@@ -39,6 +40,7 @@ export default class CompositeImageUploader extends Component {
       return $.ajax({
         url: '/api/images',
         type: 'POST',
+        headers: ReactOnRails.authenticityHeaders(),
         data,
         cache: false,
         dataType: 'json',
@@ -59,6 +61,7 @@ export default class CompositeImageUploader extends Component {
     if (confirm("Are you sure you want to delete this?")) {
       return $.ajax({
         url: `/api/images/${event.target.value}`,
+        headers: ReactOnRails.authenticityHeaders(),
         method: 'DELETE',
         success: (data, textStatus, jqXHR) => {
           return this.setState({images: _.reject(this.state.images, i => i.id === parseInt(event.target.value))});

@@ -4,10 +4,12 @@
 </header>
 
 <section>
-  <%= react_component 'CompositeImageUploader', 
-    imageable: DevelopmentSerializer.new(@development).as_json(root: false), 
-    type: 'DevelopmentPhoto',
-    imageable_type: 'Development',
-    images: ActiveModel::ArraySerializer.new(@development.photos, each_serializer: DevelopmentPhotoSerializer).as_json(root: false) %>
+  <%= react_component 'CompositeImageUploader', props: {
+      imageable: DevelopmentSerializer.new(@development).as_json(root: false), 
+      type: 'DevelopmentPhoto',
+      imageable_type: 'Development',
+      images: ActiveModel::ArraySerializer.new(@development.photos, each_serializer: DevelopmentPhotoSerializer).as_json(root: false) 
+    }
+  %>
 </section>
 
