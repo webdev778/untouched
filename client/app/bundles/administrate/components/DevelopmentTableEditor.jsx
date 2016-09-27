@@ -236,6 +236,8 @@ export default class DevelopmentTableEditor extends Component {
   }
 
   onDeleteUnit = (event) => {
+    event.persist();
+    
     return UnitActions.deleteUnit(event.target.value);
   }
 }

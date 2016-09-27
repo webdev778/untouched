@@ -58,6 +58,8 @@ export default class CompositeImageUploader extends Component {
   }
   
   onDeleteItem = (event) => {
+    event.persist();
+    
     if (confirm("Are you sure you want to delete this?")) {
       return $.ajax({
         url: `/api/images/${event.target.value}`,
