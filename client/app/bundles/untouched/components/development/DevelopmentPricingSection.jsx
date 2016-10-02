@@ -4,6 +4,8 @@ import DevelopmentPricingSidebar from './DevelopmentPricingSidebar';
 import UnitList from '../unit/UnitList';
 import DevelopmentUnitsSoldProgressBar from './DevelopmentUnitsSoldProgressBar';
 
+import Footer from '../Footer';
+
 export default class DevelopmentPricingSection extends Component {
 
   render() {
@@ -25,6 +27,7 @@ export default class DevelopmentPricingSection extends Component {
                 tip={this.props.tip}/>
             </div>
             <DevelopmentUnitsSoldProgressBar development={this.props.development}/>
+            <Footer />
           </div>
         </div>
       </section>

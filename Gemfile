@@ -5,7 +5,7 @@ gem 'rails', '4.2.5.2'
 gem 'pg'
 gem 'db_nazi'
 gem 'rails_12factor', group: :production
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.4'
 gem 'active_model_serializers'
 
 # JavaScript

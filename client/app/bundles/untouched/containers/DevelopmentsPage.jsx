@@ -5,6 +5,7 @@ import DevelopmentActions from '../actions/development_actions';
 import DevelopmentStore from '../stores/development_store';
 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import DismissSidebarTrigger from '../components/DismissSidebarTrigger';
 import FilterSidebar from '../components/FilterSidebar';
 import DevelopmentList from '../components/development/DevelopmentList';
@@ -73,6 +74,7 @@ export default class DevelopmentsPage extends Component {
               filters={this.state.filterParams}
               developments={this.state.developments} 
             />
+            <Footer />
           </main>
         </div>
 

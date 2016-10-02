@@ -2905,7 +2905,7 @@ tbody.collapse.in {
 }
 
 .scroll__privacy {
-  height: 900px;
+  height: 700px;
 }
 
 .body-overflow {
@@ -2991,9 +2991,71 @@ tbody.collapse.in {
 }
 
 /*------------------------------------*\
-	@COMPONENTS #TIPS
+  @COMPONENTS #FOOTER
 \*------------------------------------*/
-@import '../../../client/node_modules/react-joyride/lib/styles/react-joyride';
+
+footer .copyright-info {
+  display: inline-block;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  color: #66625b;
+  display: block;
+  padding: 30px 0;
+  text-align: center;
+}
+
+footer .copyright-info__copyright {
+  font-size: 13px;
+  margin-right: 8px;
+  display: block;
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media screen and (min-width: 37.5em) {
+  footer .copyright-info__copyright {
+    display: inline-block;
+    margin: 0 8px 0 0;
+    text-align: left;
+  }
+}
+
+footer .copyright-info__links {
+  color: #66625b;
+  display: block;
+  font-size: 13px;
+  line-height: 1.75em;
+  margin: 15px auto;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (min-width: 37.5em) {
+  footer .copyright-info__links {
+    display: inline-block;
+    margin: 10px 0;
+    width: auto;
+  }
+}
+
+footer .copyright-info__links li {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+footer .copyright-info__links li a,
+footer .copyright-info__links li a:active,
+footer .copyright-info__links li a:visited {
+  color: #66625b;
+  text-decoration: none;
+}
+
+footer .copyright-info__links li a:hover {
+  color: #403d39;
+}
 
 /*------------------------------------*\
 	@TRUMPS #COLORS

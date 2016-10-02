@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Link, Element } from 'react-scroll';
 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default class LegalPage extends Component {
 
-  static scrollNav = {
+  scrollNav = {
     offset: -140,
     duration: 500
   }
@@ -22,6 +23,8 @@ export default class LegalPage extends Component {
             {this.renderSections()}
           </div>
         </main>
+
+        <Footer />
 
       </div>
     );

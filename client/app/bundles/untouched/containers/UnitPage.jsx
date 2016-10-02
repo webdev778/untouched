@@ -5,6 +5,7 @@ import UnitStore from './../stores/unit_store';
 import UnitActions from './../actions/unit_actions';
 
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import UnitHeaderTable from '../components/unit/UnitHeaderTable';
 import UnitPlansSection from '../components/unit/UnitPlansSection';
 import UnitViewsSection from '../components/unit/UnitViewsSection';
@@ -103,6 +104,8 @@ export default class UnitPage extends Component {
             </div>
           </div>
         </div>
+
+        <Footer />  
 
       </div>
     );
