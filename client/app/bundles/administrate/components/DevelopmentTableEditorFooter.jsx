@@ -67,7 +67,7 @@ export default class DevelopmentTableEditorFooter extends Component {
   }
 
   submitParams() {
-    return _.reduce(this.props.columns, ((acc, column) => {
+    return _.reduce(this.props.columns, (acc, column) => {
       let h = {};
 
       switch (column.type) {
@@ -83,12 +83,33 @@ export default class DevelopmentTableEditorFooter extends Component {
       }
 
       return _.assign(acc, h);
-    }), { development_id: this.props.development.id });
+    }, { development_id: this.props.development.id });
   }
 
 
   handleSubmit = (event) => {
-    return UnitActions.createUnit(this.submitParams());
+    UnitActions.createUnit(this.submitParams());
+
+    // clear current row
+    _.each(this.props.columns, (column) => {
+      if (column.property === 'number') {
+        const number = parseInt(this.refs['number'].value);
+        if (number) {
+          this.refs['number'].value = number + 1;
+        }
+      } else {
+        switch (column.type) {
+          case 'boolean':
+            this.refs[column.property].checked = false;
+            break;
+          case 'input':
+            this.refs[column.property].value = '';
+            break;
+        }
+      }
+    });
+
+    
   }
 }
 
