@@ -14,4 +14,6 @@ $(document).ready(function() {
 
   $("table").on("click", ".table__row", visitDataUrl);
   $("table").on("keydown", ".table__row", visitDataUrl);
+
+  $("table.collection-data").stickyTableHeaders();
 });

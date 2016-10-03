@@ -2,6 +2,10 @@
   @include padding(null $base-spacing);
 }
 
+.collection-data thead {
+  background: #fff;
+}
+
 .table__row {
   background-color: $white;
   border-left: 2px solid transparent;
