@@ -1,5 +1,6 @@
 .collection-data {
-  @include padding(null $base-spacing);
+  padding-left: $base-spacing !important;
+  padding-right: $base-spacing !important;
 }
 
 .collection-data thead {
