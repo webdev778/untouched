@@ -90,26 +90,10 @@ export default class DevelopmentTableEditorFooter extends Component {
   handleSubmit = (event) => {
     UnitActions.createUnit(this.submitParams());
 
-    // clear current row
-    _.each(this.props.columns, (column) => {
-      if (column.property === 'number') {
-        const number = parseInt(this.refs['number'].value);
-        if (number) {
-          this.refs['number'].value = number + 1;
-        }
-      } else {
-        switch (column.type) {
-          case 'boolean':
-            this.refs[column.property].checked = false;
-            break;
-          case 'input':
-            this.refs[column.property].value = '';
-            break;
-        }
-      }
-    });
-
-    
+    const number = parseInt(this.refs['number'].value);
+    if (number) {
+      this.refs['number'].value = number + 1;
+    }
   }
 }
 
