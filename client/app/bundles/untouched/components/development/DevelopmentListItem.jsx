@@ -10,7 +10,7 @@ export default class DevelopmentListItem extends Component {
   }
 
   photoUrl() {
-    return __guard__(this.props.data.development.photos[0], x => x.url);
+    return _.get(this.props.data.development.photos[0], 'url');
   }
 
   developmentUrl() {
@@ -32,9 +32,4 @@ export default class DevelopmentListItem extends Component {
       <td>{this.formattedPrice()}</td>
     </tr>;
   }
-}
-
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

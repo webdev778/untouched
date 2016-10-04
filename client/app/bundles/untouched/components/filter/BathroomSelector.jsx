@@ -36,12 +36,12 @@ export default class BathroomSelector extends Component {
   }
 
   hasInitialValue = (value) => {
-    if (!__guard__(this.props.filters, x => x.bathrooms)) { return false; }
+    if (!_.get(this.props.filters, 'bathrooms')) { return false; }
     return _.includes(this.props.filters.bathrooms, value);
   }
 
   getFacetCount = (value) => {
-    return __guard__(_.find(this.props.facets, pair => pair[0] === value), x => x[1]);
+    return _.get(_.find(this.props.facets, pair => pair[0] === value), [1]);
   }
 
   val() {
@@ -51,8 +51,4 @@ export default class BathroomSelector extends Component {
   handleClick = (event) => {
     return this.props.actions.filterData({bathrooms: this.val()});
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

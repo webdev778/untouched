@@ -44,9 +44,9 @@ export default class ResidenceFilterGroup extends Component {
   }
 
   getFacetCount = (key) => {
-    const facet = __guard__(this.props.facets, x => x[key]);
+    const facet = _.get(this.props.facets, key);
     if (!facet) return 0;
-    return __guard__(_.find(facet, pair => pair[0] === true.toString()), x1 => x1[1]);
+    return _.get(_.find(facet, pair => pair[0] === true.toString()), [1]);
   }
 
   handleClick = (event) => {
@@ -63,10 +63,6 @@ export default class ResidenceFilterGroup extends Component {
 
 
   hasInitialValue = (key) => {
-    return !!__guard__(this.props.filters, x => x[key]);
+    return !!_.get(this.props.filters, key);
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

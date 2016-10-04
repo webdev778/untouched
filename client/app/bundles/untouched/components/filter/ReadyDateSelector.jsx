@@ -43,10 +43,6 @@ export default class ReadyDateSelector extends Component {
   }
 
   initialValue() {
-    return __guard__(this.props.filters, x => x.ready_at);
+    return _.get(this.props.filters, 'ready_at');
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

@@ -24,7 +24,7 @@ export default class DevelopmentList extends Component {
   }
 
   classForHeading(name) {
-    if (__guard__(this.props.filters, x => x.sort) === name) { return 'active'; }
+    if (_.get(this.props.filters, 'sort') === name) { return 'active'; }
   }
 
   handleSortColumn(name) {
@@ -37,12 +37,7 @@ export default class DevelopmentList extends Component {
 
   toggleSortOrder(columnName) {
     // We want to sort ascending if the sort column has changed.
-    if (__guard__(this.props.filters, x => x.sort) !== columnName) { return 'asc'; }
-    if (__guard__(this.props.filters, x1 => x1.sort_order) === 'desc') { return 'asc'; } else { return 'desc'; }
+    if (_.get(this.props.filters, 'sort') !== columnName) { return 'asc'; }
+    if (_.get(this.props.filters, 'sort_order') === 'desc') { return 'asc'; } else { return 'desc'; }
   }
-}
-
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

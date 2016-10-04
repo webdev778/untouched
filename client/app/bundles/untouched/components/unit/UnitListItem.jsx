@@ -16,7 +16,7 @@ export default class UnitListItem extends Component {
   }
 
   photoUrl() {
-    return __guard__(this.props.data.development.photos[0], x => x.url);
+    return _.get(this.props.data.development.photos[0], 'url');
   }
 
   unitUrl() {
@@ -46,8 +46,4 @@ export default class UnitListItem extends Component {
       </tr>
     );
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

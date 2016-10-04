@@ -74,15 +74,15 @@ export default class RegionSelector extends Component {
   }
 
   initialValue() {
-    return __guard__(this.state.filterParams, x => x.region);
+    return _.get(this.state.filterParams, 'region');
   }
 
   hasInitialSuburb = (id) => {
-    return _.includes(__guard__(this.props.filters, x => x.suburb), id.toString());
+    return _.includes(_.get(this.props.filters, 'suburb'), id.toString());
   }
 
   getTotalFacetCount() {
-    if (!__guard__(this.props.facets, x => x.city)) { return 0; }
+    if (!_.get(this.props.facets, 'city')) { return 0; }
     let facet = _.find(this.props.facets.city, pair => pair[0] === 'Melbourne');
     if (!facet) return 0;
     return facet[1];
@@ -107,7 +107,7 @@ export default class RegionSelector extends Component {
   }
 
   getSelectedRegionId() {
-    let id = __guard__(this.refs.regionSelector, x => x.value);
+    let id = _.get(this.refs.regionSelector, 'value');
     if (id) {
       return parseInt(id);
     } else {
@@ -126,8 +126,4 @@ export default class RegionSelector extends Component {
   handleChangeSuburb = () => {
     return this.props.actions.filterData({suburb: this.suburbVal()});
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

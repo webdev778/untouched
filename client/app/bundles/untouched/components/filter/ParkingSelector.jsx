@@ -36,7 +36,7 @@ export default class ParkingSelector extends Component {
   }
 
   getFacetCount = (value) => {
-    return __guard__(_.find(this.props.facets, pair => pair[0] === value), x => x[1]);
+    return _.get(_.find(this.props.facets, pair => pair[0] === value), [1]);
   }
 
   val() {
@@ -44,15 +44,11 @@ export default class ParkingSelector extends Component {
   }
 
   hasInitialValue = (value) => {
-    if (!__guard__(this.props.filters, x => x.parking)) { return false; }
+    if (!_.get(this.props.filters, 'parking')) { return false; }
     return _.includes(this.props.filters.parking, value);
   }
 
   handleClick = (event) => {
     return this.props.actions.filterData({parking: this.val()});
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

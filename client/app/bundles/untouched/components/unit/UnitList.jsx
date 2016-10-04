@@ -71,7 +71,7 @@ export default class UnitList extends Component {
   }
 
   classForHeading = (name) => {
-    if (__guard__(this.state.filterParams, x => x.sort) === name) { return 'active'; }
+    if (_.get(this.state.filterParams, 'sort') === name) { return 'active'; }
   }
 
   handleSortColumn = (name) => {
@@ -84,11 +84,7 @@ export default class UnitList extends Component {
 
   toggleSortOrder(columnName) {
     // We want to sort ascending if the sort column has changed.
-    if (__guard__(this.state.filterParams, x => x.sort) !== columnName) { return 'asc'; }
-    if (__guard__(this.state.filterParams, x1 => x1.sort_order) === 'desc') { return 'asc'; } else { return 'desc'; }
+    if (_.get(this.state.filterParams, 'sort') !== columnName) { return 'asc'; }
+    if (_.get(this.state.filterParams, 'sort_order') === 'desc') { return 'asc'; } else { return 'desc'; }
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

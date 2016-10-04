@@ -59,7 +59,7 @@ export default class FilterSidebar extends Component {
   }
 
   getFacet(name) {
-    return __guard__(this.props.facets, x => x[name]);
+    return _.get(this.props.facets, name);
   }
 
   renderLocationSelector() {
@@ -89,8 +89,4 @@ export default class FilterSidebar extends Component {
       return <ReadyDateSelector actions={this.props.actions} filters={this.props.filters} />;
     }
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

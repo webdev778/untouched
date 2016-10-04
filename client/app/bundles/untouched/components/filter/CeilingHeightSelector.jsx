@@ -26,7 +26,7 @@ export default class CeilingHeightSelector extends Component {
   }
 
   initialValue() {
-    return __guard__(this.props.filters, x => x.ceiling_height_at_living_area_in_meters);
+    return _.get(this.props.filters, 'ceiling_height_at_living_area_in_meters');
   }
 
   val() {
@@ -36,9 +36,4 @@ export default class CeilingHeightSelector extends Component {
   handleChange = () => {
     return this.props.actions.filterData({ceiling_height_at_living_area_in_meters: this.val()});
   }
-}
-
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }

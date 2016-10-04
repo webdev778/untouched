@@ -28,7 +28,7 @@ export default class UnitTypeFilterGroup extends Component {
   }
 
   getFacetCount = (key) => {
-    return __guard__(_.find(this.props.facets, pair => pair[0] === key), x => x[1]);
+    return _.get(_.find(this.props.facets, pair => pair[0] === key), [1]);
   }
 
   render() {
@@ -49,10 +49,6 @@ export default class UnitTypeFilterGroup extends Component {
   }
 
   hasInitialValue = (key) => {
-    return _.includes(__guard__(this.props.filters, x => x.unit_type), key);
+    return _.includes(_.get(this.props.filters, 'unit_type'), key);
   }
-}
-
-function __guard__(value, transform) {
-  return (typeof value !== 'undefined' && value !== null) ? transform(value) : undefined;
 }
