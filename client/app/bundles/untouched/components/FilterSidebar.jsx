@@ -50,7 +50,7 @@ export default class FilterSidebar extends Component {
         <ResidenceFilterGroup actions={this.props.actions} facets={this.props.facets} filters={this.props.filters} />
         <BodyCorpSelector actions={this.props.actions} filters={this.props.filters} />
         {this.renderBuildingFilterGroup()}
-        <CeilingHeightSelector actions={this.props.actions} filters={this.props.filters} />
+        {/* <CeilingHeightSelector actions={this.props.actions} filters={this.props.filters} /> */}
         {this.renderDevelopmentSizeSelector()}
         {this.renderUnitTypeFilterGroup()}
         {this.renderReadyDateSelector()}

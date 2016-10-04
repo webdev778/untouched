@@ -74,7 +74,7 @@ export default class UnitList extends Component {
     if (__guard__(this.state.filterParams, x => x.sort) === name) { return 'active'; }
   }
 
-  handleSortColumn(name) {
+  handleSortColumn = (name) => {
     return () => this.sortColumn(name);
   }
 
