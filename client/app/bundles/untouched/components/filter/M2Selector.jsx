@@ -23,6 +23,7 @@ export default class M2Selector extends Component {
       <div className='sidebar__box'>
         <SidebarTitle value={this.props.label + ' (M2)'}/>
         <select value={this.initialVal()} id={this.props.id} className='select' onChange={this.handleChange}>
+          <option key='any' value=''>Any</option>
           {this.renderNumericOptions()}
         </select>
       </div>

@@ -18,6 +18,7 @@ export default class InternalM2Selector extends Component {
       <div className='sidebar__box'>
         <SidebarTitle value="Internal (M2)"/>
         <select id='internal_m2_selector' className='select' onChange={this.handleChange}>
+          <option key='any' value=''>Any</option>
           {this.renderNumericOptions()}
         </select>
       </div>
