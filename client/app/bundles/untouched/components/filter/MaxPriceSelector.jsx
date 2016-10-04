@@ -5,13 +5,47 @@ import SidebarTitle from '../SidebarTitle';
 
 export default class MaxPriceSelector extends Component {
 
-  RANGE_IN_HUNDRED_THOUSANDS = [ 4, 20 ]
+  /*
+    Any
+    $400,000
+    $450,000
+    $500,000
+    $550,000
+    $600,000
+    $650,000
+    $700,000
+    $750,000
+    $800,000
 
+    $900,000
+    $1,000,000
+    $1,100,000
+    $1,200,000
+    $1,300,000
+    $1,400,000
+    $1,500,000
+    
+    $2,000,000
+    $2,500,000
+    $3,000,000
+  */
   renderNumericOptions() {
-    return _.map(_.range(...this.RANGE_IN_HUNDRED_THOUSANDS), function(hundoThousands) {
-      const value = hundoThousands * 100000;
-      return <option key={hundoThousands} value={value}>{accounting.formatMoney(value, '$', 0)}</option>;
+    let value = 400000;
+    const options = [];
+
+    _.times(19, (index) => {
+      options.push(<option key={index} value={value}>{accounting.formatMoney(value, '$', 0)}</option>);
+
+      if (value < 800000) {
+        value += 50000;
+      } else if (value < 1500000) {
+        value += 100000;
+      } else if (value < 3000000) {
+        value += 500000;
+      }
     });
+
+    return options;
   }
 
   render() {
