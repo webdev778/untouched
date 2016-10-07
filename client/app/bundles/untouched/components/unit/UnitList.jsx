@@ -41,9 +41,9 @@ export default class UnitList extends Component {
           <tbody>
             {this.state.units.map((unit, index) => {
               if (index === 0) {
-                return <UnitListItem key={unit.id} unit={unit} tip={this.props.tip}/>;
+                return <UnitListItem key={unit.id} unit={unit} filters={this.props.filters} tip={this.props.tip} />;
               } else {
-                return <UnitListItem key={unit.id} unit={unit} />;
+                return <UnitListItem key={unit.id} unit={unit} filters={this.props.filters} />;
               }
             })}
           </tbody>

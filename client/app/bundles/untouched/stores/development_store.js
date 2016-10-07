@@ -26,6 +26,10 @@ class DevelopmentStore {
     this.developments = props.developments;
   }
 
+  onAddFilterData(params) {
+    _.assign(this.filterParams, params);
+  }  
+
   onFilterData(params) {
     _.assign(this.filterParams, params);
 

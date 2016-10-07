@@ -6,6 +6,7 @@ class DevelopmentActions {
       'initData',
       'select',
       'fetch',
+      'addFilterData',
       'filterData'
     );
   }

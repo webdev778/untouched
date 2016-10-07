@@ -28,6 +28,7 @@ export default {
   ceiling_height_at_living_area_in_meters: 'number',
   units_count: 'number',
   unit_type: 'array',
-  ready_at: 'date'
+  ready_at: 'date',
+  private: 'boolean'
 };
 

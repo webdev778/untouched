@@ -27,7 +27,8 @@ class SolrSearch
         order_by(:price, :asc)
       end
 
-      if !show_private?
+      # !params[:private] for dhh page
+      if !show_private? and !params[:private]
         with(:private, false)
       end
 

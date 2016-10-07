@@ -20,7 +20,12 @@ export default class UnitListItem extends Component {
   }
 
   unitUrl() {
-    return `/developments/${this.props.unit.development_id}/units/${this.props.unit.id}`;
+    // TODO: refactoring
+    if (this.props.filters.dhh) {
+      return `/dhh/developments/${this.props.unit.development_id}/units/${this.props.unit.id}`;
+    } else {
+      return `/developments/${this.props.unit.development_id}/units/${this.props.unit.id}`;
+    }
   }
 
   _handleWaypointEnter = () => {

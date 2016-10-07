@@ -14,8 +14,14 @@ export default class DevelopmentListItem extends Component {
   }
 
   developmentUrl() {
-    return `/developments/${this.props.data.development.id}` +
-      new RouteGenerator(this.props.filters).generate();
+    // TODO: refactoring
+    if (this.props.filters.dhh) {
+      return `/dhh/developments/${this.props.data.development.id}` +
+        new RouteGenerator(this.props.filters).generate();
+    } else {
+      return `/developments/${this.props.data.development.id}` +
+        new RouteGenerator(this.props.filters).generate();
+    }
   }
 
   render() {
