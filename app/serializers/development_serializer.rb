@@ -16,7 +16,7 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :steam_room,
     :rooftop_deck,
     :has_double_glazed_windows,
-    :ceiling_height_at_living_area_in_meters,
+    # :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
     :units_count,
     :units_active_count,

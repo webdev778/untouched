@@ -69,7 +69,7 @@ class Unit < ActiveRecord::Base
       boolean(key) { development.send(key) }
     end
     string :unit_type
-    double(:ceiling_height_at_living_area_in_meters) { development.ceiling_height_at_living_area_in_meters }
+    # double(:ceiling_height_at_living_area_in_meters) { development.ceiling_height_at_living_area_in_meters }
     integer(:units_count) { development.units_count }
   end
 
