@@ -23,7 +23,7 @@ class DevelopmentFilter
       filter_residence_amenities(params).
       filter_building_amenities(params).
       filter_development_type(params[:development_type]).
-      filter_ceiling_height_at_living_area_in_meters(params[:ceiling_height_at_living_area_in_meters]).
+      # filter_ceiling_height_at_living_area_in_meters(params[:ceiling_height_at_living_area_in_meters]).
       filter_units_count(params[:units_count]).
       group_by_development.
       order_by_ascending_price.
@@ -116,9 +116,9 @@ class DevelopmentFilter
       where_if(['max_body_corporate_fee <= ?', max_body_corporate_fee])   { max_body_corporate_fee.present? }
     end
 
-    def filter_ceiling_height_at_living_area_in_meters(value)
-      where_greater_than(:ceiling_height_at_living_area_in_meters, value)
-    end
+    # def filter_ceiling_height_at_living_area_in_meters(value)
+    #  where_greater_than(:ceiling_height_at_living_area_in_meters, value)
+    # end
 
     def group_by_development
       group('units.development_id, units.id, suburbs.name')

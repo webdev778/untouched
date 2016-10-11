@@ -41,7 +41,7 @@ export default class BathroomSelector extends Component {
   }
 
   getFacetCount = (value) => {
-    return _.get(_.find(this.props.facets, pair => pair[0] === value), [1]);
+    return _.get(_.find(this.props.facets, pair => parseFloat(pair[0]) == value), [1]);
   }
 
   val() {

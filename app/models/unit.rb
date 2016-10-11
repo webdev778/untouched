@@ -50,7 +50,7 @@ class Unit < ActiveRecord::Base
     string :number
     string :status
     integer :bedrooms
-    integer :bathrooms
+    double :bathrooms
     integer :parking
     double :internal_in_meters
     double :external_in_meters
