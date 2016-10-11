@@ -11,36 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819215201) do
+ActiveRecord::Schema.define(version: 20161011090500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "developments", force: :cascade do |t|
-    t.string   "city",                                    limit: 255,                                         null: false
+    t.string   "city",                      limit: 255,                 null: false
     t.date     "ready_at"
-    t.boolean  "gym",                                                                         default: false, null: false
-    t.boolean  "pool",                                                                        default: false, null: false
-    t.boolean  "spa",                                                                         default: false, null: false
-    t.boolean  "sauna",                                                                       default: false, null: false
-    t.boolean  "steam_room",                                                                  default: false, null: false
-    t.boolean  "rooftop_deck",                                                                default: false, null: false
-    t.boolean  "has_double_glazed_windows",                                                   default: false, null: false
-    t.decimal  "ceiling_height_at_living_area_in_meters",             precision: 5, scale: 1,                 null: false
-    t.datetime "created_at",                                                                                  null: false
-    t.datetime "updated_at",                                                                                  null: false
-    t.string   "photo",                                   limit: 255
-    t.integer  "units_count",                                                                 default: 0,     null: false
-    t.string   "address",                                 limit: 255,                                         null: false
-    t.integer  "suburb_id",                                                                                   null: false
+    t.boolean  "gym",                                   default: false, null: false
+    t.boolean  "pool",                                  default: false, null: false
+    t.boolean  "spa",                                   default: false, null: false
+    t.boolean  "sauna",                                 default: false, null: false
+    t.boolean  "steam_room",                            default: false, null: false
+    t.boolean  "rooftop_deck",                          default: false, null: false
+    t.boolean  "has_double_glazed_windows",             default: false, null: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.string   "photo",                     limit: 255
+    t.integer  "units_count",                           default: 0,     null: false
+    t.string   "address",                   limit: 255,                 null: false
+    t.integer  "suburb_id",                                             null: false
     t.float    "lat"
     t.float    "lng"
-    t.decimal  "deposit_percent",                                                             default: 0.0,   null: false
-    t.integer  "deposit_due_in_days",                                                         default: 0,     null: false
-    t.string   "contract",                                limit: 255
-    t.string   "logo",                                    limit: 255
-    t.boolean  "private",                                                                     default: false, null: false
-    t.string   "intercom_app_id",                         limit: 255
+    t.decimal  "deposit_percent",                       default: 0.0,   null: false
+    t.integer  "deposit_due_in_days",                   default: 0,     null: false
+    t.string   "contract",                  limit: 255
+    t.string   "logo",                      limit: 255
+    t.boolean  "private",                               default: false, null: false
+    t.string   "intercom_app_id",           limit: 255
   end
 
   add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree
