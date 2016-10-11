@@ -1,3 +1,5 @@
+//= require jquery
+//= require jquery_ujs
 //= require admin-vendor-bundle
 //= require selectize
 //= require moment
