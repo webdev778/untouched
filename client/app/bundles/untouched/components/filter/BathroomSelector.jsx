@@ -5,7 +5,7 @@ import CheckboxField from '../CheckboxField';
 
 export default class BathroomSelector extends Component {
 
-  VALUES = [ '1', '2', '3+' ]
+  VALUES = [ '1', '1.5', '2', '2.5', '3+' ]
 
   render() {
     return (

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011090500) do
+ActiveRecord::Schema.define(version: 20161011110343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20161011090500) do
   create_table "units", force: :cascade do |t|
     t.decimal  "price",                               precision: 10, scale: 2,                 null: false
     t.integer  "bedrooms",                                                                     null: false
-    t.integer  "bathrooms",                                                                    null: false
+    t.decimal  "bathrooms",                           precision: 10, scale: 1,                 null: false
     t.integer  "parking",                                                                      null: false
     t.decimal  "internal_in_meters",                  precision: 10, scale: 1,                 null: false
     t.decimal  "master_bedroom_in_meters",            precision: 10, scale: 1
