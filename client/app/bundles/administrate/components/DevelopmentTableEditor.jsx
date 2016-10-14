@@ -34,7 +34,6 @@ export default class DevelopmentTableEditor extends Component {
     return _.map(data, u =>
       _.extend(u, {
         status: __guard__(u.status, x => x.toString()) || '',
-        kitchen_island: u.kitchen_island ? 't' : ''
       })
     );
   }
@@ -116,9 +115,6 @@ export default class DevelopmentTableEditor extends Component {
     },
     price: {
       type: 'number'
-    },
-    kitchen_island: {
-      type: 'boolean'
     }
   }
 
@@ -223,13 +219,8 @@ export default class DevelopmentTableEditor extends Component {
       this.inputColumn('annual_council_rate', 'Council', this.formatters.money),
       this.inputColumn('stamp_duty', 'Stamp', this.formatters.money),
       this.inputColumn('stamp_duty_savings', 'Stamp Sav', this.formatters.money),
-      this.booleanColumn('kitchen_island', 'KI'),
-      this.booleanColumn('ensuite', 'E'),
       this.booleanColumn('study_nook', 'SN'),
       this.booleanColumn('storage_cage', 'SC'),
-      this.booleanColumn('walk_in_wardrobe', 'WIW'),
-      this.booleanColumn('bathtub', 'BT'),
-      this.booleanColumn('penthouse_level', 'PH'),
       this.booleanColumn('no_stacker', 'NS'),
       this.actionsColumn()
     ];
