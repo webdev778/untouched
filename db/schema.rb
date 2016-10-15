@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011110343) do
+ActiveRecord::Schema.define(version: 20161015004347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,12 +92,8 @@ ActiveRecord::Schema.define(version: 20161011110343) do
     t.decimal  "external_in_meters",                  precision: 10, scale: 1
     t.integer  "aspect",                                                                       null: false
     t.boolean  "kitchen_island",                                               default: false, null: false
-    t.boolean  "ensuite",                                                      default: false, null: false
     t.boolean  "study_nook",                                                   default: false, null: false
     t.boolean  "storage_cage",                                                 default: false, null: false
-    t.boolean  "walk_in_wardrobe",                                             default: false, null: false
-    t.boolean  "bathtub",                                                      default: false, null: false
-    t.boolean  "penthouse_level",                                              default: false, null: false
     t.boolean  "no_stacker",                                                   default: false, null: false
     t.decimal  "max_body_corporate_fee",              precision: 10, scale: 2,                 null: false
     t.integer  "development_id",                                                               null: false
@@ -109,6 +105,7 @@ ActiveRecord::Schema.define(version: 20161011110343) do
     t.decimal  "stamp_duty_savings",                                           default: 0.0,   null: false
     t.decimal  "annual_council_rate",                                          default: 0.0,   null: false
     t.integer  "unit_type",                                                    default: 0,     null: false
+    t.boolean  "study_room",                                                   default: false, null: false
   end
 
   add_index "units", ["development_id"], name: "index_units_on_development_id", using: :btree

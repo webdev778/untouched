@@ -37,6 +37,7 @@ developments:
         external_in_meters: 0
         aspect: north
         study_nook: false
+        study_room: false
         storage_cage: false
         no_stacker: false
         max_body_corporate_fee: 10000
@@ -68,6 +69,7 @@ developments:
         external_in_meters: 0
         aspect: north
         study_nook: false
+        study_room: false
         storage_cage: false
         no_stacker: false
         max_body_corporate_fee: 10000

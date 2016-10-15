@@ -11,6 +11,7 @@ export default {
   external_in_meters: 'number',
   aspect: 'array',
   study_nook: 'boolean',
+  study_room: 'boolean',
   storage_cage: 'boolean',
   no_stacker: 'boolean',
   max_body_corporate_fee: 'number',

@@ -7,6 +7,7 @@ export default class ResidenceFilterGroup extends Component {
 
   fields = {
     study_nook: 'Study nook',
+    study_room: 'Study room',
     storage_cage: 'Storage cage',
     no_stacker: 'No stacker'
   }

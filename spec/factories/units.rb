@@ -11,6 +11,7 @@ FactoryGirl.define do
     external_in_meters { Faker::Number.between(5, 100) }
     aspect { Faker::Number.between(0, 3) }
     study_nook { Faker::Boolean.boolean }
+    study_room { Faker::Boolean.boolean }
     storage_cage { Faker::Boolean.boolean }
     no_stacker { Faker::Boolean.boolean }
     max_body_corporate_fee { Faker::Number.between(2_000, 8_000) }

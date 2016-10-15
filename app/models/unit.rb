@@ -24,7 +24,7 @@ class Unit < ActiveRecord::Base
   validates_presence_of :max_body_corporate_fee
   validates_presence_of :annual_council_rate
 
-  RESIDENCE_AMENITIES = %w(study_nook storage_cage no_stacker)
+  RESIDENCE_AMENITIES = %w(study_nook study_room storage_cage no_stacker)
 
 
   FACETS =

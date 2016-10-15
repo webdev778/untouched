@@ -139,6 +139,7 @@ module Untouched
           external_in_meters: h['external_in_meters'],
           aspect: h['aspect'],
           study_nook: h['study_nook'],
+          study_room: h['study_room'],
           storage_cage: h['storage_cage'],
           no_stacker: h['no_stacker'],
           max_body_corporate_fee: h['max_body_corporate_fee'],

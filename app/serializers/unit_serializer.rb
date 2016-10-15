@@ -20,6 +20,7 @@ class UnitSerializer < ActiveModel::Serializer
     :external_in_meters,
     :aspect,
     :study_nook,
+    :study_room,
     :storage_cage,
     :no_stacker,
     :max_body_corporate_fee,
