@@ -30,12 +30,14 @@ export default class MaxPriceSelector extends Component {
     $3,000,000
   */
   renderNumericOptions() {
+    let valuePrev = 0;
     let value = 400000;
     const options = [];
 
     _.times(19, (index) => {
-      options.push(<option key={index} value={value}>{accounting.formatMoney(value, '$', 0)}</option>);
+      options.push(<option key={index} value={value}>&lt; {accounting.formatMoney(value, '$', 0)} ({this.getFacetCount(value, valuePrev)})</option>);
 
+      valuePrev = value;
       if (value < 800000) {
         value += 50000;
       } else if (value < 1500000) {
@@ -53,7 +55,7 @@ export default class MaxPriceSelector extends Component {
       <div className='sidebar__box'>
         <h4 className='sidebar__title'>Max Price</h4>
         <select defaultValue={this.props.filters.max_price} id='max_price_selector' className='select' onChange={this.handleChange}>
-          <option key='any' value=''>Any</option>
+          <option key='any' value=''>Any ({this.getTotalFacetCount()})</option>
           {this.renderNumericOptions()}
         </select>
       </div>
@@ -66,6 +68,33 @@ export default class MaxPriceSelector extends Component {
 
   handleChange = () => {
     return this.props.actions.filterData({max_price: this.val()});
+  }
+
+  getFacetCount = (value, valuePrev) => {
+    if (!this.props.facets) { return 0; }
+    let facets = this.props.facets;
+
+    let pairs = _.filter(facets, pair => {
+      const price = parseInt(pair[0]) 
+      return price <= value && price > valuePrev;
+    });
+
+    let count = pairs.reduce((prev, current) => {
+      return prev + current[1]
+    }, 0);
+    if (!count) { return 0; }
+    return count;
+  }
+
+  getTotalFacetCount() {
+    if (!this.props.facets) { return 0; }
+    let facets = this.props.facets;
+
+    let count = facets.reduce((prev, current) => {
+      return prev + current[1];
+    }, 0);
+    if (!count) { return 0; }
+    return count;
   }
 }
 

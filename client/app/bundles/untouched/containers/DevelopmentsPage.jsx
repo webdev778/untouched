@@ -61,12 +61,15 @@ export default class DevelopmentsPage extends Component {
 
         <div className='container'>
           <aside className='sidebar'>
-            <DismissSidebarTrigger />
-            <FilterSidebar
-              filters={this.parseFiltersFromUrl()}
-              facets={this.state.facets}
-              actions={DevelopmentActions} 
-            />
+            <div className="sidebar__content">
+              <DismissSidebarTrigger />
+              <FilterSidebar
+                filters={this.parseFiltersFromUrl()}
+                facets={this.state.facets}
+                actions={DevelopmentActions}
+              />
+            </div>
+            {this.renderShowResults()}
           </aside>
 
           <main className='main'>
@@ -82,9 +85,16 @@ export default class DevelopmentsPage extends Component {
     );
   }
 
-
   handleClickSidebarOverlay = () => {
     $('body').removeClass('sidebar-on');
+  }
+
+  renderShowResults() {
+    if (this.state.developments) {
+      return (
+        <div className="sidebar__show-results" onClick={this.handleClickSidebarOverlay}>Show ({this.state.developments.length}) developments</div>
+      );
+    }
   }
 }
 

@@ -28,10 +28,10 @@ class Unit < ActiveRecord::Base
 
 
   FACETS =
-    %w(bedrooms bathrooms parking aspect unit_type) +
+    %w(price bedrooms bathrooms internal_in_meters external_in_meters max_body_corporate_fee parking aspect unit_type) +
     RESIDENCE_AMENITIES
   DEVELOPMENT_FACETS =
-    %w(city region_name suburb_name) +
+    %w(city region_name suburb_name ready_at units_count units_count) +
     Development::BUILDING_AMENITIES
 
   searchable do
@@ -69,7 +69,6 @@ class Unit < ActiveRecord::Base
       boolean(key) { development.send(key) }
     end
     string :unit_type
-    # double(:ceiling_height_at_living_area_in_meters) { development.ceiling_height_at_living_area_in_meters }
     integer(:units_count) { development.units_count }
   end
 

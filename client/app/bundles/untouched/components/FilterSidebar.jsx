@@ -10,7 +10,6 @@ import AspectSelector from './filter/AspectSelector';
 import ResidenceFilterGroup from './filter/ResidenceFilterGroup';
 import BodyCorpSelector from './filter/BodyCorpSelector';
 import BuildingFilterGroup from './filter/BuildingFilterGroup';
-import CeilingHeightSelector from './filter/CeilingHeightSelector';
 import DevelopmentSizeSelector from './filter/DevelopmentSizeSelector';
 import UnitTypeFilterGroup from './filter/UnitTypeFilterGroup';
 import ReadyDateSelector from './filter/ReadyDateSelector';
@@ -20,7 +19,7 @@ export default class FilterSidebar extends Component {
   render() {
     return (
       <form>
-        <MaxPriceSelector actions={this.props.actions} filters={this.props.filters} />
+        <MaxPriceSelector actions={this.props.actions} facets={this.getFacet('price')} filters={this.props.filters} />
         {this.renderLocationSelector()}
         <BedroomSelector actions={this.props.actions} facets={this.getFacet('bedrooms')} filters={this.props.filters} />
         <BathroomSelector actions={this.props.actions} facets={this.getFacet('bathrooms')} filters={this.props.filters} />
@@ -34,6 +33,7 @@ export default class FilterSidebar extends Component {
           id="internal_m2_selector"
           paramName="internal_in_meters"
           actions={this.props.actions}
+          facets={this.getFacet('internal_in_meters')}
           filters={this.props.filters} />
 
         <M2Selector
@@ -44,13 +44,13 @@ export default class FilterSidebar extends Component {
           id="external_m2_selector"
           paramName="external_in_meters"
           actions={this.props.actions}
+          facets={this.getFacet('external_in_meters')}
           filters={this.props.filters} />
 
         <AspectSelector actions={this.props.actions} facets={this.getFacet('aspect')} filters={this.props.filters} />
         <ResidenceFilterGroup actions={this.props.actions} facets={this.props.facets} filters={this.props.filters} />
-        <BodyCorpSelector actions={this.props.actions} filters={this.props.filters} />
+        <BodyCorpSelector actions={this.props.actions} facets={this.getFacet('max_body_corporate_fee')} filters={this.props.filters} />
         {this.renderBuildingFilterGroup()}
-        {/* <CeilingHeightSelector actions={this.props.actions} filters={this.props.filters} /> */}
         {this.renderDevelopmentSizeSelector()}
         {this.renderUnitTypeFilterGroup()}
         {this.renderReadyDateSelector()}
@@ -76,7 +76,7 @@ export default class FilterSidebar extends Component {
 
   renderDevelopmentSizeSelector() {
     if (!this.props.development) {
-      return <DevelopmentSizeSelector actions={this.props.actions} filters={this.props.filters} />;
+      return <DevelopmentSizeSelector actions={this.props.actions} facets={this.getFacet('units_count')} filters={this.props.filters} />;
     }
   }
 
@@ -86,7 +86,7 @@ export default class FilterSidebar extends Component {
 
   renderReadyDateSelector() {
     if (!this.props.development) {
-      return <ReadyDateSelector actions={this.props.actions} filters={this.props.filters} />;
+      return <ReadyDateSelector actions={this.props.actions} facets={this.getFacet('ready_at')} filters={this.props.filters} />;
     }
   }
 }

@@ -100,11 +100,6 @@ class SolrSearch
         with(:development_id, params[:development_id])
       end
 
-      if params[:ceiling_height_at_living_area_in_meters]
-        with(:ceiling_height_at_living_area_in_meters).
-            greater_than(params[:ceiling_height_at_living_area_in_meters])
-      end
-
       if params[:units_count]
         with(:units_count).
             less_than(params[:units_count])

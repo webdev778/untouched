@@ -23,7 +23,6 @@ class DevelopmentFilter
       filter_residence_amenities(params).
       filter_building_amenities(params).
       filter_development_type(params[:development_type]).
-      # filter_ceiling_height_at_living_area_in_meters(params[:ceiling_height_at_living_area_in_meters]).
       filter_units_count(params[:units_count]).
       group_by_development.
       order_by_ascending_price.
