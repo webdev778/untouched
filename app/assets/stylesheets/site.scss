@@ -1609,6 +1609,9 @@ input[type=radio]:checked + label:hover:before {
         -ms-transform: translateX(0);
             transform: translateX(0);
   }
+  .sidebar__show-results {
+    display: block !important;
+  }
 }
 
 
@@ -1639,6 +1642,7 @@ input[type=radio]:checked + label:hover:before {
   width: 100%;
   left: 0;
   z-index: 4000;
+  display: none;
 }
 
 @media (min-width: 769px) {
@@ -2888,7 +2892,7 @@ tbody.collapse.in {
     left: 0;
     right: auto;
     margin-right: 0;
-    width: 100%;
+    width: 280px !important;
   }
 }
 @media (max-width: 768px) {
