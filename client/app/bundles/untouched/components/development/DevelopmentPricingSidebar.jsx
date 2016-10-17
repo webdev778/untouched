@@ -28,14 +28,21 @@ export default class DevelopmentPricingSidebar extends Component {
   render() {
     return (
       <aside className='sidebar'>
-        <DismissSidebarTrigger />
-        <FilterSidebar
-          development={this.props.development}
-          actions={UnitActions}
-          facets={this.state.facets}
-          filters={this.parseFilters()} />
+        <div className="sidebar__content">
+          <DismissSidebarTrigger />
+          <FilterSidebar
+            development={this.props.development}
+            actions={UnitActions}
+            facets={this.state.facets}
+            filters={this.parseFilters()} />
+        </div>
+        {this.renderShowResults()}
       </aside>
     );
+  }
+
+  handleClickSidebarOverlay = () => {
+    $('body').removeClass('sidebar-on');
   }
 
   parseFilters() {
@@ -43,5 +50,13 @@ export default class DevelopmentPricingSidebar extends Component {
       this.props.params.splat,
       `/developments/${this.props.development.id}`
     );
+  }
+
+  renderShowResults() {
+    if (this.state.units) {
+      return (
+        <div className="sidebar__show-results" onClick={this.handleClickSidebarOverlay}>Show ({this.state.units.length}) units</div>
+      );
+    }
   }
 }

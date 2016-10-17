@@ -1564,8 +1564,7 @@ input[type=radio]:checked + label:hover:before {
 }
 
 .sidebar {
-  width: 100%;
-  // width: 260px;
+  width: 260px;
   border-right: 1px solid #e5e5e5;
   float: left;
   background-color: #fff;
@@ -2889,7 +2888,7 @@ tbody.collapse.in {
     left: 0;
     right: auto;
     margin-right: 0;
-    width: 280px !important;
+    width: 100%;
   }
 }
 @media (max-width: 768px) {
