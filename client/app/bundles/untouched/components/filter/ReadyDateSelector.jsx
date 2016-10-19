@@ -55,7 +55,7 @@ export default class ReadyDateSelector extends Component {
 
     let pairs = _.filter(facets, pair => {
       const date = moment(pair[0]);
-      return date < moment(value) && date >= moment(valuePrev);
+      return date < moment(value); // && date >= moment(valuePrev);
     });
     
     let count = pairs.reduce((prev, current) => {

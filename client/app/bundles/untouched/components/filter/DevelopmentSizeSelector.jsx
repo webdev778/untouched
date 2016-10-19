@@ -45,7 +45,7 @@ export default class DevelopmentSizeSelector extends Component {
 
     let pairs = _.filter(facets, pair => {
       const data = parseInt(pair[0]) 
-      return data <= value && data > valuePrev;
+      return data <= value; // && data > valuePrev;
     });
     
     let count = pairs.reduce((prev, current) => {

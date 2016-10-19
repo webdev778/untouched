@@ -76,7 +76,7 @@ export default class MaxPriceSelector extends Component {
 
     let pairs = _.filter(facets, pair => {
       const price = parseInt(pair[0]) 
-      return price <= value && price > valuePrev;
+      return price <= value; // && price > valuePrev;
     });
 
     let count = pairs.reduce((prev, current) => {

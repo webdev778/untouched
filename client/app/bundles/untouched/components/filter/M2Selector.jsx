@@ -46,7 +46,7 @@ export default class M2Selector extends Component {
 
     let pairs = _.filter(facets, pair => {
       const data = parseInt(pair[0]) 
-      return data > value && (value > valueMax ? true : data <= valueNext);
+      return data > value; // && (value > valueMax ? true : data <= valueNext);
     });
 
     let count = pairs.reduce((prev, current) => {
