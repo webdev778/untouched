@@ -9,7 +9,7 @@ export default class M2Selector extends Component {
     // is the value of rangeEnd...
     return _.map(
       _.range(this.props.rangeStart, parseInt(this.props.rangeEnd) + 1, this.props.step), value => (
-        <option key={value} value={value}>&gt; {value} ({this.getFacetCount(value, +value + +this.props.step, this.props.rangeEnd)})</option>
+        <option key={value} value={value}>&gt; {value} ({this.getFacetCount(value)})</option>
       )
     );
   }
@@ -23,7 +23,7 @@ export default class M2Selector extends Component {
       <div className='sidebar__box'>
         <SidebarTitle value={this.props.label + ' (M2)'}/>
         <select value={this.initialVal()} id={this.props.id} className='select' onChange={this.handleChange}>
-          <option key='any' value=''>Any ({this.getTotalFacetCount()})</option>
+          <option key='any' value=''>Any</option>
           {this.renderNumericOptions()}
         </select>
       </div>
@@ -40,18 +40,16 @@ export default class M2Selector extends Component {
     return this.props.actions.filterData(params);
   }
 
-  getFacetCount = (value, valueNext, valueMax) => {
+  getFacetCount = (value) => {
     if (!this.props.facets) { return 0; }
     let facets = this.props.facets;
 
-    let pairs = _.filter(facets, pair => {
+    let pair = _.find(facets, pair => {
       const data = parseInt(pair[0]) 
-      return data > value; // && (value > valueMax ? true : data <= valueNext);
+      return data == value;
     });
 
-    let count = pairs.reduce((prev, current) => {
-      return prev + current[1]
-    }, 0);
+    let count = _.get(pair, [1]);
     if (!count) { return 0; }
     return count;
   }

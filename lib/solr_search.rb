@@ -53,11 +53,11 @@ class SolrSearch
       end
 
       if params[:internal_in_meters]
-        with(:internal_in_meters).greater_than(params[:internal_in_meters])
+        filters['internal_in_meters'] = with(:internal_in_meters).greater_than(params[:internal_in_meters])
       end
 
       if params[:external_in_meters]
-        with(:external_in_meters).greater_than(params[:external_in_meters])
+        filters['external_in_meters'] = with(:external_in_meters).greater_than(params[:external_in_meters])
       end
 
       if params[:aspect].present? && params[:aspect].any?
@@ -65,11 +65,11 @@ class SolrSearch
       end
 
       if params[:max_price].present?
-        with(:price).less_than_or_equal_to(params[:max_price])
+        filters['price'] = with(:price).less_than_or_equal_to(params[:max_price])
       end
 
       if params[:ready_at].present?
-        with(:ready_at).less_than(params[:ready_at])
+        filters['ready_at'] = with(:ready_at).less_than(params[:ready_at])
       end
 
       if params[:region].present?
@@ -81,7 +81,7 @@ class SolrSearch
       end
 
       if params[:max_body_corporate_fee].present?
-        with(:max_body_corporate_fee).less_than_or_equal_to(params[:max_body_corporate_fee])
+        filters['max_body_corporate_fee'] = with(:max_body_corporate_fee).less_than_or_equal_to(params[:max_body_corporate_fee])
       end
 
       Unit::RESIDENCE_AMENITIES.each do |key|
@@ -100,9 +100,8 @@ class SolrSearch
         with(:development_id, params[:development_id])
       end
 
-      if params[:units_count]
-        with(:units_count).
-            less_than(params[:units_count])
+      if params[:units_count].present?
+        filters['units_count'] = with(:units_count).less_than(params[:units_count])
       end
 
 
@@ -115,13 +114,89 @@ class SolrSearch
       Unit::FACETS.each do |facet_name|
         options = {}
         options[:exclude] = filters[facet_name] if filters[facet_name]
-        facet('facet__' + facet_name, options)
+
+        if facet_name == 'price'
+          value = 400000
+          facet('facet__price', options) do
+            19.times do 
+              row(value) do
+                with(:price).less_than_or_equal_to(value)
+              end
+
+              if value < 800000
+                value += 50000
+              elsif value < 1500000
+                value += 100000
+              elsif value < 3000000
+                value += 500000;
+              end
+            end
+          end
+
+        elsif facet_name == 'max_body_corporate_fee'
+          facet('facet__max_body_corporate_fee', options) do
+            (2000..8000).step(1000) { |value| 
+              row(value) do
+                with(:max_body_corporate_fee).less_than_or_equal_to(value)
+              end
+            }
+          end 
+
+        elsif facet_name == 'internal_in_meters'
+          facet('facet__internal_in_meters', options) do
+            (40..200).step(5) { |value| 
+              row(value) do
+                with(:internal_in_meters).greater_than(value)
+              end
+            }
+          end 
+
+        elsif facet_name == 'external_in_meters'
+          facet('facet__external_in_meters', options) do
+            (5..100).step(5) { |value| 
+              row(value) do
+                with(:external_in_meters).greater_than(value)
+              end
+            }
+          end 
+
+        else 
+          facet('facet__' + facet_name, options)
+        end
       end
 
       Unit::DEVELOPMENT_FACETS.each do |facet_name|
         options = {}
         options[:exclude] = filters[facet_name] if filters[facet_name]
-        facet('facet__' + facet_name, options)
+
+        if facet_name == 'units_count'
+          facet('facet__units_count', options) do
+            [20, 50, 100].each { |value| 
+              row(value) do
+                with(:units_count).less_than(value)
+              end
+            }
+          end 
+
+        elsif facet_name == 'ready_at'
+          startYear = Date.current.year
+          endYear = startYear + 5
+
+          facet('facet__ready_at', options) do
+            (startYear..endYear).step(0.25) { |value| 
+              year = value.floor
+              quarter = ((value - year) / 0.25) + 1
+              value = Date.new(year, (quarter*3)-2, 1)
+              
+              row(value) do
+                with(:ready_at).less_than(value)
+              end
+            }
+          end 
+
+        else
+          facet('facet__' + facet_name, options)
+        end
       end
 
     end
@@ -166,5 +241,6 @@ class SolrSearch
     ).
       sort(params[:sort], params[:sort_order])
   end
+
 end
 

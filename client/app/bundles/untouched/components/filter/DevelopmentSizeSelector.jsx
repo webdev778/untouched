@@ -7,12 +7,7 @@ export default class DevelopmentSizeSelector extends Component {
   OPTIONS = [ 20, 50, 100 ]
 
   renderOptions() {
-    let valuePrev = 0;
-    return _.map(this.OPTIONS, value => {
-      const option = (<option key={value} value={value}>&lt; {value} residences ({this.getFacetCount(value, valuePrev)})</option>);
-      valuePrev = value;
-      return option;
-    });
+    return _.map(this.OPTIONS, value => (<option key={value} value={value}>&lt; {value} residences ({this.getFacetCount(value)})</option>));
   }
 
   render() {
@@ -20,7 +15,7 @@ export default class DevelopmentSizeSelector extends Component {
       <div className='sidebar__box'>
         <SidebarTitle value="Development Size" />
         <select value={this.initialValue()} id="development_size" className='select' onChange={this.handleChange}>
-          <option value="">Any ({this.getTotalFacetCount()})</option>
+          <option value="">Any</option>
           {this.renderOptions()}
         </select>
       </div>
@@ -39,18 +34,16 @@ export default class DevelopmentSizeSelector extends Component {
     return this.props.actions.filterData({units_count: this.val()});
   }
 
-  getFacetCount = (value, valuePrev) => {
+  getFacetCount = (value) => {
     if (!this.props.facets) { return 0; }
     let facets = this.props.facets;
 
-    let pairs = _.filter(facets, pair => {
+    let pair = _.find(facets, pair => {
       const data = parseInt(pair[0]) 
-      return data <= value; // && data > valuePrev;
+      return data == value;
     });
     
-    let count = pairs.reduce((prev, current) => {
-      return prev + current[1]
-    }, 0);
+    let count = _.get(pair, [1]);
     if (!count) { return 0; }
     return count;
   }

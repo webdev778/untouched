@@ -31,7 +31,7 @@ class Unit < ActiveRecord::Base
     %w(price bedrooms bathrooms internal_in_meters external_in_meters max_body_corporate_fee parking aspect unit_type) +
     RESIDENCE_AMENITIES
   DEVELOPMENT_FACETS =
-    %w(city region_name suburb_name ready_at units_count units_count) +
+    %w(city region_name suburb_name ready_at units_count) +
     Development::BUILDING_AMENITIES
 
   searchable do
