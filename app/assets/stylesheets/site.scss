@@ -1527,6 +1527,10 @@ input[type=radio]:checked + label:hover:before {
   z-index: 1005;
   display: none;
 }
+.sidebar-on {
+  overflow-y: hidden;
+}
+
 .sidebar-on .sidebar-overlay {
   display: block;
 }
@@ -1576,6 +1580,7 @@ input[type=radio]:checked + label:hover:before {
   padding-top: 40px;
   padding-right: 40px;
   padding-bottom: 40px;
+  padding-left: 1px;
 
   height: 100vh;
   height: 100%;
@@ -1596,7 +1601,9 @@ input[type=radio]:checked + label:hover:before {
     position: fixed;
     top: 0;
     left: 0;
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.15);
+    bottom: 0;
+    right: 0;
+    width: 100%;
   }
   .sidebar__content {
     max-height: 100vh;
@@ -2906,7 +2913,8 @@ tbody.collapse.in {
             transform: translateX(-100%);
     -webkit-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
-  }
+    width: 100% !important;
+  }  
   .sidebar-on .scroll__pricing .sidebar-wrap {
     -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -2927,6 +2935,7 @@ tbody.collapse.in {
     position: fixed;
     height: 100vh;
     z-index: 2000;
+    padding-top: 0;
   }
 }
 
