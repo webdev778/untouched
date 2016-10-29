@@ -1273,9 +1273,11 @@ input[type=radio]:checked + label:hover:before {
     padding: 0 !important;
   }
   .table .vertical {
+    /*
     -webkit-transform: rotate(-90deg);
         -ms-transform: rotate(-90deg);
             transform: rotate(-90deg);
+    */
     display: inline-block;
   }
 }
@@ -1300,6 +1302,9 @@ input[type=radio]:checked + label:hover:before {
   .table--fixed td,
   .table--fixed .thead td {
     padding: 0 !important;
+  }
+  .table--fixed .thead td.btn-wrap {
+    display: none;
   }
 }
 
