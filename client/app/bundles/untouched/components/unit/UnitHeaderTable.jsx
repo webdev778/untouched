@@ -45,8 +45,7 @@ export default class UnitHeaderTable extends Component {
               <td><span className="vertical">Baths</span></td>
               <td><span className="vertical">Int M2</span></td>
               <td><span className="vertical">Ext M2</span></td>
-              <td><span className="vertical">Aspect</span></td>
-              <td><span className="vertical">Car Spaces</span></td>
+              <td><span className="vertical">Car</span></td>
               <td><span className="vertical">Price</span></td>
             </tr>
             <tr>
@@ -56,7 +55,6 @@ export default class UnitHeaderTable extends Component {
               <td>{this.formattedFloat(this.props.unit.bathrooms)}</td>
               <td>{this.formattedFloat(this.props.unit.internal_in_meters)}</td>
               <td>{this.formattedFloat(this.props.unit.external_in_meters)}</td>
-              <td>{this.props.unit.aspect}</td>
               <td>{this.props.unit.parking}</td>
               <td>{this.formattedPrice()}</td>
             </tr>
