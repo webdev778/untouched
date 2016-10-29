@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import accounting from 'accounting';
 
 import SVGIcon from '../SVGIcon'
 
@@ -14,7 +15,7 @@ export default class UnitHeaderTable extends Component {
   }
 
   formattedPrice() {
-    return Math.round(this.props.unit.price / 1000.0);
+    return accounting.formatMoney(this.props.unit.price, '$', 0);
   }
 
   developmentUrl() {
