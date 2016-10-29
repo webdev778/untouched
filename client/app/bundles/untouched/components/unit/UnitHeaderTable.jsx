@@ -5,12 +5,16 @@ import SVGIcon from '../SVGIcon'
 
 export default class UnitHeaderTable extends Component {
 
-  formattedPrice() {
-    return Math.round(this.props.unit.price / 1000.0);
+  formattedFloat(number) {
+    if (number % 1 == 0) {
+      return Math.round(number);
+    }
+
+    return number;
   }
 
-  formattedPricePerM2() {
-    return Math.round(this.props.unit.price_per_m2 / 1000.0);
+  formattedPrice() {
+    return Math.round(this.props.unit.price / 1000.0);
   }
 
   developmentUrl() {
@@ -44,19 +48,17 @@ export default class UnitHeaderTable extends Component {
               <td><span className="vertical">Aspect</span></td>
               <td><span className="vertical">Car Spaces</span></td>
               <td><span className="vertical">Price</span></td>
-              <td><span className="vertical">/ M2</span></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
               <td>{this.props.unit.number}</td>
               <td>{this.props.unit.bedrooms}</td>
-              <td>{this.props.unit.bathrooms}</td>
-              <td>{this.props.unit.internal_in_meters}</td>
-              <td>{this.props.unit.external_in_meters}</td>
+              <td>{this.formattedFloat(this.props.unit.bathrooms)}</td>
+              <td>{this.formattedFloat(this.props.unit.internal_in_meters)}</td>
+              <td>{this.formattedFloat(this.props.unit.external_in_meters)}</td>
               <td>{this.props.unit.aspect}</td>
               <td>{this.props.unit.parking}</td>
               <td>{this.formattedPrice()}</td>
-              <td>{this.formattedPricePerM2()}</td>
             </tr>
           </tbody>
         </table>
