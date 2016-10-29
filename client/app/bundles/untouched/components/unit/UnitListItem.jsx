@@ -43,12 +43,20 @@ export default class UnitListItem extends Component {
           <Link to={this.unitUrl()}>{this.props.unit.number}</Link>
         </td>
         <td>{this.props.unit.bedrooms}</td>
-        <td>{this.props.unit.bathrooms}</td>
-        <td>{Math.round(this.props.unit.internal_in_meters)}</td>
-        <td>{Math.round(this.props.unit.external_in_meters)}</td>
+        <td>{this.formatFloat(this.props.unit.bathrooms)}</td>
+        <td>{this.formatFloat(this.props.unit.internal_in_meters)}</td>
+        <td>{this.formatFloat(this.props.unit.external_in_meters)}</td>
         <td>{this.props.unit.aspect}</td>
         <td>{this.formattedPrice()}</td>
       </tr>
     );
+  }
+
+  formatFloat(number) {
+    if (number % 1 == 0) {
+      return Math.round(number);
+    }
+
+    return number;
   }
 }

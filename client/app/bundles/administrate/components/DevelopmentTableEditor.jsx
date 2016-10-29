@@ -197,6 +197,13 @@ export default class DevelopmentTableEditor extends Component {
 
   formatters = {
     number: (v) => parseInt(v),
+    float(v) {
+      if (v % 1 == 0) {
+        return Math.round(v);
+      }
+
+      return v;
+    },
     capitalize: (v) => _.upperFirst(v),
     money: (v) => accounting.formatMoney(v, '$', 0)
   }
@@ -210,10 +217,10 @@ export default class DevelopmentTableEditor extends Component {
       this.imagesColumn('views', 'views_count', 'Views'),
       this.imagesColumn('plans', 'plans_count', 'Plans'),
       this.inputColumn('bedrooms', 'Bd'),
-      this.inputColumn('bathrooms', 'Bt'),
+      this.inputColumn('bathrooms', 'Bt', this.formatters.float),
       this.inputColumn('parking', 'P'),
-      this.inputColumn('internal_in_meters', 'IM2', this.formatters.number),
-      this.inputColumn('external_in_meters', 'EM2', this.formatters.number),
+      this.inputColumn('internal_in_meters', 'IM2', this.formatters.float),
+      this.inputColumn('external_in_meters', 'EM2', this.formatters.float),
       this.dropdownColumn('aspect', 'Aspect', this.properties.aspect.options, this.formatters.capitalize),
       this.inputColumn('max_body_corporate_fee', 'Body', this.formatters.money),
       this.inputColumn('annual_council_rate', 'Council', this.formatters.money),
