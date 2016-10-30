@@ -5,11 +5,14 @@ class Unit < ActiveRecord::Base
 
   enum unit_type: [ :apartment, :townhouse ]
   enum aspect: [ :north, :east, :south, :west ]
-  enum status: [ :active, :held, :sold ]
+  enum status: [ :active, :held, :deposit_received, :reserved, :signed, :cross_signed ]
 
   scope :active, -> { where(status: Unit.statuses[:active]) }
-  scope :sold, -> { where(status: Unit.statuses[:sold]) }
+  scope :deposit_received, -> { where(status: Unit.statuses[:deposit_received]) }
   scope :held, -> { where(status: Unit.statuses[:held]) }
+  scope :reserved, -> { where(status: Unit.statuses[:reserved]) }
+  scope :signed, -> { where(status: Unit.statuses[:signed]) }
+  scope :cross_signed, -> { where(status: Unit.statuses[:cross_signed]) }
 
   validates_uniqueness_of :number, scope: :development_id
   validates_presence_of :number

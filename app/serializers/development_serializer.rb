@@ -19,7 +19,7 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :deposit_percent,
     :units_count,
     :units_active_count,
-    :units_sold_count,
+    :units_deposit_received_count,
     :created_at,
     :updated_at,
     :intercom_app_id
@@ -40,8 +40,8 @@ class DevelopmentSerializer < ActiveModel::Serializer
     object.units.active.count
   end
 
-  def units_sold_count
-    object.units.sold.count
+  def units_deposit_received_count
+    object.units.deposit_received.count
   end
 
 end

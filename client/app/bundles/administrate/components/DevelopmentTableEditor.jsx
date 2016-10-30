@@ -104,12 +104,24 @@ export default class DevelopmentTableEditor extends Component {
           value: 'active'
         },
         {
-          name: 'Sold',
-          value: 'sold'
+          name: 'Deposit received',
+          value: 'deposit_received'
         },
         {
           name: 'Held',
           value: 'held'
+        },
+        {
+          name: 'Reserved',
+          value: 'reserved'
+        },
+        {
+          name: 'Signed',
+          value: 'signed'
+        },
+        {
+          name: 'Cross-signed',
+          value: 'cross_signed'
         }
       ]
     },
@@ -205,13 +217,14 @@ export default class DevelopmentTableEditor extends Component {
       return v;
     },
     capitalize: (v) => _.upperFirst(v),
+    startCase: (v) => _.startCase(v),
     money: (v) => accounting.formatMoney(v, '$', 0)
   }
 
   getColumns() {
     return [
       this.inputColumn('number', 'Number'),
-      this.dropdownColumn('status', 'Status', this.properties.status.options, this.formatters.capitalize),
+      this.dropdownColumn('status', 'Status', this.properties.status.options, this.formatters.startCase),
       this.dropdownColumn('unit_type', 'Type', this.properties.unit_type.options, this.formatters.capitalize),
       this.inputColumn('price', 'Price', this.formatters.money),
       this.imagesColumn('views', 'views_count', 'Views'),
