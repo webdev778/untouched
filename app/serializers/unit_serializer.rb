@@ -30,6 +30,7 @@ class UnitSerializer < ActiveModel::Serializer
     :deposit_due_in_days,
     :stamp_duty_savings,
     :annual_council_rate,
+    :water_rates,
     :deposit,
     :contract_url,
     :created_at,
