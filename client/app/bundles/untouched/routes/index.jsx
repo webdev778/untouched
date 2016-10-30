@@ -5,6 +5,7 @@ import UnitPage from './../containers/UnitPage';
 import DevelopmentPage from './../containers/DevelopmentPage';
 import LegalPage from './../containers/LegalPage';
 import DevelopmentsPage from './../containers/DevelopmentsPage';
+import LandingPage from './../containers/LandingPage';
 import DhhPage from './../containers/DhhPage';
 
 export default (
@@ -27,6 +28,7 @@ export default (
       <Route path="/developments/:developmentId" component={DevelopmentPage}>
         <Route path="*" component={DevelopmentPage} />
       </Route>    
+      <Route path="/landing" component={LandingPage} />
       <Route path="*" component={DevelopmentsPage} />
     </Route>    
   </Route>
