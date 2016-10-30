@@ -35,11 +35,13 @@ export default class UnitHeaderTable extends Component {
         <table className="table table--fixed">
           <tbody>
             <tr className="thead">
+              {/*
               <td rowSpan="2" className="btn-wrap">
                 <Link to={this.developmentUrl()} onClick={this.handleBack} className="btn--back">
                   <SVGIcon icon="arrow-left" />
                 </Link>
               </td>
+              */}
               <td>&nbsp;</td>
               <td><span className="vertical">Unit</span></td>
               <td><span className="vertical">Beds</span></td>
