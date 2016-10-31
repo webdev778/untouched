@@ -5,11 +5,17 @@ import SidebarTrigger from './SidebarTrigger'
 
 export default class Header extends Component {
 
+  static defaultProps = {
+    sidebarTrigger: true
+  }
+
   render() {
     return (
       <header className="header">
         <div className="container">
-          <SidebarTrigger />
+          { this.props.sidebarTrigger &&
+            <SidebarTrigger />
+          }
           <div className="justifize">
             <div className="justifize__box">
               <Link to="/" className="header__logo">

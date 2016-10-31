@@ -43,7 +43,7 @@ export default class LandingPage extends Component {
     return (
       <div className='landing landing-page'>
 
-        <Header />
+        <Header sidebarTrigger={false} />
 
         <main className="main">
 
