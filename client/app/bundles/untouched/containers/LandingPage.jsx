@@ -50,7 +50,6 @@ export default class LandingPage extends Component {
           <Waypoint
             onEnter={this._handleWaypoint('hero')}
             onLeave={this._handleWaypoint('hero')}
-            topOffset="50px"
           />
           <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.hero}>
             {({x, opacity}) =>
@@ -78,8 +77,6 @@ export default class LandingPage extends Component {
           <Waypoint
             onEnter={this._handleWaypoint('logo')}
             onLeave={this._handleWaypoint('logo')}
-            topOffset="100px"
-            bottomOffset="150px"
           />
           <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.logo}>
             {({x, opacity}) =>

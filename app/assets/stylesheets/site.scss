@@ -3106,10 +3106,6 @@ footer .copyright-info__links li a:hover {
 
 }
 
-.landing__section {
-  
-}
-
 .landing__section-hero {
   padding-top: 80px;
 }
@@ -3138,7 +3134,6 @@ footer .copyright-info__links li a:hover {
 .landing__phone {
   width: 397px;
   height: 566px;
-  /*background-size: 794px 1132px;*/
   background-size: 397px 566px;
   background-repeat: no-repeat;
   background-image: url("/images/landing-phone.png");
@@ -3151,7 +3146,7 @@ footer .copyright-info__links li a:hover {
 .landing__hero {
   font-size: 24px;
   line-height: 1.14286;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0em;
   margin-bottom: 21px;
 }
@@ -3177,6 +3172,53 @@ footer .copyright-info__links li a:hover {
 .landing__logo img {
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 768px) {
+  .landing__section {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .landing__section-hero {
+    padding-top: 40px;
+  }
+
+  .landing__section-letter {
+    padding-top: 40px;
+    padding-bottom: 90px;
+  }
+
+  .landing__elevated {
+    font-size: 35px;
+    line-height: 1;
+    letter-spacing: -.012em;
+  }
+
+  .landing__watch {
+    margin-top: 13px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .landing__hero {
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .landing__phone {
+    width: 198px;
+    height: 283px;
+    background-size: 198px 283px;
+    margin-left: -99px;
+    margin-top: 20px;
+  }
+
+  .landing__letter {
+    font-size: 14px;
+    line-height: 1.33349;
+  }
 }
 
 /*------------------------------------*\
@@ -3252,3 +3294,9 @@ footer .copyright-info__links li a:hover {
 }
 /* ----------------------------------------------------------------- */
 
+@media (max-width: 768px) {
+  .legal-page .main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
