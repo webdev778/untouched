@@ -3106,12 +3106,18 @@ footer .copyright-info__links li a:hover {
 
 }
 
+.landing__section-intro {
+  padding-top: 80px;
+  background: linear-gradient(to bottom, #fff 0, #f6f6f6 150px);
+}
+
 .landing__section-hero {
   padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .landing__section-letter {
-  padding-top: 80px;
+  padding-top: 110px;
   padding-bottom: 180px;
 }
 
@@ -3132,18 +3138,18 @@ footer .copyright-info__links li a:hover {
 }
 
 .landing__phone {
-  width: 595px;
-  height: 849px;
-  background-size: 595px 849px;
+  width: 404px;
+  height: 812px;
+  background-size: 404px 812px;
   background-repeat: no-repeat;
   background-image: url("/images/landing-phone.png");
   left: 50%;
-  margin-left: -297.5px;
+  margin-left: -202px;
   position: relative;
   margin-top: 55px;
 }
 
-.landing__hero {
+.landing__hero-intro {
   font-size: 24px;
   line-height: 1.14286;
   font-weight: 400;
@@ -3151,8 +3157,16 @@ footer .copyright-info__links li a:hover {
   margin-bottom: 21px;
 }
 
+.landing__hero {
+  font-size: 64px;
+  line-height: 1.0625;
+  font-weight: 200;
+  letter-spacing: -.02em;
+  margin-bottom: 21px;
+}
+
 .landing__letter {
-  font-size: 19px;
+  font-size: 24px;
   line-height: 1.33349;
   font-weight: 300;
   letter-spacing: 0em;
@@ -3180,8 +3194,13 @@ footer .copyright-info__links li a:hover {
     padding-right: 30px;
   }
 
+  .landing__section-intro {
+    padding-top: 40px;
+  }
+
   .landing__section-hero {
     padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .landing__section-letter {
@@ -3201,6 +3220,12 @@ footer .copyright-info__links li a:hover {
     line-height: 1;
   }
 
+  .landing__hero-intro {
+    font-size: 15px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }  
+
   .landing__hero {
     font-size: 15px;
     line-height: 1;
@@ -3208,10 +3233,10 @@ footer .copyright-info__links li a:hover {
   }
 
   .landing__phone {
-    width: 198px;
-    height: 283px;
-    background-size: 198px 283px;
-    margin-left: -99px;
+    width: 202px;
+    height: 406px;
+    background-size: 202px 406px;
+    margin-left: -101px;
     margin-top: 20px;
   }
 

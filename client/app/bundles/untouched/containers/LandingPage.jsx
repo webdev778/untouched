@@ -47,15 +47,13 @@ export default class LandingPage extends Component {
 
         <main className="main">
 
-          <Waypoint
-            onEnter={this._handleWaypoint('hero')}
-            onLeave={this._handleWaypoint('hero')}
-          />
-          <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.hero}>
-            {({x, opacity}) =>
-              // children is a callback which should accept the current value of
-              // `style`
-              <div className="landing__section landing__section-hero text-center">
+          <div className="landing__section landing__section-intro text-center">
+            <Waypoint
+              onEnter={this._handleWaypoint('hero')}
+              onLeave={this._handleWaypoint('hero')}
+            />
+            <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.hero}>
+              {({x, opacity}) =>
                 <div className="container">
                   <div style={{
                     transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${x}, 0, 1)`,
@@ -70,33 +68,33 @@ export default class LandingPage extends Component {
                   </div>
                   <figure className="landing__phone" />
                 </div>  
-              </div> 
-            }
-          </Motion>
+              }
+            </Motion>
 
-          <Waypoint
-            onEnter={this._handleWaypoint('logo')}
-            onLeave={this._handleWaypoint('logo')}
-          />
-          <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.logo}>
-            {({x, opacity}) =>
-              <div className="landing__section landing__section-hero text-center" style={{
-                transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${x}, 0, 1)`,
-                opacity,
-              }}>
-                <div className="container">
-                  <div className="landing__hero">
-                    HELPS LEADING PROPERTY DEVELOPERS & PROJECT MARKETERS SELL PROJECTS FASTER & MORE EFFORTLESSLY
+            <Waypoint
+              onEnter={this._handleWaypoint('logo')}
+              onLeave={this._handleWaypoint('logo')}
+            />
+            <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.logo}>
+              {({x, opacity}) =>
+                <div className="landing__section landing__section-hero text-center" style={{
+                  transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${x}, 0, 1)`,
+                  opacity,
+                }}>
+                  <div className="container">
+                    <div className="landing__hero-intro">
+                      HELPS LEADING PROPERTY DEVELOPERS & PROJECT MARKETERS SELL PROJECTS FASTER & MORE EFFORTLESSLY
+                    </div>
+                    <Link className="landing__logo" to="/">
+                      <img src="/images/logo-untouched-white.svg" alt="Untouched" />
+                    </Link>
                   </div>
-                  <Link className="landing__logo" to="/">
-                    <img src="/images/logo-untouched-white.svg" alt="Untouched" />
-                  </Link>
                 </div>
-              </div>
-            }
-          </Motion>
+              }
+            </Motion>
+          </div>
 
-          <div className="landing__section landing__section-letter">  
+          <div className="landing__section landing__section-letter text-center">  
             <div className="container">
               <div className="landing__hero">
                 Thoughts From Our Founder & CEO
@@ -126,11 +124,11 @@ export default class LandingPage extends Component {
                 <br /><br />
                 As I’m still selling new developments and constantly using the tool, I’m relentlessly refining and improving UNTOUCHED nearly every day. There’s some other stuff out there, but there’s nothing else like UNTOUCHED.
                 <br /><br />
-                To prove this to you, I’ll be hosting a LIVE webinar on Friday 4th November at 10AM AEST where I’ll show you exactly how I’ve used UNTOUCHED to take my sales to the next level with far less effort - and how agency principals and property developers themselves can enjoy even greater benefits.
+                To prove this to you, I’ll be hosting a LIVE webinar on <b>Friday 4th November at 10AM AEST</b> where I’ll show you exactly how I’ve used UNTOUCHED to take my sales to the next level with far less effort - and how agency principals and property developers themselves can enjoy even greater benefits.
                 <br /><br />
-                I’m 100% certain UNTOUCHED can improve how you manage and sell your new development projects. So please register for the webinar and I look forward to showing you how it all works.
+                I’m 100% certain UNTOUCHED can improve how you manage and sell your new development projects. So please <a>register for the webinar</a> and I look forward to showing you how it all works.
                 <br /><br />
-                Wishing you all the best,
+                Wishing you all the best,<br />
                 Sasha Gilberg, 
                 <br /><br />
                 Founder at UNTOUCHED / Sales Consultant at CastranGilbert
