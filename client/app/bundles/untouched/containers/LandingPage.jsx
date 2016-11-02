@@ -97,7 +97,7 @@ export default class LandingPage extends Component {
           <div className="landing__section landing__section-letter">  
             <div className="container">
               <div className="landing__hero text-center">
-                Thoughts From Our Founder & CEO
+                Thoughts From Our Founder and CEO
               </div>
               <div className="landing__letter">
                 Hey, I’m Sasha Gilberg, the founder here at UNTOUCHED.  
