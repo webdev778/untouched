@@ -3106,6 +3106,14 @@ footer .copyright-info__links li a:hover {
 
 }
 
+.landing hr {
+  border: 0;
+  border-top: 1px solid #d9d9d9;
+  display: block;
+  margin: 6em auto;
+  width: 25%;
+}
+
 .landing__section-intro {
   padding-top: 80px;
   background: linear-gradient(to bottom, #fff 0, #f6f6f6 150px);
@@ -3118,7 +3126,8 @@ footer .copyright-info__links li a:hover {
 
 .landing__section-letter {
   padding-top: 110px;
-  padding-bottom: 180px;
+  max-width: 51rem;
+  margin: 0 auto;
 }
 
 .landing__elevated {
@@ -3158,16 +3167,17 @@ footer .copyright-info__links li a:hover {
 }
 
 .landing__hero {
-  font-size: 64px;
+  font-size: 50px;
   line-height: 1.0625;
   font-weight: 200;
   letter-spacing: -.02em;
-  margin-bottom: 21px;
+  margin-bottom: 30px;
 }
 
 .landing__letter {
-  font-size: 24px;
-  line-height: 1.33349;
+  font-family: 'Playfair Display';
+  font-size: 20px;
+  line-height: 1.5;
   font-weight: 300;
   letter-spacing: 0em;
 }
@@ -3200,7 +3210,6 @@ footer .copyright-info__links li a:hover {
 
   .landing__section-hero {
     padding-top: 40px;
-    padding-bottom: 40px;
   }
 
   .landing__section-letter {
