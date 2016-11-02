@@ -104,10 +104,6 @@ export default class DevelopmentTableEditor extends Component {
           value: 'active'
         },
         {
-          name: 'Deposit received',
-          value: 'deposit_received'
-        },
-        {
           name: 'Held',
           value: 'held'
         },
@@ -122,6 +118,10 @@ export default class DevelopmentTableEditor extends Component {
         {
           name: 'Cross-signed',
           value: 'cross_signed'
+        },
+        {
+          name: 'Deposit received',
+          value: 'deposit_received'
         }
       ]
     },
