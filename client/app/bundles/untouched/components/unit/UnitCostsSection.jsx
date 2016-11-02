@@ -35,6 +35,10 @@ export default class UnitCostsSection extends Component {
     return accounting.formatMoney(this.props.unit.annual_council_rate, '$', 0);
   }
 
+  formattedAnnualWaterRate() {
+    return accounting.formatMoney(this.props.unit.water_rates, '$', 0);
+  }
+
   formattedReadyAt() {
     return moment(this.props.unit.development.ready_at).format('MMM, YYYY');
   }
@@ -77,6 +81,12 @@ export default class UnitCostsSection extends Component {
                       <strong>Council Rates (estimate)</strong>
                     </td>
                     <td>{this.formattedAnnualCouncilRate()}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Water Rates (estimate)</strong>
+                    </td>
+                    <td>{this.formattedAnnualWaterRate()}</td>
                   </tr>
                 </tbody>
               </table>
