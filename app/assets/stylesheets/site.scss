@@ -3103,7 +3103,7 @@ footer .copyright-info__links li a:hover {
 \*------------------------------------*/
 
 .landing {
-
+  font-family: 'Playfair Display';
 }
 
 .landing .main {
@@ -3119,6 +3119,7 @@ footer .copyright-info__links li a:hover {
 
 .landing__section-intro {
   padding-top: 80px;
+  padding-bottom: 60px;
 }
 
 .landing__section-hero {
@@ -3157,7 +3158,7 @@ footer .copyright-info__links li a:hover {
   height: 812px;
   background-size: 404px 812px;
   background-repeat: no-repeat;
-  background-image: url("/images/landing-phone.png");
+  background-image: url("/images/landing-phone2.png");
   left: 50%;
   margin-left: -202px;
   position: relative;
@@ -3174,7 +3175,7 @@ footer .copyright-info__links li a:hover {
 
 .landing__hero {
   font-family: 'Playfair Display';
-  font-size: 48px;
+  font-size: 39px;
   line-height: 1.0625;
   font-weight: 200;
   letter-spacing: -.02em;
@@ -3182,7 +3183,7 @@ footer .copyright-info__links li a:hover {
 }
 
 .landing__letter {
-  font-family: 'Special Elite', cursive;
+  font-family: 'Special Elite';
   font-size: 20px;
   line-height: 1.5;
   font-weight: 300;

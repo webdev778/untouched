@@ -61,43 +61,18 @@ export default class LandingPage extends Component {
                   }}>
                     <div className="landing__elevated">
                       The project portal, re-invented.
-                    </div>            
-                    <Link className="landing__watch">
-                      Watch how it works
-                    </Link>
+                    </div>
                   </div>
                   <figure className="landing__phone" />
                 </div>  
-              }
-            </Motion>
-
-            <Waypoint
-              onEnter={this._handleWaypoint('logo')}
-              onLeave={this._handleWaypoint('logo')}
-            />
-            <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.logo}>
-              {({x, opacity}) =>
-                <div className="landing__section landing__section-hero text-center" style={{
-                  transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${x}, 0, 1)`,
-                  opacity,
-                }}>
-                  <div className="container">
-                    <div className="landing__hero-intro">
-                      TRUSTED BY LEADING PROPERTY DEVELOPERS AND PROJECT MARKETERS:
-                    </div>
-                    <Link className="landing__logo" to="/">
-                      <img src="/images/logo-untouched-white.svg" alt="Untouched" />
-                    </Link>
-                  </div>
-                </div>
               }
             </Motion>
           </div>
 
           <div className="landing__section landing__section-letter">  
             <div className="container">
-              <div className="landing__hero text-center">
-                Thoughts From Our Founder and CEO
+              <div className="landing__hero">
+                Sell projects faster, at the highest possible price.
               </div>
               <div className="landing__letter">
                 Hey, I’m Sasha Gilberg, the founder here at UNTOUCHED.  
@@ -106,9 +81,9 @@ export default class LandingPage extends Component {
                 <br /><br />
                 Having worked across a wide variety of projects both large and small, I realised there were some repetitive processes that wasted a lot of my time, bottlenecking me from spending more time on lead generation, setting appointments and actually selling.
                 <br /><br />
-                So I created a piece of software to try to automate some of the repetitive tasks I was doing so that I could be more efficient; and grow my sales volume.
-                <br /><br />
-                And fortunately, that piece of software worked tremendously well and was successful in taking my sales volume to the next level with far less effort.
+                So I created a piece of software to automate some of the repetitive tasks I was doing so that I could be more efficient; and grow my sales volume.
+                <br />
+                And the next thing you know, I was generating more sales with far less effort. Happy days.
                 <br /><br />
                 But that was just the beginning. As I worked on more projects and had more units to sell, that equaled more stakeholders, emails, meetings, and interruptions. Stuff slipped, communication suffered, and everything turned ASAP. This chaos began to feel like the new normal. But it’s not normal. Running around with your hair on fire isn’t normal.
                 <br /><br />
@@ -122,9 +97,13 @@ export default class LandingPage extends Component {
                 <br /><br />
                 Today, all the new development projects I work on run on UNTOUCHED. It enables me to do in seconds the tasks that used to take hours.
                 <br /><br />
-                I built UNTOUCHED for myself because I wanted to automate the repetitive tasks I was doing to have more time available to generate leads and do deals. But what it's evolved into is something that does so much more.
-                <br /><br />
-                It’s also a powerful sales presentation tool that you can use in the office, on the phone or at the display centre to increase your enquiry to deal conversion rate.
+                I built UNTOUCHED for myself because I wanted to automate the repetitive tasks I was doing to have more time available to generate leads and do deals. But what it's evolved into is something that does so much more:
+                <ul>
+                  <li>Improves customer experience and makes your project stand out amongst the competition, helping you turn more enquiries into deals.</li>
+                  <li>Makes stock management a breeze, keeping your sales agents and channel partners in-sync with a single online price list.</li>
+                  <li>Enables you to sell from your phone like never before so that you book in more display suite appointments and secure more on-the-spot reservations.</li>
+                  <li>Upgrades your display suite presentation, helping you get more signed contracts on the spot.</li>
+                </ul>
                 <br /><br />
                 As I’m still selling new developments and using UNTOUCHED every two seconds, I’m relentlessly refining and improving it nearly every day. There’s some other stuff out there, but there’s nothing else like UNTOUCHED.
                 <br /><br />
