@@ -104,7 +104,6 @@ export default class LandingPage extends Component {
                   <li>Enables you to sell from your phone like never before so that you book in more display suite appointments and secure more on-the-spot reservations.</li>
                   <li>Upgrades your display suite presentation, helping you get more signed contracts on the spot.</li>
                 </ul>
-                <br /><br />
                 As I’m still selling new developments and using UNTOUCHED every two seconds, I’m relentlessly refining and improving it nearly every day. There’s some other stuff out there, but there’s nothing else like UNTOUCHED.
                 <br /><br />
                 To prove this to you, I’ll be hosting a LIVE webinar on <a>Friday 11th November at 10AM AEST</a> where I’ll show you exactly how I’ve used UNTOUCHED to take my sales to the next level with far less effort - and how agency principals and property developers can use it to sell projects faster, and at the highest possible price.
