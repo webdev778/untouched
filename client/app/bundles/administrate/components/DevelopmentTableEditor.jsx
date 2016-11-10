@@ -116,7 +116,7 @@ export default class DevelopmentTableEditor extends Component {
           value: 'signed'
         },
         {
-          name: 'Cross-signed',
+          name: 'Signed by vendor',
           value: 'cross_signed'
         },
         {
@@ -164,7 +164,7 @@ export default class DevelopmentTableEditor extends Component {
       type: 'dropdown',
       cell: [
         this.editable()({editor: editors.dropdown(options)}),
-        formatter
+        formatter(options)
       ]
     };
   }
@@ -217,15 +217,18 @@ export default class DevelopmentTableEditor extends Component {
       return v;
     },
     capitalize: (v) => _.upperFirst(v),
-    startCase: (v) => _.startCase(v),
+    finder: (options) => (v) => {
+      const name = _.find(options, option => option.value == v).name;
+      return _.upperFirst(name);
+    },
     money: (v) => accounting.formatMoney(v, '$', 0)
   }
 
   getColumns() {
     return [
       this.inputColumn('number', 'Number'),
-      this.dropdownColumn('status', 'Status', this.properties.status.options, this.formatters.startCase),
-      this.dropdownColumn('unit_type', 'Type', this.properties.unit_type.options, this.formatters.capitalize),
+      this.dropdownColumn('status', 'Status', this.properties.status.options, this.formatters.finder),
+      this.dropdownColumn('unit_type', 'Type', this.properties.unit_type.options, this.formatters.finder),
       this.inputColumn('price', 'Price', this.formatters.money),
       this.imagesColumn('views', 'views_count', 'Views'),
       this.imagesColumn('plans', 'plans_count', 'Plans'),
@@ -234,7 +237,7 @@ export default class DevelopmentTableEditor extends Component {
       this.inputColumn('parking', 'P'),
       this.inputColumn('internal_in_meters', 'IM2', this.formatters.float),
       this.inputColumn('external_in_meters', 'EM2', this.formatters.float),
-      this.dropdownColumn('aspect', 'Aspect', this.properties.aspect.options, this.formatters.capitalize),
+      this.dropdownColumn('aspect', 'Aspect', this.properties.aspect.options, this.formatters.finder),
       this.inputColumn('max_body_corporate_fee', 'Body', this.formatters.money),
       this.inputColumn('annual_council_rate', 'Council', this.formatters.money),
       this.inputColumn('stamp_duty', 'Stamp', this.formatters.money),
