@@ -66,7 +66,7 @@ export default class LandingPage extends Component {
             </Motion>
           </div>
 
-          <div className="landing__section text-center">
+          <div className="landing__section landing__section-cta text-center">
             <Waypoint onEnter={this._handleWaypoint('logo')} onLeave={this._handleWaypoint('logo')} />
             <Motion defaultStyle={{x: 65, opacity: 0}} style={this.state.logo}>
               {({x, opacity}) =>
@@ -75,14 +75,14 @@ export default class LandingPage extends Component {
                     transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${x}, 0, 1)`,
                     opacity,
                   }}>
-                    <div className="landing__cta-tip">Click here and</div>
                     <Link 
                       to="https://medium.com/@sashagilberg/the-project-portal-re-invented-8f3136219bf7#.h924lkx2q" 
                       className="btn btn--cta btn--lg"
                       target="_blank"
                     >
-                      SELL PROJECTS FASTER
+                      LEARN MORE
                     </Link>
+                    <div className="landing__cta-tip">Sell projects faster, at the highest possible price</div>
                   </div>
                 </div>  
               }

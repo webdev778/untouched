@@ -3128,7 +3128,7 @@ footer .copyright-info__links li a:hover {
 .landing .btn {
   display: block;
   max-width: 500px;
-  margin: 0 auto 100px;
+  margin: 0 auto;
   padding: 20px 30px;
   font-size: 30px;
   border-radius: 50px;
@@ -3145,6 +3145,10 @@ footer .copyright-info__links li a:hover {
 .landing__section-intro {
   padding-top: 80px;
   padding-bottom: 60px;
+}
+
+.landing__section-cta {
+  padding-bottom: 100px;
 }
 
 .landing__elevated {
@@ -3185,7 +3189,7 @@ footer .copyright-info__links li a:hover {
 
 .landing__cta-tip {
   color: #999;
-  margin-bottom: 5px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -3196,6 +3200,10 @@ footer .copyright-info__links li a:hover {
 
   .landing__section-intro {
     padding-bottom: 40px;
+  }
+
+  .landing__section-cta {
+    padding-bottom: 70px;
   }
 
   .landing__elevated {
@@ -3214,7 +3222,6 @@ footer .copyright-info__links li a:hover {
 
   .landing .btn {
     font-size: 18px;
-    margin-bottom: 70px;
   }
 }
 
