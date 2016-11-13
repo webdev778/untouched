@@ -1,0 +1,26 @@
+section {
+  margin: 1.5em;
+}
+.composite-video-uploader > .form {
+  text-align: center;
+  padding: 1.5em; 
+}
+
+.composite-video-uploader-item {
+  clear: both;
+  .video {
+    float: left;
+    width: 50%;
+    iframe {
+      width: 100%;
+      max-width: 100% !important;
+      max-height: 100% !important;
+    }
+    padding: 1.5em;
+  }
+  .form {
+    float: left;
+    width: 50%;
+    padding: 1.5em;
+  }
+}

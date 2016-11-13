@@ -2,6 +2,7 @@ class Development < ActiveRecord::Base
   belongs_to :suburb
   has_many :units, dependent: :destroy
   has_many :photos, -> { order('sort, id ASC') }, class_name: 'DevelopmentPhoto', as: :imageable, dependent: :destroy
+  has_many :videos, -> { order('sort, id ASC') }, class_name: 'DevelopmentVideo', as: :videoable, dependent: :destroy
   is_impressionable
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
   mount_uploader :contract, ContractUploader

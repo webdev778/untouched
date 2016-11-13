@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import TipActions from '../../actions/tip_actions';
 
 import ImageCard from '../ImageCard';
+import VideoCard from '../VideoCard';
 
 export default class DevelopmentOverviewSection extends Component {
 
@@ -31,6 +32,7 @@ export default class DevelopmentOverviewSection extends Component {
       <section className="scroll__section scroll__overview">
         <div className="container">
           <div className="container__reset" ref={c => this.overview = c}>
+            {this.renderVideos()}
             {this.renderPhotos()}
           </div>
         </div>
@@ -46,6 +48,16 @@ export default class DevelopmentOverviewSection extends Component {
         image={photo}
         handleImageLoaded={this.handleStateChange}
         handleImageErrored={this.handleStateChange} />
+    ));
+  }
+
+  renderVideos() {
+    if (!this.props.development) { return; }
+    return _.map(this.props.development.videos, video => (
+      <VideoCard
+        key={video.id}
+        video={video}
+      />
     ));
   }
 }

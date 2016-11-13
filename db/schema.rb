@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161113002932) do
+ActiveRecord::Schema.define(version: 20161113214550) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -137,6 +137,19 @@ ActiveRecord::Schema.define(version: 20161113002932) do
   end
 
   add_index "units", ["development_id"], name: "index_units_on_development_id", using: :btree
+
+  create_table "videos", force: :cascade do |t|
+    t.text     "iframe"
+    t.integer  "videoable_id",                           null: false
+    t.string   "videoable_type", limit: 255,             null: false
+    t.text     "caption"
+    t.string   "type",           limit: 255,             null: false
+    t.integer  "sort",                       default: 0, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "videos", ["videoable_id", "videoable_type"], name: "index_videos_on_videoable_id_and_videoable_type", using: :btree
 
   add_foreign_key "developments", "suburbs"
   add_foreign_key "suburbs", "regions"

@@ -2,6 +2,8 @@ import ReactOnRails from 'react-on-rails';
 
 import CompositeImageUploader from '../components/CompositeImageUploader';
 import CompositeImageUploaderItem from '../components/CompositeImageUploaderItem';
+import CompositeVideoUploader from '../components/CompositeVideoUploader';
+import CompositeVideoUploaderItem from '../components/CompositeVideoUploaderItem';
 import DevelopmentTableEditor from '../components/DevelopmentTableEditor';
 import DevelopmentTableEditorFooter from '../components/DevelopmentTableEditorFooter';
 
@@ -12,7 +14,9 @@ ReactOnRails.setOptions({
 
 ReactOnRails.register({
   CompositeImageUploader,
-  CompositeImageUploaderItem,
+  CompositeImageUploaderItem,  
+  CompositeVideoUploader,
+  CompositeVideoUploaderItem,
   DevelopmentTableEditor,
   DevelopmentTableEditorFooter
 });

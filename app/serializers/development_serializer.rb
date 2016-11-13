@@ -1,6 +1,7 @@
 class DevelopmentSerializer < ActiveModel::Serializer
 
   has_many :photos
+  has_many :videos
 
   attributes :id, :lat, :lng,
     :logo_url,

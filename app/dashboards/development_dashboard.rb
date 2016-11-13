@@ -32,6 +32,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     logo: CarrierwaveField,
     photos: HasManyDevelopmentPhotosField,
+    videos: HasManyDevelopmentVideosField,
     contract: CarrierwaveField,
     intercom_app_id: Field::String
   }
@@ -57,6 +58,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :logo,
     :units,
     :photos,
+    :videos,
     :ready_at,
     :gym,
     :pool,

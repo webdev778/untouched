@@ -1,0 +1,3 @@
+class DevelopmentVideoSerializer < VideoSerializer
+end
+

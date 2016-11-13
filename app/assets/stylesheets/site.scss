@@ -2367,6 +2367,12 @@ input[type=radio]:checked + label:hover:before {
   max-height: 2000px;
 }
 
+.card > .iframe > iframe {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .unit-page .card > img {
   max-height: 1000px;
 }
