@@ -9,6 +9,7 @@ import TipActions from '../actions/tip_actions';
 import TipStore from '../stores/tip_store';
 
 import Header from '../components/Header';
+import VisitsCount from '../components/VisitsCount';
 import DevelopmentOverviewSection from '../components/development/DevelopmentOverviewSection';
 import DevelopmentLocationSection from '../components/development/DevelopmentLocationSection';
 import DevelopmentPricingSection from '../components/development/DevelopmentPricingSection';
@@ -188,6 +189,7 @@ export default class DevelopmentPage extends Component {
   renderSections() {
     return (
       <div className="scroll__content">
+        <VisitsCount count={this.state.development.visits_count}/>
         <Element name="overview">
           <DevelopmentOverviewSection development={this.state.development}/>
         </Element>

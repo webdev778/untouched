@@ -2,6 +2,7 @@ class Unit < ActiveRecord::Base
   belongs_to :development, counter_cache: true
   has_many :views, -> { order('sort, id ASC') }, class_name: 'UnitView', as: :imageable, dependent: :destroy
   has_many :plans, -> { order('sort, id ASC') }, class_name: 'UnitPlan', as: :imageable, dependent: :destroy
+  is_impressionable
 
   enum unit_type: [ :apartment, :townhouse ]
   enum aspect: [ :north, :east, :south, :west ]

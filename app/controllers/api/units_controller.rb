@@ -1,4 +1,5 @@
 class API::UnitsController < API::BaseController
+  impressionist :actions => [:show], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 
   def show
     unit = Unit.where(development_id: params[:development_id], id: params[:id]).first

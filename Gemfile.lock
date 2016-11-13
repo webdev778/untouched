@@ -218,6 +218,8 @@ GEM
       activesupport (>= 4.1.0)
     hashdiff (0.3.0)
     i18n (0.7.0)
+    impressionist (1.5.2)
+      nokogiri (~> 1.6)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jbuilder (2.4.1)
@@ -400,6 +402,7 @@ DEPENDENCIES
   faker
   fog
   geokit
+  impressionist
   jbuilder (~> 2.0)
   mini_racer
   pg

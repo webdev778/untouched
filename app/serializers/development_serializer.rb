@@ -22,7 +22,12 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :units_deposit_received_count,
     :created_at,
     :updated_at,
-    :intercom_app_id
+    :intercom_app_id,
+    :visits_count
+
+  def visits_count
+    object.impressionist_count(:start_date => 7.days.ago, :end_date => DateTime.now)
+  end
 
   def logo_url
     object.logo.try(:url)

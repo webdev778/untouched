@@ -61,3 +61,5 @@ group :test do
 end
 
 gem 'mini_racer', platforms: :ruby
+
+gem 'impressionist'

@@ -6,6 +6,7 @@ import UnitActions from './../actions/unit_actions';
 
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import VisitsCount from '../components/VisitsCount';
 import UnitHeaderTable from '../components/unit/UnitHeaderTable';
 import UnitPlansSection from '../components/unit/UnitPlansSection';
 import UnitViewsSection from '../components/unit/UnitViewsSection';
@@ -92,6 +93,7 @@ export default class UnitPage extends Component {
           </div>
           <div className="scroll__wrap">
             <div className="scroll__content">
+              <VisitsCount count={this.state.unit.visits_count}/>
               <Element name="plans">
                 <UnitPlansSection unit={this.state.unit}/>
               </Element>

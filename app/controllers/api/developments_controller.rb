@@ -1,4 +1,5 @@
 class API::DevelopmentsController < API::BaseController
+  impressionist :actions => [:show], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 
   def index
     render json: {
