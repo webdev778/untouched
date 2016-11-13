@@ -2842,6 +2842,7 @@ tbody.collapse.in {
 }
 .scroll__wrap .scroll__content {
   padding-bottom: 50px;
+  padding-top: 20px;
 }
 .sidebar-show .scroll__content {
   padding-left: 20px;
@@ -2869,6 +2870,7 @@ tbody.collapse.in {
 }
 .scroll__wrap .scroll__section {
   margin-bottom: 50px;
+
 }
 .scroll__wrap .scroll__section:last-child {
   margin-bottom: 0;
@@ -2878,8 +2880,16 @@ tbody.collapse.in {
   text-align: center;
   margin-bottom: 0;
 }
+.scroll__wrap .scroll__visits {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
 
 .scroll__overview {
+  margin-top: 20px !important;
+}
+
+.scroll__plans {
   margin-top: 20px !important;
 }
 
