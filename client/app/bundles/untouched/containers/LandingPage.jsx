@@ -76,7 +76,7 @@ export default class LandingPage extends Component {
                     opacity,
                   }}>
                     <Link 
-                      to="https://medium.com/@sashagilberg/the-project-portal-re-invented-8f3136219bf7#.h924lkx2q" 
+                      to="https://www.linkedin.com/pulse/project-portal-re-invented-sasha-gilberg?trk=landing" 
                       className="btn btn--cta btn--lg"
                       target="_blank"
                     >

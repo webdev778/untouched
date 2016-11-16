@@ -23,12 +23,13 @@ export default (
     <Route path="/legal" component={LegalPage} />
 
     <Route path="/">
-      <IndexRoute component={DevelopmentsPage} />
+      <IndexRoute component={LandingPage} />
       <Route path="/developments/:developmentId/units/:unitId" component={UnitPage} />
       <Route path="/developments/:developmentId" component={DevelopmentPage}>
         <Route path="*" component={DevelopmentPage} />
       </Route>    
       <Route path="/landing" component={LandingPage} />
+      <Route path="/pub" component={DevelopmentsPage} />
       <Route path="*" component={DevelopmentsPage} />
     </Route>    
   </Route>

@@ -18,7 +18,7 @@ export default class Header extends Component {
           }
           <div className="justifize">
             <div className="justifize__box">
-              <Link to="/" className="header__logo">
+              <Link to="/pub" className="header__logo">
                 <img src="/images/logo-untouched.svg" alt="Untouched" />
               </Link>
             </div>
