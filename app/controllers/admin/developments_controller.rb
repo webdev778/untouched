@@ -4,6 +4,10 @@ module Admin
       @development = Development.find(params[:id])
     end
 
+    def records_per_page
+      params[:per_page] || 1000
+    end
+
     # To customize the behavior of this controller,
     # simply overwrite any of the RESTful actions. For example:
     #

@@ -36,6 +36,10 @@ class Development < ActiveRecord::Base
   end
 
   def full_address
+    [ address, suburb.name ].join(', ')
+  end
+
+  def geo_address
     [ address, suburb.name, 'Australia' ].join(', ')
   end
 
@@ -50,7 +54,7 @@ class Development < ActiveRecord::Base
       city_changed? ||
       suburb_id_changed?
 
-      geo = Geokit::Geocoders::GoogleGeocoder.geocode(full_address)
+      geo = Geokit::Geocoders::GoogleGeocoder.geocode(geo_address)
 
       self.lat, self.lng = geo.ll.split(',')
     end

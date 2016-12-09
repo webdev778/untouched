@@ -17,6 +17,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     city: Field::String,
     region: Field::BelongsTo,
     suburb: Field::BelongsTo,
+    full_address: Field::String,
     ready_at: Field::DateTime,
     gym: Field::Boolean,
     pool: Field::Boolean,
@@ -25,7 +26,6 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     steam_room: Field::Boolean,
     rooftop_deck: Field::Boolean,
     has_double_glazed_windows: Field::Boolean,
-    # ceiling_height_at_living_area_in_meters: Field::Number.with_options(decimals: 2),
     deposit_percent: Field::Number.with_options(decimals: 2),
     deposit_due_in_days: Field::Number,
     created_at: Field::DateTime,
@@ -43,9 +43,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :address,
-    :suburb,
-    :city,
+    :full_address,
     :units
   ]
 
@@ -67,7 +65,6 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :steam_room,
     :rooftop_deck,
     :has_double_glazed_windows,
-    # :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
     :deposit_due_in_days,
     :contract,
@@ -94,7 +91,6 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     :steam_room,
     :rooftop_deck,
     :has_double_glazed_windows,
-    # :ceiling_height_at_living_area_in_meters,
     :deposit_percent,
     :deposit_due_in_days,
     :contract,
