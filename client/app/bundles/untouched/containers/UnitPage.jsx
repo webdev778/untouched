@@ -121,6 +121,7 @@ export default class UnitPage extends Component {
           <li role="presentation" className="scroll__li">
             <Link
               activeClass="active"
+              isDynamic
               spy={true}
               smooth={true}
               offset={this.scrollNav.offset}
@@ -132,6 +133,7 @@ export default class UnitPage extends Component {
           <li role="presentation" className="scroll__li">
             <Link
               activeClass="active"
+              isDynamic
               spy={true}
               smooth={true}
               offset={this.scrollNav.offset}
@@ -143,6 +145,7 @@ export default class UnitPage extends Component {
           <li role="presentation" className="scroll__li">
             <Link
               activeClass="active"
+              isDynamic
               spy={true}
               smooth={true}
               offset={this.scrollNav.offset}
