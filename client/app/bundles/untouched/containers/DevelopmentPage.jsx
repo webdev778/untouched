@@ -116,12 +116,12 @@ export default class DevelopmentPage extends Component {
       <div className='development development-page'>
 
         {!this.state.joyrideShowed &&
-        <Joyride 
-          ref={c => this.joyride = c} 
-          callback={TipActions.joyrideCallback} 
-          steps={this.state.steps} 
-          scrollToFirstStep 
-          scrollOffset={200} 
+        <Joyride
+          ref={c => this.joyride = c}
+          callback={TipActions.joyrideCallback}
+          steps={this.state.steps}
+          scrollToFirstStep
+          scrollOffset={200}
           locale={{ close: 'Got it' }} />
         }
 
@@ -189,8 +189,8 @@ export default class DevelopmentPage extends Component {
   renderSections() {
     return (
       <div className="scroll__content">
-        <VisitsCount count={this.state.development.visits_count}/>
         <Element name="overview">
+          <VisitsCount count={this.state.development.visits_count}/>
           <DevelopmentOverviewSection development={this.state.development}/>
         </Element>
         <Element name="location">

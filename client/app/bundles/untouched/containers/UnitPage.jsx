@@ -94,20 +94,20 @@ export default class UnitPage extends Component {
           <div className="scroll__wrap">
             <div className="scroll__content">
               <Element name="plans">
+                <VisitsCount count={this.state.unit.visits_count}/>
                 <UnitPlansSection unit={this.state.unit}/>
               </Element>
               <Element name="views">
                 <UnitViewsSection unit={this.state.unit}/>
               </Element>
               <Element name="costs">
-                <VisitsCount count={this.state.unit.visits_count}/>
                 <UnitCostsSection unit={this.state.unit}/>
               </Element>
             </div>
           </div>
         </div>
 
-        <Footer />  
+        <Footer />
 
       </div>
     );
