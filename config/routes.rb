@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { registrations: 'registrations'}
+
   if Rails.env.development?
     get '/rails/mailers' => "rails/mailers#index"
     get '/rails/mailers/*path' => "rails/mailers#preview"
@@ -40,6 +42,7 @@ Rails.application.routes.draw do
   get 'api/developments' => 'api/developments#index'
   get 'api/regions' => 'api/regions#index'
   post 'api/enquiries' => 'api/enquiries#create'
+  get 'api/auth/is_signed_in' => 'api/auth#is_signed_in?'
 
   root 'site#show'
   get '/*path' => 'site#show'

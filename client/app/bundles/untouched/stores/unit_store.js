@@ -61,8 +61,7 @@ class UnitStore {
         return this.emitChange();
       },
       error(response) {
-        console.log('error');
-        console.log(response);
+        console.log('error', response);
       }
     });
   }
