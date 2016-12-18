@@ -55,7 +55,7 @@ export default class InvitesForm extends Component {
           </div>
 
           <div className="action-controls">
-            <Link to="/" className="btn btn--light">Continue on site</Link>
+            <Link to="/pub" className="btn btn--light">Continue on site</Link>
           </div>
         </form>
       </div>
