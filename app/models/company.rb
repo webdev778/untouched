@@ -1,8 +1,8 @@
 class Company < ActiveRecord::Base
-  enum type: [:agency, :developer]
+  enum kind: [:agency, :developer]
 
   has_many :users
 
   validates :name, presence: true
-  validates :type, inclusion: { in: types.keys }
+  validates :kind, inclusion: { in: kinds.keys }
 end

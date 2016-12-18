@@ -1,0 +1,30 @@
+.sign-up-form {
+
+  form {
+    width: 400px;
+    margin: 0 auto;
+  }
+
+  label {
+    clear: none !important;
+  }
+
+  .company-type {
+    margin-left: 20px;
+
+    label {
+      margin-right: 20px;
+    }
+  }
+
+  .form__group > label {
+    width: 140px !important;
+    float: left;
+    text-align: right;
+    padding-right: 20px;
+  }
+
+  .action-controls {
+    text-align: center;
+  }
+}

@@ -1,0 +1,40 @@
+<h2>Sign up</h2>
+<!-- We need to build a company first so we can use it in our form builder -->
+<% resource.build_company %>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+  <!--  We add this to the Registration form so we can create a new company
+  You can add more company fields here
+ -->
+ <div class="field">
+   <%= f.fields_for :company do |builder| %>
+    <%= builder.label :name %><br />
+    <%= builder.text_field :name %>
+  <%end%>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

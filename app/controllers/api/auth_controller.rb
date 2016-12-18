@@ -1,9 +1,9 @@
 class API::AuthController < API::BaseController
   def is_signed_in?
     if user_signed_in?
-      render :json => {"signed_in" => true, "user" => current_user}.to_json()
+      render :json => current_user.to_json(include: :company)
     else
-      render :json => {"signed_in" => false}.to_json()
+      render :json => nil
     end
   end
 end

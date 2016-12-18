@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const devBuild = process.env.NODE_ENV !== 'production';
 const nodeEnv = devBuild ? 'development' : 'production';
@@ -46,6 +47,7 @@ const config = {
       },
       TRACE_TURBOLINKS: devBuild
     }),
+    new ExtractTextPlugin('css/[name].scss', { allChunks: true })
   ],
   module: {
     loaders: [
@@ -57,6 +59,10 @@ const config = {
         test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(css|scss)$/,
+        loaders: ['classnames', ExtractTextPlugin.extract('style', 'css!sass')]
       },
 
       { test: require.resolve('jquery'), loader: 'expose?jQuery' },
@@ -71,6 +77,12 @@ module.exports = config;
 if (devBuild) {
   console.log('Webpack dev build for Rails'); // eslint-disable-line no-console
   module.exports.devtool = 'eval-source-map';
+
+  config.plugins.push(
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  );
 } else {
   config.plugins.push(
     new webpack.optimize.DedupePlugin()

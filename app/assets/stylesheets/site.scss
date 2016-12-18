@@ -1172,11 +1172,13 @@ input[type=radio] + label:before {
   -webkit-transition: all .3s ease 0s;
   transition: all .3s ease 0s;
 }
+/*
 input[type=radio] + label:after {
   content: "(" attr(data-count) ")";
   color: #979797;
   margin-left: 5px;
 }
+*/
 input[type=radio] + label:hover:before {
   border-color: #3173b3;
 }
@@ -2976,7 +2978,7 @@ tbody.collapse.in {
     -webkit-transition: all .3s ease 0s;
     transition: all .3s ease 0s;
     width: 100% !important;
-  }  
+  }
   .sidebar-on .scroll__pricing .sidebar-wrap {
     -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
@@ -3159,7 +3161,7 @@ footer .copyright-info__links li a:hover {
 \*------------------------------------*/
 
 .landing {
-  
+
 }
 
 .landing .btn {
@@ -3291,10 +3293,10 @@ footer .copyright-info__links li a:hover {
   .developments-page .sidebar {
     position: fixed;
     height: calc(100% - 50px);
-  }  
+  }
   .developments-page .sidebar__content {
     overflow: auto;
-  }  
+  }
 
   .developments-page .sidebar__show-results {
     display: none;
@@ -3341,3 +3343,13 @@ footer .copyright-info__links li a:hover {
     padding-right: 20px;
   }
 }
+
+.sign-up-page {
+  .main {
+    width: 100%;
+    float: none;
+  }
+}
+
+/* APP STYLES FROM WEPBACK */
+@import 'css/app.scss'
