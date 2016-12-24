@@ -5,7 +5,7 @@ import CheckboxField from '../CheckboxField';
 
 export default class AspectSelector extends Component {
 
-  VALUES = [ 'North', 'East', 'South', 'West' ]
+  VALUES = [ 'North', 'East', 'South', 'West', 'North/East', 'South/East', 'South/West', 'North/West' ]
 
   render() {
     return (
@@ -20,16 +20,16 @@ export default class AspectSelector extends Component {
     const { hasInitialValue, handleClick, getFacetCount } = this;
 
     return _.map(this.VALUES, value => {
-      const strippedValue = _.toLower(value);
+      const strippedValue = _.toLower(value).replace('/', '_');
       return (
-        <CheckboxField 
+        <CheckboxField
           id={`aspect_${strippedValue}`}
           key={value}
-          checked={hasInitialValue(strippedValue)} 
+          checked={hasInitialValue(strippedValue)}
           facetCount={getFacetCount(strippedValue)}
           value={strippedValue}
           label={value}
-          onClick={handleClick} 
+          onClick={handleClick}
           name="aspect" />
       );
     });

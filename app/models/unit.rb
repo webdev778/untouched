@@ -5,7 +5,7 @@ class Unit < ActiveRecord::Base
   is_impressionable
 
   enum unit_type: [ :apartment, :townhouse ]
-  enum aspect: [ :north, :east, :south, :west ]
+  enum aspect: [ :north, :east, :south, :west, :north_east, :south_east, :south_west, :north_west ]
   enum status: [ :active, :held, :deposit_received, :reserved, :signed, :cross_signed ]
 
   scope :active, -> { where(status: Unit.statuses[:active]) }

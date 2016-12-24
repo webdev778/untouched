@@ -42,7 +42,7 @@ export default class DevelopmentTableEditor extends Component {
     return this.setState({data: this.formatData(state.units)});
   }
 
-  
+
 
   render() {
     const columns = this.state.columns || [];
@@ -93,6 +93,22 @@ export default class DevelopmentTableEditor extends Component {
         {
           name: 'West',
           value: 'west'
+        },
+        {
+          name: 'North/East',
+          value: 'north_east'
+        },
+        {
+          name: 'South/East',
+          value: 'south_east'
+        },
+        {
+          name: 'South/West',
+          value: 'south_west'
+        },
+        {
+          name: 'North/West',
+          value: 'north_west'
         }
       ]
     },
@@ -253,7 +269,7 @@ export default class DevelopmentTableEditor extends Component {
 
   onDeleteUnit = (event) => {
     event.persist();
-    
+
     return UnitActions.deleteUnit(event.target.value);
   }
 }
