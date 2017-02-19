@@ -55,7 +55,10 @@ export default class DevelopmentPage extends Component {
   }
 
   onChange = (state) => {
-    this.setState(state);
+    if(state.development && (state.development.id === parseInt(this.props.params.developmentId)))
+    {
+      this.setState(state);
+    }
   }
 
   componentWillMount() {
