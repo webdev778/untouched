@@ -17,8 +17,8 @@ import DevelopmentPricingSection from '../components/development/DevelopmentPric
 export default class DevelopmentPage extends Component {
 
   scrollNav = {
-    offset: -200,
-    duration: 500
+    offset: -110,
+    duration: 100
   }
 
   status = {
@@ -132,7 +132,6 @@ export default class DevelopmentPage extends Component {
 
         <main className="main">
           <div className="scroll">
-            {this.renderNav()}
             {this.renderSections()}
           </div>
         </main>
