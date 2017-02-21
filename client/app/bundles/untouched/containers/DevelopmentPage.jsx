@@ -18,7 +18,7 @@ export default class DevelopmentPage extends Component {
 
   scrollNav = {
     offset: -110,
-    duration: 100
+    duration: 10
   }
 
   status = {
