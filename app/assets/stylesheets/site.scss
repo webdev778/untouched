@@ -2908,16 +2908,16 @@ tbody.collapse.in {
 .body-overflow .scroll__pricing {
   overflow: auto;
 }
-.scroll__pricing .container {
-  position: static;
-  padding: 0 15px;
-  min-height: -webkit-calc(100vh - 115px);
-  min-height: calc(100vh - 115px);
-}
-.scroll__pricing .container:before, .scroll__pricing .container:after {
-  content: '';
-  display: table;
-}
+//.scroll__pricing .container {
+//  position: static;
+//  padding: 0 15px;
+//  min-height: -webkit-calc(100vh - 115px);
+//  min-height: calc(100vh - 115px);
+//}
+//.scroll__pricing .container:before, .scroll__pricing .container:after {
+//  content: '';
+//  display: table;
+//}
 .scroll__pricing .container:after {
   clear: both;
 }
