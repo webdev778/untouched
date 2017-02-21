@@ -132,6 +132,7 @@ export default class DevelopmentPage extends Component {
 
         <main className="main">
           <div className="scroll">
+            {this.renderNav()}
             {this.renderSections()}
           </div>
         </main>
