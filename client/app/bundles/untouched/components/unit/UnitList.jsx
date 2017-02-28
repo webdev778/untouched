@@ -59,6 +59,7 @@ export default class UnitList extends Component {
     internal_in_meters: 'Int M2',
     external_in_meters: 'Ext M2',
     aspect: 'Aspect',
+    parking: 'Car',
     price: 'Price'
   }
 

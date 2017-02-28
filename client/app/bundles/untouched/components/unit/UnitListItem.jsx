@@ -47,6 +47,7 @@ export default class UnitListItem extends Component {
         <td>{this.formattedFloat(this.props.unit.internal_in_meters)}</td>
         <td>{this.formattedFloat(this.props.unit.external_in_meters)}</td>
         <td>{this.props.unit.aspect}</td>
+        <td>{this.props.unit.parking}</td>
         <td>{this.formattedPrice()}</td>
       </tr>
     );

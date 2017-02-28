@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment'
 
 export default class DevelopmentUnitsSoldProgressBar extends Component {
 
@@ -9,9 +10,12 @@ export default class DevelopmentUnitsSoldProgressBar extends Component {
           <div className="bar__stripe">
             <span data-percent={this.soldPercentage()} style={{width: this.soldPercentage() + '%'}}></span>
           </div>
-          <span className="bar__text">
-            {this.soldPercentage()}% sold
-          </span>
+          <div className="bar__text">
+            {this.props.development.units_count} units: {this.soldPercentage()}% SOLD
+          </div>
+          <div className="bar__date">
+            {this.formattedReadyDate()} completion
+          </div>
         </div>
       </div>
     );
@@ -24,6 +28,10 @@ export default class DevelopmentUnitsSoldProgressBar extends Component {
         this.props.development.units_count
       ) * 100
     );
+  }
+
+  formattedReadyDate() {
+    return moment(this.props.development.ready_at).format("MMMM YYYY");
   }
 }
 
