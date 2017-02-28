@@ -2154,6 +2154,12 @@ input[type=radio]:checked + label:hover:before {
 
 .bar__text {
   color: #aaa;
+  padding: 5px 0px;
+}
+
+.bar__date {
+  color: #777;
+  font-weight: 500;
 }
 
 /*------------------------------------*\
