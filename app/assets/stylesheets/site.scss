@@ -2024,6 +2024,15 @@ input[type=radio]:checked + label:hover:before {
   padding: 0 !important;
   position: relative;
 }
+
+.asset_price {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+}
+
 @media (max-width: 768px) {
   .asset-wrap {
     width: 140px;

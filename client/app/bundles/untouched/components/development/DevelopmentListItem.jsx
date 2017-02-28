@@ -35,7 +35,11 @@ export default class DevelopmentListItem extends Component {
           </div>
         </Link>
       </td>
-      <td>{this.formattedPrice()}</td>
+      <td style={{position: 'relative'}}>
+        {this.formattedPrice()}
+        <Link to={this.developmentUrl()} className="asset_price">
+        </Link>
+      </td>
     </tr>;
   }
 }
