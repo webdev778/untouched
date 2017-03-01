@@ -152,6 +152,7 @@ export default class DevelopmentPage extends Component {
               smooth={true}
               offset={this.scrollNav.offset}
               duration={this.scrollNav.duration}
+              delay={1000}
               isDynamic={true}
               to="overview">
             Overview
@@ -164,6 +165,7 @@ export default class DevelopmentPage extends Component {
               smooth={true}
               offset={this.scrollNav.offset}
               duration={this.scrollNav.duration}
+              delay={1000}
               isDynamic={true}
               to="location">
             Location
@@ -176,6 +178,7 @@ export default class DevelopmentPage extends Component {
               smooth={true}
               offset={this.scrollNav.offset}
               duration={this.scrollNav.duration}
+              delay={1000}
               isDynamic={true}
               to="pricing">
             Pricing
