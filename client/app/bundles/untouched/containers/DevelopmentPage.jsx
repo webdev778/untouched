@@ -69,7 +69,6 @@ export default class DevelopmentPage extends Component {
 
   componentDidMount() {
     DevelopmentActions.select(this.props.params.developmentId);
-    console.log("finish loading");
   }
 
   componentDidUpdate(prevProps, prevState) {

@@ -2382,6 +2382,7 @@ input[type=radio]:checked + label:hover:before {
   display: block;
   margin: 0 auto;
   max-height: 2000px;
+  height: 1000px;
 }
 
 .card > .iframe > iframe {
