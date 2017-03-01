@@ -149,28 +149,10 @@ export default class DevelopmentPage extends Component {
             <a href="#overview">Overview</a>
           </li>
           <li role="presentation" className="scroll__li">
-            <Link
-              activeClass="active"
-              isDynamic
-              spy={true}
-              offset={this.scrollNav.offset}
-              duration={this.scrollNav.duration}
-              isDynamic={true}
-              to="location">
-            Location
-            </Link>
+            <a href="#location">Location</a>
           </li>
           <li role="presentation" className="scroll__li">
-            <Link
-              activeClass="active"
-              isDynamic
-              spy={true}
-              offset={this.scrollNav.offset}
-              duration={this.scrollNav.duration}
-              isDynamic={true}
-              to="pricing">
-            Pricing
-            </Link>
+            <a href="#pricing">Pricing</a>
           </li>
         </ul>
         {this.renderLogo()}
@@ -190,10 +172,10 @@ export default class DevelopmentPage extends Component {
           <VisitsCount count={this.state.development.visits_count}/>
           <DevelopmentOverviewSection development={this.state.development}/>
         </Element>
-        <Element name="location">
+        <Element name="location" id="location">
           <DevelopmentLocationSection development={this.state.development}/>
         </Element>
-        <Element name="pricing">
+        <Element name="pricing" id="pricing">
           <DevelopmentPricingSection
             params={this.props.params}
             filters={this.parseFiltersFromUrl()}
