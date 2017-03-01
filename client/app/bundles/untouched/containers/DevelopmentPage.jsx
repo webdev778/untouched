@@ -146,16 +146,7 @@ export default class DevelopmentPage extends Component {
       <div className="scroll__nav scroll__nav--fixed">
         <ul>
           <li role="presentation" className="scroll__li">
-            <Link
-              activeClass="active"
-              isDynamic
-              spy={true}
-              offset={this.scrollNav.offset}
-              duration={this.scrollNav.duration}
-              isDynamic={true}
-              to="overview">
-            Overview
-            </Link>
+            <a href="#overview">Overview</a>
           </li>
           <li role="presentation" className="scroll__li">
             <Link
@@ -195,7 +186,7 @@ export default class DevelopmentPage extends Component {
   renderSections() {
     return (
       <div className="scroll__content">
-        <Element name="overview">
+        <Element name="overview" id="overview">
           <VisitsCount count={this.state.development.visits_count}/>
           <DevelopmentOverviewSection development={this.state.development}/>
         </Element>
