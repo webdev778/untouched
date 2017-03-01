@@ -18,7 +18,7 @@ export default class DevelopmentPage extends Component {
 
   scrollNav = {
     offset: -110,
-    duration: 10
+    duration: 400
   }
 
   status = {
@@ -146,13 +146,40 @@ export default class DevelopmentPage extends Component {
       <div className="scroll__nav scroll__nav--fixed">
         <ul>
           <li role="presentation" className="scroll__li">
-            <a href="#overview">Overview</a>
+            <Link
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              offset={this.scrollNav.offset}
+              duration={this.scrollNav.duration}
+              isDynamic={true}
+              to="overview">
+            Overview
+            </Link>
           </li>
           <li role="presentation" className="scroll__li">
-            <a href="#location">Location</a>
+            <Link
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              offset={this.scrollNav.offset}
+              duration={this.scrollNav.duration}
+              isDynamic={true}
+              to="location">
+            Location
+            </Link>
           </li>
           <li role="presentation" className="scroll__li">
-            <a href="#pricing">Pricing</a>
+            <Link
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              offset={this.scrollNav.offset}
+              duration={this.scrollNav.duration}
+              isDynamic={true}
+              to="pricing">
+            Pricing
+            </Link>
           </li>
         </ul>
         {this.renderLogo()}
@@ -168,14 +195,14 @@ export default class DevelopmentPage extends Component {
   renderSections() {
     return (
       <div className="scroll__content">
-        <Element name="overview" id="overview">
+        <Element name="overview">
           <VisitsCount count={this.state.development.visits_count}/>
           <DevelopmentOverviewSection development={this.state.development}/>
         </Element>
-        <Element name="location" id="location">
+        <Element name="location">
           <DevelopmentLocationSection development={this.state.development}/>
         </Element>
-        <Element name="pricing" id="pricing">
+        <Element name="pricing">
           <DevelopmentPricingSection
             params={this.props.params}
             filters={this.parseFiltersFromUrl()}
