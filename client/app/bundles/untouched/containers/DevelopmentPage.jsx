@@ -1,6 +1,10 @@
+import 'rc-tabs/assets/index.css';
 import React, { Component } from 'react';
 import Joyride from 'react-joyride';
 import { Link, Element } from 'react-scroll';
+import Tabs, { TabPane } from 'rc-tabs';
+import TabContent from 'rc-tabs/lib/TabContent';
+import InkTabBar from 'rc-tabs/lib/InkTabBar';
 import RouteGenerator from '../route_generator';
 
 import DevelopmentActions from '../actions/development_actions';
@@ -15,11 +19,6 @@ import DevelopmentLocationSection from '../components/development/DevelopmentLoc
 import DevelopmentPricingSection from '../components/development/DevelopmentPricingSection';
 
 export default class DevelopmentPage extends Component {
-
-  scrollNav = {
-    offset: -110,
-    duration: 0
-  }
 
   status = {
     loading: {},
@@ -131,55 +130,27 @@ export default class DevelopmentPage extends Component {
         <Header />
 
         <main className="main">
-          <div className="scroll">
-            {this.renderNav()}
-            {this.renderSections()}
-          </div>
+          <Tabs
+            renderTabBar={()=><InkTabBar className="scroll__nav tab--fixed" extraContent={this.renderLogo()}/>}
+            renderTabContent={()=><TabContent forceRender={true}/>}
+            >
+                <TabPane tab='Overview' key="1">
+                  <VisitsCount count={this.state.development.visits_count}/>
+                  <DevelopmentOverviewSection development={this.state.development}/>
+                </TabPane>
+                <TabPane tab='Location' key="2">
+                  <DevelopmentLocationSection development={this.state.development}/>
+                </TabPane>
+                <TabPane tab='Pricing' key="3">
+                  <DevelopmentPricingSection
+                      params={this.props.params}
+                      filters={this.parseFiltersFromUrl()}
+                      development={this.state.development}
+                      tip={!this.state.joyrideShowed && this.state.overviewLoaded}/>
+                </TabPane>
+          </Tabs>
         </main>
 
-      </div>
-    );
-  }
-
-  renderNav() {
-    return (
-      <div className="scroll__nav scroll__nav--fixed">
-        <ul>
-          <li role="presentation" className="scroll__li">
-            <Link
-              activeClass="active"
-              spy={true}
-              smooth={true}
-              offset={this.scrollNav.offset}
-              duration={this.scrollNav.duration}
-              to="overview">
-            Overview
-            </Link>
-          </li>
-          <li role="presentation" className="scroll__li">
-            <Link
-              activeClass="active"
-              spy={true}
-              smooth={true}
-              offset={this.scrollNav.offset}
-              duration={this.scrollNav.duration}
-              to="location">
-            Location
-            </Link>
-          </li>
-          <li role="presentation" className="scroll__li">
-            <Link
-              activeClass="active"
-              spy={true}
-              smooth={true}
-              offset={this.scrollNav.offset}
-              duration={this.scrollNav.duration}
-              to="pricing">
-            Pricing
-            </Link>
-          </li>
-        </ul>
-        {this.renderLogo()}
       </div>
     );
   }
@@ -189,24 +160,4 @@ export default class DevelopmentPage extends Component {
     return <img src={this.state.development.logo_url} alt={this.state.development.address} className="scroll__logo" />;
   }
 
-  renderSections() {
-    return (
-      <div className="scroll__content">
-        <Element name="overview">
-          <VisitsCount count={this.state.development.visits_count}/>
-          <DevelopmentOverviewSection development={this.state.development}/>
-        </Element>
-        <Element name="location">
-          <DevelopmentLocationSection development={this.state.development}/>
-        </Element>
-        <Element name="pricing">
-          <DevelopmentPricingSection
-            params={this.props.params}
-            filters={this.parseFiltersFromUrl()}
-            development={this.state.development}
-            tip={!this.state.joyrideShowed && this.state.overviewLoaded}/>
-        </Element>
-      </div>
-    );
-  }
 }
