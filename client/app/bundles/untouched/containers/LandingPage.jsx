@@ -3,95 +3,107 @@ import { Link } from 'react-router';
 import { Motion, spring } from 'react-motion';
 import Waypoint from 'react-waypoint';
 
+import TryItFreeBox from '../components/TryItFreeBox';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 export default class LandingPage extends Component {
 
-  springConfig = { stiffness: 150, damping: 50 };
-
-  state = {
-    hero: {
-      x: -65, 
-      opacity: 0
-    },
-    logo: {
-      x: 65, 
-      opacity: 0
-    }
-  }
-
-  _handleWaypoint = (type) => ({ previousPosition, currentPosition, event }) => {
-    if (currentPosition == 'inside') {
-      this.setState({
-        [type]: {
-          x: spring(0, this.springConfig), 
-          opacity: spring(1, this.springConfig)
-        }
-      });
-    } else {
-      this.setState({
-        [type]: {
-          x: spring(65, this.springConfig), 
-          opacity: spring(0, this.springConfig)
-        }
-      });
-    }
-  }
-
   render() {
     return (
       <div className='landing landing-page'>
 
-        <Header sidebarTrigger={false} />
+        <Header fixed_position={false} sidebarTrigger={false} />
 
         <main className="main">
 
-          <div className="landing__section landing__section-intro text-center">
-            <Waypoint onEnter={this._handleWaypoint('hero')} onLeave={this._handleWaypoint('hero')} />
-            <Motion defaultStyle={{x: -65, opacity: 0}} style={this.state.hero}>
-              {({x, opacity}) =>
-                <div className="container">
-                  <div style={{
-                    transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${x}, 0, 1)`,
-                    opacity,
-                  }}>
-                    <div className="landing__elevated">
-                      The project portal, re-invented.
-                    </div>
-                  </div>
-                  <figure className="landing__phone" />
-                </div>  
-              }
-            </Motion>
-          </div>
+          <section className="section section--subheader">
+            <div className="container">
+              <h1 className="section__title section__title--lg animate">A better way to sell new developments.</h1>
 
-          <div className="landing__section landing__section-cta text-center">
-            <Waypoint onEnter={this._handleWaypoint('logo')} onLeave={this._handleWaypoint('logo')} />
-            <Motion defaultStyle={{x: 65, opacity: 0}} style={this.state.logo}>
-              {({x, opacity}) =>
-                <div className="container">
-                  <div style={{
-                    transform: `matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, ${x}, 0, 1)`,
-                    opacity,
-                  }}>
-                    <Link 
-                      to="https://www.linkedin.com/pulse/project-portal-re-invented-sasha-gilberg?trk=landing" 
-                      className="btn btn--cta btn--lg"
-                      target="_blank"
-                    >
-                      LEARN MORE
-                    </Link>
-                    <div className="landing__cta-tip">Sell projects faster, at the highest possible price</div>
+              <form action="" className="form">
+                <TryItFreeBox/>
+                <Link to="/how_it_works">
+                  See how it works
+                </Link>
+              </form>
+            </div>
+          </section>
+
+
+          <section className="section">
+            <div className="container">
+              <p className="color-light">
+                Latest off the plan apartment and townhouse projects uploaded:
+              </p>
+
+              <div className="blocks-wrap">
+                <div className="block-container animate">
+                  <div className="block">
+                    <div className="block__header">
+                      <img src="/images/development-company.png" alt="EBG" />
+                      <img src="/images/development-name.png" alt="Name" />
+                    </div>
+                    <img src="/images/development-img.jpg" alt="Development" className="block__img" />
                   </div>
-                </div>  
-              }
-            </Motion>
-          </div> 
+                  <span className="block-subtitle">2 minutes ago</span>
+                </div>
+                <div className="block-container animate">
+                  <div className="block">
+                    <div className="block__header">
+                      <img src="/images/development-company.png" alt="EBG" />
+                      <img src="/images/development-name.png" alt="Name" />
+                    </div>
+                    <img src="/images/development-img.jpg" alt="Development" className="block__img" />
+                  </div>
+                  <span className="block-subtitle">2 minutes ago</span>
+                </div>
+                <div className="block-container animate">
+                  <div className="block">
+                    <div className="block__header">
+                      <img src="/images/development-company.png" alt="EBG" />
+                      <img src="/images/development-name.png" alt="Name" />
+                    </div>
+                    <img src="/images/development-img.jpg" alt="Development" className="block__img" />
+                  </div>
+                  <span className="block-subtitle">2 minutes ago</span>
+                </div>
+                <div className="block-container animate">
+                  <div className="block">
+                    <div className="block__header">
+                      <img src="/images/development-company.png" alt="EBG" />
+                      <img src="/images/development-name.png" alt="Name" />
+                    </div>
+                    <img src="/images/development-img.jpg" alt="Development" className="block__img" />
+                  </div>
+                  <span className="block-subtitle">2 minutes ago</span>
+                </div>
+                <div className="block-container animate">
+                  <div className="block">
+                    <div className="block__header">
+                      <img src="/images/development-company.png" alt="EBG" />
+                      <img src="/images/development-name.png" alt="Name" />
+                    </div>
+                    <img src="/images/development-img.jpg" alt="Development" className="block__img" />
+                  </div>
+                  <span className="block-subtitle">2 minutes ago</span>
+                </div>
+                <div className="block-container animate">
+                  <div className="block">
+                    <div className="block__header">
+                      <img src="/images/development-company.png" alt="EBG" />
+                      <img src="/images/development-name.png" alt="Name" />
+                    </div>
+                    <img src="/images/development-img.jpg" alt="Development" className="block__img" />
+                  </div>
+                  <span className="block-subtitle">2 minutes ago</span>
+                </div>
+              </div>
+            </div>
+          </section>
 
         </main>
 
-        <Footer />
 
       </div>
     );

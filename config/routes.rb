@@ -45,6 +45,7 @@ Rails.application.routes.draw do
   get 'api/developments' => 'api/developments#index'
   get 'api/regions' => 'api/regions#index'
   post 'api/enquiries' => 'api/enquiries#create'
+  post 'api/try_it_free' => 'api/try_it_free#create'
   get 'api/auth/is_signed_in' => 'api/auth#is_signed_in?'
   get 'api/invitations' => 'api/invitations#index'
   get 'api/invitations/remove' => 'api/invitations#destroy'

@@ -5,6 +5,7 @@ import App from './../containers/App';
 import UnitPage from './../containers/UnitPage';
 import DevelopmentPage from './../containers/DevelopmentPage';
 import LegalPage from './../containers/LegalPage';
+import HowItWorksPage from './../containers/HowItWorksPage';
 import DevelopmentsPage from './../containers/DevelopmentsPage';
 import LandingPage from './../containers/LandingPage';
 import DhhPage from './../containers/DhhPage';
@@ -23,6 +24,8 @@ export default (
     </Route>
 
     <Route path="/legal" component={LegalPage} />
+
+    <Route path="/how_it_works" component={HowItWorksPage} />
 
     <Route path="/">
       <IndexRoute component={LandingPage} />

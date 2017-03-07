@@ -26,7 +26,8 @@ module Untouched
 
     config.assets.precompile << "modernizr.js"
     config.eager_load_paths  << "#{Rails.root}/lib"
-
+    config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets"
     config.to_prepare do
       DeviseController.respond_to :html, :json
     end

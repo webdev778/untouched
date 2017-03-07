@@ -5,4 +5,9 @@ class Notifier < ApplicationMailer
     mail from: "#{enquiry.name} <#{enquiry.email}>", subject: enquiry.unit.development.address, to: [ 'sasha@untouched.co' ]
   end
 
+  def try_it_free(email)
+    @email = email
+    mail from: "#{email}", subject: "Try It Free Email", to: [ 'psgloballove1987@gmail.com' ]
+  end
+
 end
