@@ -7,7 +7,7 @@ class Notifier < ApplicationMailer
 
   def try_it_free(email)
     @email = email
-    mail from: "#{email}", subject: "Try It Free Email", to: [ 'psgloballove1987@gmail.com' ]
+    mail from: "#{email}", subject: "Try It Free Email", to: [ 'sasha@untouched.co' ]
   end
 
 end
