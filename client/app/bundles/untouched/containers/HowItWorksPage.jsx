@@ -161,6 +161,7 @@ export default class HowItWorksPage extends Component {
 
           
         </main>
+        <Footer />
       </div>
 
     );

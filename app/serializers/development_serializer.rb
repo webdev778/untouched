@@ -4,7 +4,8 @@ class DevelopmentSerializer < ActiveModel::Serializer
   has_many :videos
 
   attributes :id, :lat, :lng,
-    :logo_url,
+    :development_logo_url,
+    :developer_logo_url,
     :address,
     :city,
     :region_name,
@@ -30,8 +31,12 @@ class DevelopmentSerializer < ActiveModel::Serializer
     object.impressionist_count(:start_date => 7.days.ago, :end_date => DateTime.now)
   end
 
-  def logo_url
-    object.logo.try(:url)
+  def development_logo_url
+    object.development_logo.try(:url)
+  end
+
+  def developer_logo_url
+    object.developer_logo.try(:url)
   end
 
   def region_name

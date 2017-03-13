@@ -52,7 +52,7 @@ class UnitSerializer < ActiveModel::Serializer
   end
 
   def development_logo_url
-    object.development.logo.try(:url)
+    object.development.development_logo.try(:url)
   end
 
 end

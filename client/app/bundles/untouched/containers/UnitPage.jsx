@@ -36,6 +36,7 @@ export default class UnitPage extends Component {
 
   componentDidMount() {
     UnitActions.select(this.props.params.developmentId, this.props.params.unitId);
+    window.onpopstate = this.onBackButtonEvent;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -56,6 +57,11 @@ export default class UnitPage extends Component {
     $('body').removeClass('sidebar-hide development');
     UnitStore.unlisten(this.onChange);
     window.Intercom('shutdown');
+  }
+
+  onBackButtonEvent = (e) => {
+    e.preventDefault()
+    alert("back")
   }
 
   onChange = (state) => {

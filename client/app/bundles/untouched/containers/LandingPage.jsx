@@ -22,7 +22,7 @@ export default class LandingPage extends Component {
               <h1 className="section__title section__title--lg animate">A better way to sell new developments.</h1>
 
               <form action="" className="form">
-                <TryItFreeBox/>
+                <TryItFreeBox location="landing" />
                 <Link to="/how_it_works">
                   See how it works
                 </Link>
@@ -33,7 +33,7 @@ export default class LandingPage extends Component {
 
 
         </main>
-
+        <Footer />
 
       </div>
     );

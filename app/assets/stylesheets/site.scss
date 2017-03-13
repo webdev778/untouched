@@ -1287,6 +1287,7 @@ input[type=radio]:checked + label:hover:before {
 .table td {
   border-bottom: 1px solid #f3f3f3 !important;
   padding: 10px;
+  position: relative;
 }
 @media (max-width: 768px) {
   .table td {
@@ -2046,7 +2047,7 @@ input[type=radio]:checked + label:hover:before {
   position: relative;
 }
 
-.asset_price {
+.link-box {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -2551,7 +2552,7 @@ input[type=radio]:checked + label:hover:before {
     text-align: center
   }
   .btn--primary {
-    margin-bottom: 2em;
+    margin-bottom: 2em !important;
   }
 }
 @media (max-width: 768px) {

@@ -59,11 +59,12 @@ export default class DevelopmentPage extends Component {
       this.setState(state);
     }
   }
-
+  onClickTab = () => {
+    window.scrollTo(0, 0);
+  }
   componentWillMount() {
     DevelopmentStore.listen(this.onChange);
     TipStore.listen(this.onChange);
-    $(document).on('click.development_page', event => this.hideSidebarIfClickedOutside(event));
   }
 
   componentDidMount() {
@@ -131,6 +132,7 @@ export default class DevelopmentPage extends Component {
 
         <main className="main">
           <Tabs
+            onChange={this.onClickTab}
             renderTabBar={()=><InkTabBar className="scroll__nav tab--fixed" extraContent={this.renderLogo()}/>}
             renderTabContent={()=><TabContent forceRender={true}/>}
             >

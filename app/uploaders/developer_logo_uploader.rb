@@ -1,0 +1,3 @@
+class DeveloperLogoUploader < ImageUploader
+end
+

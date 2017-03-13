@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 import TryItFreeActions from '../actions/try_it_free_actions';
 
@@ -17,14 +18,18 @@ export default class TryItFreeBox extends Component {
       <div className="try-it-free-section alert-modal">
         <div className="form__group form__group--inline1">
           <input type="email" onInput={this.toggleSubmit} ref="email" placeholder="Your work email" className="form__control"/>
-          <button type="submit" disabled={this.state.submitDisabled} onClick={this.onSubmit} className="btn btn--alt">Try it free</button>
+          <button type="submit" onClick={this.onSubmit} className="btn btn--alt">Try it free</button>
         </div>
         {this.renderError()}
         <Modal onClose={this.onCloseModal} isOpen={this.state.isModalOpen} className="alert-modal">
-          <p>Thank you for your interest of Untouched.<br/>
-          We have received your message and will respond within 48 hours.</p>
+          <p>
+            Thanks for that. I'll be in touch within the next couple of hours to help setup your free trial.
+          </p>
+          <p>
+            Sasha Gilberg, Founder, UNTOUCHED.
+          </p>
           <fieldset className="form__group">
-            <button type="button" onClick={this.onCloseModal} className="btn btn--primary btn--lg">Dismiss</button>
+            {this.renderBottomButton()}
           </fieldset>
         </Modal>
       </div>
@@ -34,6 +39,15 @@ export default class TryItFreeBox extends Component {
   renderError() {
     if (!this.state.error) { return null; }
     return <div className="form__error">Oops! Enter a valid email.</div>;
+  }
+
+  renderBottomButton() {
+    if (this.props.location == "landing") {
+      return <Link to="/how_it_works" className="btn btn--primary btn--lg">SEE HOW IT WORKS</Link>
+    }
+    else {
+      return <button type="button" onClick={this.onCloseModal} className="btn btn--primary btn--lg">Done</button>
+    }
   }
 
   allowSubmission() {
@@ -47,18 +61,22 @@ export default class TryItFreeBox extends Component {
   }
 
   toggleSubmit = (event) => {
-    return this.setState({submitDisabled: !this.allowSubmission(), error: !this.allowSubmission()});
+    return this.setState({submitDisabled: !this.allowSubmission(), error: false});
   }
 
   onSubmit = (event) => {
     event.preventDefault();
+    if(!this.state.submitDisabled) {
+      TryItFreeActions.submitEmail({
+        email: this.refs.email.value,
+      });
 
-    TryItFreeActions.submitEmail({
-      email: this.refs.email.value,
-    });
-
-    this.setState({isModalOpen: true});
-    return false;
+      this.setState({isModalOpen: true});
+      return false;
+    }
+    else {
+      this.setState({error: true});
+    }
   }
 
   onCloseModal = () => {

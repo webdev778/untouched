@@ -1,3 +1,6 @@
 .bootstrap-datetimepicker-widget {
     display: block !important;
 }
+ .utton-logout {
+     float: right;
+ }

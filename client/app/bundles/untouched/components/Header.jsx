@@ -17,7 +17,7 @@ export default class Header extends Component {
           { this.props.sidebarTrigger &&
             <SidebarTrigger />
           }
-          <Link to="/pub" className="header__logo">
+          <Link to="/" className="header__logo">
             <img src="/images/logo-untouched-white.svg" alt="Untouched" />
           </Link>
         </div>
