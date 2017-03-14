@@ -7,7 +7,7 @@ class Development < ActiveRecord::Base
   BUILDING_AMENITIES = %w(gym pool spa sauna steam_room rooftop_deck)
   mount_uploader :contract, ContractUploader
   mount_uploader :development_logo, DevelopmentLogoUploader
-  mount_uploader :developer_logo, DevelopmentLogoUploader
+  mount_uploader :developer_logo, DeveloperLogoUploader
 
   validates_presence_of :address
   validates_presence_of :city

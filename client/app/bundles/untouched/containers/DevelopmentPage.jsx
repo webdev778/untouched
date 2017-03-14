@@ -37,7 +37,8 @@ export default class DevelopmentPage extends Component {
       style: {
         mainColor: '#03a9f4'
       }
-    }]
+    }],
+    current_activeKey: "1"
   }
 
   hideSidebarIfClickedOutside = (event) => {
@@ -57,9 +58,16 @@ export default class DevelopmentPage extends Component {
     if(state.development && (state.development.id === parseInt(this.props.params.developmentId)))
     {
       this.setState(state);
+      if(state.filterParams.backButton)
+      {
+        this.setState({current_activeKey: "3"});
+      }
     }
   }
-  onClickTab = () => {
+  onClickTab = (key) => {
+    this.setState({
+      current_activeKey: key,
+    });
     window.scrollTo(0, 0);
   }
   componentWillMount() {
@@ -132,6 +140,7 @@ export default class DevelopmentPage extends Component {
 
         <main className="main">
           <Tabs
+            activeKey={this.state.current_activeKey}
             onChange={this.onClickTab}
             renderTabBar={()=><InkTabBar className="scroll__nav tab--fixed" extraContent={this.renderLogo()}/>}
             renderTabContent={()=><TabContent forceRender={true}/>}

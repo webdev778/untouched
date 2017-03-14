@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Element } from 'react-scroll';
+import { browserHistory } from 'react-router';
 
 import UnitStore from './../stores/unit_store';
 import UnitActions from './../actions/unit_actions';
@@ -11,6 +12,7 @@ import UnitHeaderTable from '../components/unit/UnitHeaderTable';
 import UnitPlansSection from '../components/unit/UnitPlansSection';
 import UnitViewsSection from '../components/unit/UnitViewsSection';
 import UnitCostsSection from '../components/unit/UnitCostsSection';
+import DevelopmentActions from '../actions/development_actions';
 
 export default class UnitPage extends Component {
 
@@ -36,7 +38,7 @@ export default class UnitPage extends Component {
 
   componentDidMount() {
     UnitActions.select(this.props.params.developmentId, this.props.params.unitId);
-    window.onpopstate = this.onBackButtonEvent;
+    DevelopmentActions.addFilterData({ backButton: 1 });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -59,9 +61,6 @@ export default class UnitPage extends Component {
     window.Intercom('shutdown');
   }
 
-  onBackButtonEvent = (e) => {
-    e.preventDefault()
-  }
 
   onChange = (state) => {
     this.setState(state);
@@ -167,8 +166,11 @@ export default class UnitPage extends Component {
 
   renderDevelopmentLogo() {
     if (this.state.unit.development_logo_url) {
-      return <img src={this.state.unit.development_logo_url} alt={this.state.unit.development.address} className="scroll__logo" />;
+      return <a onClick={this.goBackToPricing} ><img src={this.state.unit.development_logo_url} alt={this.state.unit.development.address} className="scroll__logo" /> </a>;
     }
+  }
+  goBackToPricing = () => {
+    browserHistory.push("/developments/" + this.props.params.developmentId);
   }
 }
 
