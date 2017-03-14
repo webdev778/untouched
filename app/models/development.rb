@@ -17,7 +17,7 @@ class Development < ActiveRecord::Base
   validates_presence_of :deposit_due_in_days
 
   before_save :geocode_if_address_changed
-  after_commit :reindex_units
+  # after_commit :reindex_units
 
 
   def region
