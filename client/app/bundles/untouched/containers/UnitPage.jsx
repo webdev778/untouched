@@ -61,7 +61,6 @@ export default class UnitPage extends Component {
 
   onBackButtonEvent = (e) => {
     e.preventDefault()
-    alert("back")
   }
 
   onChange = (state) => {
