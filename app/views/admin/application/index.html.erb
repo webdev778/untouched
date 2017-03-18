@@ -1,4 +1,4 @@
-<%#
+  <%#
 # Index
 
 This view is the template for the index page.
@@ -47,14 +47,18 @@ It renders the `_table` partial to display details about the resources.
 <header class="header">
   <h1 class="header__heading" id="page-title"><%= content_for(:title) %></h1>
   <div class="header__actions">
-    <%= link_to(
+    <% if @role=="admin" %>
+      <%= link_to(
       "New #{page.resource_name.titleize.downcase}",
       [:new, namespace, page.resource_name],
       class: "button",
     ) %>
+    <% end %>
   </div>
 </header>
-
-<%= render "collection", collection_presenter: page, resources: resources %>
-
+<% if @role=="admin" %>
+  <%= render "collection", collection_presenter: page, resources: resources %>
+<% elsif @role == "user" %>
+  <%= render "collection", collection_presenter: page, resources: [Development.find_by_id(122) || Development.first] %>
+<% end %>
 <%#= paginate resources %>
