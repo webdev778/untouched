@@ -12,12 +12,12 @@ module Admin
         authenticate_or_request_with_http_basic('Admin') do |name, password|
           if name == ENV['BASIC_ADMIN_USERNAME'] && password == ENV['BASIC_ADMIN_PASSWORD']
             @role = "admin"
-            return true
+            true
           elsif name == ENV['BASIC_USER_USERNAME1'] && password == ENV['BASIC_USER_PASSWORD1']
             @role = "user"
-            return true
+            true
           else
-            return false
+            false
           end
         end
       else
