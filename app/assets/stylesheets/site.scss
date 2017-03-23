@@ -1334,7 +1334,7 @@ input[type=radio]:checked + label:hover:before {
   .table--fixed th,
   .table--fixed td,
   .table--fixed .thead td {
-    padding: 0 !important;
+    padding: 10px 0px !important;
   }
   .table--fixed .thead td.btn-wrap {
     display: none;
@@ -3059,7 +3059,7 @@ tbody.collapse.in {
   padding: 0;
 }
 .scroll__fixed + .scroll__wrap {
-  padding-top: 140px;
+  padding-top: 220px;
 }
 .scroll__fixed + .scroll__wrap a[name] {
   position: absolute;
@@ -3068,7 +3068,7 @@ tbody.collapse.in {
 }
 @media (max-width: 768px) {
   .scroll__fixed + .scroll__wrap {
-    padding-top: 135px;
+    padding-top: 190px;
   }
   .scroll__fixed + .scroll__wrap a[name] {
     top: -100px;
