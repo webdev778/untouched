@@ -167,8 +167,8 @@ export default class DevelopmentPage extends Component {
   }
 
   renderLogo() {
-    if (!this.state.development.logo_url) return '';
-    return <img src={this.state.development.logo_url} alt={this.state.development.address} className="scroll__logo" />;
+    if (!this.state.development.development_logo_url) return '';
+    return <img src={this.state.development.development_logo_url} alt={this.state.development.address} className="scroll__logo" />;
   }
 
 }
