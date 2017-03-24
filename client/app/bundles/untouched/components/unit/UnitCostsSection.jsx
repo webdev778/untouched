@@ -92,6 +92,7 @@ export default class UnitCostsSection extends Component {
               </table>
             </div>
           </div>
+          {/*
           <button
             onClick={this.onClickEnquire}
             type="button"
@@ -100,6 +101,7 @@ export default class UnitCostsSection extends Component {
             data-target="#modal-enquire">
             Enquire Now
           </button>
+          */}
         </form>
 
         <EnquiryModal
