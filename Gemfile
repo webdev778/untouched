@@ -60,9 +60,8 @@ group :test do
   gem 'webmock'
 end
 
-group :production do
-  gem 'heroku-deflater'
-end
+gem 'heroku-deflater', :group => :production
+
 gem 'mini_racer', platforms: :ruby
 
 gem 'impressionist'
