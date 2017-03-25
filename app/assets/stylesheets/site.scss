@@ -1580,22 +1580,33 @@ input[type=radio]:checked + label:hover:before {
 
 .sidebar-trigger {
   color: #000;
-  margin-right: 20px;
   -webkit-transition: all .3s ease 0s;
   transition: all .3s ease 0s;
 }
+
+.sidebar-trigger svg {
+  margin-right: 20px;
+}
+
+button.sidebar-trigger {
+  padding: 10px;
+}
+
 .sidebar-trigger:hover {
   opacity: 0.7;
 }
+
 @media (min-width: 769px) {
   .sidebar-trigger {
     display: none;
   }
 }
+
 .sidebar-trigger .icon {
   width: 24px;
   height: 24px;
 }
+
 .sidebar .sidebar-trigger {
   color: #444444;
   position: absolute;
@@ -3005,7 +3016,7 @@ tbody.collapse.in {
 }
 @media (max-width: 768px) {
   .scroll__pricing .sidebar-wrap {
-    position: fixed;
+    position: absolute;
     z-index: 3000;
     border: none !important;
     margin-right: 0;
@@ -3432,11 +3443,11 @@ footer .copyright-info__links li a:hover {
 }
 
 .rc-tabs-content {
-  padding-top: 50px;
+  padding-top: 62px;
 }
 @media (max-width: 768px) {
   .rc-tabs-content {
-    padding-top: 50px;
+    padding-top: 62px;
   }
 }
 
@@ -4712,6 +4723,17 @@ input:disabled:hover,
 .spaced10x {
   margin-bottom: 100px !important;
 }
+/*------------------------------------*\
+	Development Page Customizing
+\*------------------------------------*/
 
+.development-page {
+  .main {
+    padding-top: 0px;
+  }
+  .scroll__nav {
+    top: 0px;
+  }
+}
 /* APP STYLES FROM WEPBACK */
 @import 'css/app.scss'

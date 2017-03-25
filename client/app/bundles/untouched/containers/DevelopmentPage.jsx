@@ -17,6 +17,7 @@ import VisitsCount from '../components/VisitsCount';
 import DevelopmentOverviewSection from '../components/development/DevelopmentOverviewSection';
 import DevelopmentLocationSection from '../components/development/DevelopmentLocationSection';
 import DevelopmentPricingSection from '../components/development/DevelopmentPricingSection';
+import SidebarDevelopmentTrigger from '../components/SidebarDevelopmentTrigger'
 
 export default class DevelopmentPage extends Component {
 
@@ -117,7 +118,6 @@ export default class DevelopmentPage extends Component {
   renderLoading() {
     return (
       <div className='development development-page'>
-        <Header />
       </div>
     );
   }
@@ -136,7 +136,6 @@ export default class DevelopmentPage extends Component {
           locale={{ close: 'Got it' }} />
         }
 
-        <Header />
 
         <main className="main">
           <Tabs
@@ -153,6 +152,7 @@ export default class DevelopmentPage extends Component {
                   <DevelopmentLocationSection development={this.state.development}/>
                 </TabPane>
                 <TabPane tab='Pricing' key="3">
+                  <SidebarDevelopmentTrigger />
                   <DevelopmentPricingSection
                       params={this.props.params}
                       filters={this.parseFiltersFromUrl()}
