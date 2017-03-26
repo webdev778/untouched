@@ -1670,6 +1670,7 @@ button.sidebar-trigger {
     -webkit-transform: translateX(0);
         -ms-transform: translateX(0);
             transform: translateX(0);
+    display: block !important;
   }
   .sidebar__show-results {
     display: block !important;
@@ -2415,6 +2416,7 @@ button.sidebar-trigger {
   display: block;
   margin: 0 auto;
   max-height: 2000px;
+  width: 100%;
 }
 
 .card > .iframe > iframe {
@@ -3016,7 +3018,7 @@ tbody.collapse.in {
 }
 @media (max-width: 768px) {
   .scroll__pricing .sidebar-wrap {
-    position: absolute;
+    position: fixed;
     z-index: 3000;
     border: none !important;
     margin-right: 0;
@@ -4733,10 +4735,37 @@ input:disabled:hover,
   }
   .scroll__nav {
     top: 0px;
-  }
+    background-color: rgba(255,255,255,0.9);
+}
   .sidebar-trigger {
     color: #B1B1B1;
   }
+
+  .rc-tabs-tab {
+    font-weight: normal !important;
+    text-transform: capitalize !important;
+    float: right !important;
+  }
+  .scroll__nav .scroll__logo {
+    left: 0;
+  }
+  @media (max-width: 480px) {
+    .scroll__nav .scroll__logo {
+      left: 15px;
+      right: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .scroll__pricing .sidebar-wrap {
+      position: absolute;
+    }
+    .scroll__pricing .sidebar {
+      position: absolute;
+      display: none;
+    }
+  }
+
 }
 /* APP STYLES FROM WEPBACK */
 @import 'css/app.scss'

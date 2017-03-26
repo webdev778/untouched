@@ -39,7 +39,7 @@ export default class DevelopmentPage extends Component {
         mainColor: '#03a9f4'
       }
     }],
-    current_activeKey: "1"
+    current_activeKey: "3"
   }
 
   hideSidebarIfClickedOutside = (event) => {
@@ -61,7 +61,7 @@ export default class DevelopmentPage extends Component {
       this.setState(state);
       if(state.filterParams.backButton)
       {
-        this.setState({current_activeKey: "3"});
+        this.setState({current_activeKey: "1"});
       }
     }
   }
@@ -139,25 +139,26 @@ export default class DevelopmentPage extends Component {
 
         <main className="main">
           <Tabs
+            defaultActiveKey="3"
             activeKey={this.state.current_activeKey}
             onChange={this.onClickTab}
             renderTabBar={()=><InkTabBar className="scroll__nav tab--fixed" extraContent={this.renderLogo()}/>}
             renderTabContent={()=><TabContent forceRender={true}/>}
             >
-                <TabPane tab='Overview' key="1">
-                  <VisitsCount count={this.state.development.visits_count}/>
-                  <DevelopmentOverviewSection development={this.state.development}/>
-                </TabPane>
-                <TabPane tab='Location' key="2">
-                  <DevelopmentLocationSection development={this.state.development}/>
-                </TabPane>
-                <TabPane tab='Pricing' key="3">
+                <TabPane tab='Pricing' key="1">
                   <SidebarDevelopmentTrigger />
                   <DevelopmentPricingSection
                       params={this.props.params}
                       filters={this.parseFiltersFromUrl()}
                       development={this.state.development}
                       tip={!this.state.joyrideShowed && this.state.overviewLoaded}/>
+                </TabPane>
+                <TabPane tab='Location' key="2">
+                  <DevelopmentLocationSection development={this.state.development}/>
+                </TabPane>
+                <TabPane tab='Overview' key="3">
+                  <VisitsCount count={this.state.development.visits_count}/>
+                  <DevelopmentOverviewSection development={this.state.development}/>
                 </TabPane>
           </Tabs>
         </main>
