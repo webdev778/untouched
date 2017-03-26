@@ -2416,7 +2416,6 @@ button.sidebar-trigger {
   display: block;
   margin: 0 auto;
   max-height: calc(100vh - 150px);
-  width: 100%;
 }
 
 .card > .iframe > iframe {
@@ -4767,6 +4766,9 @@ input:disabled:hover,
     }
   }
 
+  .scroll__pricing .container {
+    max-width: 1600px;
+  }
 }
 /* APP STYLES FROM WEPBACK */
 @import 'css/app.scss'
