@@ -2459,6 +2459,11 @@ button.sidebar-trigger {
   color: #444444;
   background-color: #fff;
 }
+@media (max-width: 768px) {
+  .card__caption {
+    padding: 25px 20px;
+  }
+}
 
 /*------------------------------------*\
   @COMPONENTS #MODALS
