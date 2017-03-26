@@ -1473,7 +1473,7 @@ input[type=radio]:checked + label:hover:before {
 .container {
   margin: auto;
   width: 100%;
-  max-width: 1600px;
+//  max-width: 1600px;
 }
 @media (max-width: 1600px) {
   .container {
@@ -2315,7 +2315,7 @@ button.sidebar-trigger {
   position: fixed;
   z-index: 800;
   width: 101%;
-  max-width: 1600px;
+//  max-width: 1600px;
   top: 80px;
 }
 .sidebar-show .tabs__nav--fixed {
@@ -2415,7 +2415,7 @@ button.sidebar-trigger {
 .card > img {
   display: block;
   margin: 0 auto;
-  max-height: 2000px;
+  max-height: calc(100vh - 150px);
   width: 100%;
 }
 
@@ -2604,6 +2604,7 @@ button.sidebar-trigger {
 
 .cost-table {
   table-layout: fixed;
+  margin-bottom: 50px;
 }
 .cost-table .row {
   text-align: left;
@@ -2776,7 +2777,7 @@ tbody.collapse.in {
   background-color: #fff;
   position: fixed;
   width: 100%;
-  max-width: 1600px;
+//  max-width: 1600px;
   left: 50%;
   -webkit-transform: translateX(-50%);
       -ms-transform: translateX(-50%);
@@ -2999,7 +3000,7 @@ tbody.collapse.in {
   overflow: auto;
   float: left;
   top: 0;
-  right: 50%;
+//  right: 50%;
   margin-right: 525px;
   z-index: 800;
   width: 280px;
