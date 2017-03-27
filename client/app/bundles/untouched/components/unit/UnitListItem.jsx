@@ -52,11 +52,11 @@ export default class UnitListItem extends Component {
           <Link to={this.unitUrl()} className="link-box" />
         </td>
         <td>
-          {this.formattedFloat(this.props.unit.internal_in_meters)}
+          {this.props.unit.internal_in_meters}
           <Link to={this.unitUrl()} className="link-box" />
         </td>
         <td>
-          {this.formattedFloat(this.props.unit.external_in_meters)}
+          {this.props.unit.external_in_meters}
           <Link to={this.unitUrl()} className="link-box" />
         </td>
         <td>
