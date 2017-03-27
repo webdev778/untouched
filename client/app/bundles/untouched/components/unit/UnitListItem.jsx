@@ -52,11 +52,11 @@ export default class UnitListItem extends Component {
           <Link to={this.unitUrl()} className="link-box" />
         </td>
         <td>
-          {this.props.unit.internal_in_meters}
+          {this.formattedFloat(this.props.unit.internal_in_meters)}
           <Link to={this.unitUrl()} className="link-box" />
         </td>
         <td>
-          {this.props.unit.external_in_meters}
+          {this.formattedFloat(this.props.unit.external_in_meters)}
           <Link to={this.unitUrl()} className="link-box" />
         </td>
         <td>
@@ -76,6 +76,7 @@ export default class UnitListItem extends Component {
   }
 
   formattedFloat(number) {
+    var number = parseFloat(number);
     if (number % 1 == 0) {
       return Math.round(number);
     }
