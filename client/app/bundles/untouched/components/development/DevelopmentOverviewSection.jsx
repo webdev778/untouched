@@ -30,7 +30,7 @@ export default class DevelopmentOverviewSection extends Component {
   render() {
     return (
       <section className="scroll__section scroll__overview">
-        <div className="container">
+        <div>
           <div className="container__reset" ref={c => this.overview = c}>
             {this.renderVideos()}
             {this.renderPhotos()}

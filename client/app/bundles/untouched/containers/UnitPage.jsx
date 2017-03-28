@@ -86,13 +86,12 @@ export default class UnitPage extends Component {
     return (
       <div className='unit-page'>
 
-        <Header />
 
         <div className="scroll">
           <div className="scroll__fixed">
             <div className="container">
-              <UnitHeaderTable unit={this.state.unit} />
               {this.renderNav()}
+              <UnitHeaderTable unit={this.state.unit} />
             </div>
           </div>
           <div className="scroll__wrap">
@@ -121,7 +120,7 @@ export default class UnitPage extends Component {
   renderNav() {
     return (
       <div className="scroll__nav scroll__nav--static">
-        <ul>
+        <ul className="clearfix">
           <li role="presentation" className="scroll__li">
             <Link
               activeClass="active"
@@ -130,8 +129,8 @@ export default class UnitPage extends Component {
               smooth={true}
               offset={this.scrollNav.offset}
               duration={this.scrollNav.duration}
-              to="plans">
-              Plans
+              to="costs">
+              Costs
             </Link>
           </li>
           <li role="presentation" className="scroll__li">
@@ -154,8 +153,8 @@ export default class UnitPage extends Component {
               smooth={true}
               offset={this.scrollNav.offset}
               duration={this.scrollNav.duration}
-              to="costs">
-              Costs
+              to="plans">
+              Plans
             </Link>
           </li>
         </ul>

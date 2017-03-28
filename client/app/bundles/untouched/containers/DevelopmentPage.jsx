@@ -146,7 +146,10 @@ export default class DevelopmentPage extends Component {
             renderTabContent={()=><TabContent forceRender={true}/>}
             >
                 <TabPane tab='Pricing' key="1">
-                  <SidebarDevelopmentTrigger />
+                  <div className="clearfix">
+                    <VisitsCount count={this.state.development.visits_count}/>
+                    <SidebarDevelopmentTrigger />
+                  </div>
                   <DevelopmentPricingSection
                       params={this.props.params}
                       filters={this.parseFiltersFromUrl()}
@@ -157,7 +160,6 @@ export default class DevelopmentPage extends Component {
                   <DevelopmentLocationSection development={this.state.development}/>
                 </TabPane>
                 <TabPane tab='Overview' key="3">
-                  <VisitsCount count={this.state.development.visits_count}/>
                   <DevelopmentOverviewSection development={this.state.development}/>
                 </TabPane>
           </Tabs>
