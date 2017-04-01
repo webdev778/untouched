@@ -1,3 +1,5 @@
+include ActionView::Helpers::DateHelper
+
 class DevelopmentSerializer < ActiveModel::Serializer
 
   has_many :photos
@@ -25,13 +27,15 @@ class DevelopmentSerializer < ActiveModel::Serializer
     :created_at,
     :updated_at,
     :intercom_app_id,
-    :visits_count
+    :visits_count,
+    :time_ago
 
   def visits_count
     object.impressionist_count(:start_date => 7.days.ago, :end_date => DateTime.now)
   end
 
   def development_logo_url
+    # object.development_logo.try(:url).sub! 'development_logo', 'logo'
     object.development_logo.try(:url)
   end
 
@@ -53,6 +57,10 @@ class DevelopmentSerializer < ActiveModel::Serializer
 
   def units_deposit_received_count
     object.units.deposit_received.count
+  end
+
+  def time_ago
+    time_ago_in_words(object.created_at)
   end
 
 end

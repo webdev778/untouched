@@ -52,6 +52,7 @@ class UnitSerializer < ActiveModel::Serializer
   end
 
   def development_logo_url
+    # object.development.development_logo.try(:url).sub! 'development_logo', 'logo'
     object.development.development_logo.try(:url)
   end
 

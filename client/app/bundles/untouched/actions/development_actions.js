@@ -7,7 +7,8 @@ class DevelopmentActions {
       'select',
       'fetch',
       'addFilterData',
-      'filterData'
+      'filterData',
+      'fetch_latest'
     );
   }
 }

@@ -4549,6 +4549,7 @@ input:disabled:hover,
 }
 .block img {
   margin-bottom: 0;
+  height: 32px;
 }
 
 .block__header {
@@ -4567,6 +4568,7 @@ input:disabled:hover,
 .block__img {
   margin-bottom: 0;
   width: 100%;
+  height: 200px !important;
 }
 
 .block-subtitle {

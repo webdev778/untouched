@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   get 'api/developments/:development_id/units/:id' => 'api/units#show'
   get 'api/developments/:id' => 'api/developments#show'
   get 'api/developments' => 'api/developments#index'
+  get 'api/latest_developments' => 'api/developments#latest'
   get 'api/regions' => 'api/regions#index'
   post 'api/enquiries' => 'api/enquiries#create'
   post 'api/try_it_free' => 'api/try_it_free#create'

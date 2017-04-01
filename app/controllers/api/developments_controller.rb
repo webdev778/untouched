@@ -9,6 +9,12 @@ class API::DevelopmentsController < API::BaseController
     }
   end
 
+  def latest
+    render json: {
+      developments: latest_developments_json
+    }
+  end
+
   def show
     development = Development.find(params[:id])
     render json: DevelopmentSerializer.new(development).as_json
@@ -31,6 +37,13 @@ class API::DevelopmentsController < API::BaseController
     ActiveModel::ArraySerializer.new(
       filter.results,
       each_serializer: UnitSerializer
+    ).as_json(root: false)
+  end
+
+  def latest_developments_json
+    ActiveModel::ArraySerializer.new(
+      Development.order("created_at").last(6),
+      each_serializer: DevelopmentSerializer
     ).as_json(root: false)
   end
 

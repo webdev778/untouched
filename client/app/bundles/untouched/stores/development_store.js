@@ -71,6 +71,22 @@ class DevelopmentStore {
     });
   }
 
+  fetch_latest() {
+    return $.ajax({
+      method: 'GET',
+      url: '/api/latest_developments',
+      success: response => {
+        this.developments = response.developments;
+        delete this.development; // TODO: Why this fixed strange transition between developments and development page? Look url.
+        this.emitChange();
+      },
+      error(response) {
+        console.log('error');
+        console.log(response);
+      }
+    });
+  }
+
   getDevelopments() {
     return this.getState().developments;
   }
