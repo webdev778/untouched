@@ -53,6 +53,8 @@ export default class LandingPage extends Component {
             </div>
           </section>
 
+          {
+          /*
           <section className="section">
             <div className="container">
               <p className="color-light">
@@ -64,7 +66,8 @@ export default class LandingPage extends Component {
               </div>
             </div>
           </section>
-
+          */
+          }
         </main>
         <Footer />
 
