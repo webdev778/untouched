@@ -60,7 +60,7 @@ class DevelopmentSerializer < ActiveModel::Serializer
   end
 
   def time_ago
-    time_ago_in_words(object.created_at)
+    time_ago_in_words(object.created_at).gsub(/about /, '')
   end
 
 end

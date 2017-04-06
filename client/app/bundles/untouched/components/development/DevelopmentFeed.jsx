@@ -32,9 +32,7 @@ export default class DevelopmentFeed extends Component {
           <img src={this.developerLogoUrl()} alt="Developer Logo" />
           <img src={this.developmentLogoUrl()} alt="Development Logo" />
         </div>
-        <Link to={this.developmentUrl()}>
-          <img src={this.photoUrl()} alt="Development" className="block__img feed__img" />
-        </Link>
+        <img src={this.photoUrl()} alt="Development" className="block__img feed__img" />
       </div>
       <span className="block-subtitle">{this.props.data.time_ago} ago</span>
     </div>;

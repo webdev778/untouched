@@ -42,7 +42,7 @@ class API::DevelopmentsController < API::BaseController
 
   def latest_developments_json
     ActiveModel::ArraySerializer.new(
-      Development.order("created_at").last(6),
+      Development.where(show_on_home_page: true).order("created_at DESC"),
       each_serializer: DevelopmentSerializer
     ).as_json(root: false)
   end

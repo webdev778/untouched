@@ -53,8 +53,6 @@ export default class LandingPage extends Component {
             </div>
           </section>
 
-          {
-          /*
           <section className="section">
             <div className="container">
               <p className="color-light">
@@ -63,11 +61,13 @@ export default class LandingPage extends Component {
 
               <div className="blocks-wrap">
                 {this.renderFeeds()}
+                <div className="block-container animate">
+                </div>
+                <div className="block-container animate">
+                </div>
               </div>
             </div>
           </section>
-          */
-          }
         </main>
         <Footer />
 
