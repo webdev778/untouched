@@ -74,6 +74,30 @@ export default class DevelopmentPage extends Component {
   componentWillMount() {
     DevelopmentStore.listen(this.onChange);
     TipStore.listen(this.onChange);
+    window.lastScrollTop = 0;
+    $(window).on("scroll", function(event) {
+      var st = $("body").scrollTop();
+      var navbarHeight = $(".scroll__nav").height();
+
+      if ($(".rc-tabs-content .rc-tabs-tabpane:nth-child(3)").hasClass("rc-tabs-tabpane-active")) {
+        // Make sure they scroll more than delta
+        if(Math.abs(window.lastScrollTop - st) <= 5)
+            return;
+
+        // If they scrolled down and are past the navbar, add class .nav-up.
+        // This is necessary so you never see what is "behind" the navbar.
+        if (st > window.lastScrollTop && st > navbarHeight){
+            // Scroll Down
+            $('.rc-tabs-bar').hide();
+            //$('.rc-tabs-content').addClass("no-padding");
+        } else {
+            // Scroll Up
+            $('.rc-tabs-bar').show();
+            //$('.rc-tabs-content').removeClass("no-padding");
+        }
+      }
+      window.lastScrollTop = st;
+    });
   }
 
   componentDidMount() {
@@ -105,6 +129,7 @@ export default class DevelopmentPage extends Component {
     TipStore.unlisten(this.onChange);
     $(document).off('click.development_page');
     window.Intercom('shutdown');
+    $(window).off("scroll");
   }
 
   render() {

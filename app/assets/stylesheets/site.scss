@@ -2429,7 +2429,7 @@ button.sidebar-trigger {
 }
 
 .unit-page .card > img {
-  max-height: 1000px;
+  max-height: calc(100vh - 155px);
 }
 
 @media (max-width: 768px) {
@@ -2437,6 +2437,10 @@ button.sidebar-trigger {
     border: none;
     border-bottom: 1px solid #e5e5e5;
     border-radius: 0;
+  }
+
+  .unit-page .card > img {
+    max-height: calc(100vh - 125px);
   }
 }
 
@@ -4759,6 +4763,12 @@ input:disabled:hover,
 .push-right {
   float: right;
 }
+.no-margin {
+  margin: 0px !important;
+}
+.no-padding {
+  padding: 0px !important;
+}
 /*------------------------------------*\
 	Development Page Customizing
 \*------------------------------------*/
@@ -4802,12 +4812,12 @@ input:disabled:hover,
 }
 .development-page, .unit-page {
   .scroll__nav .scroll__logo {
-    left: 15px;
+    left: 0px;
     right: auto;
   }
   @media (max-width: 480px) {
     .scroll__nav .scroll__logo {
-      left: 15px;
+      left: 0px;
       right: auto;
     }
   }
