@@ -52,22 +52,7 @@ export default class LandingPage extends Component {
               </form>
             </div>
           </section>
-
-          <section className="section">
-            <div className="container">
-              <p className="color-light">
-                Latest off the plan apartment and townhouse projects uploaded:
-              </p>
-
-              <div className="blocks-wrap">
-                {this.renderFeeds()}
-                <div className="block-container animate">
-                </div>
-                <div className="block-container animate">
-                </div>
-              </div>
-            </div>
-          </section>
+          {this.renderFeedSection()}
         </main>
         <Footer />
 
@@ -75,6 +60,27 @@ export default class LandingPage extends Component {
     );
   }
 
+  renderFeedSection() {
+    if(this.state.developments.length > 0) {
+      return (
+        <section className="section">
+          <div className="container">
+            <p className="color-light">
+              Latest off the plan apartment and townhouse projects uploaded:
+            </p>
+
+            <div className="blocks-wrap">
+              {this.renderFeeds()}
+              <div className="block-container animate">
+              </div>
+              <div className="block-container animate">
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    }
+  }
   renderFeeds() {
     return _.map(this.state.developments, development => (
       <DevelopmentFeed key={development.id} data={development} />
