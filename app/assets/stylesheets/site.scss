@@ -2415,7 +2415,7 @@ button.sidebar-trigger {
 .card > img {
   display: block;
   margin: 0 auto;
-  max-height: calc(100vh - 65px);
+  max-height: 100vh;
 }
 @media (max-width: 768px) {
   .card > img {
@@ -2429,7 +2429,7 @@ button.sidebar-trigger {
 }
 
 .unit-page .card > img {
-  max-height: calc(100vh - 65px);
+  max-height: 100vh;
 }
 
 @media (max-width: 768px) {
@@ -2440,7 +2440,7 @@ button.sidebar-trigger {
   }
 
   .unit-page .card > img {
-    max-height: calc(100vh - 65px);
+    max-height: 100vh;
   }
 }
 

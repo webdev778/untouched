@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308162605) do
+ActiveRecord::Schema.define(version: 20170406053956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170308162605) do
     t.integer  "ceiling_height_at_living_area_in_meters"
     t.integer  "development_type"
     t.string   "developer_logo",                          limit: 255
+    t.boolean  "show_on_home_page",                                   default: false, null: false
   end
 
   add_index "developments", ["suburb_id"], name: "index_developments_on_suburb_id", using: :btree
