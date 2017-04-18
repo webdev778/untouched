@@ -2415,7 +2415,7 @@ button.sidebar-trigger {
 .card > img {
   display: block;
   margin: 0 auto;
-  max-height: calc(100vh - 150px);
+  max-height: calc(100vh - 65px);
 }
 @media (max-width: 768px) {
   .card > img {
@@ -2429,7 +2429,7 @@ button.sidebar-trigger {
 }
 
 .unit-page .card > img {
-  max-height: calc(100vh - 155px);
+  max-height: calc(100vh - 65px);
 }
 
 @media (max-width: 768px) {
@@ -2440,7 +2440,7 @@ button.sidebar-trigger {
   }
 
   .unit-page .card > img {
-    max-height: calc(100vh - 125px);
+    max-height: calc(100vh - 65px);
   }
 }
 
@@ -2622,12 +2622,14 @@ button.sidebar-trigger {
   text-align: left;
 }
 .cost-table td {
-  text-align: right;
   padding: 10px;
 }
 .cost-table td:first-child {
   padding-left: 0;
   text-align: left;
+}
+.cost-table td:last-child {
+  color: #aaa;
 }
 @media (max-width: 768px) {
   .cost-table td:first-child {
@@ -2914,7 +2916,7 @@ tbody.collapse.in {
 }
 .scroll__wrap .scroll__content {
   padding-bottom: 50px;
-  padding-top: 20px;
+  padding-top: 0px;
 }
 .sidebar-show .scroll__content {
   padding-left: 20px;
@@ -2959,7 +2961,7 @@ tbody.collapse.in {
   }
 }
 .scroll__wrap .scroll__visits {
-  margin-bottom: 0 !important;
+  margin-bottom: 20px !important;
   margin-top: 0 !important;
 }
 
@@ -2968,7 +2970,7 @@ tbody.collapse.in {
 }
 
 .scroll__plans {
-  margin-top: 20px !important;
+  margin-top: 0px !important;
 }
 
 .scroll__pricing {
@@ -3090,7 +3092,7 @@ tbody.collapse.in {
   padding: 0;
 }
 .scroll__fixed + .scroll__wrap {
-  padding-top: 149px;
+  padding-top: 63px;
 }
 .scroll__fixed + .scroll__wrap a[name] {
   position: absolute;
@@ -4779,7 +4781,6 @@ input:disabled:hover,
   }
   .scroll__nav {
     top: 0px;
-    background-color: rgba(255,255,255,0.9);
 }
   .sidebar-trigger {
     color: #B1B1B1;
@@ -4814,6 +4815,10 @@ input:disabled:hover,
   .scroll__nav .scroll__logo {
     left: 0px;
     right: auto;
+  }
+  .scroll__nav {
+    background-color: rgba(255, 255, 255, 0.9);
+    text-transform: capitalize;
   }
   @media (max-width: 480px) {
     .scroll__nav .scroll__logo {
