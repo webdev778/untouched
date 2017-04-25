@@ -43,6 +43,10 @@ export default class UnitCostsSection extends Component {
     return moment(this.props.unit.development.ready_at).format('MMM, YYYY');
   }
 
+  formattedPrice() {
+    return accounting.formatMoney(this.props.unit.price, '$', 0);
+  }
+
   render() {
     return (
       <section className="scroll__section">
@@ -54,37 +58,51 @@ export default class UnitCostsSection extends Component {
                 <tbody>
                   <tr>
                     <td>
-                      <strong>{this.formattedDepositPercent()}% Deposit</strong>
-                      <span className="cost__light">
-                        Due within {this.props.unit.deposit_due_in_days} days of signing&nbsp;
-                        <Link target="_blank" to={this.props.unit.contract_url}>contract</Link>
-                        , with balance payable upon completion in {this.formattedReadyAt()}
-                      </span>
+                      <strong>Price</strong>
+                    </td>
+                    <td>{this.formattedPrice()}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>{this.formattedDepositPercent()}% deposit</strong>
                     </td>
                     <td>{this.formattedDeposit()}</td>
                   </tr>
                   <tr>
+                    <td colSpan="2">
+                      <Link target="_blank" to={this.props.unit.contract_url}
+                        className="btn btn--light btn--lg btn--full">
+                        Sales contract
+                      </Link>
+                    </td>
+                  </tr>
+                  <tr>
                     <td>
-                      <strong>Stamp Duty (estimate)</strong>
-                      <span className="cost__light">Save {this.formattedStampDutySavings()}</span>
+                      <strong>Stamp duty</strong>
                     </td>
                     <td>{this.formattedStampDuty()}</td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Body Corporate (estimate)</strong>
+                      <strong>Stamp duty saving</strong>
+                    </td>
+                    <td>{this.formattedStampDutySavings()}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Body corporate</strong>
                     </td>
                     <td>{this.formattedAnnualBodyCorporate()}</td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Council Rates (estimate)</strong>
+                      <strong>Council rates</strong>
                     </td>
                     <td>{this.formattedAnnualCouncilRate()}</td>
                   </tr>
                   <tr>
                     <td>
-                      <strong>Water Rates (estimate)</strong>
+                      <strong>Water rates</strong>
                     </td>
                     <td>{this.formattedAnnualWaterRate()}</td>
                   </tr>

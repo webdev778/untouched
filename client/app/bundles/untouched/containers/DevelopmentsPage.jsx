@@ -21,6 +21,29 @@ export default class DevelopmentsPage extends Component {
     DevelopmentStore.listen(this.onChange);
     $(window).resize(() => this.onResize());
     window.Intercom('boot', { app_id: window.INTERCOM_APP_ID });
+    window.lastScrollTop = 0;
+    $(window).on("scroll", function(event) {
+      var st = $("body").scrollTop();
+      var navbarHeight = $(".header-fixed").height();
+
+      // Make sure they scroll more than delta
+      if(Math.abs(window.lastScrollTop - st) <= 5)
+          return;
+
+      // If they scrolled down and are past the navbar, add class .nav-up.
+      // This is necessary so you never see what is "behind" the navbar.
+      if (st > window.lastScrollTop && st > navbarHeight){
+          // Scroll Down
+          $(".header-fixed").hide();
+          $(".developments-page .sidebar").addClass("no-padding");
+      } else {
+          // Scroll Up
+          $(".header-fixed").show();
+          $(".developments-page .sidebar").removeClass("no-padding");
+      }
+      window.lastScrollTop = st;
+    });
+
   }
 
   componentDidMount() {
@@ -31,6 +54,7 @@ export default class DevelopmentsPage extends Component {
   componentWillUnmount() {
     DevelopmentStore.unlisten(this.onChange);
     window.Intercom('shutdown');
+    $(window).off("scroll");
   }
 
   componentDidUpdate() {

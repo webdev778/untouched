@@ -17,7 +17,7 @@ import DevelopmentActions from '../actions/development_actions';
 export default class UnitPage extends Component {
 
   scrollNav = {
-    offset: -200,
+    offset: -63,
     duration: 500
   }
 
@@ -34,6 +34,29 @@ export default class UnitPage extends Component {
     // TODO: Can we find a less intrusive way to set the body class?
     $('body').addClass('sidebar-hide development');
     UnitStore.listen(this.onChange);
+    window.lastScrollTop = 0;
+    $(window).on("scroll", function(event) {
+      var st = $("body").scrollTop();
+      var navbarHeight = $(".scroll__fixed").height();
+
+      // Make sure they scroll more than delta
+      if(Math.abs(window.lastScrollTop - st) <= 5)
+          return;
+
+      // If they scrolled down and are past the navbar, add class .nav-up.
+      // This is necessary so you never see what is "behind" the navbar.
+      if (st > window.lastScrollTop && st > navbarHeight){
+          // Scroll Down
+          $(".scroll__fixed").hide();
+          $(".scroll__wrap").addClass("no-padding");
+      } else {
+          // Scroll Up
+          $(".scroll__fixed").show();
+          $(".scroll__wrap").removeClass("no-padding");
+      }
+      window.lastScrollTop = st;
+    });
+
   }
 
   componentDidMount() {
@@ -59,6 +82,7 @@ export default class UnitPage extends Component {
     $('body').removeClass('sidebar-hide development');
     UnitStore.unlisten(this.onChange);
     window.Intercom('shutdown');
+    $(window).off("scroll");
   }
 
 
@@ -91,20 +115,22 @@ export default class UnitPage extends Component {
           <div className="scroll__fixed">
             <div className="container">
               {this.renderNav()}
-              <UnitHeaderTable unit={this.state.unit} />
             </div>
           </div>
           <div className="scroll__wrap">
             <div className="scroll__content">
               <Element name="plans">
-                <VisitsCount count={this.state.unit.visits_count}/>
                 <UnitPlansSection unit={this.state.unit}/>
               </Element>
               <Element name="views">
                 <UnitViewsSection unit={this.state.unit}/>
               </Element>
-              <Element name="costs">
-                <UnitCostsSection unit={this.state.unit}/>
+              <Element name="summary" className="summary__section">
+                <VisitsCount count={this.state.unit.visits_count}/>
+                <div className="container">
+                  <UnitHeaderTable unit={this.state.unit} />
+                  <UnitCostsSection unit={this.state.unit}/>
+                </div>
               </Element>
             </div>
           </div>
@@ -129,8 +155,8 @@ export default class UnitPage extends Component {
               smooth={true}
               offset={this.scrollNav.offset}
               duration={this.scrollNav.duration}
-              to="costs">
-              Costs
+              to="summary">
+              Summary
             </Link>
           </li>
           <li role="presentation" className="scroll__li">

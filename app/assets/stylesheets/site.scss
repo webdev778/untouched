@@ -4827,5 +4827,14 @@ input:disabled:hover,
     }
   }
 }
+
+/*------------------------------------*\
+	Unit Page Customizing
+\*------------------------------------*/
+.unit-page {
+  .summary__section .container {
+    max-width: 1600px;
+  }
+}
 /* APP STYLES FROM WEPBACK */
 @import 'css/app.scss'

@@ -15,10 +15,6 @@ export default class UnitHeaderTable extends Component {
     return number;
   }
 
-  formattedPrice() {
-    return accounting.formatMoney(this.props.unit.price, '$', 0);
-  }
-
   developmentUrl() {
     return `/developments/${this.props.unit.development_id}`;
   }
@@ -33,7 +29,7 @@ export default class UnitHeaderTable extends Component {
   render() {
     return (
       <div className="table-responsive table--noactive">
-        <table className="table table--fixed">
+        <table className="table">
           <tbody>
             <tr className="thead">
               {/*
@@ -51,7 +47,6 @@ export default class UnitHeaderTable extends Component {
               <td><span className="vertical">Ext M2</span></td>
               <td><span className="vertical">Aspect</span></td>
               <td><span className="vertical">Car</span></td>
-              <td><span className="vertical">Price</span></td>
             </tr>
             <tr>
               <td>&nbsp;</td>
@@ -62,7 +57,6 @@ export default class UnitHeaderTable extends Component {
               <td>{this.formattedFloat(this.props.unit.external_in_meters)}</td>
               <td>{this.props.unit.aspect}</td>
               <td>{this.props.unit.parking}</td>
-              <td>{this.formattedPrice()}</td>
             </tr>
           </tbody>
         </table>
