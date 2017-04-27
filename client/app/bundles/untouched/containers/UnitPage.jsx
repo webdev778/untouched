@@ -126,7 +126,9 @@ export default class UnitPage extends Component {
                 <UnitViewsSection unit={this.state.unit}/>
               </Element>
               <Element name="summary" className="summary__section">
-                <VisitsCount count={this.state.unit.visits_count}/>
+                <div className="clearfix">
+                  <VisitsCount count={this.state.unit.visits_count}/>
+                </div>
                 <div className="container">
                   <UnitHeaderTable unit={this.state.unit} />
                   <UnitCostsSection unit={this.state.unit}/>

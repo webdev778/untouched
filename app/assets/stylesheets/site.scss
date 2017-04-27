@@ -2955,11 +2955,7 @@ tbody.collapse.in {
   margin: 0 !important;
   padding: 10px;
 }
-@media (max-width: 768px) {
-  .scroll__visits {
-    float: left;
-  }
-}
+
 .scroll__wrap .scroll__visits {
   margin-bottom: 20px !important;
   margin-top: 0 !important;
@@ -4804,6 +4800,10 @@ input:disabled:hover,
     .scroll__pricing .sidebar {
       position: absolute;
       display: none;
+    }
+
+    .scroll__visits {
+      float: left;
     }
   }
 
