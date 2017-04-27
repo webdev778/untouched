@@ -71,9 +71,16 @@ export default class UnitCostsSection extends Component {
                   <tr>
                     <td colSpan="2">
                       <Link target="_blank" to={this.props.unit.contract_url}
-                        className="btn btn--light btn--lg btn--full">
+                        className="btn btn--light btn--full">
                         Sales contract
                       </Link>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span className="cost__light">ESTIMATES</span>
+                    </td>
+                    <td>
                     </td>
                   </tr>
                   <tr>
