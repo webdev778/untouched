@@ -39,14 +39,10 @@ export default class LandingPage extends Component {
         <Header fixed_position={false} sidebarTrigger={false} />
 
         <main className="main">
-          <div className="text-center">
-            <iframe className="video" width="560" height="315" src="https://www.youtube.com/embed/wWhgAjQ1bac?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen></iframe>
-          </div>
-
           <section className="section section--subheader">
             <div className="container">
               <h1 className="section__title section__title--lg animate">A better way to sell new developments.</h1>
-
+              <iframe className="video" width="560" height="315" src="https://www.youtube.com/embed/wWhgAjQ1bac?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen></iframe>
               <form action="" className="form">
                 <TryItFreeBox location="landing" />
                 <Link to="/how_it_works">
