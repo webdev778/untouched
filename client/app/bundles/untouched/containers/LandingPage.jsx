@@ -39,6 +39,9 @@ export default class LandingPage extends Component {
         <Header fixed_position={false} sidebarTrigger={false} />
 
         <main className="main">
+          <div className="text-center">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/wWhgAjQ1bac?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen></iframe>
+          </div>
 
           <section className="section section--subheader">
             <div className="container">

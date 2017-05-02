@@ -18,7 +18,7 @@ export default class TryItFreeBox extends Component {
       <div className="try-it-free-section alert-modal">
         <div className="form__group form__group--inline1">
           <input type="email" onInput={this.toggleSubmit} ref="email" placeholder="Your work email" className="form__control"/>
-          <button type="submit" onClick={this.onSubmit} className="btn btn--alt">Try it free</button>
+          <button type="submit" onClick={this.onSubmit} className="btn btn--alt">ENQUIRE</button>
         </div>
         {this.renderError()}
         <Modal onClose={this.onCloseModal} isOpen={this.state.isModalOpen} className="alert-modal">
