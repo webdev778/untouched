@@ -19,14 +19,6 @@ export default class HowItWorksPage extends Component {
           <section className="section section--center">
             <div className="container">
               <h1 className="section__title animate">How it works</h1>
-
-              <div className="video-wrap block">
-                <Plyr type="vimeo" videoId="143418951" />
-              </div>
-
-              <form action="" className="form">
-                <TryItFreeBox/>
-              </form>
             </div>
           </section>
 
