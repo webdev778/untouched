@@ -40,7 +40,7 @@ export default class LandingPage extends Component {
 
         <main className="main">
           <div className="text-center">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/wWhgAjQ1bac?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen></iframe>
+            <iframe className="video" width="560" height="315" src="https://www.youtube.com/embed/wWhgAjQ1bac?rel=0&amp;showinfo=0" frameBorder="0" allowFullScreen></iframe>
           </div>
 
           <section className="section section--subheader">
@@ -66,7 +66,7 @@ export default class LandingPage extends Component {
   renderFeedSection() {
     if(this.state.developments.length > 0) {
       return (
-        <section className="section">
+        <section className="section section--flatBottom">
           <div className="container">
             <p className="color-light">
               Latest off the plan apartment and townhouse projects uploaded:

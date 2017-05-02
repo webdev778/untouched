@@ -3426,6 +3426,7 @@ footer .copyright-info__links li a:hover {
 
 .landing-page .main {
   padding-top: 0px !important;
+  padding-bottom: 80px !important;
 }
 .landing-page .container, .how-to-works-page .container {
   max-width: 1140px !important;
@@ -4602,6 +4603,9 @@ input:disabled:hover,
   opacity: 0;
 }
 
+iframe.video {
+  max-width: 100% !important;
+}
 /*------------------------------------*\
 	@COMPONENTS #TESTIMONIAL
 \*------------------------------------*/
