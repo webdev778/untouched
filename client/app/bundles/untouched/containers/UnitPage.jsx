@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Element } from 'react-scroll';
 import { browserHistory } from 'react-router';
+import { debounce } from 'throttle-debounce';
 
 import UnitStore from './../stores/unit_store';
 import UnitActions from './../actions/unit_actions';
@@ -35,23 +36,24 @@ export default class UnitPage extends Component {
     $('body').addClass('sidebar-hide development');
     UnitStore.listen(this.onChange);
     window.lastScrollTop = 0;
+    this.hideNav = debounce(3000, this.hideNav);
+    var me = this;
+
     $(window).on("scroll", function(event) {
       var st = $("body").scrollTop();
       var navbarHeight = $(".scroll__fixed").height();
 
-      // Make sure they scroll more than delta
-      if(Math.abs(window.lastScrollTop - st) <= 5)
-          return;
+      me.hideNav();
 
       // If they scrolled down and are past the navbar, add class .nav-up.
       // This is necessary so you never see what is "behind" the navbar.
       if (st > window.lastScrollTop && st > navbarHeight){
           // Scroll Down
-          $(".scroll__fixed").hide();
+          $(".scroll__fixed").slideUp();
           $(".scroll__wrap").addClass("no-padding");
       } else {
           // Scroll Up
-          $(".scroll__fixed").show();
+          $(".scroll__fixed").slideDown();
           $(".scroll__wrap").removeClass("no-padding");
       }
       window.lastScrollTop = st;
@@ -198,6 +200,11 @@ export default class UnitPage extends Component {
   }
   goBackToPricing = () => {
     browserHistory.push("/developments/" + this.props.params.developmentId);
+  }
+
+  hideNav = () => {
+      $(".scroll__fixed").slideUp(800);
+      $(".scroll__wrap").addClass("no-padding");
   }
 }
 
