@@ -36,8 +36,9 @@ export default class UnitPage extends Component {
     $('body').addClass('sidebar-hide development');
     UnitStore.listen(this.onChange);
     window.lastScrollTop = 0;
-    this.hideNav = debounce(3000, this.hideNav);
+    this.hideNav = debounce(1000, this.hideNav);
     var me = this;
+    me.hideNav();
 
     $(window).on("scroll", function(event) {
       var st = $("body").scrollTop();
@@ -49,11 +50,11 @@ export default class UnitPage extends Component {
       // This is necessary so you never see what is "behind" the navbar.
       if (st > window.lastScrollTop && st > navbarHeight){
           // Scroll Down
-          $(".scroll__fixed").slideUp();
+          $(".scroll__fixed").hide();
           $(".scroll__wrap").addClass("no-padding");
       } else {
           // Scroll Up
-          $(".scroll__fixed").slideDown();
+          $(".scroll__fixed").show();
           $(".scroll__wrap").removeClass("no-padding");
       }
       window.lastScrollTop = st;
@@ -203,7 +204,7 @@ export default class UnitPage extends Component {
   }
 
   hideNav = () => {
-      $(".scroll__fixed").slideUp(800);
+      $(".scroll__fixed").slideUp(500);
       $(".scroll__wrap").addClass("no-padding");
   }
 }
