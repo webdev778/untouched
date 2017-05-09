@@ -2410,7 +2410,7 @@ button.sidebar-trigger {
   overflow: hidden;
   margin: 0 auto;
   margin-bottom: 30px;
-  background-color: #eee;
+  background-color: white;
 }
 .card > img {
   display: block;
@@ -2466,6 +2466,7 @@ button.sidebar-trigger {
   font-weight: normal;
   color: #444444;
   background-color: #fff;
+  border-top: 1px solid #e5e5e5;
 }
 @media (max-width: 768px) {
   .card__caption {
