@@ -5,6 +5,7 @@ import { Link, Element } from 'react-scroll';
 import Tabs, { TabPane } from 'rc-tabs';
 import TabContent from 'rc-tabs/lib/TabContent';
 import InkTabBar from 'rc-tabs/lib/InkTabBar';
+import { debounce } from 'throttle-debounce';
 import RouteGenerator from '../route_generator';
 
 import DevelopmentActions from '../actions/development_actions';
@@ -70,30 +71,36 @@ export default class DevelopmentPage extends Component {
       current_activeKey: key,
     });
     window.scrollTo(0, 0);
+    // if click on Overview
+    if (key == "3") {
+      this.hideNav();
+    }
   }
   componentWillMount() {
+    window.scrollTo(0, 0);
     DevelopmentStore.listen(this.onChange);
     TipStore.listen(this.onChange);
     window.lastScrollTop = 0;
+    this.hideNav = debounce(3000, this.hideNav);
+    var me = this;
+    me.hideNav();
     $(window).on("scroll", function(event) {
       var st = $("body").scrollTop();
       var navbarHeight = $(".scroll__nav").height();
 
       if ($(".rc-tabs-content .rc-tabs-tabpane:nth-child(3)").hasClass("rc-tabs-tabpane-active")) {
-        // Make sure they scroll more than delta
-        if(Math.abs(window.lastScrollTop - st) <= 5)
-            return;
+        me.hideNav();
 
         // If they scrolled down and are past the navbar, add class .nav-up.
         // This is necessary so you never see what is "behind" the navbar.
-        if (st > window.lastScrollTop && st > navbarHeight){
+        if (st > window.lastScrollTop){
             // Scroll Down
             $('.rc-tabs-bar').hide();
-            //$('.rc-tabs-content').addClass("no-padding");
+            $('.rc-tabs-content').addClass("no-padding");
         } else {
             // Scroll Up
             $('.rc-tabs-bar').show();
-            //$('.rc-tabs-content').removeClass("no-padding");
+            $('.rc-tabs-content').removeClass("no-padding");
         }
       }
       window.lastScrollTop = st;
@@ -199,4 +206,10 @@ export default class DevelopmentPage extends Component {
     return <img src={this.state.development.development_logo_url} alt={this.state.development.address} className="scroll__logo" />;
   }
 
+  hideNav = () => {
+    if ($(".rc-tabs-content .rc-tabs-tabpane:nth-child(3)").hasClass("rc-tabs-tabpane-active")) {
+      $('.rc-tabs-bar').slideUp(500);
+      $('.rc-tabs-content').addClass("no-padding");
+    }
+  }
 }

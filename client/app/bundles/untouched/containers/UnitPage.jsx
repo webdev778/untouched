@@ -32,6 +32,7 @@ export default class UnitPage extends Component {
   }
 
   componentWillMount() {
+    window.scrollTo(0, 0);
     // TODO: Can we find a less intrusive way to set the body class?
     $('body').addClass('sidebar-hide development');
     UnitStore.listen(this.onChange);
@@ -48,7 +49,7 @@ export default class UnitPage extends Component {
 
       // If they scrolled down and are past the navbar, add class .nav-up.
       // This is necessary so you never see what is "behind" the navbar.
-      if (st > window.lastScrollTop && st > navbarHeight){
+      if (st > window.lastScrollTop){
           // Scroll Down
           $(".scroll__fixed").hide();
           $(".scroll__wrap").addClass("no-padding");
