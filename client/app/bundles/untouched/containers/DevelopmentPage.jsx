@@ -81,7 +81,7 @@ export default class DevelopmentPage extends Component {
     DevelopmentStore.listen(this.onChange);
     TipStore.listen(this.onChange);
     window.lastScrollTop = 0;
-    this.hideNav = debounce(3000, this.hideNav);
+    this.hideNav = debounce(15000, this.hideNav);
     var me = this;
     me.hideNav();
     $(window).on("scroll", function(event) {

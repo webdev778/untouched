@@ -37,7 +37,7 @@ export default class UnitPage extends Component {
     $('body').addClass('sidebar-hide development');
     UnitStore.listen(this.onChange);
     window.lastScrollTop = 0;
-    this.hideNav = debounce(3000, this.hideNav);
+    this.hideNav = debounce(15000, this.hideNav);
     var me = this;
     me.hideNav();
 
