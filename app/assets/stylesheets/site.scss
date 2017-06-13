@@ -2149,12 +2149,11 @@ button.sidebar-trigger {
   @COMPONENTS #PROGRESS
 \*------------------------------------*/
 .progress {
-  width: 40%;
+  width: 46%;
   margin-top: 20px;
   margin-bottom: 10px;
   padding: 0 20px;
-  width: 100%;
-  max-width: 500px;
+  max-width: 600px;
 }
 .progress:before, .progress:after {
   content: '';
@@ -2978,11 +2977,16 @@ tbody.collapse.in {
 .body-overflow .scroll__pricing {
   overflow: auto;
 }
-.scroll__pricing .container {
-  position: static;
+.scroll__pricing footer .container {
+  position: relative;
   padding: 0 15px;
   min-height: -webkit-calc(100vh - 115px);
   min-height: calc(100vh - 115px);
+
+  .copyright-info {
+    position: absolute;
+    bottom: 0;
+  }
 }
 .scroll__pricing .container:before, .scroll__pricing .container:after {
   content: '';
@@ -3000,7 +3004,6 @@ tbody.collapse.in {
   width: -webkit-calc(100% - 260px);
   width: calc(100% - 260px);
   float: right;
-  padding-bottom: 50px;
 }
 @media (max-width: 768px) {
   .scroll__pricing .right {
@@ -4815,6 +4818,18 @@ iframe.video {
 
   .scroll__pricing .container {
     max-width: 1600px;
+  }
+  .table {
+    a {
+      color: #03a9f4;
+    }
+    a:visited, a:active {
+      color: #03a9f4;
+    }
+
+    a:hover {
+      color: #03a9f4;
+    }
   }
 }
 .development-page, .unit-page {
