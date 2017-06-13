@@ -41,35 +41,35 @@ export default class UnitListItem extends Component {
           <Waypoint scrollableAncestor={window} onEnter={this._handleWaypointEnter} bottomOffset="50px" />
           }
           <Link to={this.unitUrl()}>{this.props.unit.number}</Link>
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
           {this.props.unit.bedrooms}
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
           {this.formattedFloat(this.props.unit.bathrooms)}
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
           {this.formattedFloat(this.props.unit.internal_in_meters)}
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
           {this.formattedFloat(this.props.unit.external_in_meters)}
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
           {this.props.unit.aspect}
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
           {this.props.unit.parking}
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
           {this.formattedPrice()}
-          <Link to={this.unitUrl()} className="link-box" />
+          <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
       </tr>
     );
