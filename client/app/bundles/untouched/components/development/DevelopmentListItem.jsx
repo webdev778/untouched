@@ -17,10 +17,10 @@ export default class DevelopmentListItem extends Component {
     // TODO: refactoring
     if (this.props.filters.dhh) {
       return `/dhh/developments/${this.props.data.development.id}` +
-        new RouteGenerator(this.props.filters).generate();
+        new RouteGenerator({sort: "price", sort_order: "desc", private: true, dhh: 1}).generate();
     } else {
       return `/developments/${this.props.data.development.id}` +
-        new RouteGenerator(this.props.filters).generate();
+        new RouteGenerator({sort: "price", sort_order: "desc"}).generate();
     }
   }
 
