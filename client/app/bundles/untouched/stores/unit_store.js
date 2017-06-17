@@ -16,18 +16,22 @@ class UnitStore {
     this.bindActions(UnitActions);
     this.units = [];
     this.facets = {};
-    this.filterParams = this.DEFAULT_FILTER_PARAMS;
+    this.filterParams = {};
+    _.assign(this.filterParams, this.DEFAULT_FILTER_PARAMS);
 
     this.exportPublicMethods({
       getUnits: this.getUnits
     });
   }
 
-  onInitData(props) {
-    this.units = props.units;
+  onInitData(params) {
+    this.DEFAULT_FILTER_PARAMS = {};
+    _.assign(this.DEFAULT_FILTER_PARAMS, params);
   }
 
   onFilterData(params) {
+    this.filterParams = {};
+    _.assign(this.filterParams, this.DEFAULT_FILTER_PARAMS);
     _.assign(this.filterParams, params);
 
     BrowserHistoryManager.push(this.filterParams);

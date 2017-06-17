@@ -13,6 +13,7 @@ export default class UnitList extends Component {
 
   componentWillMount() {
     UnitStore.listen(this.onChange);
+    UnitActions.initData(this.getFilterParams());
     UnitActions.filterData(this.getFilterParams());
   }
 
