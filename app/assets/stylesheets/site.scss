@@ -2154,6 +2154,7 @@ button.sidebar-trigger {
   margin-bottom: 10px;
   padding: 0 20px;
   max-width: 600px;
+  min-width: 300px;
 }
 .progress:before, .progress:after {
   content: '';
@@ -2988,6 +2989,14 @@ tbody.collapse.in {
     bottom: 0;
   }
 }
+.scroll__pricing .container {
+  padding-left: 0px;
+}
+@media (max-width: 768px) {
+  .scroll__pricing .container {
+    padding: 0;
+  }
+}
 .scroll__pricing .container:before, .scroll__pricing .container:after {
   content: '';
   display: table;
@@ -2995,14 +3004,9 @@ tbody.collapse.in {
 .scroll__pricing .container:after {
   clear: both;
 }
-@media (max-width: 768px) {
-  .scroll__pricing .container {
-    padding: 0;
-  }
-}
 .scroll__pricing .right {
-  width: -webkit-calc(100% - 260px);
-  width: calc(100% - 260px);
+  width: -webkit-calc(100% - 280px);
+  width: calc(100% - 280px);
   float: right;
 }
 @media (max-width: 768px) {
@@ -3032,7 +3036,6 @@ tbody.collapse.in {
 }
 @media (max-width: 1600px) {
   .scroll__pricing .sidebar-wrap {
-    left: 0;
     right: auto;
     margin-right: 0;
     width: 280px !important;

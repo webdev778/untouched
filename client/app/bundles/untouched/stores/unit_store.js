@@ -25,13 +25,12 @@ class UnitStore {
   }
 
   onInitData(params) {
-    this.DEFAULT_FILTER_PARAMS = {};
-    _.assign(this.DEFAULT_FILTER_PARAMS, params);
+    this.filterParams = {};
+    _.assign(this.filterParams, this.DEFAULT_FILTER_PARAMS);
+    _.assign(this.filterParams, params);
   }
 
   onFilterData(params) {
-    this.filterParams = {};
-    _.assign(this.filterParams, this.DEFAULT_FILTER_PARAMS);
     _.assign(this.filterParams, params);
 
     BrowserHistoryManager.push(this.filterParams);
