@@ -3468,14 +3468,6 @@ footer .copyright-info__links li a:hover {
   position: fixed !important;
 }
 
-.rc-tabs-content {
-  padding-top: 62px;
-}
-@media (max-width: 768px) {
-  .rc-tabs-content {
-    padding-top: 62px;
-  }
-}
 
 .rc-tabs-tab {
   margin-right: 20px !important;
@@ -4779,6 +4771,10 @@ iframe.video {
 .no-padding {
   padding: 0px !important;
 }
+
+.hide {
+  display: none !important;
+}
 /*------------------------------------*\
 	Development Page Customizing
 \*------------------------------------*/
@@ -4833,6 +4829,49 @@ iframe.video {
     a:hover {
       color: #03a9f4;
     }
+  }
+
+  .availability-btn1 {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    padding: 10px 20px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    z-index: 10000;
+  }
+
+  .availability-btn1:hover {
+    background: rgba(255, 255, 255, 0.6);
+    color: #000;
+    border: 1px solid #000;
+  }
+
+  .availability-btn2 {
+    padding: 10px 20px;
+    background: #fff;
+    color: #8699a4;
+    border: 1px solid #000;
+    border-radius: 5px;
+    z-index: 10000;
+  }
+
+  .availability-btn2:hover {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+  }
+
+  .scroll__bottom {
+    text-align: center;
+  }
+  .button_section {
+    line-height: 60px;
+    margin-bottom: 20px;
+  }
+  .logo_section img {
+    max-height: 50px;
   }
 }
 .development-page, .unit-page {

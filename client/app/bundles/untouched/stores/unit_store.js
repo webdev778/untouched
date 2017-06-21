@@ -28,6 +28,7 @@ class UnitStore {
     this.filterParams = {};
     _.assign(this.filterParams, this.DEFAULT_FILTER_PARAMS);
     _.assign(this.filterParams, params);
+    return this.fetch();
   }
 
   onFilterData(params) {

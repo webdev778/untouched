@@ -48,7 +48,6 @@ export default class DevelopmentsPage extends Component {
 
   componentDidMount() {
     DevelopmentActions.filterData(this.parseFiltersFromUrl());
-    DevelopmentActions.addFilterData({ backButton: 0 });
   }
 
   componentWillUnmount() {

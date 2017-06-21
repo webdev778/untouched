@@ -7,6 +7,7 @@ import TabContent from 'rc-tabs/lib/TabContent';
 import InkTabBar from 'rc-tabs/lib/InkTabBar';
 import { debounce } from 'throttle-debounce';
 import RouteGenerator from '../route_generator';
+import { browserHistory } from 'react-router';
 
 import DevelopmentActions from '../actions/development_actions';
 import DevelopmentStore from '../stores/development_store';
@@ -19,7 +20,8 @@ import DevelopmentOverviewSection from '../components/development/DevelopmentOve
 import DevelopmentLocationSection from '../components/development/DevelopmentLocationSection';
 import DevelopmentPricingSection from '../components/development/DevelopmentPricingSection';
 import SidebarDevelopmentTrigger from '../components/SidebarDevelopmentTrigger'
-
+import UnitStore from '../stores/unit_store';
+import UnitActions from '../actions/unit_actions';
 export default class DevelopmentPage extends Component {
 
   status = {
@@ -40,7 +42,7 @@ export default class DevelopmentPage extends Component {
         mainColor: '#03a9f4'
       }
     }],
-    current_activeKey: "3"
+    current_activeKey: "2"
   }
 
   hideSidebarIfClickedOutside = (event) => {
@@ -60,36 +62,28 @@ export default class DevelopmentPage extends Component {
     if(state.development && (state.development.id === parseInt(this.props.params.developmentId)))
     {
       this.setState(state);
-      if(state.filterParams.backButton)
-      {
-        this.setState({current_activeKey: "1"});
-      }
     }
   }
-  onClickTab = (key) => {
+  onClickTab() {
     this.setState({
-      current_activeKey: key,
+      current_activeKey: '1',
     });
     window.scrollTo(0, 0);
-    // if click on Overview
-    if (key == "3") {
-      this.hideNav();
-    }
+    $(".availability-btn1").hide();
+
   }
   componentWillMount() {
     window.scrollTo(0, 0);
     DevelopmentStore.listen(this.onChange);
     TipStore.listen(this.onChange);
+
     window.lastScrollTop = 0;
-    this.hideNav = debounce(15000, this.hideNav);
     var me = this;
-    me.hideNav();
     $(window).on("scroll", function(event) {
       var st = $("body").scrollTop();
       var navbarHeight = $(".scroll__nav").height();
 
       if ($(".rc-tabs-content .rc-tabs-tabpane:nth-child(3)").hasClass("rc-tabs-tabpane-active")) {
-        me.hideNav();
 
         // If they scrolled down and are past the navbar, add class .nav-up.
         // This is necessary so you never see what is "behind" the navbar.
@@ -109,6 +103,31 @@ export default class DevelopmentPage extends Component {
 
   componentDidMount() {
     DevelopmentActions.select(this.props.params.developmentId);
+    window.onpopstate = this.onBackButtonEvent;
+  }
+  onBackButtonEvent = (e) => {
+    e.preventDefault();
+    if(this.state.current_activeKey == "2"){
+      if(this.state.filterParams.dhh) {
+        browserHistory.push("/dhh/");
+      }
+      else {
+        browserHistory.push("/pub/");
+      }
+    }
+    else {
+      var url = '';
+      if (this.state.filterParams.dhh) {
+        url =  `/dhh/developments/${this.state.development.id}` +
+          new RouteGenerator(this.state.filterParams).generate();
+      } else {
+        url =  `/developments/${this.state.development.id}` +
+                          new RouteGenerator(this.state.filterParams).generate();
+      }
+      browserHistory.push(url);
+      $(".availability-btn1").show();
+      this.setState({current_activeKey: "2"});
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -170,16 +189,32 @@ export default class DevelopmentPage extends Component {
 
 
         <main className="main">
+          <a className="availability-btn1" onClick={() => this.onClickTab()}>AVAILABILITY</a>
           <Tabs
-            defaultActiveKey="3"
+            defaultActiveKey="2"
             activeKey={this.state.current_activeKey}
             onChange={this.onClickTab}
-            renderTabBar={()=><InkTabBar className="scroll__nav tab--fixed" extraContent={this.renderLogo()}/>}
+            renderTabBar={()=><InkTabBar className="scroll__nav tab--fixed hide"/>}
             renderTabContent={()=><TabContent forceRender={true}/>}
             >
-                <TabPane tab='Pricing' key="1">
+                <TabPane tab='Overview' key="2" forceRender={true}>
+                  <DevelopmentOverviewSection development={this.state.development}/>
+                  <DevelopmentLocationSection development={this.state.development}/>
+                  <section className="scroll__section scroll__bottom">
+                    <div className="button_section">
+                      <a className="availability-btn2" onClick={() => this.onClickTab()}>VIEW AVAILABILITY</a>
+                    </div>
+                    <div className="logo_section">
+                      {this.renderLogo()}
+                    </div>
+                  </section>
+
+                </TabPane>
+                <TabPane tab='Pricing' key="1" forceRender={true}>
                   <div className="clearfix">
-                    <VisitsCount count={this.state.development.visits_count}/>
+                    <div className="logo_section">
+                        {this.renderLogo()}
+                    </div>
                     <SidebarDevelopmentTrigger />
                   </div>
                   <DevelopmentPricingSection
@@ -187,12 +222,6 @@ export default class DevelopmentPage extends Component {
                       filters={this.parseFiltersFromUrl()}
                       development={this.state.development}
                       tip={!this.state.joyrideShowed && this.state.overviewLoaded}/>
-                </TabPane>
-                <TabPane tab='Location' key="2">
-                  <DevelopmentLocationSection development={this.state.development}/>
-                </TabPane>
-                <TabPane tab='Overview' key="3">
-                  <DevelopmentOverviewSection development={this.state.development}/>
                 </TabPane>
           </Tabs>
         </main>
@@ -203,13 +232,7 @@ export default class DevelopmentPage extends Component {
 
   renderLogo() {
     if (!this.state.development.development_logo_url) return '';
-    return <img src={this.state.development.development_logo_url} alt={this.state.development.address} className="scroll__logo" />;
+    return <img src={this.state.development.development_logo_url} alt={this.state.development.address} />;
   }
 
-  hideNav = () => {
-    if ($(".rc-tabs-content .rc-tabs-tabpane:nth-child(3)").hasClass("rc-tabs-tabpane-active")) {
-      $('.rc-tabs-bar').slideUp(500);
-      $('.rc-tabs-content').addClass("no-padding");
-    }
-  }
 }

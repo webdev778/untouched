@@ -65,7 +65,6 @@ export default class UnitPage extends Component {
 
   componentDidMount() {
     UnitActions.select(this.props.params.developmentId, this.props.params.unitId);
-    DevelopmentActions.addFilterData({ backButton: 1 });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -116,11 +115,6 @@ export default class UnitPage extends Component {
 
 
         <div className="scroll">
-          <div className="scroll__fixed">
-            <div className="container">
-              {this.renderNav()}
-            </div>
-          </div>
           <div className="scroll__wrap">
             <div className="scroll__content">
               <Element name="plans">

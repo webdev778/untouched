@@ -55,7 +55,7 @@ export default class DevelopmentLocationSection extends Component {
   renderMap() {
     return (
       <section className="scroll__section">
-        <div className="container">
+        <div className="container no-padding">
           <div id="map" className="map"></div>
           {this.renderInfoBox()}
         </div>
