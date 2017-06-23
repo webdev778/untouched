@@ -13,6 +13,9 @@ export default class DevelopmentPricingSection extends Component {
       <section className="scroll__section scroll__pricing">
         <div className="container">
           <div className="sidebar-wrap">
+            <div className="logo_section push-left show-in-desktop">
+                {this.renderLogo()}
+            </div>
             <DevelopmentPricingSidebar
               facets={this.props.facets}
               filters={this.props.filters}
@@ -33,6 +36,13 @@ export default class DevelopmentPricingSection extends Component {
       </section>
     );
   }
+
+
+  renderLogo() {
+    if (!this.props.development.development_logo_url) return '';
+    return <img src={this.props.development.development_logo_url} alt={this.props.development.address} />;
+  }
+
 }
 
 

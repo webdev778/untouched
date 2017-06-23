@@ -212,7 +212,7 @@ export default class DevelopmentPage extends Component {
                 </TabPane>
                 <TabPane tab='Pricing' key="1" forceRender={true}>
                   <div className="clearfix">
-                    <div className="logo_section">
+                    <div className="logo_section push-left show-in-mobile">
                         {this.renderLogo()}
                     </div>
                     <SidebarDevelopmentTrigger />

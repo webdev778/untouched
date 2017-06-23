@@ -3060,10 +3060,14 @@ tbody.collapse.in {
             transform: translateX(0);
   }
 }
+.scroll__pricing .sidebar-wrap .logo_section {
+  padding-top: 15px;
+  margin-left: 20px;
+  width: 260px;
+}
 .scroll__pricing .sidebar {
   float: right;
   display: block;
-  padding-top: 30px;
   border: none;
   left: 0;
   z-index: 800;
@@ -4775,6 +4779,22 @@ iframe.video {
 .hide {
   display: none !important;
 }
+
+.show-in-mobile {
+  display: none !important;
+
+}
+.show-in-desktop {
+  display: block !important;
+}
+@media (max-width: 768px) {
+  .show-in-mobile {
+    display: block !important;
+  }
+  .show-in-desktop {
+    display: none !important;
+  }
+}
 /*------------------------------------*\
 	Development Page Customizing
 \*------------------------------------*/
@@ -4837,8 +4857,8 @@ iframe.video {
     right: 25px;
     padding: 10px 20px;
     background: transparent;
-    color: #fff;
-    border: 1px solid #fff;
+    color: rgb(229, 229, 229);
+    border: 1px solid rgb(229, 229, 229);
     border-radius: 5px;
     z-index: 10000;
   }
@@ -4861,6 +4881,7 @@ iframe.video {
   .availability-btn2:hover {
     background: rgba(0, 0, 0, 0.6);
     color: #fff;
+    border: none;
   }
 
   .scroll__bottom {
