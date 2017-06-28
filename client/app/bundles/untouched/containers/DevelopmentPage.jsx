@@ -1,11 +1,6 @@
-import 'rc-tabs/assets/index.css';
 import React, { Component } from 'react';
 import Joyride from 'react-joyride';
 import { Link, Element } from 'react-scroll';
-import Tabs, { TabPane } from 'rc-tabs';
-import TabContent from 'rc-tabs/lib/TabContent';
-import InkTabBar from 'rc-tabs/lib/InkTabBar';
-import { debounce } from 'throttle-debounce';
 import RouteGenerator from '../route_generator';
 import { browserHistory } from 'react-router';
 
@@ -23,6 +18,10 @@ import SidebarDevelopmentTrigger from '../components/SidebarDevelopmentTrigger'
 import UnitStore from '../stores/unit_store';
 import UnitActions from '../actions/unit_actions';
 export default class DevelopmentPage extends Component {
+  scrollNav = {
+    offset: 0,
+    duration: 0
+  }
 
   status = {
     loading: {},
@@ -41,18 +40,9 @@ export default class DevelopmentPage extends Component {
       style: {
         mainColor: '#03a9f4'
       }
-    }],
-    current_activeKey: "2"
+    }]
   }
 
-  hideSidebarIfClickedOutside = (event) => {
-    const sidebarEl = $('aside.sidebar').get(0);
-    const triggerEl = $('button.sidebar-trigger').get(0);
-
-    if (!$.contains(sidebarEl, event.target) && !$.contains(triggerEl, event.target)) {
-      $('body').removeClass('sidebar-on');
-    }
-  }
 
   parseFiltersFromUrl() {
     return RouteGenerator.parse(this.props.params.splat);
@@ -64,41 +54,11 @@ export default class DevelopmentPage extends Component {
       this.setState(state);
     }
   }
-  onClickTab() {
-    this.setState({
-      current_activeKey: '1',
-    });
-    window.scrollTo(0, 0);
-    $(".availability-btn1").hide();
 
-  }
   componentWillMount() {
     window.scrollTo(0, 0);
     DevelopmentStore.listen(this.onChange);
     TipStore.listen(this.onChange);
-
-    window.lastScrollTop = 0;
-    var me = this;
-    $(window).on("scroll", function(event) {
-      var st = $("body").scrollTop();
-      var navbarHeight = $(".scroll__nav").height();
-
-      if ($(".rc-tabs-content .rc-tabs-tabpane:nth-child(3)").hasClass("rc-tabs-tabpane-active")) {
-
-        // If they scrolled down and are past the navbar, add class .nav-up.
-        // This is necessary so you never see what is "behind" the navbar.
-        if (st > window.lastScrollTop){
-            // Scroll Down
-            $('.rc-tabs-bar').hide();
-            $('.rc-tabs-content').addClass("no-padding");
-        } else {
-            // Scroll Up
-            $('.rc-tabs-bar').show();
-            $('.rc-tabs-content').removeClass("no-padding");
-        }
-      }
-      window.lastScrollTop = st;
-    });
   }
 
   componentDidMount() {
@@ -107,26 +67,11 @@ export default class DevelopmentPage extends Component {
   }
   onBackButtonEvent = (e) => {
     e.preventDefault();
-    if(this.state.current_activeKey == "2"){
-      if(this.state.filterParams.dhh) {
-        browserHistory.push("/dhh/");
-      }
-      else {
-        browserHistory.push("/pub/");
-      }
+    if(this.state.filterParams.dhh) {
+      browserHistory.push("/dhh/");
     }
     else {
-      var url = '';
-      if (this.state.filterParams.dhh) {
-        url =  `/dhh/developments/${this.state.development.id}` +
-          new RouteGenerator(this.state.filterParams).generate();
-      } else {
-        url =  `/developments/${this.state.development.id}` +
-                          new RouteGenerator(this.state.filterParams).generate();
-      }
-      browserHistory.push(url);
-      $(".availability-btn1").show();
-      this.setState({current_activeKey: "2"});
+      browserHistory.push("/pub/");
     }
   }
 
@@ -155,7 +100,6 @@ export default class DevelopmentPage extends Component {
     TipStore.unlisten(this.onChange);
     $(document).off('click.development_page');
     window.Intercom('shutdown');
-    $(window).off("scroll");
   }
 
   render() {
@@ -189,41 +133,51 @@ export default class DevelopmentPage extends Component {
 
 
         <main className="main">
-          <a className="availability-btn1" onClick={() => this.onClickTab()}>AVAILABILITY</a>
-          <Tabs
-            defaultActiveKey="2"
-            activeKey={this.state.current_activeKey}
-            onChange={this.onClickTab}
-            renderTabBar={()=><InkTabBar className="scroll__nav tab--fixed hide"/>}
-            renderTabContent={()=><TabContent forceRender={true}/>}
-            >
-                <TabPane tab='Overview' key="2" forceRender={true}>
-                  <DevelopmentOverviewSection development={this.state.development}/>
-                  <DevelopmentLocationSection development={this.state.development}/>
-                  <section className="scroll__section scroll__bottom">
-                    <div className="button_section">
-                      <a className="availability-btn2" onClick={() => this.onClickTab()}>VIEW AVAILABILITY</a>
-                    </div>
-                    <div className="logo_section">
-                      {this.renderLogo()}
-                    </div>
-                  </section>
+          <Link
+              className="availability-btn1"
+              activeClass="hide"
+              spy={true}
+              smooth={true}
+              offset={this.scrollNav.offset}
+              duration={this.scrollNav.duration}
+              isDynamic ={true}
+              to="availability">
+                AVAILABILITY
+          </Link>
 
-                </TabPane>
-                <TabPane tab='Pricing' key="1" forceRender={true}>
-                  <div className="clearfix">
-                    <div className="logo_section push-left show-in-mobile">
-                        {this.renderLogo()}
-                    </div>
-                    <SidebarDevelopmentTrigger />
-                  </div>
-                  <DevelopmentPricingSection
-                      params={this.props.params}
-                      filters={this.parseFiltersFromUrl()}
-                      development={this.state.development}
-                      tip={!this.state.joyrideShowed && this.state.overviewLoaded}/>
-                </TabPane>
-          </Tabs>
+          <DevelopmentOverviewSection development={this.state.development}/>
+          <DevelopmentLocationSection development={this.state.development}/>
+          <section className="scroll__section scroll__bottom">
+            <div className="button_section">
+              <Link
+                  className="availability-btn2"
+                  activeClass="hide"
+                  spy={true}
+                  smooth={true}
+                  offset={this.scrollNav.offset}
+                  duration={this.scrollNav.duration}
+                  isDynamic ={true}
+                  to="availability">
+                    VIEW AVAILABILITY
+              </Link>
+            </div>
+            <div className="logo_section">
+              {this.renderLogo()}
+            </div>
+          </section>
+          <Element name="availability">
+            <div className="clearfix">
+              <div className="logo_section push-left show-in-mobile">
+                  {this.renderLogo()}
+              </div>
+              <SidebarDevelopmentTrigger />
+            </div>
+            <DevelopmentPricingSection
+                params={this.props.params}
+                filters={this.parseFiltersFromUrl()}
+                development={this.state.development}
+                tip={!this.state.joyrideShowed && this.state.overviewLoaded}/>
+          </Element>
         </main>
 
       </div>
