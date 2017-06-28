@@ -147,24 +147,6 @@ export default class DevelopmentPage extends Component {
 
           <DevelopmentOverviewSection development={this.state.development}/>
           <DevelopmentLocationSection development={this.state.development}/>
-          <section className="scroll__section scroll__bottom">
-            <div className="button_section">
-              <Link
-                  className="availability-btn2"
-                  activeClass="hide"
-                  spy={true}
-                  smooth={true}
-                  offset={this.scrollNav.offset}
-                  duration={this.scrollNav.duration}
-                  isDynamic ={true}
-                  to="availability">
-                    VIEW AVAILABILITY
-              </Link>
-            </div>
-            <div className="logo_section">
-              {this.renderLogo()}
-            </div>
-          </section>
           <Element name="availability">
             <div className="clearfix">
               <div className="logo_section push-left show-in-mobile">
