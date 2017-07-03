@@ -268,6 +268,7 @@ GEM
     orm_adapter (0.5.0)
     pg (0.18.4)
     pr_geohash (1.0.0)
+    puma (3.9.1)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -426,6 +427,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   mini_racer
   pg
+  puma
   rails (= 4.2.5.2)
   rails_12factor
   react_on_rails (~> 6)

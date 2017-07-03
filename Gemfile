@@ -69,3 +69,7 @@ gem 'impressionist'
 
 gem 'devise',           '~> 4.2'
 gem 'devise_invitable', '~> 1.7.0'
+
+
+#Puma webserver
+gem 'puma'
