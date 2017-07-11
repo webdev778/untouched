@@ -26,6 +26,7 @@
     "react-dom": "^0.14.8 || ^15.0.0",
     "react-dropzone": "^3.6.0",
     "react-joyride": "^1.5.1",
+    "react-lazysizes": "^1.0.0",
     "react-motion": "^0.4.5",
     "react-on-rails": "6.1.1",
     "react-plyr": "^1.2.0",

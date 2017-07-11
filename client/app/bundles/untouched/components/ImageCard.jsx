@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import LazySizes from 'react-lazysizes';
 
 export default class ImageCard extends Component {
 
@@ -10,7 +11,7 @@ export default class ImageCard extends Component {
   render() {
     return (
       <div key={this.props.image.id} className="card">
-        <img src={this.props.image.url} onLoad={this.props.handleImageLoaded} onError={this.props.handleImageErrored}/>
+        <LazySizes dataSrc={this.props.image.url}/>
         {this.renderCaption()}
       </div>
     );
