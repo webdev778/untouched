@@ -2453,16 +2453,17 @@ button.sidebar-trigger {
 }
 
 .card__caption {
-  padding: 25px 100px;
-  margin: 0;
+  padding: 70px 100px;
+  margin: 0 auto;
   font-size: 14px;
   font-weight: normal;
   color: #444444;
   background-color: #fff;
+  max-width: 600px;
 }
 @media (max-width: 768px) {
   .card__caption {
-    padding: 25px 20px;
+    padding: 50px 20px;
   }
 }
 

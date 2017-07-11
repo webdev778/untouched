@@ -11,7 +11,7 @@ export default class ImageCard extends Component {
   render() {
     return (
       <div key={this.props.image.id} className="card">
-        <LazySizes dataSrc={this.props.image.url}/>
+        <LazySizes src={this.props.image.url} dataSrc={this.props.image.url}/>
         {this.renderCaption()}
       </div>
     );
