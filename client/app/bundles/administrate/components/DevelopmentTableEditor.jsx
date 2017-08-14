@@ -256,8 +256,6 @@ export default class DevelopmentTableEditor extends Component {
       this.dropdownColumn('aspect', 'Aspect', this.properties.aspect.options, this.formatters.finder),
       this.inputColumn('max_body_corporate_fee', 'Body', this.formatters.money),
       this.inputColumn('annual_council_rate', 'Council', this.formatters.money),
-      this.inputColumn('stamp_duty', 'Stamp', this.formatters.money),
-      this.inputColumn('stamp_duty_savings', 'Stamp Sav', this.formatters.money),
       this.inputColumn('water_rates', 'Water Rates', this.formatters.money),
       this.booleanColumn('study_nook', 'SN'),
       this.booleanColumn('study_room', 'SR'),

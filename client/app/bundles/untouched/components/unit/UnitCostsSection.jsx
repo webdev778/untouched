@@ -85,18 +85,6 @@ export default class UnitCostsSection extends Component {
                   </tr>
                   <tr>
                     <td>
-                      <strong>Stamp duty</strong>
-                    </td>
-                    <td>{this.formattedStampDuty()}</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <strong>Stamp duty saving</strong>
-                    </td>
-                    <td>{this.formattedStampDutySavings()}</td>
-                  </tr>
-                  <tr>
-                    <td>
                       <strong>Body corporate</strong>
                     </td>
                     <td>{this.formattedAnnualBodyCorporate()}</td>
