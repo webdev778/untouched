@@ -69,6 +69,18 @@ export default class UnitCostsSection extends Component {
                     <td>{this.formattedDeposit()}</td>
                   </tr>
                   <tr>
+                    <td>
+                      <strong>Car park lot</strong>
+                    </td>
+                    <td>{this.props.unit.car_park_lot}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Storage lot</strong>
+                    </td>
+                    <td>{this.props.unit.storage_lot}</td>
+                  </tr>
+                  <tr>
                     <td colSpan="2">
                       <Link target="_blank" to={this.props.unit.contract_url}
                         className="btn btn--light btn--full">

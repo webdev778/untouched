@@ -35,7 +35,9 @@ class UnitSerializer < ActiveModel::Serializer
     :updated_at,
     :views_count,
     :plans_count,
-    :visits_count
+    :visits_count,
+    :car_park_lot,
+    :storage_lot
 
   def visits_count
     object.impressionist_count(:start_date => 7.days.ago, :end_date => DateTime.now)

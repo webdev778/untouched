@@ -254,6 +254,8 @@ export default class DevelopmentTableEditor extends Component {
       this.inputColumn('internal_in_meters', 'IM2', this.formatters.float),
       this.inputColumn('external_in_meters', 'EM2', this.formatters.float),
       this.dropdownColumn('aspect', 'Aspect', this.properties.aspect.options, this.formatters.finder),
+      this.inputColumn('car_park_lot', 'Car Park Lot'),
+      this.inputColumn('storage_lot', 'Storage Lot'),
       this.inputColumn('max_body_corporate_fee', 'Body', this.formatters.money),
       this.inputColumn('annual_council_rate', 'Council', this.formatters.money),
       this.inputColumn('water_rates', 'Water Rates', this.formatters.money),
