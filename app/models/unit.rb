@@ -79,7 +79,7 @@ class Unit < ActiveRecord::Base
   def suburb; development.suburb; end
 
   def price_per_m2
-    price / (internal_in_meters + external_in_meters)
+    price / internal_in_meters
   end
 
   def deposit_due_in_days

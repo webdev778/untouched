@@ -71,6 +71,12 @@ export default class UnitListItem extends Component {
           {this.formattedPrice()}
           <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
+        {this.props.unit.development.show_per_m2 &&
+          <td>
+            {this.formattedPricePerM2()}
+            <Link to={this.unitUrl()} className="link-box" target="_blank" />
+          </td>
+        }
       </tr>
     );
   }

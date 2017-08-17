@@ -14,6 +14,8 @@ class ResultSet
       a.price <=> b.price
     when 'number'
       a.number <=> b.number
+    when 'parking'
+      a.parking <=> b.parking
     when 'bedrooms'
       a.bedrooms <=> b.bedrooms
     when 'bathrooms'

@@ -6,6 +6,7 @@ class DevelopmentSerializer < ActiveModel::Serializer
   has_many :videos
 
   attributes :id, :lat, :lng,
+    :show_per_m2,
     :development_logo_url,
     :developer_logo_url,
     :address,

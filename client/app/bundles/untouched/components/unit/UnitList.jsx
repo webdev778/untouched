@@ -36,6 +36,9 @@ export default class UnitList extends Component {
             <tr>
               <th>&nbsp;</th>
               {this.renderHeadings()}
+              {this.props.development.show_per_m2 &&
+              <th key={"price_per_m2"} className={this.classForHeading('price_per_m2')} onClick={this.handleSortColumn('price_per_m2')}>Per m<sup>2</sup></th>
+              }
             </tr>
           </thead>
           <tbody>

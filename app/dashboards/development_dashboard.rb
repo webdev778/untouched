@@ -11,6 +11,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
     units: HasManyUnitsField,
     private: Field::Boolean,
     show_on_home_page: Field::Boolean,
+    show_per_m2: Field::Boolean,
     id: Field::Number,
     lat: Field::Number,
     lng: Field::Number,
@@ -54,6 +55,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :private,
     :show_on_home_page,
+    :show_per_m2,
     :lat,
     :lng,
     :development_logo,
@@ -81,6 +83,7 @@ class DevelopmentDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :private,
     :show_on_home_page,
+    :show_per_m2,
     :development_logo,
     :developer_logo,
     :lat,
