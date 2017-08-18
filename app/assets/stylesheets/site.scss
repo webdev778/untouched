@@ -4832,6 +4832,12 @@ iframe.video {
     max-width: 1600px;
   }
   .table {
+    .reserved-row {
+      color: lightgray;
+      a {
+        color: lightgray;
+      }
+    }
     a {
       color: #03a9f4;
     }

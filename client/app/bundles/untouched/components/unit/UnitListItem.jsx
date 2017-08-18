@@ -34,7 +34,7 @@ export default class UnitListItem extends Component {
 
   render() {
     return (
-      <tr>
+      <tr className={this.props.unit.status == "reserved" ? 'reserved-row' : null} >
         <td>&nbsp;</td>
         <td className={this.props.tip ? 'unit-list-item__tip' : null}>
           {this.props.tip &&
@@ -68,7 +68,7 @@ export default class UnitListItem extends Component {
           <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         <td>
-          {this.formattedPrice()}
+          {this.props.unit.status == "reserved" ? 'RESERVED' : this.formattedPrice()}
           <Link to={this.unitUrl()} className="link-box" target="_blank" />
         </td>
         {this.props.unit.development.show_per_m2 &&
