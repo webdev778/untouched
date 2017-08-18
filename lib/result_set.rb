@@ -13,7 +13,7 @@ class ResultSet
     when 'price'
       a.price <=> b.price
     when 'number'
-      a.number <=> b.number
+      [a.number.split('.')[0].to_i, a.number] <=> [b.number.split('.')[0].to_i, b.number]
     when 'parking'
       a.parking <=> b.parking
     when 'bedrooms'
