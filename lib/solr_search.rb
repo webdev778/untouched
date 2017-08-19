@@ -37,7 +37,7 @@ class SolrSearch
       filters = {}
 
       unless params[:status] == 'any'
-        with(:status, 'active')
+        with(:status, ['active', 'reserved'])
       end
 
       if params[:bedrooms]

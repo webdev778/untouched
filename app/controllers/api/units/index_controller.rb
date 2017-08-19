@@ -15,7 +15,6 @@ class API::Units::IndexController < API::BaseController
     filter_params = params
     filter_params.delete(:action)
     filter_params.delete(:controller)
-    filter_params = filter_params.merge({status: "any"})
     filter_params
   end
 
