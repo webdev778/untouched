@@ -67,7 +67,7 @@ gem 'mini_racer', platforms: :ruby
 
 gem 'impressionist'
 
-gem 'devise',           '~> 4.2'
+gem 'devise',           '~> 4.7'
 gem 'devise_invitable', '~> 1.7.0'
 
 
