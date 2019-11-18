@@ -6,4 +6,4 @@
 # $ git config --global merge.ours.driver true
 schema.rb merge=ours diff=ruby
 
-client/* linguist-vendored=false
+client/* linguist-vendored
