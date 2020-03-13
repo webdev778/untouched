@@ -21,7 +21,7 @@ gem 'fog'
 # For processing image captions
 gem 'redcarpet'
 
-gem "administrate", "~> 0.1.4"
+gem "administrate", "~> 0.13.0"
 
 gem 'turbolinks', '~> 5.0.0'
 gem 'jbuilder', '~> 2.0'
