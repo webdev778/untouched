@@ -316,7 +316,7 @@ GEM
       foreman
       rails (>= 3.2)
       rainbow (~> 2.1)
-    redcarpet (3.3.4)
+    redcarpet (3.5.1)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rsolr (1.1.1)
